@@ -2,6 +2,7 @@ package com.example.demo.Services.JWTService;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.cglib.core.internal.Function;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +26,15 @@ public class JWTServiceImpl implements JWTService {
         .compact();
    }
 
+   @Override
+   public String generateRefreshToken(Map<String,Object> extraClaims ,UserDetails userDetails){
+        return Jwts.builder().setClaims(extraClaims).setSubject(userDetails.getUsername())
+        .setIssuedAt(new Date(System.currentTimeMillis()))
+        .setExpiration(new Date(System.currentTimeMillis()+ 604800000))
+        .signWith(getSiginKey(), SignatureAlgorithm.HS256)
+        .compact();
+   }
+
    private <T> T extractClaim(String token, Function<Claims, T> claimsResolvers){
       final Claims claims = extractAllClaims(token);
       return claimsResolvers.apply(claims);
@@ -39,7 +49,7 @@ public class JWTServiceImpl implements JWTService {
    }
 
    private Key getSiginKey(){
-    byte[] key = Decoders.BASE64.decode("R29kIGlzIEdyZWF0");
+    byte[] key = Decoders.BASE64.decode("R29kIGlzIEdyZWF0R29kIGlzIEdyZWF0R29kIGlzIEdyZWF0");
     return Keys.hmacShaKeyFor(key);
     
    }

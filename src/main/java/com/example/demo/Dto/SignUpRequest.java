@@ -25,7 +25,7 @@ public class SignUpRequest {
 
     @NotNull
     @Email
-    // @Column(unique = true)
+    @Column(unique = true)
     // @Size(max = 320)
     private String email;
 
