@@ -11,5 +11,7 @@ public interface JWTService {
 
     String generateRefreshToken(Map<String,Object> extraClaims ,UserDetails userDetails);
 
-    boolean isTokenValid(String jwt, UserDetails userDetails);
+    boolean isTokenValid(String token, UserDetails userDetails);
+
+    boolean isTokenExpired(String token);
 }

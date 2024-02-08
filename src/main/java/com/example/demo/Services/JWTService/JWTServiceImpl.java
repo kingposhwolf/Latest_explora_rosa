@@ -55,8 +55,14 @@ public class JWTServiceImpl implements JWTService {
    }
 
    @Override
-   public boolean isTokenValid(String jwt, UserDetails userDetails) {
-      // TODO Auto-generated method stub
-      throw new UnsupportedOperationException("Unimplemented method 'isTokenValid'");
+   public boolean isTokenValid(String token, UserDetails userDetails) {
+      final String username = extractUserName(token);
+
+      return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+   }
+
+   @Override
+   public boolean isTokenExpired(String token) {
+      return extractClaim(token, Claims::getExpiration).before(new Date());
    }
 }
