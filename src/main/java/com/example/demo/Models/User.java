@@ -3,7 +3,6 @@ package com.example.demo.Models;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 import java.util.Collection;
 import java.util.List;
@@ -29,22 +28,18 @@ public class User implements UserDetails {
     private Long id;
 
     @NotBlank
-    // @Size(max = 50)
     private String firstName;
 
     @NotNull
-    // @Size(max = 50)
     private String secondName;
 
     @NotNull
     @Column(unique = true)
-    // @Size(max = 30)
     private String username;
 
     @NotNull
     @Email
     @Column(unique = true)
-    // @Size(max = 320)
     private String email;
 
     @NotNull
