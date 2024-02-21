@@ -19,7 +19,6 @@ public class Country {
     private Long id;
 
     @NotBlank
-    @Column(length = 100)
-    @Size(max = 100)
+    @Column(length = 100, nullable = false)
     private String name;
 }
