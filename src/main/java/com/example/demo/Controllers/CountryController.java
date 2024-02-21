@@ -25,7 +25,7 @@ public class CountryController {
     public ResponseEntity<Object> getAllCountries() {
         Iterable<Country> countries = countryServiceImpl.getAllCountries();
 
-        if (countries == null) {
+        if (!countries.iterator().hasNext()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is no registered country yet");
         }
         else{
