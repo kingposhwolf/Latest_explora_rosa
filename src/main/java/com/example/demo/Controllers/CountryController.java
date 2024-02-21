@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class CountryController {
         this.countryServiceImpl = countryServiceImpl;
     }
     
-    @PostMapping("/all")
+    @GetMapping("/all")
     public ResponseEntity<Object> getAllCountries() {
         Iterable<Country> countries = countryServiceImpl.getAllCountries();
 

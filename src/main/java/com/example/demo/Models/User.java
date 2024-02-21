@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,11 +23,16 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String firstName;
+    @ManyToOne
+    @JoinColumn(name = "countryId", nullable = false)
+    private Country country;
+
+    @ManyToOne
+    @JoinColumn(name = "accountTypeId", nullable = false)
+    private AccountType accountType;
 
     @NotNull
-    private String secondName;
+    private String name;
 
     @NotNull
     @Column(unique = true)

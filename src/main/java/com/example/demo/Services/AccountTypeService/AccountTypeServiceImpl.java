@@ -22,9 +22,9 @@ public class AccountTypeServiceImpl implements AccountTypeService {
     }
 
     public AccountType saveAccountType(AccountTypeDto accountTypeDto){
-        Optional<AccountType> existingCountry = accountTypeRepository.findByName(accountTypeDto.getName());
+        Optional<AccountType> existingAccountType = accountTypeRepository.findByName(accountTypeDto.getName());
 
-        if (existingCountry.isPresent()) {
+        if (existingAccountType.isPresent()) {
 
             throw new DuplicateCountryException("Account type already existed");
         }

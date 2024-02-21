@@ -1,8 +1,6 @@
 package com.example.demo.Dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -10,26 +8,27 @@ import lombok.Data;
 @Data
 public class SignUpRequest {
 
-    @NotBlank
-    // @Size(max = 50)
-    private String firstName;
 
     @NotNull
-    // @Size(max = 50)
-    private String secondName;
+    @Size(max = 100)
+    private String name;
 
     @NotNull
-    @Column(unique = true)
-    // @Size(max = 30)
+    private Long countryId;
+
+    @NotNull
+    private Long accountTypeId;
+
+    @NotNull
+    @Size(max = 50)
     private String username;
 
     @NotNull
     @Email
-    @Column(unique = true)
-    // @Size(max = 320)
+    @Size(max = 100)
     private String email;
 
     @NotNull
-    // @Size(max = 128)
+    @Size(max = 128)
     private String password;
 }
