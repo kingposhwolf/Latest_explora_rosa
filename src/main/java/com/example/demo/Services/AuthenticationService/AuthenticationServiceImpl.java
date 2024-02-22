@@ -15,14 +15,18 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Dto.JwtAuthenticationResponse;
 import com.example.demo.Dto.RefreshTokenRequest;
+import com.example.demo.Dto.RegistrationResponse;
 import com.example.demo.Dto.SignUpRequest;
 import com.example.demo.Dto.SigninRequest;
 import com.example.demo.Models.AccountType;
 import com.example.demo.Models.Country;
+import com.example.demo.Models.Profile;
 import com.example.demo.Models.Role;
+import com.example.demo.Models.Title;
 import com.example.demo.Models.User;
 import com.example.demo.Repositories.AccountTypeRepository;
 import com.example.demo.Repositories.CountryRepository;
+import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.JWTService.JWTService;
 
@@ -43,6 +47,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     private final AccountTypeRepository accountTypeRepository;
+
+    private final ProfileRepository profileRepository;
 
     private final JWTService jwtService;
 
@@ -72,6 +78,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("email must be unique.");
     }
     else {
+        //creating new user
         User user = new User();
     user.setEmail(signUpRequest.getEmail());
     user.setName(signUpRequest.getName());
@@ -85,7 +92,36 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     
     logger.info("User Saved sucessfull" + user);
 
-    return ResponseEntity.ok("message: "+"User saved successfully");
+        //Logged in the User
+    var jwt = jwtService.generateToken(user);
+    var refreshToken = jwtService.generateRefreshToken(new HashMap<>() ,user);
+    JwtAuthenticationResponse jwtAuthenticationResponse = new JwtAuthenticationResponse();
+    jwtAuthenticationResponse.setToken(jwt);
+    jwtAuthenticationResponse.setRefreshToken(refreshToken);
+
+    //Create User Profile
+    // Title title = new Title();
+    //        title.setId((long) 1);
+    //        title.setName("USER");
+
+    Profile profile = new Profile();
+        profile.setBio("");
+        profile.setFollowers(0);
+        profile.setFollowing(0);
+        profile.setPosts(0);
+        profile.setTitle(null);
+        profile.setPowerSize(0);
+        profile.setTitle(null);
+        profile.setUser(user);
+    Profile profile2 = profileRepository.save(profile);
+    logger.info("User Saved sucessfull" + user);
+    //Return response
+    RegistrationResponse registrationResponse = new RegistrationResponse();
+
+    registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
+    registrationResponse.setProfileId(profile2.getId());
+
+    return ResponseEntity.status(201).body(registrationResponse);
     }
         }catch(Exception exception){
             logger.error("User saving failed" + exception.getMessage());

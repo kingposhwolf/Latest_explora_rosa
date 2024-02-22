@@ -9,13 +9,13 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name= "countries")
 @Data
-public class Country {
+@Table(name = "titles")
+public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100, nullable = false, unique = true)
+    @Column(nullable = false, length = 100, unique = true)
     private String name;
 }
