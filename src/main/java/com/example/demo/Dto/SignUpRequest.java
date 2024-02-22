@@ -20,7 +20,7 @@ public class SignUpRequest {
     private Long accountTypeId;
 
     @NotNull
-    @Size(max = 50)
+    @Size(max = 100)
     private String username;
 
     @NotNull
@@ -29,6 +29,6 @@ public class SignUpRequest {
     private String email;
 
     @NotNull
-    @Size(max = 128)
+    @Size(max = 128, min = 8)
     private String password;
 }

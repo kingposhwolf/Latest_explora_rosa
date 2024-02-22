@@ -5,6 +5,9 @@ import com.example.demo.Dto.AccountTypeDto;
 import com.example.demo.Models.AccountType;
 import com.example.demo.Services.AccountTypeService.AccountTypeServiceImpl;
 import com.example.demo.Services.CountryService.DuplicateCountryException;
+
+import jakarta.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +39,7 @@ public class AccountTypeController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Object> registerAccountTypes(@RequestBody AccountTypeDto accountTypeDto) {
+    public ResponseEntity<Object> registerAccountTypes(@RequestBody @Valid AccountTypeDto accountTypeDto) {
         try {
             AccountType savedAccountType = accountTypeServiceImpl.saveAccountType(accountTypeDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedAccountType);

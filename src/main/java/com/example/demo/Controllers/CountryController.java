@@ -13,6 +13,8 @@ import com.example.demo.Models.Country;
 import com.example.demo.Services.CountryService.CountryServiceImpl;
 import com.example.demo.Services.CountryService.DuplicateCountryException;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/countries")
 public class CountryController {
@@ -36,7 +38,7 @@ public class CountryController {
     }
     
     @PostMapping("/register")
-    public ResponseEntity<Object> registerCountry(@RequestBody CountryDto countryDto) {
+    public ResponseEntity<Object> registerCountry(@RequestBody @Valid CountryDto countryDto) {
         try {
             Country savedCountry = countryServiceImpl.saveCountry(countryDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedCountry);

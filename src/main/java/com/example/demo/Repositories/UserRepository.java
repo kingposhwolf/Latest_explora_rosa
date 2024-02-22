@@ -8,8 +8,9 @@ import com.example.demo.Models.Role;
 import com.example.demo.Models.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
-    // Custom query method to find users by username
+
     Optional<User> findByUsername(String username);
+    Optional<User> findByEmail(String email);
 
     User findByRole(Role role);
 }

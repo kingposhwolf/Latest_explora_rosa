@@ -1,13 +1,9 @@
 package com.example.demo.Models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,31 +19,27 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "countryId", nullable = false)
     private Country country;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "accountTypeId", nullable = false)
     private AccountType accountType;
 
-    @NotNull
+    @Column(nullable = false, length = 100)
     private String name;
 
-    @NotNull
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, length = 100)
     private String username;
 
-    @NotNull
-    @Email
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, length = 255)
     private String email;
 
-    @NotNull
-    // @Size(max = 128)
+    @Column(nullable = false, length = 255)
     private String password;
 
-    @NotNull
+    @Column(nullable = false)
     private Role role;
 
     @Override

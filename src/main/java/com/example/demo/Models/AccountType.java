@@ -5,7 +5,6 @@
 package com.example.demo.Models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -16,7 +15,6 @@ public class AccountType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column(length = 100, nullable = false)
     private String name;
 
