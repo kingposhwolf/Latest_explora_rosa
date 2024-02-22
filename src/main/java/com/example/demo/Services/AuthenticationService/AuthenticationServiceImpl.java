@@ -2,14 +2,16 @@ package com.example.demo.Services.AuthenticationService;
 
 import java.util.HashMap;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.hibernate.exception.ConstraintViolationException;
 
 import com.example.demo.Dto.JwtAuthenticationResponse;
 import com.example.demo.Dto.RefreshTokenRequest;
@@ -29,6 +31,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
+
+    private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
     
     private final UserRepository userRepository;
 
@@ -42,6 +46,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final JWTService jwtService;
 
+    @SuppressWarnings("null")
     public ResponseEntity<Object> signup(SignUpRequest signUpRequest) {
         try{
             Country country = countryRepository.findById(signUpRequest.getCountryId()) .orElse(null);
@@ -77,18 +82,22 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
 
     userRepository.save(user);
+    
+    logger.info("User Saved sucessfull" + user);
 
     return ResponseEntity.ok("message: "+"User saved successfully");
     }
         }catch(Exception exception){
-            return ResponseEntity.status(500).body(exception.getMessage());
+            logger.error("User saving failed" + exception.getMessage());
+            return ResponseEntity.status(500).body("There is Problem at Our End");
         }
 }
 
 
-    public JwtAuthenticationResponse signin(SigninRequest signinRequest){
-        
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signinRequest.getUsername(), signinRequest.getPassword()));
+    public ResponseEntity<Object> signin(SigninRequest signinRequest){
+
+        try{
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signinRequest.getUsername(), signinRequest.getPassword()));
 
         User user = userRepository.findByUsername(signinRequest.getUsername()).orElseThrow(() -> new IllegalArgumentException("Invalid Username or Password"));
 
@@ -101,7 +110,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         jwtAuthenticationResponse.setToken(jwt);
         jwtAuthenticationResponse.setRefreshToken(refreshToken);
 
-        return jwtAuthenticationResponse;
+        return ResponseEntity.ok(jwtAuthenticationResponse);
+        }catch(BadCredentialsException exception){
+            logger.error("Invalid Username or Password", exception.getMessage());
+        return ResponseEntity.status(401).body("Invalid Username or Password");
+        }
+        catch(Exception exception){
+            logger.error("Login Failure Error" + exception.getMessage());
+            return ResponseEntity.status(500).body("There is Problem at Our End");
+        }
+        
     }
 
     public JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest){

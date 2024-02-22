@@ -11,7 +11,7 @@ public interface AuthenticationService {
     
     ResponseEntity<Object> signup(SignUpRequest signUpRequest);
 
-    JwtAuthenticationResponse signin(SigninRequest signinRequest);
+    ResponseEntity<Object> signin(SigninRequest signinRequest);
 
     JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
 }

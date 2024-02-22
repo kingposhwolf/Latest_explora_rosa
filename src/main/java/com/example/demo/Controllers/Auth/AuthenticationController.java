@@ -41,8 +41,16 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<JwtAuthenticationResponse> login(@RequestBody @Valid SigninRequest signinRequest){
-        return ResponseEntity.ok(authenticationService.signin(signinRequest));
+    public ResponseEntity<Object> login(@RequestBody @Valid SigninRequest signinRequest, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            List<String> errors = new ArrayList<>();
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errors.add(error.getField() + ": " + error.getDefaultMessage());
+            }
+
+            return ResponseEntity.badRequest().body("Validation errors: " + String.join(", ", errors));
+        }
+        return authenticationService.signin(signinRequest);
     }
 
     @PostMapping("/refresh")
