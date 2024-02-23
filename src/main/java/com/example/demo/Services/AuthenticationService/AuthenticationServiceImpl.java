@@ -22,7 +22,6 @@ import com.example.demo.Models.AccountType;
 import com.example.demo.Models.Country;
 import com.example.demo.Models.Profile;
 import com.example.demo.Models.Role;
-import com.example.demo.Models.Title;
 import com.example.demo.Models.User;
 import com.example.demo.Repositories.AccountTypeRepository;
 import com.example.demo.Repositories.CountryRepository;
@@ -114,7 +113,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         profile.setTitle(null);
         profile.setUser(user);
     Profile profile2 = profileRepository.save(profile);
-    logger.info("User Saved sucessfull" + user);
+    logger.info("\nProfile saved Successful:\n" + profile);
     //Return response
     RegistrationResponse registrationResponse = new RegistrationResponse();
 
@@ -124,7 +123,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     return ResponseEntity.status(201).body(registrationResponse);
     }
         }catch(Exception exception){
-            logger.error("User saving failed" + exception.getMessage());
+            logger.error("\nUser saving failed server side Error: \n " + exception.getMessage());
             return ResponseEntity.status(500).body("There is Problem at Our End");
         }
 }
@@ -148,11 +147,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         return ResponseEntity.ok(jwtAuthenticationResponse);
         }catch(BadCredentialsException exception){
-            logger.error("Invalid Username or Password", exception.getMessage());
+            logger.error("\nInvalid Username or Password", exception.getMessage());
         return ResponseEntity.status(401).body("Invalid Username or Password");
         }
         catch(Exception exception){
-            logger.error("Login Failure Error" + exception.getMessage());
+            logger.error("\nLogin Failure Error,server side Error:\n" + exception.getMessage());
             return ResponseEntity.status(500).body("There is Problem at Our End");
         }
         
