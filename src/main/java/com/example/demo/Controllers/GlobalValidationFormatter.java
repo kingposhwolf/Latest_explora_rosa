@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
+@Service
 public class GlobalValidationFormatter {
     public ResponseEntity<String> validationFormatter(BindingResult bindingResult){
         List<String> errors = new ArrayList<>();
