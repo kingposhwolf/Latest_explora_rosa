@@ -19,11 +19,14 @@ import com.example.demo.Dto.RegistrationResponse;
 import com.example.demo.Dto.SignUpRequest;
 import com.example.demo.Dto.SigninRequest;
 import com.example.demo.Models.AccountType;
+import com.example.demo.Models.Brand;
 import com.example.demo.Models.Country;
 import com.example.demo.Models.Profile;
 import com.example.demo.Models.Role;
 import com.example.demo.Models.User;
+import com.example.demo.Models.VerificationStatus;
 import com.example.demo.Repositories.AccountTypeRepository;
+import com.example.demo.Repositories.BrandRepository;
 import com.example.demo.Repositories.CountryRepository;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserRepository;
@@ -38,6 +41,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
     
     private final UserRepository userRepository;
+
+    private final BrandRepository brandRepository;
 
     private final CountryRepository countryRepository;
 
@@ -106,7 +111,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     //        title.setId((long) 1);
     //        title.setName("USER");
 
-    Profile profile = new Profile();
+    if(accountType.getName().equals("User")){
+        Profile profile = new Profile();
         profile.setBio("");
         profile.setFollowers(0);
         profile.setFollowing(0);
@@ -115,8 +121,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         profile.setPowerSize(0);
         profile.setTitle(null);
         profile.setUser(user);
+
     Profile profile2 = profileRepository.save(profile);
     logger.info("\nProfile saved Successful:\n" + profile);
+
     //Return response
     RegistrationResponse registrationResponse = new RegistrationResponse();
 
@@ -124,6 +132,25 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     registrationResponse.setProfileId(profile2.getId());
 
     return ResponseEntity.status(201).body(registrationResponse);
+    }else{
+        Brand brand = new Brand();
+        brand.setCity(null);
+        brand.setRates(null);
+        brand.setTinNumber(null);
+        brand.setVerificationStatus(VerificationStatus.UNVERIFIED);
+        brand.setUser(user);
+
+        Brand brand2 = brandRepository.save(brand);
+    logger.info("\nBrand saved Successful:\n" + brand2);
+
+    //Return response
+    RegistrationResponse registrationResponse = new RegistrationResponse();
+
+    registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
+    registrationResponse.setProfileId(brand2.getId());
+
+    return ResponseEntity.status(201).body(registrationResponse);
+    }
     }
         }catch(Exception exception){
             logger.error("\nUser saving failed server side Error: \n " + exception.getMessage());

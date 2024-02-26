@@ -53,7 +53,7 @@ public class CityServiceImpl implements CityService{
         try {
             Optional<City> existingCity = cityRepository.findByName(cityDto.getName());
 
-            if(existingCity.isPresent()){
+            if(!existingCity.isPresent()){
                 logger.error("\nFailed to save the city, City Already exists Error");
                 return ResponseEntity.status(400).body("This City Already Exists!");
             }

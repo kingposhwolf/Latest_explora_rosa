@@ -21,7 +21,7 @@ public class Brand {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private VerificationStatus verificationStatus;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -32,13 +32,9 @@ public class Brand {
     @JoinColumn(name = "cityId")
     private City city;
 
-    @Column(precision = 1, scale=1)
+    @Column(precision = 1, scale=1, nullable = false)
     private BigDecimal rates;
 
-    @Column(nullable = false)
     private String tinNumber;
-
-
-
 
 }
