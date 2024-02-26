@@ -66,14 +66,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (accountType == null) {
             errorMessage += "Invalid accountTypeId: " + signUpRequest.getAccountTypeId() + ". ";
         }
+        logger.error("User registration failed, Validation Error" + errorMessage);
         return ResponseEntity.badRequest().body(errorMessage);
     }
 
     Optional<User> userExist1 = userRepository.findByUsername(signUpRequest.getUsername());
     Optional<User> userExist2 = userRepository.findByEmail(signUpRequest.getEmail());
     if (userExist1.isPresent()) {
+        logger.error("User Registration Failed, Username Must be unique Error");
         return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username must be unique.");
     }else if(userExist2.isPresent()){
+        logger.error("User Registration Failed, email Must be unique Error");
         return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("email must be unique.");
     }
     else {
@@ -124,7 +127,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
         }catch(Exception exception){
             logger.error("\nUser saving failed server side Error: \n " + exception.getMessage());
-            return ResponseEntity.status(500).body("There is Problem at Our End");
+            return ResponseEntity.status(500).body("Internal Server Error");
         }
 }
 
@@ -145,22 +148,25 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         jwtAuthenticationResponse.setToken(jwt);
         jwtAuthenticationResponse.setRefreshToken(refreshToken);
 
+        logger.info("Login Successful for the user : " + user);
         return ResponseEntity.ok(jwtAuthenticationResponse);
+
         }catch(BadCredentialsException exception){
             logger.error("\nInvalid Username or Password", exception.getMessage());
-        return ResponseEntity.status(401).body("Invalid Username or Password");
+            return ResponseEntity.status(401).body("Invalid Username or Password");
         }
         catch(Exception exception){
             logger.error("\nLogin Failure Error,server side Error:\n" + exception.getMessage());
-            return ResponseEntity.status(500).body("There is Problem at Our End");
+            return ResponseEntity.status(500).body("Internal Server Error");
         }
         
     }
 
-    public JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest){
-        String username = jwtService.extractUserName(refreshTokenRequest.getToken());
+    public ResponseEntity<Object> refreshToken(RefreshTokenRequest refreshTokenRequest){
+        try {
+            String username = jwtService.extractUserName(refreshTokenRequest.getToken());
 
-        User user = userRepository.findByUsername(username).orElseThrow();
+            User user = userRepository.findByUsername(username).orElseThrow();
 
         if(jwtService.isTokenValid(refreshTokenRequest.getToken(), user)){
             var jwt = jwtService.generateToken(user);
@@ -170,9 +176,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             jwtAuthenticationResponse.setToken(jwt);
             jwtAuthenticationResponse.setRefreshToken(refreshTokenRequest.getToken());
 
-            return jwtAuthenticationResponse;
+            logger.info("New Token Generated Successful from Refresh token for the user : " + user);
+            return ResponseEntity.ok(jwtAuthenticationResponse);
+        }else{
+            logger.error("\nInvalid Token Error for user : \n" + user);
+            return ResponseEntity.status(403).body("Invalid Refresh Token");
         }
-
-        return null;
+        } catch (Exception exception) {
+            logger.error("\nLogin Failure Error,server side Error:\n" + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server error");
+        }
+        
     }
 }

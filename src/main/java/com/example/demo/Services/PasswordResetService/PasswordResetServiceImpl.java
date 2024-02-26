@@ -41,7 +41,7 @@ public class PasswordResetServiceImpl implements PasswordResetService{
     private JavaMailSender mailSender;
 
     @Override
-    public ResponseEntity<String> sendPasswordResetToken(String email) {
+    public ResponseEntity<Object> sendPasswordResetToken(String email) {
         try {
 
         User user = userRepository.findByEmail(email).orElse(null);
@@ -74,7 +74,7 @@ public class PasswordResetServiceImpl implements PasswordResetService{
     }
 
     @Override
-    public ResponseEntity<String> resetPassword(NewPasswordDto newPasswordDto) {
+    public ResponseEntity<Object> resetPassword(NewPasswordDto newPasswordDto) {
         try {
 
         Optional<PasswordResetToken> optionalToken = tokenRepository.findByToken(newPasswordDto.getToken());

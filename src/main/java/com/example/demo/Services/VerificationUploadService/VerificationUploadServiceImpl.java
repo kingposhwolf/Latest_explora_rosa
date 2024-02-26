@@ -7,7 +7,6 @@ import com.example.demo.Models.VerificationUpload;
 import com.example.demo.Repositories.BrandRepository;
 import com.example.demo.Repositories.UploadRepository;
 import com.example.demo.Repositories.VerificationUploadRepository;
-import com.example.demo.Services.VerificationUploadService.VerificationUploadService;
 
 public class VerificationUploadServiceImpl implements VerificationUploadService {
 

@@ -10,7 +10,7 @@ import org.springframework.validation.FieldError;
 
 @Service
 public class GlobalValidationFormatter {
-    public ResponseEntity<String> validationFormatter(BindingResult bindingResult){
+    public ResponseEntity<Object> validationFormatter(BindingResult bindingResult){
         List<String> errors = new ArrayList<>();
             for (FieldError error : bindingResult.getFieldErrors()) {
                 errors.add(error.getField() + ": " + error.getDefaultMessage());

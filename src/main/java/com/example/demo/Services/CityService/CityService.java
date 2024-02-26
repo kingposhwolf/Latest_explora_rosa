@@ -1,15 +1,16 @@
 package com.example.demo.Services.CityService;
+import org.springframework.http.ResponseEntity;
+
 /*
  * @author Dwight Danda
  *
  */
 import com.example.demo.Dto.CityDto;
-import com.example.demo.Models.City;
 
 public interface CityService {
 
-    Iterable<City> getAllCities();
+    ResponseEntity<Object> getAllCities();
 
-    City saveCity (CityDto cityDto);
+    ResponseEntity<Object> saveCity (CityDto cityDto);
 
 }

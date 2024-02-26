@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Controllers.GlobalValidationFormatter;
-import com.example.demo.Dto.JwtAuthenticationResponse;
 import com.example.demo.Dto.NewPasswordDto;
 import com.example.demo.Dto.PasswordResetDto;
 import com.example.demo.Dto.RefreshTokenRequest;
@@ -35,7 +34,7 @@ public class AuthenticationController {
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<String> forgotPassword(@RequestBody @Valid PasswordResetDto passwordResetDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> forgotPassword(@RequestBody @Valid PasswordResetDto passwordResetDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
@@ -43,7 +42,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<String> resetPassword(@RequestBody @Valid NewPasswordDto newPasswordDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> resetPassword(@RequestBody @Valid NewPasswordDto newPasswordDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
@@ -68,7 +67,10 @@ public class AuthenticationController {
     }
 
     @PostMapping("/refresh")
-    public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody @Valid RefreshTokenRequest refreshTokenRequest){
-        return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
+    public ResponseEntity<Object> refresh(@RequestBody @Valid RefreshTokenRequest refreshTokenRequest, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return authenticationService.refreshToken(refreshTokenRequest);
     }
 }

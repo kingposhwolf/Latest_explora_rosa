@@ -3,39 +3,33 @@ package com.example.demo.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Dto.TitleDto;
-import com.example.demo.Services.TitleService.TitleServiceImpl;
+import com.example.demo.Dto.GetProfileDto;
+import com.example.demo.Services.ProfileService.ProfileServiceImpl;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/title")
-public class TitleController {
+@RequestMapping("/profile")
+public class ProfileController {
     @Autowired
     private GlobalValidationFormatter globalValidationFormatter;
 
-    private final TitleServiceImpl titleServiceImpl;
+    private final ProfileServiceImpl profileServiceImpl;
 
-    public TitleController(TitleServiceImpl titleServiceImpl) {
-        this.titleServiceImpl = titleServiceImpl;
+    public ProfileController(ProfileServiceImpl profileServiceImpl){
+        this.profileServiceImpl = profileServiceImpl;
     }
 
-     @GetMapping("/all")
-    public ResponseEntity<Object> getAllTitles() {
-        return titleServiceImpl.getAllTitle();
-    }
-    
     @PostMapping("/register")
-    public ResponseEntity<Object> registerTitle(@RequestBody @Valid TitleDto titleDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> registerCity(@RequestBody @Valid GetProfileDto getProfileDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return titleServiceImpl.saveTitle(titleDto);
+        return profileServiceImpl.getProfileById(getProfileDto);
     }
 }

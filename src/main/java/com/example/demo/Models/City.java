@@ -1,4 +1,5 @@
 package com.example.demo.Models;
+
 /*
  * @author Dwight Danda
  *
@@ -20,15 +21,12 @@ public class City {
         private Country country;
 
         @NotBlank
-        @Column(length = 100, nullable = false)
+        @Column(length = 100, nullable = false, unique = true)
         private String name;
 
         @Column(nullable = false)
         private String zipCode;
 
-        @Column(nullable = false)
+        @Column(nullable = false, length = 150)
         private String state;
-
-
-
 }

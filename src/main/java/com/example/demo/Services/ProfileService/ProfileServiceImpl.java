@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Dto.GetProfileDto;
 import com.example.demo.Dto.ProfileDto;
 import com.example.demo.Models.Profile;
 import com.example.demo.Models.Title;
@@ -41,8 +42,8 @@ public class ProfileServiceImpl implements ProfileService{
            title.setName("USER");
 
     if (user == null) {
-        String errorMessage = "Invalid input. User Id";
-        return ResponseEntity.badRequest().body(errorMessage);
+        logger.error("Profile Saving failed Invalid User Information");
+        return ResponseEntity.badRequest().body("Invalid User Infromation");
     }else{
         Profile profile = new Profile();
 
@@ -58,32 +59,32 @@ public class ProfileServiceImpl implements ProfileService{
 
     profileRepository.save(profile);
     
-    logger.info("User Saved sucessfull" + user);
+    logger.info("\nProfile Created Successful: " + profile);
 
-    return ResponseEntity.status(201).body("message: "+"profile created sucessfull");
+    return ResponseEntity.status(201).body("profile created sucessfull");
     }
-   
         }catch(Exception exception){
-            logger.error("User saving failed" + exception.getMessage());
-            return ResponseEntity.status(500).body("There is Problem at Our End");
+            logger.error("Profile Saving Failed, Server Error: " + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
 
     @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> getProfileById(Long id) {
+    public ResponseEntity<Object> getProfileById(GetProfileDto getProfileDto) {
         try {
-            Profile profile = profileRepository.findById(id).orElse(null);
+            Profile profile = profileRepository.findById(getProfileDto.getId()).orElse(null);
 
             if (profile == null) {
-                String errorMessage = "Invalid profile ID";
-                return ResponseEntity.badRequest().body(errorMessage);
+                logger.error("Failed to Fetch Profile Info, Invalid profile Id");
+                return ResponseEntity.badRequest().body("Invalid profile ID");
             }else{
+                logger.info("\nProfile Info Fetched Successful: " + profile);
                 return ResponseEntity.status(200).body(profile);
             }
         } catch (Exception exception) {
-            logger.error("User saving failed" + exception.getMessage());
-            return ResponseEntity.status(500).body("There is Problem at Our End");
+            logger.error("\nProfile fetching failed , Server Error : " + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
 

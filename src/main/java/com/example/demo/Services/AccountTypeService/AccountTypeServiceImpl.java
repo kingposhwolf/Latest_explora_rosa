@@ -3,7 +3,11 @@ package com.example.demo.Services.AccountTypeService;
 import com.example.demo.Dto.AccountTypeDto;
 import com.example.demo.Models.AccountType;
 import com.example.demo.Repositories.AccountTypeRepository;
-import com.example.demo.Services.CountryService.DuplicateCountryException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,25 +15,50 @@ import java.util.Optional;
 @Service
 public class AccountTypeServiceImpl implements AccountTypeService {
 
+    private static final Logger logger = LoggerFactory.getLogger(AccountTypeServiceImpl.class);
+
     private final AccountTypeRepository accountTypeRepository;
 
     public AccountTypeServiceImpl(AccountTypeRepository accountTypeRepository){
         this.accountTypeRepository = accountTypeRepository;
     }
 
-    public Iterable<AccountType> getAllAccountTypes(){
-     return accountTypeRepository.findAll();
+    public ResponseEntity<Object> getAllAccountTypes(){
+        try{
+            Iterable<AccountType> accountTypes =  accountTypeRepository.findAll();
+            if(!accountTypes.iterator().hasNext()){
+                logger.error("\nThere is Request for Fetching All Account types, But No Account Registered Yet");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is No  Account type in the Database Yet");
+            }else{
+                logger.info("\nSuccessful fetched all Account Types");
+                return ResponseEntity.status(200).body(accountTypes);
+            }
+            
+        }catch(Exception exception){
+            logger.error("Internal server Error , During  Fetching All Account Types : " + exception.getMessage());
+            return ResponseEntity.internalServerError().body("Internal Server Error");
+        }
     }
 
-    public AccountType saveAccountType(AccountTypeDto accountTypeDto){
-        Optional<AccountType> existingAccountType = accountTypeRepository.findByName(accountTypeDto.getName());
+    public ResponseEntity<Object> saveAccountType(AccountTypeDto accountTypeDto){
+        try {
+            Optional<AccountType> existingAccountType = accountTypeRepository.findByName(accountTypeDto.getName());
 
-        if (existingAccountType.isPresent()) {
+            if (existingAccountType.isPresent()){
+                logger.error("\nFailed to save the Account type because It Already exists");
+                return ResponseEntity.status(400).body("This Account type Already Exists!");
+            }
+            else{
+                AccountType accountType = new AccountType();
+                accountType.setName(accountTypeDto.getName());
+                accountTypeRepository.save(accountType);
 
-            throw new DuplicateCountryException("Account type already existed");
+                logger.info("\nSuccessful save Account Type" + accountType);
+                return ResponseEntity.status(201).body("Account Type Created Successfully");
+            }
+        } catch (Exception exception) {
+            logger.error("\nFailed to save the Account Type, Server Error: \n" + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
         }
-        AccountType accountType = new AccountType();
-        accountType.setName(accountTypeDto.getName());
-        return accountTypeRepository.save(accountType);
     }
 }

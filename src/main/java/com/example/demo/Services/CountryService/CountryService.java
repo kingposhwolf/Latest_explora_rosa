@@ -1,10 +1,11 @@
 package com.example.demo.Services.CountryService;
 
+import org.springframework.http.ResponseEntity;
+
 import com.example.demo.Dto.CountryDto;
-import com.example.demo.Models.Country;
 
 public interface CountryService {
-    Iterable<Country> getAllCountries();
+    ResponseEntity<Object> getAllCountries();
 
-    Country saveCountry(CountryDto countryDto);
+    ResponseEntity<Object> saveCountry(CountryDto countryDto);
 }

@@ -1,14 +1,21 @@
 package com.example.demo.Services.CountryService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 import com.example.demo.Dto.CountryDto;
 import com.example.demo.Models.Country;
 import com.example.demo.Repositories.CountryRepository;
+import com.example.demo.Services.CityService.CityServiceImpl;
 
 @Service
 public class CountryServiceImpl implements CountryService {
+
+    private static final Logger logger = LoggerFactory.getLogger(CityServiceImpl.class);
 
     private final CountryRepository countryRepository;
 
@@ -17,22 +24,45 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Iterable<Country> getAllCountries() {
-        return countryRepository.findAll();
+    public ResponseEntity<Object> getAllCountries() {
+        try {
+            Iterable<Country> countries = countryRepository.findAll();
+
+            if(!countries.iterator().hasNext()){
+                logger.error("\nThere is Request for Fetching All Countries, But Nothing Registered to the database ");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is No  Countries registered in the Database");
+            }else{
+                logger.info("\nSuccessful fetched all Coiuntries");
+                return ResponseEntity.status(200).body(countries);
+            }
+        } catch (Exception exception) {
+            logger.error("\nFailed to fetch Countries, Server Error: \n" + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
     }
 
     @Override
-    public Country saveCountry(CountryDto countryDto) {
+    public ResponseEntity<Object> saveCountry(CountryDto countryDto) {
 
-        Optional<Country> existingCountry = countryRepository.findByName(countryDto.getName());
+        try {
+            Optional<Country> existingCountry = countryRepository.findByName(countryDto.getName());
 
-        if (existingCountry.isPresent()) {
-            
-            throw new DuplicateCountryException("Country with the same name already exists");
+        if(existingCountry.isPresent()){
+            logger.error("\nFailed to save Business Country, Country Already Exists Error");
+            return ResponseEntity.status(400).body("Country Already Exists!");
         }
-        Country country = new Country();
-        country.setName(countryDto.getName());
-        return countryRepository.save(country);
+        else{
+            Country country = new Country();
+            country.setName(countryDto.getName());
+            countryRepository.save(country);
+
+            logger.info("Country saved Sucessfully\n" + country);
+            return ResponseEntity.status(201).body("Country Created Successful ");
+        }
+        } catch (Exception exception) {
+            logger.error("\nFailed to save Country, Server Error: \n" + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
     }
     
 }

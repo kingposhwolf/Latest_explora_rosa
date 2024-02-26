@@ -1,11 +1,12 @@
 package com.example.demo.Services.AccountTypeService;
 
+import org.springframework.http.ResponseEntity;
+
 import com.example.demo.Dto.AccountTypeDto;
-import com.example.demo.Models.AccountType;
 
 
 public interface AccountTypeService {
-    Iterable<AccountType> getAllAccountTypes();
+    ResponseEntity<Object> getAllAccountTypes();
 
-    AccountType saveAccountType(AccountTypeDto accountTypeDto);
+    ResponseEntity<Object> saveAccountType(AccountTypeDto accountTypeDto);
 }

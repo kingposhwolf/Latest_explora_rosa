@@ -26,10 +26,17 @@ public class TitleServiceImpl implements TitleService{
     @Override
     public ResponseEntity<Object> getAllTitle() {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(titleRepository.findAll());
+            Iterable<Title> titles = titleRepository.findAll();
+            if(!titles.iterator().hasNext()){
+                logger.error("\nThere is Request for Fetching All Titles, But Nothing Registered to the database ");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is No  Titles registered in the Database");
+            }else{
+                logger.info("\nSuccessful fetched all Titles");
+                return ResponseEntity.status(HttpStatus.OK).body(titles);
+            }
         } catch (Exception exception) {
             logger.error("User saving failed" + exception.getMessage());
-            return ResponseEntity.status(500).body("There is Problem at Our End");
+            return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
 
@@ -39,6 +46,7 @@ public class TitleServiceImpl implements TitleService{
         Optional<Title> existingTitle = titleRepository.findByName(titleDto.getName());
 
         if (existingTitle.isPresent()) {
+            logger.error("Title Saving Failed, Title Already Exist");
             return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Title Already Exist.");
         }
 
@@ -46,11 +54,12 @@ public class TitleServiceImpl implements TitleService{
         title.setName(titleDto.getName());
         titleRepository.save(title);
 
-        return ResponseEntity.status(201).body("message: "+"User saved successfully");
+        logger.info("Title Saved Successful");
+        return ResponseEntity.status(201).body("Title Saved Successful");
         
         }catch(Exception exception){
-            logger.error("User saving failed" + exception.getMessage());
-            return ResponseEntity.status(500).body("There is Problem at Our End");
+            logger.error("Failed to save Title to the Database, Server Error: " + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
     

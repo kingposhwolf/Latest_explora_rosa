@@ -4,8 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class RefreshTokenRequest {
-    
+public class GetProfileDto {
     @NotNull
-    private String token;
+    private Long id;
 }

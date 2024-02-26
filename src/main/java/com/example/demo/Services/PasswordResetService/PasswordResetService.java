@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import com.example.demo.Dto.NewPasswordDto;
 
 public interface PasswordResetService {
-    ResponseEntity<String> sendPasswordResetToken(String email);
+    ResponseEntity<Object> sendPasswordResetToken(String email);
 
-    ResponseEntity<String> resetPassword(NewPasswordDto newPasswordDto);
+    ResponseEntity<Object> resetPassword(NewPasswordDto newPasswordDto);
 }
