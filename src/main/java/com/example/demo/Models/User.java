@@ -20,10 +20,6 @@ public class User implements UserDetails {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "countryId", nullable = false)
-    private Country country;
-
-    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "accountTypeId", nullable = false)
     private AccountType accountType;
 

@@ -40,10 +40,10 @@ public class SecurityConfiguration {
         corsConfiguration.setAllowedOrigins(List.of("*"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setExposedHeaders(List.of("Authorization"));
+       // corsConfiguration.setExposedHeaders(List.of("Authorization"));
 
         http.csrf(AbstractHttpConfigurer::disable).cors(Customizer.withDefaults())
-        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**")
+        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**")
         .permitAll()
         .requestMatchers("/api/v1/admin/**").hasAnyAuthority(Role.STAFF.name())
         .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.USER.name())

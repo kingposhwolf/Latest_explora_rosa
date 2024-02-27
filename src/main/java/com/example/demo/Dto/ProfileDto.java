@@ -6,11 +6,11 @@ import lombok.Data;
 @Data
 public class ProfileDto {
     @NotNull
-    Long userId;
+    Long id;
 
-    @NotNull
     private String profilePicture;
 
-    @NotNull
     private String bio;
+
+    private Long countryId;
 }

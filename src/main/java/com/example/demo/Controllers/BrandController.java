@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Dto.BrandDto;
+import com.example.demo.Dto.GetBrandDto;
 import com.example.demo.Services.BrandService.BrandServiceImpl;
 
 import jakarta.validation.Valid;
@@ -26,10 +26,10 @@ public class BrandController {
     }
 
     @PostMapping("/by-id")
-    public ResponseEntity<Object> brandById(@RequestBody @Valid BrandDto brandDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> brandById(@RequestBody @Valid GetBrandDto getBrandDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return brandServiceImpl.getBrandById(brandDto);
+        return brandServiceImpl.getBrandById(getBrandDto);
     }
 }

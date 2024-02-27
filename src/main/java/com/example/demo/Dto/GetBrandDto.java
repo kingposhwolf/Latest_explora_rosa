@@ -1,14 +1,10 @@
 package com.example.demo.Dto;
-/*
- * @author Dwight Danda
- *
- */
+
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class UploadDto {
-
+public class GetBrandDto {
     @NotNull
-    private  String path;
+    private Long id;
 }

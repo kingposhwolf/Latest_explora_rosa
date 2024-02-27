@@ -8,7 +8,10 @@ import lombok.Data;
 
 @Data
 public class BrandDto {
-
     @NotNull
     private Long id;
+
+    private String address;
+
+    private Long cityId;
 }

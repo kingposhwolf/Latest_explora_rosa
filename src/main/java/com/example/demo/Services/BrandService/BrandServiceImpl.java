@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Dto.BrandDto;
+import com.example.demo.Dto.GetBrandDto;
 import com.example.demo.Models.Brand;
 import com.example.demo.Repositories.BrandRepository;
 
@@ -24,10 +24,10 @@ public class BrandServiceImpl implements BrandService{
 
     @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> getBrandById(BrandDto brandDto) {
+    public ResponseEntity<Object> getBrandById(GetBrandDto getBrandDto) {
 
         try {
-            Optional<Brand> brand = brandRepository.findById(brandDto.getId());
+            Optional<Brand> brand = brandRepository.findById(getBrandDto.getId());
 
             if (!brand.isPresent()) {
                 logger.error("Failed to Fetch Brand Info, Invalid brand Id");

@@ -1,5 +1,6 @@
 package com.example.demo.Services.AuthenticationService;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -20,14 +21,16 @@ import com.example.demo.Dto.SignUpRequest;
 import com.example.demo.Dto.SigninRequest;
 import com.example.demo.Models.AccountType;
 import com.example.demo.Models.Brand;
-import com.example.demo.Models.Country;
+import com.example.demo.Models.BusinessCategory;
+import com.example.demo.Models.City;
 import com.example.demo.Models.Profile;
 import com.example.demo.Models.Role;
 import com.example.demo.Models.User;
 import com.example.demo.Models.VerificationStatus;
 import com.example.demo.Repositories.AccountTypeRepository;
 import com.example.demo.Repositories.BrandRepository;
-import com.example.demo.Repositories.CountryRepository;
+import com.example.demo.Repositories.BusinessCategoryRepository;
+import com.example.demo.Repositories.CityRepository;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.JWTService.JWTService;
@@ -44,8 +47,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final BrandRepository brandRepository;
 
-    private final CountryRepository countryRepository;
-
     private final PasswordEncoder passwordEncoder;
 
     private final AuthenticationManager authenticationManager;
@@ -54,20 +55,20 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final ProfileRepository profileRepository;
 
+    private final CityRepository cityRepository;
+
+    private final BusinessCategoryRepository businessCategoryRepository;
+
     private final JWTService jwtService;
 
     @SuppressWarnings("null")
     public ResponseEntity<Object> signup(SignUpRequest signUpRequest) {
         try{
-            Country country = countryRepository.findById(signUpRequest.getCountryId()) .orElse(null);
 
     AccountType accountType = accountTypeRepository.findById(signUpRequest.getAccountTypeId()).orElse(null);
 
-    if (country == null || accountType == null) {
+    if (accountType == null) {
         String errorMessage = "Invalid input. ";
-        if (country == null) {
-            errorMessage += "Invalid countryId: " + signUpRequest.getCountryId() + ". ";
-        }
         if (accountType == null) {
             errorMessage += "Invalid accountTypeId: " + signUpRequest.getAccountTypeId() + ". ";
         }
@@ -90,7 +91,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     user.setEmail(signUpRequest.getEmail());
     user.setName(signUpRequest.getName());
     user.setAccountType(accountType);
-    user.setCountry(country);
     user.setUsername(signUpRequest.getUsername());
     user.setRole(Role.USER);
     user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
@@ -111,7 +111,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     //        title.setId((long) 1);
     //        title.setName("USER");
 
-    if(accountType.getName().equals("User")){
+    if(accountType.getName().equals("PERSONAL")){
         Profile profile = new Profile();
         profile.setBio("");
         profile.setFollowers(0);
@@ -121,6 +121,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         profile.setPowerSize(0);
         profile.setTitle(null);
         profile.setUser(user);
+        profile.setCountry(null);
 
     Profile profile2 = profileRepository.save(profile);
     logger.info("\nProfile saved Successful:\n" + profile);
@@ -132,13 +133,26 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     registrationResponse.setProfileId(profile2.getId());
 
     return ResponseEntity.status(201).body(registrationResponse);
+    }else if(accountType.getName().equals("BUSINESS")){
+        BusinessCategory businessCategory = businessCategoryRepository.findById(signUpRequest.getBusinessCategoryId()).orElse(null);
+        City city = cityRepository.findById(signUpRequest.getCityId()).orElse(null);
+    if(businessCategory == null || city == null){
+        if(businessCategory == null){
+            logger.error("User Registration Failed, busines category Must be not be Null");
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Business Category Does not exist is null");
+        }else{
+            logger.error("User Registration Failed, city Must be not be Null");
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("City Does not exist or is null");
+        }
+        
     }else{
         Brand brand = new Brand();
-        brand.setCity(null);
-        brand.setRates(null);
+        brand.setCity(city);
+        brand.setRates(new BigDecimal(0.0));
         brand.setTinNumber(null);
         brand.setVerificationStatus(VerificationStatus.UNVERIFIED);
         brand.setUser(user);
+        brand.setAddress(null);
 
         Brand brand2 = brandRepository.save(brand);
     logger.info("\nBrand saved Successful:\n" + brand2);
@@ -150,6 +164,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     registrationResponse.setProfileId(brand2.getId());
 
     return ResponseEntity.status(201).body(registrationResponse);
+    }
+    }
+    else{
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The Account Type you provide is Invalid");
     }
     }
         }catch(Exception exception){
