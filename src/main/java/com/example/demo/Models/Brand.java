@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 
 @Entity
 @Table(name="brands")
@@ -36,5 +37,9 @@ public class Brand {
     private BigDecimal rates;
 
     private String tinNumber;
+
+    @ManyToMany
+    @JoinTable(name = "brandBusinessCategories", joinColumns = @JoinColumn(name = "brandId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "businessCategoryId", referencedColumnName = "id"))
+    private Collection<BusinessCategory> businessCategories;
 
 }

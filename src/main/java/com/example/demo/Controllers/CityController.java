@@ -21,7 +21,7 @@ public class CityController {
         this.cityServiceImpl = cityServiceImpl;
     }
 
-    @GetMapping("/all")
+    @PostMapping("/all")
     public ResponseEntity<Object> getAllCities(){
        return cityServiceImpl.getAllCities();
     }

@@ -1,5 +1,7 @@
 package com.example.demo.Config;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.security.config.Customizer;
 
 import com.example.demo.Models.Role;
 import com.example.demo.Services.UserSerives.UserService;
@@ -31,8 +35,15 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.csrf(AbstractHttpConfigurer::disable)
-        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**")
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+        corsConfiguration.setAllowedOrigins(List.of("*"));
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setExposedHeaders(List.of("Authorization"));
+
+        http.csrf(AbstractHttpConfigurer::disable).cors(Customizer.withDefaults())
+        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**")
         .permitAll()
         .requestMatchers("/api/v1/admin/**").hasAnyAuthority(Role.STAFF.name())
         .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.USER.name())
@@ -63,4 +74,11 @@ public class SecurityConfiguration {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception{
         return config.getAuthenticationManager();
     }
+
+    // @Bean
+    // CorsConfigurationSource corsConfigurationSource() {
+    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    //     source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+    //     return source;
+    // }
 }
