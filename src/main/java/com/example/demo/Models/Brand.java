@@ -37,4 +37,10 @@ public class Brand {
 
     private String tinNumber;
 
+    private String address;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "businessId")
+    private BusinessCategory businessCategories;
+
 }

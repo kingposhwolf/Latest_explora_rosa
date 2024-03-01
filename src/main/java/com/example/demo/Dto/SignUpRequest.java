@@ -14,9 +14,6 @@ public class SignUpRequest {
     private String name;
 
     @NotNull
-    private Long countryId;
-
-    @NotNull
     private Long accountTypeId;
 
     @NotNull
@@ -31,4 +28,8 @@ public class SignUpRequest {
     @NotNull
     @Size(max = 128, min = 8)
     private String password;
+
+    private Long businessCategoryId;
+
+    private Long cityId;
 }

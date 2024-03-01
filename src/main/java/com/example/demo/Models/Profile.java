@@ -32,6 +32,10 @@ public class Profile {
     @JoinColumn(name = "titleId")
     private Title title;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "countryId")
+    private Country country;
+
     @Column(nullable = false)
     private int followers;
 

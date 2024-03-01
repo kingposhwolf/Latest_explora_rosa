@@ -26,6 +26,7 @@ public class VerificationUploadServiceImpl implements VerificationUploadService 
         return verificationUploadRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public VerificationUpload saveVerificationUpload(VerificationUploadDto verificationUploadDto){
         //Instantiating all objects of the classes to be used
         VerificationUpload verificationUpload = new VerificationUpload();

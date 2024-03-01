@@ -3,7 +3,6 @@ package com.example.demo.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +25,9 @@ public class BusinessCategoryController {
         this.businessCategoryServiceImp = businessCategoryServiceImp;
     }
     
-    @GetMapping("/all")
+    @PostMapping("/all")
     public ResponseEntity<Object> getAllBusinessCategories() {
-        return ResponseEntity.ok(businessCategoryServiceImp.getAllBusinessCategories());
+        return businessCategoryServiceImp.getAllBusinessCategories();
     }
     
     @PostMapping("/register")
@@ -36,6 +35,6 @@ public class BusinessCategoryController {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return ResponseEntity.ok(businessCategoryServiceImp.saveBusinessCategory(businessCategoryDto));
+        return businessCategoryServiceImp.saveBusinessCategory(businessCategoryDto);
     }
 }
