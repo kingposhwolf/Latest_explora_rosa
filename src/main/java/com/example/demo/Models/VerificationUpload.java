@@ -21,7 +21,7 @@ public class VerificationUpload {
 
     @ManyToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "uploadId", nullable = false)
-    private Upload upload;
+    private UploadData uploadData;
 
 
 

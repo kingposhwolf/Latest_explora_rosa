@@ -11,6 +11,7 @@ import com.example.demo.Dto.CountryDto;
 import com.example.demo.Models.Country;
 import com.example.demo.Repositories.CountryRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CountryServiceImpl implements CountryService {
@@ -23,6 +24,7 @@ public class CountryServiceImpl implements CountryService {
         this.countryRepository = countryRepository;
     }
 
+    @Transactional
     @Override
     public ResponseEntity<Object> getAllCountries() {
         try {

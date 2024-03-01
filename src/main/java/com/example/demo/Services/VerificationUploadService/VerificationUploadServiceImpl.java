@@ -2,10 +2,10 @@ package com.example.demo.Services.VerificationUploadService;
 
 import com.example.demo.Dto.VerificationUploadDto;
 import com.example.demo.Models.Brand;
-import com.example.demo.Models.Upload;
+import com.example.demo.Models.UploadData;
 import com.example.demo.Models.VerificationUpload;
 import com.example.demo.Repositories.BrandRepository;
-import com.example.demo.Repositories.UploadRepository;
+import com.example.demo.Repositories.UploadDataRepository;
 import com.example.demo.Repositories.VerificationUploadRepository;
 
 public class VerificationUploadServiceImpl implements VerificationUploadService {
@@ -14,11 +14,11 @@ public class VerificationUploadServiceImpl implements VerificationUploadService 
 
     private final BrandRepository brandRepository;
 
-    private final UploadRepository uploadRepository;
+    private final UploadDataRepository uploadDataRepository;
 
-    public VerificationUploadServiceImpl(VerificationUploadRepository verificationUploadRepository, BrandRepository brandRepository, UploadRepository uploadRepository){
+    public VerificationUploadServiceImpl(VerificationUploadRepository verificationUploadRepository, BrandRepository brandRepository, UploadDataRepository uploadDataRepository){
         this.verificationUploadRepository = verificationUploadRepository;
-        this.uploadRepository = uploadRepository;
+        this.uploadDataRepository = uploadDataRepository;
         this.brandRepository = brandRepository;
     }
 
@@ -30,9 +30,9 @@ public class VerificationUploadServiceImpl implements VerificationUploadService 
         //Instantiating all objects of the classes to be used
         VerificationUpload verificationUpload = new VerificationUpload();
         Brand brand = brandRepository.findById(verificationUploadDto.getBrandId()).orElseThrow(()->new RuntimeException("Brand Not Found!"));
-        Upload upload = uploadRepository.findById(verificationUploadDto.getUploadId()).orElseThrow(()-> new RuntimeException("Upload not Found!"));
+        UploadData uploadData = uploadDataRepository.findById(verificationUploadDto.getUploadId()).orElseThrow(()-> new RuntimeException("UploadData not Found!"));
         verificationUpload.setBrand(brand);
-        verificationUpload.setUpload(upload);
+        verificationUpload.setUploadData(uploadData);
         return verificationUploadRepository.save(verificationUpload);
     }
 }
