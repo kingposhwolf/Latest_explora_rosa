@@ -47,8 +47,12 @@ public class SecurityConfiguration {
        // corsConfiguration.setExposedHeaders(List.of("Authorization"));
 
         http.csrf(AbstractHttpConfigurer::disable).cors(Customizer.withDefaults())
+<<<<<<< HEAD
         .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**")
 >>>>>>> 998611fc7cd962c1ddfbdd5b23b6125cc981133c
+=======
+        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**","/**")
+>>>>>>> d4ccef5a4f63aa615f55921781693898bc7995a1
         .permitAll()
         .requestMatchers("/api/v1/admin/**").hasAnyAuthority(Role.STAFF.name())
         .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.USER.name())

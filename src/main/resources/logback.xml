@@ -1,27 +1,14 @@
 <configuration>
 
     <property name="LOG_DIR" value="./logs" />
-    <property name="LOG_FILE" value="${LOG_DIR}/app.log" />
  
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_FILE}</file>
+        <file><fileNamePattern>${LOG_DIR}/%d{yyyy-MM-dd}.log</fileNamePattern></file>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_DIR}/app-%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>30</maxHistory>
-        </rollingPolicy>
-    </appender>
- 
-    <!-- Add an appender for your-service logs -->
-    <appender name="YOUR_SERVICE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_DIR}/your-service.log</file>
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_DIR}/your-service-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_DIR}/%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
     </appender>
@@ -29,11 +16,5 @@
     <root level="info">
         <appender-ref ref="FILE" />
     </root>
- 
-    <!-- Add a logger for your-service class -->
-    <logger name="com.example.YourService" level="info">
-        <appender-ref ref="YOUR_SERVICE_FILE" />
-    </logger>
- 
  </configuration>
  
