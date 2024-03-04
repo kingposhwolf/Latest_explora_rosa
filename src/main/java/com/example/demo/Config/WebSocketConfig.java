@@ -1,32 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-//package com.example.demo.Config;
-//
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-//import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
-//import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
-//import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
-//
-//@Configuration
-//@EnableWebSocketMessageBroker
-//public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{
-//    @Override
-//    public void registerStompEndpoints(StompEndpointRegistry registry){
-//        WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);
-//    }
-//
-//    @Override
-//    public void configureMessageBroker(MessageBrokerRegistry registry){
-//        WebSocketMessageBrokerConfigurer.super.configureMessageBroker(registry);
-//    }
-//}
-=======
-// package com.example.demo.Config;
-=======
-package com.example.demo.Config;
->>>>>>> d4ccef5a4f63aa615f55921781693898bc7995a1
 
+package com.example.demo.Config;
 import java.util.List;
 
 import org.springframework.context.annotation.Configuration;
@@ -39,20 +12,13 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-<<<<<<< HEAD
-//     @Override
-//     public void configureMessageBroker(MessageBrokerRegistry registry){
-//         WebSocketMessageBrokerConfigurer.super.configureMessageBroker(registry);
-//     }
-// }
->>>>>>> 998611fc7cd962c1ddfbdd5b23b6125cc981133c
-=======
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
-  @Override
+    @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.enableSimpleBroker("/user");
         registry.setApplicationDestinationPrefixes("/app");
@@ -76,4 +42,3 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         return false;
     }
 }
->>>>>>> d4ccef5a4f63aa615f55921781693898bc7995a1

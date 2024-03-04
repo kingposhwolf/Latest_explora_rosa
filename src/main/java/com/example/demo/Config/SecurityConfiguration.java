@@ -28,40 +28,25 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
-    
+
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     private final UserService userService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-<<<<<<< HEAD
-        http.csrf(AbstractHttpConfigurer::disable)
-        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**", "/uploads/**","/uploads/fileSystem/image")
-=======
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
-        corsConfiguration.setAllowedOrigins(List.of("*"));
-        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
-        corsConfiguration.setAllowCredentials(true);
-       // corsConfiguration.setExposedHeaders(List.of("Authorization"));
 
-        http.csrf(AbstractHttpConfigurer::disable).cors(Customizer.withDefaults())
-<<<<<<< HEAD
-        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**")
->>>>>>> 998611fc7cd962c1ddfbdd5b23b6125cc981133c
-=======
-        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**","/**")
->>>>>>> d4ccef5a4f63aa615f55921781693898bc7995a1
-        .permitAll()
-        .requestMatchers("/api/v1/admin/**").hasAnyAuthority(Role.STAFF.name())
-        .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.USER.name())
-        .anyRequest().authenticated())
-        
-        .sessionManagement(manager-> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authenticationProvider(authenticationProvider()).addFilterBefore(
-            jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class
-        );
+        http.csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**","/**")
+                        .permitAll()
+                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority(Role.STAFF.name())
+                        .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.USER.name())
+                        .anyRequest().authenticated())
+
+                .sessionManagement(manager-> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authenticationProvider()).addFilterBefore(
+                        jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class
+                );
 
         return http.build();
     }
@@ -83,11 +68,4 @@ public class SecurityConfiguration {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception{
         return config.getAuthenticationManager();
     }
-
-    // @Bean
-    // CorsConfigurationSource corsConfigurationSource() {
-    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    //     source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-    //     return source;
-    // }
 }
