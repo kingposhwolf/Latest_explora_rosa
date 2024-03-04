@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
-
+    
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     private final UserService userService;
@@ -37,16 +37,16 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**","/**")
-                        .permitAll()
-                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority(Role.STAFF.name())
-                        .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.USER.name())
-                        .anyRequest().authenticated())
-
-                .sessionManagement(manager-> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authenticationProvider(authenticationProvider()).addFilterBefore(
-                        jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class
-                );
+        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**","/**")
+        .permitAll()
+        .requestMatchers("/api/v1/admin/**").hasAnyAuthority(Role.STAFF.name())
+        .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.USER.name())
+        .anyRequest().authenticated())
+        
+        .sessionManagement(manager-> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authenticationProvider(authenticationProvider()).addFilterBefore(
+            jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class
+        );
 
         return http.build();
     }
