@@ -1,5 +1,9 @@
 package com.example.demo.Controllers.Upload;
-
+/*
+ * @author Dwight Danda
+ *
+ */
+import com.example.demo.Models.UploadData;
 import com.example.demo.Services.UploadService.UploadDataServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,21 +22,83 @@ public class UploadDataController {
     public UploadDataController(UploadDataServiceImpl uploadDataServiceImpl){
         this.uploadDataServiceImpl = uploadDataServiceImpl;
     }
-//    @PostMapping("/fileSystem/image")
-//    public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("upload")MultipartFile file) throws IOException {
-//        String uploadImage = uploadDataServiceImpl.uploadImageDataToFileSystem(file);
-//        return ResponseEntity.status(HttpStatus.OK)
-//                .body(uploadImage);
-//    }
+
     @PostMapping("/fileSystem/image")
-    public ResponseEntity<Object> uploadImageToFIleSystem(@RequestParam("upload") MultipartFile file) {
+    public ResponseEntity<Object> uploadDataToFIleSystem(@RequestParam("upload") MultipartFile file, @RequestParam("brandId") Long brandId) {
         try {
-            return uploadDataServiceImpl.uploadDataToFileSystem(file);
+            return uploadDataServiceImpl.uploadDataToFileSystem(file, brandId);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to save data: " + e.getMessage());
         }
     }
+
+
+
+    @GetMapping("/fileSystem/{uploadId}/{brandId}")
+    public ResponseEntity<?> viewImageFromFileSystem(@PathVariable Long uploadId, @PathVariable Long brandId) {
+        try {
+            byte[] imageData = uploadDataServiceImpl.viewUploadDataFromFileSystem(uploadId, brandId);
+            return ResponseEntity.ok()
+                    .contentType(MediaType.IMAGE_PNG)
+                    .body(imageData);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Image not found for uploadId: " + uploadId);
+        }
+    }
+
+    @GetMapping("/uploads/pdf")
+    public ResponseEntity<?> getPdfUploads() {
+        try {
+            Iterable<UploadData> pdfUploads = uploadDataServiceImpl.getPdfUploads();
+            return ResponseEntity.ok(pdfUploads);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to retrieve PDF uploads: " + e.getMessage());
+        }
+    }
+
+
+    @GetMapping("/uploads/images")
+    public ResponseEntity<?> getImageUploads() {
+        try {
+            Iterable<UploadData> imageUploads = uploadDataServiceImpl.getImageUploads();
+            return ResponseEntity.ok(imageUploads);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to retrieve image uploads: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/uploads/pdf/{brandId}")
+    public ResponseEntity<?> getPdfUploadsByBrandId(@PathVariable Long brandId) {
+        try {
+            Iterable<UploadData> pdfUploads = uploadDataServiceImpl.getPdfUploadsByBrandId(brandId);
+            return ResponseEntity.ok(pdfUploads);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to retrieve PDF uploads: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/uploads/images/{brandId}")
+    public ResponseEntity<?> getImageUploadsByBrandId(@PathVariable Long brandId) {
+        try {
+            Iterable<UploadData> imageUploads = uploadDataServiceImpl.getImageUploadsByBrandId(brandId);
+            return ResponseEntity.ok(imageUploads);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to retrieve image uploads: " + e.getMessage());
+        }
+    }
+    @GetMapping("/uploads/all")
+    public ResponseEntity<?> getAllUploadedData() {
+        try {
+            Iterable<UploadData> allUploadedData = uploadDataServiceImpl.getAllUploadedData();
+            return ResponseEntity.ok(allUploadedData);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to retrieve all uploads: " + e.getMessage());
+        }
+    }
+
+}
 
 //    @GetMapping("/fileSystem/{uploadId}")
 //    public ResponseEntity<?> viewImageFromFileSystem(@PathVariable Long uploadId) throws IOException {
@@ -43,17 +109,21 @@ public class UploadDataController {
 //
 //    }
 
-    @GetMapping("/fileSystem/{uploadId}")
-    public ResponseEntity<?> viewImageFromFileSystem(@PathVariable Long uploadId) {
-        try {
-            byte[] imageData = uploadDataServiceImpl.viewUploadDataFromFileSystem(uploadId);
-            return ResponseEntity.ok()
-                    .contentType(MediaType.IMAGE_PNG)
-                    .body(imageData);
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Image not found for uploadId: " + uploadId);
-        }
-    }
-
-}
+//    @GetMapping("/fileSystem/{uploadId}")
+//    public ResponseEntity<?> viewImageFromFileSystem(@PathVariable Long uploadId) {
+//        try {
+//            byte[] imageData = uploadDataServiceImpl.viewUploadDataFromFileSystem(uploadId);
+//            return ResponseEntity.ok()
+//                    .contentType(MediaType.IMAGE_PNG)
+//                    .body(imageData);
+//        } catch (IOException e) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                    .body("Image not found for uploadId: " + uploadId);
+//        }
+//    }
+//    @PostMapping("/fileSystem/image")
+//    public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("upload")MultipartFile file) throws IOException {
+//        String uploadImage = uploadDataServiceImpl.uploadImageDataToFileSystem(file);
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(uploadImage);
+//    }

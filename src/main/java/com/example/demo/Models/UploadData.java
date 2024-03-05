@@ -21,6 +21,10 @@ public class UploadData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "brandId", nullable = false)
+    private Brand brand;
+
     @Column(nullable = false)
     private String name;
 
@@ -29,5 +33,6 @@ public class UploadData {
 
     @Column(nullable = false)
     private String path;
+
 
 }
