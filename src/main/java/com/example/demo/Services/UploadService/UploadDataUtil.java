@@ -1,5 +1,8 @@
 package com.example.demo.Services.UploadService;
-
+/*
+ * @author Dwight Danda
+ *
+ */
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;

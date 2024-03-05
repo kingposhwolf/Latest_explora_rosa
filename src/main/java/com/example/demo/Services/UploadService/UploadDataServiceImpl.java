@@ -1,5 +1,8 @@
 package com.example.demo.Services.UploadService;
-
+/*
+ * @author Dwight Danda
+ *
+ */
 import com.example.demo.Models.Brand;
 import com.example.demo.Models.UploadData;
 import com.example.demo.Repositories.BrandRepository;
