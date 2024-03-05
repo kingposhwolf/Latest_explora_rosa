@@ -6,12 +6,10 @@ package com.example.demo.Models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Entity
 @Data
 @Table(name = "suggestions")
-public class Suggestion {
+public class HashTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
