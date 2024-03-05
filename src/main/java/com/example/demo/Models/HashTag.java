@@ -21,7 +21,6 @@ public class HashTag {
 //            joinColumns = @JoinColumn(name = "suggestionId"),
 //            inverseJoinColumns = @JoinColumn(name = "businessCategoryId")
 //    )
-//    private List<BusinessCategory> businessCategories;
 
     @Column(nullable = false, unique = true)
     private String name;
