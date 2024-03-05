@@ -13,13 +13,13 @@
 //    private Long id;
 //
 //    @ManyToOne
-//    @JoinColumn(name = "userId", nullable = false)
-//    private User user;
+//    @JoinColumn(name = "profileId", nullable = false)
+//    private Profile profile;
 //
 //    @ManyToOne
 //    @JoinColumn(name = "countryId", nullable = false)
 //    private Country country;
 //
-//    @ManyToMany
-//    @JoinColumn()
+//    @ManyToOne
+//    @JoinColumn(name = "")
 //}

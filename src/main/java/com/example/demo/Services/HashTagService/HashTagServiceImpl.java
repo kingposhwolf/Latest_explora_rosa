@@ -1,7 +1,6 @@
-package com.example.demo.Services.SuggestionService;
+package com.example.demo.Services.HashTagService;
 
 import com.example.demo.Dto.HashTagDto;
-import com.example.demo.Models.Country;
 import com.example.demo.Models.HashTag;
 import com.example.demo.Repositories.HashTagRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;
@@ -66,6 +65,23 @@ public class HashTagServiceImpl implements HashTagService {
         } catch (Exception exception) {
             logger.error("\nFailed to save HashTag, Server Error: \n" + exception.getMessage());
             return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+    @Override
+    public ResponseEntity<Object> getHashTagByName(String name) {
+        try {
+            Optional<HashTag> hashTagOptional = hashTagRepository.findByName(name);
+            if (hashTagOptional.isPresent()) {
+                HashTag hashTag = hashTagOptional.get();
+                logger.info("HashTag found: {}", hashTag);
+                return ResponseEntity.status(HttpStatus.OK).body(hashTag);
+            } else {
+                logger.error("HashTag not found for name: {}", name);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("HashTag not found for name: " + name);
+            }
+        } catch (Exception e) {
+            logger.error("Failed to get hashTag by name: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
         }
     }
 }
