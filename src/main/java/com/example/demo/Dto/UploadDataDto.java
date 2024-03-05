@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class UploadDto {
+public class UploadDataDto {
 
     @NotNull
     private  String path;
