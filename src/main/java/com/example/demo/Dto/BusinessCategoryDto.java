@@ -16,5 +16,5 @@ public class BusinessCategoryDto {
     private String name;
 
     @NotNull
-    List<Long> hashTags;
+    private List<Long> hashTags;
 }
