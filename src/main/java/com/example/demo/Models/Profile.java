@@ -2,19 +2,25 @@ package com.example.demo.Models;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-@Entity
 @Data
 @Table(name = "profiles")
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "PROFILE_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,15 +32,22 @@ public class Profile {
 
     private String profilePicture;
 
+    private String coverPhoto;
+
     private String bio;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "titleId")
-    private Title title;
+    private String address;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "countryId")
     private Country country;
+
+    @Column(nullable = false)
+    private VerificationStatus verificationStatus;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cityId")
+    private City city;
 
     @Column(nullable = false)
     private int followers;

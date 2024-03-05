@@ -15,15 +15,7 @@ public class HashTag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "suggestion_business_category",
-//            joinColumns = @JoinColumn(name = "suggestionId"),
-//            inverseJoinColumns = @JoinColumn(name = "businessCategoryId")
-//    )
-
     @Column(nullable = false, unique = true)
     private String name;
-
 
 }
