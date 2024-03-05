@@ -32,6 +32,9 @@ public class UserPost {
     @JoinColumn(name = "brandId")
     private Brand brand;
 
+    @Column(nullable = false)
+    private int likes;
+
     @Column
     private String thumbnail;
 
@@ -43,5 +46,7 @@ public class UserPost {
 
     @Column
     private String path;
+
+
 
 }
