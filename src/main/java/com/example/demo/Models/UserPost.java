@@ -2,7 +2,6 @@ package com.example.demo.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.security.access.method.P;
 
 import java.time.LocalDateTime;
 import java.util.List;

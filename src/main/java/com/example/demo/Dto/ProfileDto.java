@@ -10,6 +10,8 @@ public class ProfileDto {
 
     private String profilePicture;
 
+    private String coverPhoto;
+
     private String bio;
 
     private Long countryId;
