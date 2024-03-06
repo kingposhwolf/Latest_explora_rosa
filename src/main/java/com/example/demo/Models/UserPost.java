@@ -1,5 +1,8 @@
 package com.example.demo.Models;
-
+/*
+ * @author Dwight Danda
+ *
+ */
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -35,6 +38,10 @@ public class UserPost {
     @OneToMany(mappedBy = "userPost", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Like> likes = new ArrayList<>();
 
+    @Column
+    private String caption;
+
+    @Column
     private String thumbnail;
 
     @Column(nullable = false)
@@ -46,10 +53,10 @@ public class UserPost {
     @Column(nullable = false)
     private String path;
 
-    @Column(nullable = false)
+    @Column
     private int shares;
 
-    @Column(nullable = false)
+    @Column
     private int favorites;
 
 }

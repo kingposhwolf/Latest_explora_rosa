@@ -1,5 +1,8 @@
 package com.example.demo.Models;
-
+/*
+ * @author Dwight Danda
+ *
+ */
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
