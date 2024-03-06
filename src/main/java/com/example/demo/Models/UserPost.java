@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,9 @@ public class UserPost {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "brandId")
     private Brand brand;
+
+    @OneToMany(mappedBy = "userPost", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> likes = new ArrayList<>();
 
     private String thumbnail;
 

@@ -1,13 +1,6 @@
 package com.example.demo.Models;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -21,4 +14,8 @@ public class Like {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profileId", nullable = false)
     private Profile profile;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userPostId", nullable = false)
+    private UserPost userPost;
 }
