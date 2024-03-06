@@ -5,12 +5,16 @@ import com.example.demo.Models.Comment;
 import com.example.demo.Models.Profile;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.ProfileRepository;
+
+import jakarta.validation.constraints.NotNull;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -26,8 +30,9 @@ public class CommentServiceImpl implements CommentService{
         this.profileRepository = profileRepository;
     }
 
+    @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> writeMessage(CommentDto commentDto) {
+    public ResponseEntity<Object> writeComment(CommentDto commentDto) {
         try {
             Optional<Profile> profile = profileRepository.findById(commentDto.getProfileId());
             if(!profile.isPresent()){
@@ -35,12 +40,10 @@ public class CommentServiceImpl implements CommentService{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User profile not found");
             }
 
-            // Create a new comment and set its message
             Comment comment = new Comment();
             comment.setMessage(commentDto.getMessage());
-
-            // Link the comment to the user's profile
             comment.setProfile(profile.get());
+            comment.setTimestamp(LocalDateTime.now());
 
             // Save the comment to the database
             Comment savedComment = commentRepository.save(comment);
@@ -52,18 +55,19 @@ public class CommentServiceImpl implements CommentService{
         }
     }
 
+    @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> deleteMessage(CommentDto commentDto) {
+    public ResponseEntity<Object> deleteComment(@NotNull Long commentId) {
         try {
             // Check if the comment exists
-            Optional<Comment> commentOptional = commentRepository.findById(commentDto.getId());
+            Optional<Comment> commentOptional = commentRepository.findById(commentId);
             if (commentOptional.isPresent()) {
                 // Delete the comment
-                commentRepository.deleteById(commentDto.getId());
+                commentRepository.deleteById(commentId);
                 logger.info("Comment deleted successfully");
                 return ResponseEntity.status(HttpStatus.OK).body("Comment deleted successfully");
             } else {
-                logger.error("Comment not found with ID: {}", commentDto.getId());
+                logger.error("Comment not found with ID: {}", commentId);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
             }
         } catch (Exception e) {

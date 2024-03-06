@@ -1,10 +1,5 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Dto.CommentDto;
-import com.example.demo.Services.CommentService.CommentServiceImpl;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -12,33 +7,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.Services.LikeService.LikeServiceImpl;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 @RestController
-@RequestMapping("/comments")
-public class CommentController {
-    private final CommentServiceImpl commentService;
+@RequestMapping("/like")
+public class LikeController {
+    private final LikeServiceImpl likeService;
 
-
-    public CommentController(CommentServiceImpl commentService) {
-        this.commentService = commentService;
+    public LikeController(LikeServiceImpl likeService) {
+        this.likeService = likeService;
     }
 
     @Autowired
     private GlobalValidationFormatter globalValidationFormatter;
 
-    @PostMapping("/write")
-    public ResponseEntity<Object> writeMessage(@RequestBody @Valid CommentDto commentDto, BindingResult bindingResult) {
+    @PostMapping("/save")
+    public ResponseEntity<Object> writeMessage(@RequestBody @Valid @NotNull Long profileId, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return commentService.writeComment(commentDto);
+        return likeService.saveLike(profileId);
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<Object> deleteMessage(@RequestBody @Valid @NotNull Long commentId, BindingResult bindingResult) {
+    public ResponseEntity<Object> deleteMessage(@RequestBody @Valid @NotNull Long likeId, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return commentService.deleteComment(commentId);
+        return likeService.deleteLike(likeId);
     }
 }

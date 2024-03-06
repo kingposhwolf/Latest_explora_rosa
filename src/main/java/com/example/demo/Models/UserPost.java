@@ -31,21 +31,21 @@ public class UserPost {
     @JoinColumn(name = "brandId")
     private Brand brand;
 
-    @Column(nullable = false)
-    private int likes;
-
-    @Column
     private String thumbnail;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime time;
 
-    @Column
+    @Column(nullable = false)
     private String type;
 
-    @Column
+    @Column(nullable = false)
     private String path;
 
+    @Column(nullable = false)
+    private int shares;
 
+    @Column(nullable = false)
+    private int favorites;
 
 }

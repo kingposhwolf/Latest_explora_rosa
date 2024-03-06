@@ -1,5 +1,7 @@
 package com.example.demo.Models;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,6 +16,9 @@ public class Comment {
 
     @Column(nullable = false)
     private String message;
+
+    @Column(nullable = false)
+    private LocalDateTime timestamp;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profileId")

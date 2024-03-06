@@ -7,9 +7,6 @@ import lombok.Data;
 public class CommentDto {
 
     @NotNull
-    private Long id;
-
-    @NotNull
     private Long profileId;
 
     @NotNull

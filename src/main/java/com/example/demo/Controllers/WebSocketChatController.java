@@ -16,6 +16,7 @@ public class WebSocketChatController {
 		return webSocketChatMessage;
 	}
 
+	@SuppressWarnings("null")
 	@MessageMapping("/chat.newUser")
 	@SendTo("/topic/javainuse")
 	public WebSocketChatMessage newUser(@Payload WebSocketChatMessage webSocketChatMessage,
