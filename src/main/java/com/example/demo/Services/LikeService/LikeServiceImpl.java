@@ -4,14 +4,15 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Dto.LikeDto;
 import com.example.demo.Models.Like;
-import com.example.demo.Models.Profile;
 import com.example.demo.Repositories.LikeRepository;
-import com.example.demo.Repositories.ProfileRepository;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -21,29 +22,24 @@ public class LikeServiceImpl implements LikeService{
 
     private final LikeRepository likeRepository;
 
-    private final ProfileRepository profileRepository;
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
 
-    public LikeServiceImpl(ProfileRepository profileRepository,LikeRepository likeRepository) {
-        this.profileRepository = profileRepository;
+    // Specify exchange and routing key
+    private static final String EXCHANGE_NAME = "Like";
+    private static final String ROUTING_KEY = "likeOperation";
+
+    public LikeServiceImpl(LikeRepository likeRepository) {
         this.likeRepository = likeRepository;
     }
 
-    @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> saveLike(@NotNull Long profileId) {
+    public ResponseEntity<Object> likeOperation(LikeDto likeDto) {
         try {
-            Optional<Profile> profile = profileRepository.findById(profileId);
-            if(!profile.isPresent()){
-                logger.error("User profile not found for profile ID: {}", profileId);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User profile not found");
-            }
-
-            Like like = new Like();
-            like.setProfile(profile.get());
-
-            Like savedLike = likeRepository.save(like);
-            logger.info("Like saved successfully: {}", savedLike);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Like created successfully!");
+            rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, likeDto.toJson());
+            
+            logger.info("Like saved successfully: {}");
+            return ResponseEntity.ok("Like successfully!");
         } catch (Exception e) {
             logger.error("Failed to save comment: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
