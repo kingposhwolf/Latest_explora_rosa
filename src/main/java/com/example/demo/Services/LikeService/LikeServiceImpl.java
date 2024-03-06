@@ -25,7 +25,6 @@ public class LikeServiceImpl implements LikeService{
     @Autowired
     private AmqpTemplate rabbitTemplate;
 
-    // Specify exchange and routing key
     private static final String EXCHANGE_NAME = "Like";
     private static final String ROUTING_KEY = "likeOperation";
 
