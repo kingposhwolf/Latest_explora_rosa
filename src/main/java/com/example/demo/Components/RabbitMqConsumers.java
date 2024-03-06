@@ -12,9 +12,13 @@ import com.example.demo.Dto.LikeDto;
 import com.example.demo.Models.HashTag;
 import com.example.demo.Models.Like;
 import com.example.demo.Models.Profile;
+import com.example.demo.Models.TopicEngagement;
+import com.example.demo.Models.UserEngagement;
 import com.example.demo.Models.UserPost;
 import com.example.demo.Repositories.LikeRepository;
 import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.TopicEngagementRepository;
+import com.example.demo.Repositories.UserEngagementRepository;
 import com.example.demo.Repositories.UserPostRespository;
 
 import lombok.RequiredArgsConstructor;
@@ -30,6 +34,10 @@ public class RabbitMqConsumers {
     private final UserPostRespository userPostRespository;
 
     private final LikeRepository likeRepository;
+
+    private final TopicEngagementRepository topicEngagementRepository;
+
+    private final UserEngagementRepository userEngagementRepository;
 
     @SuppressWarnings("null")
     @RabbitListener(queues = "saveLike")
@@ -74,8 +82,43 @@ public class RabbitMqConsumers {
                 logger.error("User post not found for post ID: ", likeDto.getPostId());
             }
             else{
-                //operations for Algorithm
+                //Topic Engagement
                 List<HashTag> topicList = userPost.get().getHashTags();
+                    topicList.forEach(hashTag -> {
+                        topicEngagementRepository.findByProfileAndHashTags(profile.get(), hashTag)
+                                .ifPresentOrElse(
+                                        topicEngage -> {
+                                            int score = topicEngage.getScore() + 1;
+                                            topicEngage.setScore(score);
+                                            topicEngagementRepository.save(topicEngage);
+                                        },
+                                        () -> {
+                                            TopicEngagement topicEngagement = new TopicEngagement();
+                                            topicEngagement.setProfile(profile.get());
+                                            topicEngagement.setHashTags(hashTag);
+                                            topicEngagement.setScore(1);
+                                            topicEngagementRepository.save(topicEngagement);
+                                        }
+                                );
+                    });
+
+                //Handle User Engagement
+            Optional<UserEngagement> userEngagementOptional = userEngagementRepository.findByTargetAndTopic(profile.get(), userPost.get().getProfile());
+
+            userEngagementOptional.ifPresentOrElse(
+                userEngagement -> {
+                    userEngagement.setScore(userEngagement.getScore() + 1);
+                    userEngagementRepository.save(userEngagement);
+                },
+                () -> {
+                    UserEngagement newUserEngagement = new UserEngagement();
+                    newUserEngagement.setTarget(profile.get());
+                    newUserEngagement.setTopic(userPost.get().getProfile());
+                    newUserEngagement.setScore(1);
+                    userEngagementRepository.save(newUserEngagement);
+                }
+            );
+            
             }
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
