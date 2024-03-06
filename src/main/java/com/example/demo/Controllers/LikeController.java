@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.Dto.LikeDto;
 import com.example.demo.Services.LikeService.LikeServiceImpl;
 
 import jakarta.validation.Valid;
@@ -25,11 +27,11 @@ public class LikeController {
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/save")
-    public ResponseEntity<Object> writeMessage(@RequestBody @Valid @NotNull Long profileId, BindingResult bindingResult) {
+    public ResponseEntity<Object> writeMessage(@RequestBody @Valid LikeDto likeDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return likeService.saveLike(profileId);
+        return likeService.likeOperation(likeDto);
     }
 
     @PostMapping("/delete")
