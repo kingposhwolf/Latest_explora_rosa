@@ -15,6 +15,7 @@ import com.example.demo.Models.Like;
 import com.example.demo.Repositories.LikeRepository;
 
 import jakarta.validation.constraints.NotNull;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class LikeServiceImpl implements LikeService{
@@ -31,7 +32,7 @@ public class LikeServiceImpl implements LikeService{
     public LikeServiceImpl(LikeRepository likeRepository) {
         this.likeRepository = likeRepository;
     }
-
+    @Transactional
     @Override
     public ResponseEntity<Object> likeOperation(LikeDto likeDto) {
         try {

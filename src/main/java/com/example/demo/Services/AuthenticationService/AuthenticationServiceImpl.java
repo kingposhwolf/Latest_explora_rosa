@@ -37,6 +37,7 @@ import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.JWTService.JWTService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -63,6 +64,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JWTService jwtService;
 
     @SuppressWarnings("null")
+    @Transactional
     public ResponseEntity<Object> signup(SignUpRequest signUpRequest) {
         try{
 

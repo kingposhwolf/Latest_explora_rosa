@@ -24,7 +24,6 @@ public class CountryServiceImpl implements CountryService {
         this.countryRepository = countryRepository;
     }
 
-    @Transactional
     @Override
     public ResponseEntity<Object> getAllCountries() {
         try {
@@ -42,7 +41,7 @@ public class CountryServiceImpl implements CountryService {
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
-
+    @Transactional
     @Override
     public ResponseEntity<Object> saveCountry(CountryDto countryDto) {
 

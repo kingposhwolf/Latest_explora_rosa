@@ -44,7 +44,7 @@ public class HashTagServiceImpl implements HashTagService {
         }
 
     }
-
+    @Transactional
     @Override
     public ResponseEntity<Object> saveHashTag(HashTagDto hashTagDto) {
         try {

@@ -1,9 +1,10 @@
-package com.example.demo.Controllers;
+package com.example.demo.Controllers.AccountType;
 /*
  * @author Dwight Danda
  *
  */
 
+import com.example.demo.Controllers.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.Dto.AccountTypeDto;
 import com.example.demo.Services.AccountTypeService.AccountTypeServiceImpl;
 

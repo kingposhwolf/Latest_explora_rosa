@@ -1,4 +1,4 @@
-package com.example.demo.Controllers;
+package com.example.demo.Controllers.GlobalValidationFormatter;
 
 import java.util.ArrayList;
 import java.util.List;

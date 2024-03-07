@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -29,7 +30,7 @@ public class CommentServiceImpl implements CommentService{
         this.commentRepository = commentRepository;
         this.profileRepository = profileRepository;
     }
-
+    @Transactional
     @SuppressWarnings("null")
     @Override
     public ResponseEntity<Object> writeComment(CommentDto commentDto) {

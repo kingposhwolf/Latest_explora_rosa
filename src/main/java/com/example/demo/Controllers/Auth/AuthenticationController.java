@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Controllers.GlobalValidationFormatter;
+import com.example.demo.Controllers.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.Dto.NewPasswordDto;
 import com.example.demo.Dto.PasswordResetDto;
 import com.example.demo.Dto.RefreshTokenRequest;
