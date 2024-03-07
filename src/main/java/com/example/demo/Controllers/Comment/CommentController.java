@@ -35,7 +35,7 @@ public class CommentController {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return commentService.writeComment(commentDto);
+        return commentService.saveComment(commentDto);
     }
 
     @PostMapping("/delete")

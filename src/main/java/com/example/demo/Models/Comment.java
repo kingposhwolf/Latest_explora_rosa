@@ -25,6 +25,10 @@ public class Comment {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profileId")
-    private Profile profile;
+    private Profile commenter;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userPostId", nullable = false)
+    private UserPost userPost;
 
 }
