@@ -77,9 +77,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         logger.error("User registration failed, Validation Error" + errorMessage);
         return ResponseEntity.badRequest().body(errorMessage);
-    }
-
-    Optional<User> userExist1 = userRepository.findByUsername(signUpRequest.getUsername());
+    }else if(!accountType.getName().equalsIgnoreCase("PERSONAL") || accountType.getName().equalsIgnoreCase("BUSINESS")){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The Account Type you provide is Invalid");
+    }else{
+        Optional<User> userExist1 = userRepository.findByUsername(signUpRequest.getUsername());
     Optional<User> userExist2 = userRepository.findByEmail(signUpRequest.getEmail());
     if (userExist1.isPresent()) {
         logger.error("User Registration Failed, Username Must be unique Error");
@@ -114,7 +115,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     //        title.setId((long) 1);
     //        title.setName("USER");
 
-    if(accountType.getName().equals("PERSONAL")){
+    if(accountType.getName().equalsIgnoreCase("PERSONAL")){
         Personal personal = new Personal();
         personal.setBio("");
         personal.setFollowers(0);
@@ -135,7 +136,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     registrationResponse.setProfileId(profile2.getId());
 
     return ResponseEntity.status(201).body(registrationResponse);
-    }else if(accountType.getName().equals("BUSINESS")){
+    }else {
         BusinessCategory businessCategory = businessCategoryRepository.findById(signUpRequest.getBusinessCategoryId()).orElse(null);
         City city = cityRepository.findById(signUpRequest.getCityId()).orElse(null);
     if(businessCategory == null || city == null){
@@ -169,8 +170,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     return ResponseEntity.status(201).body(registrationResponse);
     }
     }
-    else{
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The Account Type you provide is Invalid");
+    
     }
     }
         }catch(Exception exception){

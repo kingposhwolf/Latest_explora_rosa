@@ -270,3 +270,68 @@ There is Request for Fetching All Countries, But Nothing Registered to the datab
 
 2024-03-07 16:16:42.329 [main] INFO  com.example.demo.DemoApplication - Started DemoApplication in 7.824 seconds (process running for 8.536)
 
+2024-03-07 16:17:06.026 [http-nio-192.168.1.46-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+
+2024-03-07 16:17:06.026 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+
+2024-03-07 16:17:06.029 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+
+2024-03-07 16:17:06.194 [http-nio-192.168.1.46-8081-exec-1] ERROR c.e.d.S.CityService.CityServiceImpl - 
+There is Request for Fetching All Countries, But Nothing Registered to the database 
+
+2024-03-07 16:17:23.456 [http-nio-192.168.1.46-8081-exec-2] ERROR c.e.d.S.CityService.CityServiceImpl - 
+There is Request for Fetching All Countries, But Nothing Registered to the database 
+
+2024-03-07 16:17:42.123 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+
+2024-03-07 16:18:37.181 [http-nio-192.168.1.46-8081-exec-5] ERROR c.e.d.S.CityService.CityServiceImpl - 
+There is Request for Fetching All Countries, But Nothing Registered to the database 
+
+2024-03-07 16:19:25.956 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.A.AuthenticationServiceImpl - Login Successful for the user : User(id=2, accountType=AccountType(id=1, name=PERSONAL), name=fredrick, username=fredrick, email=f@gmail.com, password=$2a$10$DoccbujIFBh8zNkUFcMOIOdENNlPNUJjoZJjxCZx1jHsj/GIFTb1a, role=USER)
+
+2024-03-07 16:19:26.952 [http-nio-192.168.1.46-8081-exec-10] INFO  c.e.d.S.A.AuthenticationServiceImpl - Login Successful for the user : User(id=2, accountType=AccountType(id=1, name=PERSONAL), name=fredrick, username=fredrick, email=f@gmail.com, password=$2a$10$DoccbujIFBh8zNkUFcMOIOdENNlPNUJjoZJjxCZx1jHsj/GIFTb1a, role=USER)
+
+2024-03-07 16:19:38.953 [http-nio-192.168.1.46-8081-exec-2] ERROR c.e.d.S.CityService.CityServiceImpl - 
+There is Request for Fetching All Countries, But Nothing Registered to the database 
+
+2024-03-07 16:20:12.933 [http-nio-192.168.1.46-8081-exec-4] ERROR c.e.d.S.CityService.CityServiceImpl - 
+There is Request for Fetching All Countries, But Nothing Registered to the database 
+
+2024-03-07 16:21:21.594 [http-nio-192.168.1.46-8081-exec-8] ERROR c.e.d.S.CityService.CityServiceImpl - 
+There is Request for Fetching All Countries, But Nothing Registered to the database 
+
+2024-03-07 16:21:40.261 [http-nio-192.168.1.46-8081-exec-10] ERROR c.e.d.S.CityService.CityServiceImpl - 
+There is Request for Fetching All Countries, But Nothing Registered to the database 
+
+2024-03-07 16:47:42.132 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+
+2024-03-07 17:17:42.144 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+
+2024-03-07 17:47:42.152 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+
+2024-03-07 18:17:42.158 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 4]
+
+2024-03-07 18:46:58.445 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+
+2024-03-07 18:46:58.445 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1d280bab]]
+
+2024-03-07 18:46:58.446 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+
+2024-03-07 18:46:58.473 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-07 18:46:58.474 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-07 18:46:58.475 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-07 18:46:58.917 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-07 18:46:58.917 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-07 18:46:59.316 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-07 18:46:59.384 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+
+2024-03-07 18:46:59.402 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+
+2024-03-07 18:46:59.406 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+
