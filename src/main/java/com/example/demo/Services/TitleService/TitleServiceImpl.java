@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Dto.TitleDto;
 import com.example.demo.Models.Title;
 import com.example.demo.Repositories.TitleRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TitleServiceImpl implements TitleService{
@@ -39,7 +40,7 @@ public class TitleServiceImpl implements TitleService{
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
-
+    @Transactional
     @Override
     public ResponseEntity<Object> saveTitle(TitleDto titleDto) {
         try{

@@ -2,6 +2,8 @@ package com.example.demo.chat;
 
 import java.util.Date;
 
+import org.springframework.lang.NonNull;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,7 @@ public class ChatMessage {
         private Long id;
         private String chatId;
         private String senderId;
+        @NonNull
         private String recipientId;
         private String content;
         private Date timestamp;

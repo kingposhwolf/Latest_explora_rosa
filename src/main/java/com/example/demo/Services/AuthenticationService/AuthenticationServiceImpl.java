@@ -23,6 +23,7 @@ import com.example.demo.Models.AccountType;
 import com.example.demo.Models.Brand;
 import com.example.demo.Models.BusinessCategory;
 import com.example.demo.Models.City;
+import com.example.demo.Models.Personal;
 import com.example.demo.Models.Profile;
 import com.example.demo.Models.Role;
 import com.example.demo.Models.User;
@@ -36,6 +37,7 @@ import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.JWTService.JWTService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -62,6 +64,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JWTService jwtService;
 
     @SuppressWarnings("null")
+    @Transactional
     public ResponseEntity<Object> signup(SignUpRequest signUpRequest) {
         try{
 
@@ -112,19 +115,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     //        title.setName("USER");
 
     if(accountType.getName().equals("PERSONAL")){
-        Profile profile = new Profile();
-        profile.setBio("");
-        profile.setFollowers(0);
-        profile.setFollowing(0);
-        profile.setPosts(0);
-        profile.setTitle(null);
-        profile.setPowerSize(0);
-        profile.setTitle(null);
-        profile.setUser(user);
-        profile.setCountry(null);
+        Personal personal = new Personal();
+        personal.setBio("");
+        personal.setFollowers(0);
+        personal.setFollowing(0);
+        personal.setPosts(0);
+        personal.setPowerSize(0);
+        personal.setUser(user);
+        personal.setCountry(null);
+        personal.setTitle(null);
 
-    Profile profile2 = profileRepository.save(profile);
-    logger.info("\nProfile saved Successful:\n" + profile);
+    Profile profile2 = profileRepository.save(personal);
+    logger.info("\nProfile saved Successful:\n" + personal);
 
     //Return response
     RegistrationResponse registrationResponse = new RegistrationResponse();
@@ -153,6 +155,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         brand.setVerificationStatus(VerificationStatus.UNVERIFIED);
         brand.setUser(user);
         brand.setAddress(null);
+        brand.setCoverPhoto(null);
 
         Brand brand2 = brandRepository.save(brand);
     logger.info("\nBrand saved Successful:\n" + brand2);

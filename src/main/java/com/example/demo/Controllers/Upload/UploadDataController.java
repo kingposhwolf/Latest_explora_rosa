@@ -35,6 +35,7 @@ public class UploadDataController {
 
 
 
+    @SuppressWarnings("null")
     @GetMapping("/fileSystem/{uploadId}/{brandId}")
     public ResponseEntity<?> viewImageFromFileSystem(@PathVariable Long uploadId, @PathVariable Long brandId) {
         try {

@@ -40,6 +40,7 @@ public class UploadDataServiceImpl implements UploadDataService {
 
     private final String folderPath="C:\\Users\\user\\Documents\\explore\\exploredev\\uploadsData\\";
 
+    @SuppressWarnings("null")
     @Transactional
     @Override
     public ResponseEntity<Object> uploadDataToFileSystem(MultipartFile upload, Long brandId) throws IOException {
