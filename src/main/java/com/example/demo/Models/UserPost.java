@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,10 +34,12 @@ public class UserPost {
     @JoinColumn(name = "brandId")
     private Brand brand;
 
-    @OneToMany(mappedBy = "userPost", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> likes = new ArrayList<>();
+    @Column(nullable = false)
+    private int likes;
 
-    @Column
+    @Column(nullable = false)
+    private int comments;
+
     private String caption;
 
     @Column

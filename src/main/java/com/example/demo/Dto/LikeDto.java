@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class LikeDto {
     @NotNull
-    private Long profileId;
+    private Long likerId;
 
     @NotNull
     private Long postId;

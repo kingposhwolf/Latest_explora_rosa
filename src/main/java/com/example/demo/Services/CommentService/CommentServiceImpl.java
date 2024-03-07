@@ -2,19 +2,18 @@ package com.example.demo.Services.CommentService;
 
 import com.example.demo.Dto.CommentDto;
 import com.example.demo.Models.Comment;
-import com.example.demo.Models.Profile;
 import com.example.demo.Repositories.CommentRepository;
-import com.example.demo.Repositories.ProfileRepository;
 
 import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -23,35 +22,27 @@ public class CommentServiceImpl implements CommentService{
 
     private final CommentRepository commentRepository;
 
-    private final ProfileRepository profileRepository;
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
 
-    public CommentServiceImpl(CommentRepository commentRepository, ProfileRepository profileRepository) {
+    private static final String EXCHANGE_NAME = "Comment";
+    private static final String ROUTING_KEY = "commentOperation";
+
+    public CommentServiceImpl(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
-        this.profileRepository = profileRepository;
     }
 
     @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> writeComment(CommentDto commentDto) {
+    public ResponseEntity<Object> saveComment(CommentDto commentDto) {
         try {
-            Optional<Profile> profile = profileRepository.findById(commentDto.getProfileId());
-            if(!profile.isPresent()){
-                logger.error("User profile not found for profile ID: {}", commentDto.getProfileId());
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User profile not found");
-            }
-
-            Comment comment = new Comment();
-            comment.setMessage(commentDto.getMessage());
-            comment.setProfile(profile.get());
-            comment.setTimestamp(LocalDateTime.now());
-
-            // Save the comment to the database
-            Comment savedComment = commentRepository.save(comment);
-            logger.info("Comment saved successfully: {}", savedComment);
+            rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, commentDto.toJson());
+            
+            logger.info("Comment added to queue successfully: ", commentDto);
             return ResponseEntity.status(HttpStatus.CREATED).body("Comment created successfully!");
         } catch (Exception e) {
-            logger.error("Failed to save comment: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save comment");
+            logger.error("Failed to add comment to queue server Error : ", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
 
@@ -75,5 +66,4 @@ public class CommentServiceImpl implements CommentService{
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete comment");
         }
     }
-
 }

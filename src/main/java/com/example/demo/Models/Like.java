@@ -13,9 +13,9 @@ public class Like {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profileId", nullable = false)
-    private Profile profile;
+    private Profile liker;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userPostId", nullable = false)
-    private UserPost userPost;
+    private UserPost post;
 }
