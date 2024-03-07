@@ -30,12 +30,20 @@ public class CommentController {
     @Autowired
     private GlobalValidationFormatter globalValidationFormatter;
 
-    @PostMapping("/write")
+    @PostMapping("/new")
     public ResponseEntity<Object> writeMessage(@RequestBody @Valid CommentDto commentDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return commentService.saveComment(commentDto);
+    }
+
+    @PostMapping("/post")
+    public ResponseEntity<Object> getCommentsForPost(@RequestBody @Valid @NotNull Long postId, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return commentService.getCommentForPost(postId);
     }
 
     @PostMapping("/delete")
