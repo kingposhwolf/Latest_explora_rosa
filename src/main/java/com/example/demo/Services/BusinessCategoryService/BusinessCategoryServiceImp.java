@@ -9,6 +9,8 @@ import com.example.demo.Models.HashTag;
 import com.example.demo.Repositories.BusinessCategoryRepository;
 import com.example.demo.Repositories.HashTagRepository;
 
+import lombok.RequiredArgsConstructor;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class BusinessCategoryServiceImp implements BusinessCategoryService {
 
     private static final Logger logger = LoggerFactory.getLogger(BusinessCategoryServiceImp.class);
@@ -28,11 +31,7 @@ public class BusinessCategoryServiceImp implements BusinessCategoryService {
     private final BusinessCategoryRepository businessCategoryRepository;
 
     private final HashTagRepository hashTagRepository;
-    
-    public BusinessCategoryServiceImp(BusinessCategoryRepository businessCategoryRepository, HashTagRepository hashTagRepository){
-        this.businessCategoryRepository = businessCategoryRepository;
-        this.hashTagRepository = hashTagRepository;
-    }
+
 
     @Override
     public ResponseEntity<Object> getAllBusinessCategories(){
@@ -50,6 +49,7 @@ public class BusinessCategoryServiceImp implements BusinessCategoryService {
             return ResponseEntity.status(500).body("Internal Server error");
         }
     }
+    
     @Transactional
     @Override
     public ResponseEntity<Object> saveBusinessCategory(BusinessCategoryDto businessCategoryDto){

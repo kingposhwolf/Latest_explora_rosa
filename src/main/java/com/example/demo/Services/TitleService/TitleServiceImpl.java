@@ -11,18 +11,19 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Dto.TitleDto;
 import com.example.demo.Models.Title;
 import com.example.demo.Repositories.TitleRepository;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class TitleServiceImpl implements TitleService{
 
     private static final Logger logger = LoggerFactory.getLogger(TitleServiceImpl.class);
 
     private final TitleRepository titleRepository;
 
-    public TitleServiceImpl(TitleRepository titleRepository) {
-        this.titleRepository = titleRepository;
-    }
 
     @Override
     public ResponseEntity<Object> getAllTitle() {
@@ -40,6 +41,7 @@ public class TitleServiceImpl implements TitleService{
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
+
     @Transactional
     @Override
     public ResponseEntity<Object> saveTitle(TitleDto titleDto) {

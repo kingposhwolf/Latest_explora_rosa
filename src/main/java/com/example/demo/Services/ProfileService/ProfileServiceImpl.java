@@ -11,19 +11,16 @@ import com.example.demo.Models.Profile;
 //import com.example.demo.Models.Title;
 //import com.example.demo.Models.User;
 import com.example.demo.Repositories.ProfileRepository;
-import com.example.demo.Repositories.TitleRepository;
-import com.example.demo.Repositories.UserRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class ProfileServiceImpl implements ProfileService{
     private static final Logger logger = LoggerFactory.getLogger(ProfileServiceImpl.class);
     private final ProfileRepository profileRepository;
    // private final UserRepository userRepository;
 
-    public ProfileServiceImpl(ProfileRepository profileRepository, UserRepository userRepository, TitleRepository titleRepository) {
-        this.profileRepository = profileRepository;
-       // this.userRepository = userRepository;
-    }
 
     @Override
     public Iterable<Profile> getAllProfiles() {

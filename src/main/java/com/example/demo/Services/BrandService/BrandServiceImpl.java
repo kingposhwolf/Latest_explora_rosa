@@ -11,16 +11,15 @@ import com.example.demo.Dto.GetBrandDto;
 import com.example.demo.Models.Brand;
 import com.example.demo.Repositories.BrandRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class BrandServiceImpl implements BrandService{
 
     private static final Logger logger = LoggerFactory.getLogger(BrandServiceImpl.class);
 
     private final BrandRepository brandRepository;
-
-    public BrandServiceImpl(BrandRepository brandRepository) {
-        this.brandRepository = brandRepository;
-    }
 
     @SuppressWarnings("null")
     @Override

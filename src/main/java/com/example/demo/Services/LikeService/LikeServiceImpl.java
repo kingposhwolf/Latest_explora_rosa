@@ -15,9 +15,12 @@ import com.example.demo.Models.Like;
 import com.example.demo.Repositories.LikeRepository;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class LikeServiceImpl implements LikeService{
     private static final Logger logger = LoggerFactory.getLogger(LikeServiceImpl.class);
 
@@ -29,9 +32,6 @@ public class LikeServiceImpl implements LikeService{
     private static final String EXCHANGE_NAME = "Like";
     private static final String ROUTING_KEY = "likeOperation";
 
-    public LikeServiceImpl(LikeRepository likeRepository) {
-        this.likeRepository = likeRepository;
-    }
     @Transactional
     @Override
     public ResponseEntity<Object> likeOperation(LikeDto likeDto) {
@@ -47,6 +47,7 @@ public class LikeServiceImpl implements LikeService{
     }
 
     @SuppressWarnings("null")
+    @Transactional
     @Override
     public ResponseEntity<Object> deleteLike(@NotNull Long likeId) {
         try {
