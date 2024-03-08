@@ -7,7 +7,9 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Dto.CommentDto;
 import com.example.demo.Dto.LikeDto;
@@ -34,6 +36,7 @@ public class RabbitMqConsumers {
 
     private final ProfileRepository profileRepository;
 
+    private SimpMessagingTemplate messagingTemplate;
 
     private final UserPostRespository userPostRespository;
 
@@ -46,6 +49,7 @@ public class RabbitMqConsumers {
     private final CommentRepository commentRepository;
 
     @SuppressWarnings("null")
+    @Transactional
     @RabbitListener(queues = "saveLike")
     public void likeSave(String message) {
         try {
@@ -66,8 +70,12 @@ public class RabbitMqConsumers {
             
                 likeRepository.delete(like.get());
 
-                userPost.get().setLikes(userPost.get().getLikes() - 1);
+                int newLikes = userPost.get().getLikes() - 1;
+
+                userPost.get().setLikes(newLikes);
                 userPostRespository.save(userPost.get());
+
+                messagingTemplate.convertAndSend("/topic/like" + userPost.get().getId(),newLikes);
 
                 logger.info("Like deleted successfully");
                 
@@ -77,8 +85,12 @@ public class RabbitMqConsumers {
                 likeNew.setPost(userPost.get());
                 Like savedLike = likeRepository.save(likeNew);
 
-                userPost.get().setLikes(userPost.get().getLikes() + 1);
+                int newLikes = userPost.get().getLikes() + 1;
+
+                userPost.get().setLikes(newLikes);
                 userPostRespository.save(userPost.get());
+
+                messagingTemplate.convertAndSend("/topic/like" + userPost.get().getId(),newLikes);
 
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),1);
                 processUserEngagement(profile.get(), userPost.get(),1);

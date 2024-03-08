@@ -126,6 +126,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         personal.setUser(user);
         personal.setCountry(null);
         personal.setTitle(null);
+        personal.setVerificationStatus(VerificationStatus.UNVERIFIED);
 
     Profile profile2 = profileRepository.save(personal);
     logger.info("\nProfile saved Successful:\n" + personal);

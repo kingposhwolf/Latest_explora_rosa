@@ -11,18 +11,19 @@ import com.example.demo.Dto.CountryDto;
 import com.example.demo.Models.Country;
 import com.example.demo.Repositories.CountryRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class CountryServiceImpl implements CountryService {
 
     private static final Logger logger = LoggerFactory.getLogger(CityServiceImpl.class);
 
     private final CountryRepository countryRepository;
 
-    public CountryServiceImpl(CountryRepository countryRepository) {
-        this.countryRepository = countryRepository;
-    }
 
     @Override
     public ResponseEntity<Object> getAllCountries() {
@@ -41,6 +42,7 @@ public class CountryServiceImpl implements CountryService {
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
+
     @Transactional
     @Override
     public ResponseEntity<Object> saveCountry(CountryDto countryDto) {

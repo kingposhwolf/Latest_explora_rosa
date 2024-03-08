@@ -4,6 +4,8 @@ import com.example.demo.Dto.AccountTypeDto;
 import com.example.demo.Models.AccountType;
 import com.example.demo.Repositories.AccountTypeRepository;
 
+import lombok.RequiredArgsConstructor;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -14,16 +16,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class AccountTypeServiceImpl implements AccountTypeService {
 
     private static final Logger logger = LoggerFactory.getLogger(AccountTypeServiceImpl.class);
 
     private final AccountTypeRepository accountTypeRepository;
 
-    public AccountTypeServiceImpl(AccountTypeRepository accountTypeRepository){
-        this.accountTypeRepository = accountTypeRepository;
-    }
-
+    @Override
     public ResponseEntity<Object> getAllAccountTypes(){
         try{
             Iterable<AccountType> accountTypes =  accountTypeRepository.findAll();
@@ -40,7 +40,9 @@ public class AccountTypeServiceImpl implements AccountTypeService {
             return ResponseEntity.internalServerError().body("Internal Server Error");
         }
     }
+
     @Transactional
+    @Override
     public ResponseEntity<Object> saveAccountType(AccountTypeDto accountTypeDto){
         try {
             Optional<AccountType> existingAccountType = accountTypeRepository.findByName(accountTypeDto.getName());

@@ -35,11 +35,11 @@ public class LikeController {
         return likeService.likeOperation(likeDto);
     }
 
-    @PostMapping("/delete")
-    public ResponseEntity<Object> deleteMessage(@RequestBody @Valid @NotNull Long likeId, BindingResult bindingResult) {
+    @PostMapping("/post")
+    public ResponseEntity<Object> fetchLikes(@RequestBody @Valid @NotNull Long postId, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return likeService.deleteLike(likeId);
+        return likeService.fetchLikes(postId);
     }
 }

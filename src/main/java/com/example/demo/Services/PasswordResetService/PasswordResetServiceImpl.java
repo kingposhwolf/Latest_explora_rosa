@@ -6,13 +6,13 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Dto.NewPasswordDto;
 import com.example.demo.Models.PasswordResetToken;
@@ -21,26 +21,26 @@ import com.example.demo.Repositories.PasswordResetRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.AuthenticationService.AuthenticationServiceImpl;
 
+import lombok.RequiredArgsConstructor;
+
 
 @Service
+@RequiredArgsConstructor
 public class PasswordResetServiceImpl implements PasswordResetService{
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
     
 
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
     private PasswordResetRepository tokenRepository;
 
-    @Autowired
     private UserRepository userRepository;
 
-    @Autowired
     private JavaMailSender mailSender;
 
     @Override
+    @Transactional
     public ResponseEntity<Object> sendPasswordResetToken(String email) {
         try {
 
@@ -73,6 +73,7 @@ public class PasswordResetServiceImpl implements PasswordResetService{
         }
     }
 
+    @Transactional
     @Override
     public ResponseEntity<Object> resetPassword(NewPasswordDto newPasswordDto) {
         try {

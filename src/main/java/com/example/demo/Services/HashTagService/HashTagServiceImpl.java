@@ -4,6 +4,9 @@ import com.example.demo.Dto.HashTagDto;
 import com.example.demo.Models.HashTag;
 import com.example.demo.Repositories.HashTagRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;
+
+import lombok.RequiredArgsConstructor;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -14,15 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class HashTagServiceImpl implements HashTagService {
 
     private static final Logger logger = LoggerFactory.getLogger(CityServiceImpl.class);
 
     private final HashTagRepository hashTagRepository;
 
-    public HashTagServiceImpl(HashTagRepository hashTagRepository){
-        this.hashTagRepository = hashTagRepository;
-    }
 
     @Transactional
     @Override
