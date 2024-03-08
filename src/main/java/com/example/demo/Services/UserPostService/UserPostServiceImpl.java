@@ -22,6 +22,7 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserPostServiceImpl implements UserPostService{
@@ -124,79 +125,6 @@ public class UserPostServiceImpl implements UserPostService{
         }
     }
 
-//    @Override
-//    @Transactional
-//    public ResponseEntity<Object> uploadPost(UserPostDto userPostDto, MultipartFile file) throws IOException {
-//        try {
-//            // Check if the content type is allowed
-//            String contentType = file.getContentType();
-//            if (!isValidContentType(contentType)) {
-//                logger.error("Unsupported content type: {}", contentType);
-//                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
-//            }
-//
-//            // Fetch profile and country entities
-//            Profile profile = profileRepository.findById(userPostDto.getProfileId())
-//                    .orElseThrow(() -> new IllegalArgumentException("Profile with ID " + userPostDto.getProfileId() + " not found"));
-//            Country country = countryRepository.findById(userPostDto.getCountryId())
-//                    .orElseThrow(() -> new IllegalArgumentException("Country with ID " + userPostDto.getCountryId() + " not found"));
-//
-//            // Fetch hash tag entities
-//            List<HashTag> hashTags = new ArrayList<>();
-//            for (Long hashTagId : userPostDto.getHashTagIds()) {
-//                HashTag hashTag = hashTagRepository.findById(hashTagId)
-//                        .orElseThrow(() -> new IllegalArgumentException("HashTag with ID " + hashTagId + " not found"));
-//                hashTags.add(hashTag);
-//            }
-//
-//            // Fetch brand entity
-//            Brand brand = null;
-//            if (userPostDto.getBrandId() != null) {
-//                brand = brandRepository.findById(userPostDto.getBrandId())
-//                        .orElseThrow(() -> new IllegalArgumentException("Brand with ID " + userPostDto.getBrandId() + " not found"));
-//            }
-//
-//            // Validate thumbnail if the post is a video
-//            String thumbnail = null;
-//            if (userPostDto.getType().equalsIgnoreCase("video")) {
-//                // Check if the user provided a thumbnail file
-//                MultipartFile thumbnailFile = userPostDto.getThumbnailFile();
-//                if (thumbnailFile != null && !thumbnailFile.isEmpty()) {
-//                    thumbnail = processThumbnail(file, thumbnailFile);
-//                } else {
-//                    // Use FFmpeg to extract a frame from the video and save it as a thumbnail
-//                    thumbnail = processThumbnail(file, null);
-//                }
-//            }
-//
-//            // Save the user post
-//            UserPost userPost = new UserPost();
-//            userPost.setProfile(profile);
-//            userPost.setCountry(country);
-//            userPost.setHashTags(hashTags);
-//            userPost.setBrand(brand);
-//            userPost.setThumbnail(thumbnail);
-//            userPost.setCaption(userPostDto.getCaption());
-//            userPost.setTime(LocalDateTime.now());
-//            userPost.setType(userPostDto.getType());
-//            userPost.setPath(userPostDto.getPath());
-//            userPost.setShares(0);
-//            userPost.setFavorites(0);
-//
-//            // Save the post to the database
-//            UserPost savedPost = userPostRepository.save(userPost);
-//
-//            // Save the file to the file system
-//            String uploadPath = "C:\\Users\\user\\Documents\\explore\\exploredev\\Posts\\";
-//            file.transferTo(new File(uploadPath));
-//
-//            logger.info("Post uploaded successfully");
-//            return ResponseEntity.status(HttpStatus.CREATED).body("Post uploaded successfully");
-//        } catch (Exception e) {
-//            logger.error("Failed to upload post: {}", e.getMessage());
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload post: " + e.getMessage());
-//        }
-//    }
     private boolean isValidContentType(String contentType) {
         // Check if the content type is not null and matches the allowed types
         return contentType != null && (contentType.startsWith("image/") || contentType.startsWith("video/"));
@@ -248,5 +176,59 @@ public class UserPostServiceImpl implements UserPostService{
         return thumbnailFilePath;
     }
 
+    @Override
+    public ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId) {
+        try {
+            Optional<UserPost> optionalUserPost = userPostRepository.findById(postId);
+            if (optionalUserPost.isPresent()) {
+                UserPost userPost = optionalUserPost.get();
+                if (userPost.getProfile().getId().equals(profileId)) {
+                    // Profile owns the post
+                    return ResponseEntity.status(HttpStatus.OK).body("Profile owns the post");
+                } else {
+                    // Profile does not own the post
+                    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Profile does not own the post");
+                }
+            } else {
+                // Post not found
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
+            }
+        } catch (Exception e) {
+            // Handle exceptions
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to check post ownership: " + e.getMessage());
+        }
+    }
+    @Override
+    public ResponseEntity<Object> checkPostContentType(UserPostDto userPostDto) {
+        try {
+            Long postId = userPostDto.getId();
+
+            // Fetch the post from the repository based on the postId
+            Optional<UserPost> optionalUserPost = userPostRepository.findById(postId);
+
+            if (optionalUserPost.isPresent()) {
+                UserPost userPost = optionalUserPost.get();
+                String postType = userPost.getType();
+
+                if (postType.equalsIgnoreCase("video")) {
+                    logger.info("Post with ID {} is a video.", postId);
+                    return ResponseEntity.ok("Video");
+                } else if (postType.equalsIgnoreCase("image")) {
+                    logger.info("Post with ID {} is an image.", postId);
+                    return ResponseEntity.ok("Image");
+                } else {
+                    logger.warn("Unknown post type for post with ID {}.", postId);
+                    return ResponseEntity.ok("Unknown");
+                }
+            } else {
+                logger.warn("Post with ID {} not found.", postId);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
+            }
+        } catch (Exception e) {
+            logger.error("Failed to check post content type: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to check post content type: " + e.getMessage());
+        }
+    }
 
 }

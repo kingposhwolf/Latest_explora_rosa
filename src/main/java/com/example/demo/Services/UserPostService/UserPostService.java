@@ -12,4 +12,8 @@ import java.io.IOException;
 
 public interface UserPostService {
     ResponseEntity<Object> uploadPost(UserPostDto userPostDto, MultipartFile file, Long profileId) throws IOException;
+
+    ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId);
+
+    ResponseEntity<Object> checkPostContentType(UserPostDto userPostDto);
 }

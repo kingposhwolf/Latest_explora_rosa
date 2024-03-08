@@ -122,6 +122,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         personal.setFollowing(0);
         personal.setPosts(0);
         personal.setPowerSize(0);
+        personal.setVerificationStatus(VerificationStatus.UNVERIFIED);
         personal.setUser(user);
         personal.setCountry(null);
         personal.setTitle(null);

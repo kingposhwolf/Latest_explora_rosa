@@ -36,4 +36,25 @@ public class PostEditDeleteController {
                     .body("Failed to upload post: " + e.getMessage());
         }
     }
+
+    @PostMapping("/checkOwnership")
+    public ResponseEntity<Object> checkPostOwnership(@RequestParam Long postId, @RequestParam Long profileId) {
+        try {
+            ResponseEntity<Object> ownershipResponse = userPostServiceImpl.checkPostOwnership(postId, profileId);
+            return ownershipResponse;
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to check post ownership: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/checkContentType")
+    public ResponseEntity<Object> checkPostContentType(@RequestBody UserPostDto userPostDto) {
+        try {
+            ResponseEntity<Object> contentTypeResponse = userPostServiceImpl.checkPostContentType(userPostDto);
+            return contentTypeResponse;
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to check post content type: " + e.getMessage());
+        }
+    }
 }

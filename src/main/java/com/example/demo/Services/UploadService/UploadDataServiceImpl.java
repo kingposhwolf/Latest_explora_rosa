@@ -173,120 +173,29 @@ public class UploadDataServiceImpl implements UploadDataService {
         }
     }
 
+    @Override
+    public ResponseEntity<Object> checkPostContentType(Long postId) {
+        try {
+            // Simulated logic to determine post content type based on postId
+            String postContentType = getPostContentTypeFromRepository(postId);
+
+            // Log the post content type
+            logger.info("Post with ID {} is of type: {}", postId, postContentType);
+
+            // Return the response based on the content type
+            if ("video".equalsIgnoreCase(postContentType)) {
+                return ResponseEntity.ok("Video");
+            } else if ("image".equalsIgnoreCase(postContentType)) {
+                return ResponseEntity.ok("Image");
+            } else {
+                return ResponseEntity.ok("Unknown");
+            }
+        } catch (Exception e) {
+            logger.error("Failed to check post content type for post with ID {}: {}", postId, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to check post content type: " + e.getMessage());
+        }
+    }
+
 }
 
-//    @Transactional
-//    @Override
-//    public ResponseEntity<Object> uploadDataToFileSystem(MultipartFile upload) throws IOException {
-//        String uploadPath = folderPath + upload.getOriginalFilename();
-//
-//        // Check if the content type is allowed
-//        String contentType = upload.getContentType();
-//        if (!isValidContentType(contentType)) {
-//            logger.error("Unsupported content type: {}", contentType);
-//            return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
-//                    .body("Unsupported content type: " + contentType);
-//        }
-//
-//        try {
-//            UploadData uploadData = uploadDataRepository.save(UploadData.builder()
-//                    .name(upload.getOriginalFilename())
-//                    .type(contentType)
-//                    .path(uploadPath)
-//                    .build());
-//
-//            upload.transferTo(new File(uploadPath));
-//
-//            if (uploadData != null) {
-//                logger.info("File uploaded successfully: {}", uploadPath);
-//                return ResponseEntity.status(HttpStatus.CREATED).body("File Uploaded Successfully! ");
-//            }
-//        } catch (Exception e) {
-//            logger.error("Failed to save data: {}", e.getMessage());
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                    .body("Failed to save data: " + e.getMessage());
-//        }
-//        logger.error("Failed to save data: Unknown error");
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save data: Unknown error");
-//    }
-//
-//    // Method to validate content type
-//    private boolean isValidContentType(String contentType) {
-//        return contentType != null && (contentType.startsWith("image/") || contentType.equals("application/pdf"));
-//    }
-
-
-//        @Transactional
-//        @Override
-//        public ResponseEntity<Object> uploadDataToFileSystem(MultipartFile upload, Long brandId) throws IOException {
-//            String uploadPath = folderPath + upload.getOriginalFilename();
-//
-//            try {
-//                // Fetch the Brand entity using the provided brandId
-//                Brand brand = brandRepository.findById(brandId)
-//                        .orElseThrow(() -> new IllegalArgumentException("Brand with ID " + brandId + " not found"));
-//
-//                UploadData uploadData = uploadDataRepository.save(UploadData.builder()
-//                        .name(upload.getOriginalFilename())
-//                        .type(upload.getContentType())
-//                        .path(uploadPath)
-//                        .brand(brand) // Set the Brand entity
-//                        .build());
-//
-//                upload.transferTo(new File(uploadPath));
-//
-//                if (uploadData != null) {
-//                    logger.info("File uploaded successfully: {}", uploadPath);
-//                    return ResponseEntity.status(201).body("File Uploaded Successfully! ");
-//                }
-//            } catch (Exception e) {
-//                logger.error("Failed to save data: {}", e.getMessage());
-//                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save data: " + e.getMessage());
-//            }
-//            logger.error("Failed to save data: Unknown error");
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save data: Unknown error");
-//
-//    }
-
-//    @Override
-//    public byte[] viewImageDataFromFileSystem(Long uploadId) throws IOException {
-//        Optional<UploadData> uploadDataOptional = uploadDataRepository.findById(uploadId);
-//        String uploadPath=uploadDataOptional.get().getPath();
-//        byte[] uploads = Files.readAllBytes(new File(uploadPath).toPath());
-//        return uploads;
-//    }
-
-//    @Override
-//    public byte[] viewUploadDataFromFileSystem(Long uploadId) throws IOException {
-//        Optional<UploadData> uploadDataOptional = uploadDataRepository.findById(uploadId);
-//        if (uploadDataOptional.isPresent()) {
-//            UploadData uploadData = uploadDataOptional.get();
-//            String uploadPath = uploadData.getPath();
-//            return Files.readAllBytes(new File(uploadPath).toPath());
-//        } else {
-//            throw new IOException("Upload data not found for id: " + uploadId);
-//        }
-//    }
-
-
-//    @Override
-//    public List<UploadData> getPDFAndImageUploadsByBrandId(Long brandId) {
-//        try {
-//            // Fetch uploads by brandId
-//            List<UploadData> uploadsByBrandId = uploadDataRepository.findByBrandId(brandId);
-//
-//            // Filter uploads to include only PDF and image files
-//            List<UploadData> pdfAndImageUploads = new ArrayList<>();
-//            for (UploadData upload : uploadsByBrandId) {
-//                String fileType = upload.getType();
-//                if (fileType != null && (fileType.startsWith("image/") || fileType.equals("application/pdf"))) {
-//                    pdfAndImageUploads.add(upload);
-//                }
-//            }
-//
-//            return pdfAndImageUploads;
-//        } catch (Exception e) {
-//            logger.error("Failed to retrieve PDF and image uploads for brand ID {}: {}", brandId, e.getMessage());
-//            throw new RuntimeException("Failed to retrieve PDF and image uploads");
-//        }
-//    }

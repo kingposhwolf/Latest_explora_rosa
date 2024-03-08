@@ -25,4 +25,6 @@ public interface UploadDataService {
     Iterable<UploadData> getPDFAndImageUploadsByBrandId(Long brandId);
 
     Iterable<UploadData> getAllUploadedData();
+
+    ResponseEntity<Object> checkPostContentType(Long postId);
 }
