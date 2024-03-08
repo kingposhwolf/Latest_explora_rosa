@@ -4,6 +4,8 @@ package com.example.demo.Models;
  *
  */
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -30,5 +32,12 @@ public class Comment {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userPostId", nullable = false)
     private UserPost userPost;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parentCommentId")
+    private Comment parentComment;
+
+    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> replies = new ArrayList<>();
 
 }
