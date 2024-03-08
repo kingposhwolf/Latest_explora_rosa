@@ -13,7 +13,6 @@ import com.example.demo.Dto.LikeDto;
 import com.example.demo.Services.LikeService.LikeServiceImpl;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/like")
@@ -33,13 +32,5 @@ public class LikeController {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return likeService.likeOperation(likeDto);
-    }
-
-    @PostMapping("/delete")
-    public ResponseEntity<Object> deleteMessage(@RequestBody @Valid @NotNull Long likeId, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return globalValidationFormatter.validationFormatter(bindingResult);
-        }
-        return likeService.deleteLike(likeId);
     }
 }
