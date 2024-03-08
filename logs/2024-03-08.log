@@ -1,0 +1,1348 @@
+2024-03-08 01:03:09.551 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-72] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@20b7ca72: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 01:03:09.646 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-72] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4373bd91: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 01:03:09.657 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-72] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@10b0f868: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 01:03:10.553 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-73] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 01:03:10.554 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-73] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 01:03:10.555 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-73] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 01:03:15.568 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-73] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7042e0b1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 01:03:15.568 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-73] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@76a3c9ff: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 01:03:15.568 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-73] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4cbc16da: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 01:03:15.571 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-74] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 01:03:15.571 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-74] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 01:03:15.572 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-74] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:15.660 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-74] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@70299b78: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:15.660 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-74] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@448ca30f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:15.660 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-74] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5fd0b713: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:15.663 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-75] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:15.664 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-75] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:15.665 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-75] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:20.875 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-75] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6bf8c398: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:20.876 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-75] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@629251d6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:20.885 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-75] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@65dcd3f5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:20.887 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-76] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:20.890 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-76] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:20.890 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-76] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:26.063 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-76] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@64297da9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:26.064 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-76] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5ed0284f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:26.064 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-76] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@68f84a03: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:26.118 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-77] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:26.156 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-77] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:26.165 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-77] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:31.214 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-77] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@708e9d46: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:31.216 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-78] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:31.293 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-77] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4de06ce2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:31.293 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-77] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4333b179: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:09:31.944 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13h6m35s586ms268µs200ns).
+
+2024-03-08 11:09:52.618 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-78] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:09:57.733 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-78] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:09:57.733 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-78] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@93fa34c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:10:13.929 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-78] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:10:19.049 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-78] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:10:19.049 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-78] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7c7dd596: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:10:34.975 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-79] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:10:40.083 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-78] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:10:40.083 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-78] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@51ba6e94: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:10:56.140 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-79] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:11:01.271 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-79] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:11:01.272 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-79] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1d939830: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:11:17.193 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-79] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:11:22.327 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-79] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:11:22.328 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-79] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@541c43e0: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:11:38.248 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-80] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:11:43.306 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-79] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:11:43.307 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-79] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7955def1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:11:59.298 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-80] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:12:04.407 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-80] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:12:04.408 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-80] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5cf9f25f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:12:07.683 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+
+2024-03-08 11:12:20.332 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-80] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:12:25.446 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-80] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:12:25.447 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-80] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@131a401c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:12:41.369 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-81] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:12:46.508 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-80] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:12:46.508 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-80] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@c27b7dc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:13:02.425 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-81] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:13:07.522 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-81] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:13:07.522 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-81] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2546b0b4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:13:23.439 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-81] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:13:28.585 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-81] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:13:28.585 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-81] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@304641a7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:13:44.490 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-82] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:13:49.623 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-81] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:13:49.623 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-81] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5076d4b8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:14:05.621 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-82] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:14:10.718 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-82] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:14:10.718 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-82] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@575e0f1f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:14:26.763 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-82] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:14:26.764 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-83] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:14:31.899 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-82] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:14:31.899 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-83] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@a93d3a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:14:31.899 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-82] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2a29cc92: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:14:31.899 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-82] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6ba3a3b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:14:31.900 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-84] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:14:31.902 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-83] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:14:31.903 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-83] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:14:36.974 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-83] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6692e68d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:14:36.974 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-83] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@12d7b65f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:14:36.974 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-84] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7754acf6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:14:36.976 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-84] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:14:58.295 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-85] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:15:00.990 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-84] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:15:03.447 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-84] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:15:03.448 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-84] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@d4aeaff: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:15:03.449 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-85] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:15:06.179 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-84] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4000cf2c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:15:06.179 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-85] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2703dcf4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:15:06.181 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-85] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:15:08.627 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-85] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@321bfcef: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:15:27.369 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-86] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:15:32.461 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-85] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:15:32.461 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-85] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@54127318: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:15:48.411 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-86] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:15:53.525 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-86] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:15:53.526 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-86] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@44260d55: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:16:09.460 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-86] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:16:14.339 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-87] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:16:14.523 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-86] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:16:14.527 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-86] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@601bda09: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:16:14.607 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-87] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:16:19.454 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-86] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1d9eeb26: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:16:19.516 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-87] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@457284b3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:16:35.673 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-87] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:16:40.787 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-87] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:16:40.787 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-87] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@44bd790e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:16:56.716 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-88] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:17:01.797 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-87] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:17:01.797 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-87] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3ad7e0de: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:17:17.765 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-88] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:17:22.844 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-88] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:17:22.844 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-88] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6cde3fb9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:17:38.817 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-88] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:17:43.903 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-88] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:17:43.903 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-88] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4d9ff707: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:17:59.873 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-89] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:18:04.963 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-88] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:18:04.963 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-88] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@44845fa4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:18:20.918 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-89] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:18:26.008 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-89] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:18:26.008 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-89] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@12c96e4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:18:41.952 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-89] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:18:46.956 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-89] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:18:46.956 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-89] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7da23f1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:19:03.009 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-90] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:19:08.102 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-89] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:19:08.102 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-89] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@38c1bd0f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:19:24.047 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-90] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:19:29.156 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-90] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:19:29.156 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-90] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5c682309: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:19:45.087 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-90] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:19:50.188 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-90] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:19:50.188 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-90] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@27c22b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:20:06.158 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-91] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:20:11.234 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-90] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:20:11.234 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-90] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5374f76f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:20:27.197 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-91] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:20:32.273 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-91] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:20:32.273 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-91] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2d58be4d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:20:48.240 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-91] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:20:53.349 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-91] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:20:53.349 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-91] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@ac6c52f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:21:09.282 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-92] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:21:14.372 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-91] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:21:14.373 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-91] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@a680984: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:21:30.315 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-92] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:21:35.423 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-92] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:21:35.423 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-92] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6a51b76d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:21:51.349 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-92] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:21:56.438 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-92] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:21:56.438 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-92] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4a21eb2d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:22:12.397 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-93] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:22:17.495 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-92] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:22:17.495 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-92] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@205b284: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:22:33.444 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-93] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:22:38.531 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-93] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:22:38.531 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-93] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@35e9d1ba: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:22:54.464 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-93] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:22:59.598 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-93] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:22:59.599 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-93] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@c1f9122: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:23:15.510 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-94] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:23:20.591 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-93] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:23:20.592 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-93] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1b7289e1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:23:36.566 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-94] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:23:41.655 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-94] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:23:41.655 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-94] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5b39cefc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:23:57.592 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-94] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:24:02.692 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-94] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:24:02.692 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-94] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@287e8b11: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:24:18.632 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-95] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:24:23.734 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-94] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:24:23.734 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-94] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7abe6da7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:24:39.673 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-95] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:24:44.768 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-95] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:24:44.768 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-95] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@580656b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:25:00.702 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-95] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:25:05.820 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-95] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:25:05.820 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-95] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@662f03fc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:25:21.742 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-96] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:25:26.837 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-95] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:25:26.837 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-95] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@202dcc56: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:25:42.777 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-96] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:25:47.868 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-96] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:25:47.868 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-96] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@119ddf77: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:26:03.830 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-96] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:26:08.916 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-96] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:26:08.916 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-96] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@34f4ca88: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:26:24.883 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-97] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:26:29.977 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-96] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:26:29.977 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-96] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@566b4ea: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:26:45.938 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-97] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:26:51.049 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-97] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:26:51.049 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-97] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@244967f1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:27:06.978 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-97] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:27:12.089 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-97] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:27:12.089 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-97] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@62e71de6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:27:28.021 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-98] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:27:33.114 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-97] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:27:33.114 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-97] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1544c8e2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:27:49.060 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-98] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:27:54.155 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-98] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:27:54.155 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-98] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@99a718f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:28:10.089 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-98] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:28:15.173 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-98] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:28:15.173 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-98] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1401f1e1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:28:31.141 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-99] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:28:36.333 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-98] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:28:36.334 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-98] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6ca27b1c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:28:52.247 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-99] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:28:57.337 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-99] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:28:57.337 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-99] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6b02d037: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:29:13.375 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-99] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:29:18.484 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-99] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:29:18.485 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-99] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@37eaefbb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:29:34.428 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-100] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:29:39.526 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-99] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:29:39.527 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-99] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3af668af: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:29:55.444 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-100] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:30:00.533 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-100] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:30:00.533 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-100] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6854e7b4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:30:16.489 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-100] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:30:21.553 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-100] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:30:21.553 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-100] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6986a803: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:30:37.534 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-101] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:30:42.634 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-100] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:30:42.634 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-100] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@795f02cb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:30:58.570 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-101] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:31:03.688 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-101] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:31:03.688 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-101] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3ea4f9eb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:31:19.612 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-101] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:31:24.682 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-101] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:31:24.682 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-101] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@423accb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:31:40.647 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-102] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:31:45.743 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-101] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:31:45.743 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-101] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@54717fd7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:32:01.684 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-102] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:32:06.794 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-102] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:32:06.794 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-102] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6092290: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:32:22.735 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-102] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:32:27.841 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-102] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:32:27.841 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-102] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@48607688: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:32:43.781 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-103] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:32:48.879 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-102] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:32:48.879 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-102] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1dd4af2a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:33:04.824 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-103] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:33:09.956 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-103] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:33:09.956 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-103] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5338b2c1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:33:25.881 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-103] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:33:30.955 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-103] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:33:30.955 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-103] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6eb937ee: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:33:46.936 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-104] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:33:52.032 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-103] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:33:52.032 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-103] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@271b852: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:34:07.972 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-104] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:34:13.048 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-104] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:34:13.048 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-104] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@46d0d9ee: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:34:29.028 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-104] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:34:34.123 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-104] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:34:34.123 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-104] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5c1a9b27: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:34:50.069 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-105] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:34:55.162 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-104] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:34:55.162 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-104] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@30d490b2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:35:11.112 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-105] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:35:16.209 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-105] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:35:16.209 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-105] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1f9c09e4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:35:32.148 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-105] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:35:37.253 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-105] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:35:37.253 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-105] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2e9df3c0: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:35:53.184 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-106] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:35:58.287 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-105] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:35:58.287 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-105] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@77315127: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:36:14.231 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-106] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:36:19.385 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-106] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:36:19.385 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-106] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4e56eda4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:36:35.239 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-106] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:36:40.317 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-106] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:36:40.317 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-106] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@68932f56: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:36:56.264 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-107] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:37:01.361 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-106] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:37:01.361 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-106] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@78b4b3b6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:37:17.291 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-107] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:37:22.403 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-107] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:37:22.403 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-107] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3ac52cf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:37:38.334 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-107] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:37:43.425 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-107] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:37:43.425 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-107] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7ee51828: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:37:59.370 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-108] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:38:04.473 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-107] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:38:04.473 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-107] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@327a1119: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:38:20.408 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-108] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:38:25.504 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-108] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:38:25.504 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-108] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@573181a1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:38:41.442 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-108] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:38:46.532 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-108] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:38:46.532 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-108] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5c63c8eb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:39:02.473 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-109] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:39:07.566 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-108] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:39:07.566 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-108] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5f23cf35: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:39:23.510 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-109] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:39:28.602 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-109] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:39:28.602 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-109] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@68d24c8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:39:44.561 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-109] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:39:49.652 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-109] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:39:49.652 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-109] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@206ac053: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:40:05.607 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-110] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:40:10.692 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-109] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:40:10.692 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-109] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@133dee6f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:40:26.641 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-110] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:40:31.725 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-110] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:40:31.725 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-110] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7b86d1ee: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:40:47.679 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-110] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:40:52.764 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-110] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:40:52.764 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-110] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@288c5669: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:41:08.719 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-111] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:41:13.815 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-110] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:41:13.815 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-110] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@64d2f574: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:41:29.749 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-111] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:41:34.847 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-111] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:41:34.847 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-111] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@58b66a01: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:41:50.783 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-111] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:41:55.867 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-111] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:41:55.868 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-111] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@56513478: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:42:07.698 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 4]
+
+2024-03-08 11:42:11.822 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-112] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:42:16.900 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-111] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:42:16.900 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-111] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@61fc8dfa: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:42:32.864 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-112] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:42:37.959 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-112] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:42:37.959 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-112] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@62b1917: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:42:53.929 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-112] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:42:59.019 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-112] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:42:59.019 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-112] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@619011ed: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:43:14.975 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-113] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:43:20.092 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-112] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:43:20.092 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-112] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@469fcbb0: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:43:36.018 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-113] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:43:41.108 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-113] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:43:41.108 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-113] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@f6965fb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:43:57.044 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-113] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:44:02.131 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-113] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:44:02.131 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-113] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@578d7371: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:44:18.074 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-114] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:44:23.164 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-113] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:44:23.164 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-113] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7fd84983: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:44:39.105 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-114] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:44:44.188 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-114] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:44:44.188 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-114] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@f0fe157: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:45:00.147 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-114] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:45:05.235 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-114] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:45:05.235 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-114] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6b08f6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:45:21.184 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-115] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:45:26.277 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-114] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:45:26.277 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-114] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@351038a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:45:42.212 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-115] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:45:47.296 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-115] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:45:47.296 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-115] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@118e652: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:46:03.263 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-115] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:46:08.351 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-115] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:46:08.351 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-115] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@8e4353: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:46:24.305 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-116] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:46:29.385 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-115] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:46:29.385 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-115] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3863bc5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:46:45.360 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-116] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:46:50.441 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-116] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:46:50.441 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-116] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@743508fc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:47:06.394 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-116] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:47:11.474 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-116] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:47:11.474 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-116] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7ba540a6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:47:27.426 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-117] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:47:32.509 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-116] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:47:32.509 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-116] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6b1f0b90: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:47:48.477 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-117] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:47:53.556 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-117] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:47:53.557 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-117] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@57b20479: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:48:09.523 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-117] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:48:14.619 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-117] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:48:14.619 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-117] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@677d8ca4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:48:30.539 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-118] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:48:35.629 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-117] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:48:35.629 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-117] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4f507b1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:48:51.577 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-118] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:48:56.679 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-118] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:48:56.680 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-118] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1e572b7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:49:12.622 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-118] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:49:17.708 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-118] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:49:17.708 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-118] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1ca5e593: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:49:33.674 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-119] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:49:38.776 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-118] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:49:38.776 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-118] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3cb47e3d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:49:54.728 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-119] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:49:59.814 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-119] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:49:59.814 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-119] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3db78dc2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:50:15.789 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-119] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:50:20.888 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-119] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:50:20.888 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-119] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@440cd2a5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:50:36.841 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-120] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:50:41.927 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-119] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:50:41.927 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-119] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2233a26e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:50:57.871 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-120] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:51:02.969 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-120] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:51:02.969 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-120] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@207df94d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:51:18.913 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-120] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:51:24.022 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-120] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:51:24.022 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-120] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5776f1b5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:51:39.946 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-121] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:51:45.044 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-120] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:51:45.044 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-120] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@8d4cfe8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:52:00.988 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-121] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:52:06.083 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-121] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:52:06.083 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-121] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4b40fca: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:52:22.025 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-121] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:52:27.111 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-121] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:52:27.111 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-121] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4a383e31: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:52:43.076 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-122] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:52:48.167 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-121] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:52:48.167 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-121] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@13598d70: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:53:04.133 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-122] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:53:09.228 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-122] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:53:09.228 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-122] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@9fd4c71: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:53:25.168 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-122] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:53:30.267 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-122] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:53:30.267 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-122] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@27175e26: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:53:46.212 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-123] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:53:51.297 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-122] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:53:51.297 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-122] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6d4ea219: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:54:07.264 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-123] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:54:12.356 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-123] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:54:12.356 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-123] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@366b6056: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:54:28.288 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-123] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:54:33.376 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-123] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:54:33.376 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-123] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@15279e6e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:54:49.338 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-124] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:54:54.427 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-123] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:54:54.427 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-123] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@16ff8a1b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:55:10.386 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-124] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:55:15.474 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-124] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:55:15.474 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-124] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3717656b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:55:31.442 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-124] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:55:36.531 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-124] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:55:36.531 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-124] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4dd66ac6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:55:52.470 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-125] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:55:57.559 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-124] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:55:57.560 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-124] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@67ba7bd7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:56:13.507 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-125] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:56:18.588 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-125] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:56:18.588 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-125] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2dc4067: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:56:34.559 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-125] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:56:39.643 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-125] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:56:39.643 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-125] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1f213591: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:56:55.613 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-126] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:57:00.710 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-125] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:57:00.710 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-125] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2e65e806: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:57:16.685 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-126] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:57:21.805 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-126] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:57:21.805 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-126] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@243c848f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:57:37.722 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-126] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:57:42.815 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-126] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:57:42.816 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-126] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@52db96b2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:57:58.769 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-127] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:58:03.900 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-126] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:58:03.900 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-126] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5866a701: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:58:19.799 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-127] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:58:24.888 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-127] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:58:24.889 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-127] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2d7d7241: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:58:40.836 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-127] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:58:45.930 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-127] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:58:45.930 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-127] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1862fb90: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:59:01.875 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-128] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:59:06.969 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-127] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:59:06.969 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-127] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7a1b1279: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:59:22.911 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-128] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:59:28.030 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-128] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:59:28.030 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-128] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@691bd3f7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 11:59:43.985 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-128] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 11:59:49.140 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-128] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 11:59:49.142 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-128] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6b10f6b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:00:05.020 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-129] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:00:10.109 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-128] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:00:10.109 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-128] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@56fd73bf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:00:26.065 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-129] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:00:31.166 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-129] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:00:31.166 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-129] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@81a56c4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:00:47.105 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-129] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:00:52.191 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-129] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:00:52.192 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-129] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@11f573e1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:01:08.142 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-130] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:01:13.211 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-129] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:01:13.211 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-129] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@55578d73: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:01:29.168 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-130] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:01:34.361 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-130] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:01:34.361 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-130] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@53c00cb1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:01:50.214 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-130] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:01:55.333 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-130] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:01:55.334 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-130] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3e007395: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:02:11.252 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-131] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:02:16.371 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-130] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:02:16.371 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-130] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6e3b21a6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:02:32.305 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-131] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:02:37.436 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-131] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:02:37.436 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-131] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@161e4ac4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:02:53.365 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-131] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:02:58.438 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-131] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:02:58.438 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-131] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@15f6600f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:03:14.411 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-132] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:03:19.496 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-131] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:03:19.496 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-131] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4005b00: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:03:35.455 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-132] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:03:40.540 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-132] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:03:40.540 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-132] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@159a6465: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:03:56.475 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-132] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:04:01.570 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-132] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:04:01.570 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-132] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@624a26e8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:04:17.521 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-133] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:04:22.615 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-132] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:04:22.615 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-132] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@377653e6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:04:38.569 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-133] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:04:43.660 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-133] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:04:43.660 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-133] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@fc7eab: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:04:59.599 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-133] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:05:04.683 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-133] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:05:04.683 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-133] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@19b1e7c7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:05:20.640 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-134] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:05:25.739 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-133] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:05:25.739 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-133] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7f96b6fe: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:05:41.675 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-134] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:05:46.780 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-134] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:05:46.780 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-134] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3318c2c0: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:06:02.725 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-134] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:06:07.818 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-134] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:06:07.819 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-134] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@229a8dcc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:06:23.766 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-135] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:06:28.863 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-134] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:06:28.863 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-134] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4e9a4421: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:06:44.829 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-135] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:06:49.930 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-135] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:06:49.930 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-135] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@37def35f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:07:05.871 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-135] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:07:10.978 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-135] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:07:10.978 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-135] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6c56fe39: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:07:26.915 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-136] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:07:32.011 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-135] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:07:32.011 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-135] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@57642f22: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:07:47.938 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-136] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:07:53.024 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-136] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:07:53.025 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-136] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1b3742d3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:08:08.963 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-136] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:08:14.048 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-136] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:08:14.048 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-136] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@47389d1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:08:30.019 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-137] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:08:35.102 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-136] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:08:35.102 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-136] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@50cf97a5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:08:51.068 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-137] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:08:56.160 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-137] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:08:56.160 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-137] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1ed15b3d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:09:12.109 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-137] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:09:17.230 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-137] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:09:17.231 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-137] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@21a07228: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:09:33.158 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-138] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:09:38.275 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-137] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:09:38.276 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-137] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@38442b91: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:09:54.212 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-138] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:09:59.290 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-138] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:09:59.290 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-138] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@372e6e25: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:10:15.260 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-138] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:10:20.344 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-138] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:10:20.344 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-138] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@32c7a8e2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:10:36.303 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-139] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:10:41.394 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-138] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:10:41.394 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-138] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@19a9125a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:10:57.339 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-139] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:11:02.437 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-139] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:11:02.437 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-139] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@ac384ed: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:11:18.379 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-139] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:11:23.473 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-139] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:11:23.473 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-139] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6b5e391f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:11:39.407 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-140] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:11:44.480 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-139] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:11:44.480 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-139] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@74a650dd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:12:00.432 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-140] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:12:05.528 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-140] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:12:05.528 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-140] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@62bbd684: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:12:07.706 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 5]
+
+2024-03-08 12:12:21.464 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-140] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:12:26.565 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-140] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:12:26.565 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-140] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@14a4d676: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:12:42.489 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-141] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:12:47.556 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-140] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:12:47.556 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-140] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2f25b160: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:13:03.517 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-141] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:13:08.600 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-141] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:13:08.600 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-141] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@63d25a1d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:13:24.562 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-141] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:13:29.637 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-141] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:13:29.637 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-141] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@51a4c449: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:13:45.619 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-142] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:13:50.711 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-141] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:13:50.711 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-141] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@19f8ee34: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:14:06.649 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-142] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:14:11.725 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-142] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:14:11.725 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-142] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@47de3322: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:14:27.702 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-142] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:14:32.739 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-142] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:14:32.740 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-142] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@74c00f53: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:14:48.758 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-143] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:14:53.866 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-142] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:14:53.866 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-142] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@42a19f38: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:15:09.788 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-143] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:15:14.872 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-143] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:15:14.872 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-143] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1cd7a5a7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:15:30.844 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-143] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:15:35.939 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-143] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:15:35.939 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-143] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2fe150b5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:15:51.887 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-144] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:15:56.971 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-143] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:15:56.971 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-143] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6ef58f20: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:16:12.950 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-144] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:16:18.030 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-144] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:16:18.030 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-144] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@27d4052e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:16:33.992 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-144] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:16:39.079 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-144] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:16:39.080 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-144] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@60c8100: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:16:55.030 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-145] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:17:00.131 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-144] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:17:00.132 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-144] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@19e3c34c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:17:16.077 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-145] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:17:21.156 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-145] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:17:21.156 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-145] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1b827c43: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:17:37.119 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-145] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:17:42.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-145] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:17:42.230 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-145] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@358250bf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:17:58.150 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-146] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:18:03.235 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-145] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:18:03.235 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-145] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4d95fa75: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:18:19.177 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-146] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:18:24.251 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-146] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:18:24.251 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-146] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@540b5e16: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:18:40.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-146] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:18:45.319 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-146] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:18:45.320 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-146] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@67493d17: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:19:01.255 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-147] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:19:06.336 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-146] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:19:06.337 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-146] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2a8a6fb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:19:22.299 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-147] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:19:27.391 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-147] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:19:27.392 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-147] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@11e699f3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:19:43.345 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-147] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:19:48.421 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-147] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:19:48.421 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-147] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5c58ec72: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:20:04.387 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-148] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:20:09.481 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-147] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:20:09.481 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-147] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@235f6fb6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:20:25.423 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-148] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:20:30.510 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-148] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:20:30.510 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-148] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@57663c79: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:20:46.482 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-148] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:20:51.659 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-148] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-08 12:20:51.659 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-148] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@39752922: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-08 12:21:07.528 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-149] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-08 12:21:08.702 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+
+2024-03-08 12:21:08.705 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@732ffb6a]]
+
+2024-03-08 12:21:08.706 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+
+2024-03-08 12:21:08.731 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-149] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-08 12:21:08.731 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-149] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-08 12:21:08.731 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-150] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-08 12:21:08.731 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-150] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-08 12:21:08.731 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-150] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-08 12:21:08.732 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-150] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
