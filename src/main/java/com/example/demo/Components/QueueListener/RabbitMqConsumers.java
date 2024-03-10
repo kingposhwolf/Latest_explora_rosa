@@ -14,8 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.Dto.ProfileVisitDto;
 import com.example.demo.Dto.CommentDto;
 import com.example.demo.Dto.CommentReplyDto;
+import com.example.demo.Dto.FavoritesDto;
 import com.example.demo.Dto.LikeDto;
 import com.example.demo.Models.Comment;
+import com.example.demo.Models.Favorites;
 import com.example.demo.Models.HashTag;
 import com.example.demo.Models.Like;
 import com.example.demo.Models.Profile;
@@ -23,6 +25,7 @@ import com.example.demo.Models.TopicEngagement;
 import com.example.demo.Models.UserEngagement;
 import com.example.demo.Models.UserPost;
 import com.example.demo.Repositories.CommentRepository;
+import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.LikeRepository;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.TopicEngagementRepository;
@@ -49,6 +52,8 @@ public class RabbitMqConsumers {
     private final UserEngagementRepository userEngagementRepository;
 
     private final CommentRepository commentRepository;
+
+    private final FavoritesRepository favoritesRepository;
 
     @SuppressWarnings("null")
     @Transactional
@@ -251,6 +256,59 @@ public class RabbitMqConsumers {
 
             logger.info("Profile visit Operation tracked successful");
             
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "saveFavorites")
+    public void saveFavorites(String message) {
+        try {
+            FavoritesDto favoritesDto = FavoritesDto.fromJson(message);
+    
+            Optional<Profile> profile = profileRepository.findById(favoritesDto.getProfileId());
+            Optional<UserPost> post = userPostRespository.findById(favoritesDto.getPostId());
+
+            if(!profile.isEmpty()){
+                logger.error("During Saving Favorites User profile not found for profile ID: ", favoritesDto.getProfileId());
+            }else if(post.isEmpty()){
+                logger.error("During Saving Favorites User post not found for post ID: ", favoritesDto.getPostId());
+            }else{
+                Favorites favorites = new Favorites();
+                favorites.setPost(post.get());
+                favorites.setProfile(profile.get());
+
+                Favorites savedFavorites = favoritesRepository.save(favorites);
+
+                logger.info("Favorites Operation Performed successful, with information : ", savedFavorites);
+            }
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "trackFavorites")
+    public void trackFavorites(String message) {
+        try {
+            FavoritesDto favoritesDto = FavoritesDto.fromJson(message);
+    
+            Optional<Profile> profile = profileRepository.findById(favoritesDto.getProfileId());
+            Optional<UserPost> post = userPostRespository.findById(favoritesDto.getPostId());
+    
+            if (!profile.isPresent()) {
+                logger.error("During Tacking Favorites Action, User profile not found for profile ID: ", favoritesDto.getProfileId());
+            } else if (!post.isPresent()) {
+                logger.error("During Tacking Favorites Action, User post not found for post ID: ", favoritesDto.getPostId());
+            } else {
+                processTopicEngagement(profile.get(), post.get().getHashTags(),4);
+                processUserEngagement(profile.get(), post.get().getProfile(),4);
+
+                logger.info("Favorites Operation tracked successful");
+            }
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
         }
