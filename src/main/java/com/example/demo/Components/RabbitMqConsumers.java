@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Dto.CommentDto;
+import com.example.demo.Dto.CommentReplyDto;
 import com.example.demo.Dto.LikeDto;
 import com.example.demo.Models.Comment;
 import com.example.demo.Models.HashTag;
@@ -105,6 +106,7 @@ public class RabbitMqConsumers {
     
 
     @SuppressWarnings("null")
+    @Transactional
     @RabbitListener(queues = "saveComment")
     public void commentSave(String message) {
         try {
@@ -122,8 +124,17 @@ public class RabbitMqConsumers {
                 comment.setCommenter(profile.get());
                 comment.setTimestamp(LocalDateTime.now());
 
+                int newComments = userPost.get().getComments() + 1;
+
+                userPost.get().setComments(newComments);
+                userPostRespository.save(userPost.get());
+
                 // Save the comment to the database
                 Comment savedComment = commentRepository.save(comment);
+
+                messagingTemplate.convertAndSend("/topic/commentCount" + userPost.get().getId(),newComments);
+                messagingTemplate.convertAndSend("/topic/comment" + userPost.get().getId(),savedComment);
+
                 logger.info("Comment Operation Performed successful, with information : ", savedComment);
             }
         } catch (Exception exception) {
@@ -132,6 +143,7 @@ public class RabbitMqConsumers {
     }
 
     @SuppressWarnings("null")
+    @Transactional
     @RabbitListener(queues = "trackComment")
     public void commentTracking(String message) {
         try {
@@ -144,6 +156,71 @@ public class RabbitMqConsumers {
                 logger.error("User profile not found for profile ID: ", commentDto.getProfileId());
             } else if (!userPost.isPresent()) {
                 logger.error("User post not found for post ID: ", commentDto.getPostId());
+            } else {
+                processTopicEngagement(profile.get(), userPost.get().getHashTags(),2);
+                processUserEngagement(profile.get(), userPost.get(),2);
+            }
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "commentReply")
+    public void commentReplySave(String message) {
+        try {
+            CommentReplyDto commentReplyDto = CommentReplyDto.fromJson(message);
+            Optional<Profile> profile = profileRepository.findById(commentReplyDto.getProfileId());
+            Optional<UserPost> userPost = userPostRespository.findById(commentReplyDto.getPostId());
+            Optional<Comment> parentComment = commentRepository.findById(commentReplyDto.getParentId());
+
+            if(!profile.isPresent()){
+                logger.error("User profile not found for profile ID: ", commentReplyDto.getProfileId());
+            }else if(!userPost.isPresent()){
+                logger.error("User post not found for post ID: ", commentReplyDto.getPostId());
+            }else if(!parentComment.isPresent()){
+                logger.error("Parent Comment not found for ID: ", commentReplyDto.getParentId());
+            }else{
+                Comment comment = new Comment();
+                comment.setMessage(commentReplyDto.getMessage());
+                comment.setCommenter(profile.get());
+                comment.setTimestamp(LocalDateTime.now());
+                comment.setParentComment(parentComment.get());
+                parentComment.get().getReplies().add(comment);
+
+                int newComments = userPost.get().getComments() + 1;
+
+                userPost.get().setComments(newComments);
+                userPostRespository.save(userPost.get());
+
+                // Save the comment to the database
+                Comment savedComment = commentRepository.save(parentComment.get());
+
+                messagingTemplate.convertAndSend("/topic/commentCount" + userPost.get().getId(),newComments);
+                messagingTemplate.convertAndSend("/topic/comment" + userPost.get().getId(),savedComment);
+
+                logger.info("Comment Reply Operation Performed successful, with information : ", savedComment);
+            }
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "trackCommentReply")
+    public void commentReplyTracking(String message) {
+        try {
+            CommentReplyDto commentReplyDto = CommentReplyDto.fromJson(message);
+    
+            Optional<Profile> profile = profileRepository.findById(commentReplyDto.getProfileId());
+            Optional<UserPost> userPost = userPostRespository.findById(commentReplyDto.getPostId());
+    
+            if (!profile.isPresent()) {
+                logger.error("User profile not found for profile ID: ", commentReplyDto.getProfileId());
+            } else if (!userPost.isPresent()) {
+                logger.error("User post not found for post ID: ", commentReplyDto.getPostId());
             } else {
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),2);
                 processUserEngagement(profile.get(), userPost.get(),2);

@@ -1,6 +1,7 @@
 package com.example.demo.Services.CommentService;
 
 import com.example.demo.Dto.CommentDto;
+import com.example.demo.Dto.CommentReplyDto;
 import com.example.demo.Models.Comment;
 import com.example.demo.Models.UserPost;
 import com.example.demo.Repositories.CommentRepository;
@@ -15,6 +16,7 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,11 +32,15 @@ public class CommentServiceImpl implements CommentService{
 
     private final UserPostRepository userPostRepository;
 
+    private SimpMessagingTemplate messagingTemplate;
+
     @Autowired
     private AmqpTemplate rabbitTemplate;
 
     private static final String EXCHANGE_NAME = "Comment";
     private static final String ROUTING_KEY = "commentOperation";
+    private static final String REPLY_EXCHANGE_NAME = "CommentReply";
+    private static final String REPLY_ROUTING_KEY = "commentReplyOperation";
 
     @Transactional
     @Override
@@ -46,6 +52,20 @@ public class CommentServiceImpl implements CommentService{
             return ResponseEntity.status(HttpStatus.CREATED).body("Comment created successfully!");
         } catch (Exception e) {
             logger.error("Failed to add comment to queue server Error : ", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
+        }
+    }
+
+    @Transactional
+    @Override
+    public ResponseEntity<Object> replyComment(CommentReplyDto commentReplyDto) {
+        try {
+            rabbitTemplate.convertAndSend(REPLY_EXCHANGE_NAME, REPLY_ROUTING_KEY, commentReplyDto.toJson());
+            
+            logger.info("Comment Reply added to queue successfully: ", commentReplyDto);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Comment Reply created successfully!");
+        } catch (Exception e) {
+            logger.error("Failed to add comment reply to queue server Error : ", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
@@ -70,6 +90,7 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @SuppressWarnings("null")
+    @Transactional
     @Override
     public ResponseEntity<Object> deleteComment(@NotNull Long commentId) {
         try {
@@ -77,6 +98,14 @@ public class CommentServiceImpl implements CommentService{
             if (commentOptional.isPresent()) {
 
                 commentRepository.deleteById(commentId);
+                UserPost post = commentOptional.get().getUserPost();
+                int newComments = post.getComments() - 1;
+
+                post.setComments(newComments);
+                userPostRepository.save(post);
+
+                messagingTemplate.convertAndSend("/topic/commentCount" + post.getId(),newComments);
+
                 logger.info("Comment deleted successfully");
                 return ResponseEntity.status(HttpStatus.OK).body("Comment deleted successfully");
             } else {
