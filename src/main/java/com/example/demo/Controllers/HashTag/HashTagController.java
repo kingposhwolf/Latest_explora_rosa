@@ -1,28 +1,23 @@
 package com.example.demo.Controllers.HashTag;
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Controllers.GlobalValidationFormatter.GlobalValidationFormatter;
+import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.Dto.HashTagDto;
 import com.example.demo.Services.HashTagService.HashTagServiceImpl;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hashTags")
+@RequiredArgsConstructor
 public class HashTagController {
-    @Autowired
+
     private GlobalValidationFormatter globalValidationFormatter;
 
     private final HashTagServiceImpl hashTagServiceImpl;
 
-    public HashTagController(HashTagServiceImpl hashTagServiceImpl) {
-        this.hashTagServiceImpl = hashTagServiceImpl;
-    }
 
     @PostMapping("/all")
     public ResponseEntity<Object> getAllHashTags() {

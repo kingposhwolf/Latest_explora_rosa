@@ -1,14 +1,11 @@
 package com.example.demo.Controllers.Comment;
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Controllers.GlobalValidationFormatter.GlobalValidationFormatter;
+import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.Dto.CommentDto;
 import com.example.demo.Dto.CommentReplyDto;
 import com.example.demo.Services.CommentService.CommentServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -19,13 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/comments")
+@RequiredArgsConstructor
 public class CommentController {
     private final CommentServiceImpl commentService;
 
-
-    public CommentController(CommentServiceImpl commentService) {
-        this.commentService = commentService;
-    }
 
     private GlobalValidationFormatter globalValidationFormatter;
 

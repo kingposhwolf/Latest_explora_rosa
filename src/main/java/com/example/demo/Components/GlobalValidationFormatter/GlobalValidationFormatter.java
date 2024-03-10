@@ -1,14 +1,14 @@
-package com.example.demo.Controllers.GlobalValidationFormatter;
+package com.example.demo.Components.GlobalValidationFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-@Service
+@Component
 public class GlobalValidationFormatter {
     public ResponseEntity<Object> validationFormatter(BindingResult bindingResult){
         List<String> errors = new ArrayList<>();

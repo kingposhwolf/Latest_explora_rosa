@@ -4,13 +4,13 @@ package com.example.demo.Controllers.AccountType;
  *
  */
 
-import com.example.demo.Controllers.GlobalValidationFormatter.GlobalValidationFormatter;
+import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.Dto.AccountTypeDto;
 import com.example.demo.Services.AccountTypeService.AccountTypeServiceImpl;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,16 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/accountType")
+@RequiredArgsConstructor
 public class AccountTypeController {
 
-    @Autowired
     private GlobalValidationFormatter globalValidationFormatter;
 
     private final AccountTypeServiceImpl accountTypeServiceImpl;
-
-    public AccountTypeController(AccountTypeServiceImpl accountTypeServiceImpl) {
-        this.accountTypeServiceImpl = accountTypeServiceImpl;
-    }
 
     @PostMapping("/all")
     public ResponseEntity<Object> getAllAccountTypes() {

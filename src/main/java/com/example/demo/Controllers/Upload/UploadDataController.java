@@ -5,6 +5,9 @@ package com.example.demo.Controllers.Upload;
  */
 import com.example.demo.Models.UploadData;
 import com.example.demo.Services.UploadService.UploadDataServiceImpl;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +18,11 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/uploads")
+@RequiredArgsConstructor
 public class UploadDataController {
 
     private final UploadDataServiceImpl uploadDataServiceImpl;
 
-    public UploadDataController(UploadDataServiceImpl uploadDataServiceImpl){
-        this.uploadDataServiceImpl = uploadDataServiceImpl;
-    }
 
     @PostMapping("/fileSystem/image")
     public ResponseEntity<Object> uploadDataToFIleSystem(@RequestParam("upload") MultipartFile file, @RequestParam("brandId") Long brandId) {
