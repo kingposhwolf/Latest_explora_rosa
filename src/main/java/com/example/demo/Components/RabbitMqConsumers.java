@@ -11,6 +11,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.Dto.ProfileVisitDto;
 import com.example.demo.Dto.CommentDto;
 import com.example.demo.Dto.CommentReplyDto;
 import com.example.demo.Dto.LikeDto;
@@ -78,6 +79,9 @@ public class RabbitMqConsumers {
 
                 messagingTemplate.convertAndSend("/topic/like" + userPost.get().getId(),newLikes);
 
+                processTopicEngagement(profile.get(), userPost.get().getHashTags(),-1);
+                processUserEngagement(profile.get(), userPost.get().getProfile(),-1);
+
                 logger.info("Like deleted successfully");
                 
             } else {
@@ -94,7 +98,7 @@ public class RabbitMqConsumers {
                 messagingTemplate.convertAndSend("/topic/like" + userPost.get().getId(),newLikes);
 
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),1);
-                processUserEngagement(profile.get(), userPost.get(),1);
+                processUserEngagement(profile.get(), userPost.get().getProfile(),1);
 
                 logger.info("Like Operationand Tracking Performed successful, with information : ", savedLike);
             }
@@ -158,7 +162,9 @@ public class RabbitMqConsumers {
                 logger.error("User post not found for post ID: ", commentDto.getPostId());
             } else {
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),2);
-                processUserEngagement(profile.get(), userPost.get(),2);
+                processUserEngagement(profile.get(), userPost.get().getProfile(),2);
+
+                logger.info("Comment Operation tracked successful");
             }
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
@@ -223,8 +229,28 @@ public class RabbitMqConsumers {
                 logger.error("User post not found for post ID: ", commentReplyDto.getPostId());
             } else {
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),2);
-                processUserEngagement(profile.get(), userPost.get(),2);
+                processUserEngagement(profile.get(), userPost.get().getProfile(),2);
+                logger.info("Comment Reply Operation tracked successful");
             }
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "trackProfileVisit")
+    public void trackProfileVisit(String message) {
+        try {
+            ProfileVisitDto brandVisitDto = ProfileVisitDto.fromJson(message);
+            Optional<Profile> owner = profileRepository.findById(brandVisitDto.getOwnerId());
+
+            Optional<Profile> visitor = profileRepository.findById(brandVisitDto.getVisitorId());
+
+            processUserEngagement(visitor.get(), owner.get(),5);
+
+            logger.info("Profile visit Operation tracked successful");
+            
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
         }
@@ -250,8 +276,8 @@ public class RabbitMqConsumers {
         });
     }
     
-    private void processUserEngagement(Profile profile, UserPost userPost, int score) {
-        Optional<UserEngagement> userEngagementOptional = userEngagementRepository.findByTargetAndTopic(profile, userPost.getProfile());
+    private void processUserEngagement(Profile target, Profile topic, int score) {
+        Optional<UserEngagement> userEngagementOptional = userEngagementRepository.findByTargetAndTopic(target, topic);
     
         userEngagementOptional.ifPresentOrElse(
                 userEngagement -> {
@@ -260,8 +286,8 @@ public class RabbitMqConsumers {
                 },
                 () -> {
                     UserEngagement newUserEngagement = new UserEngagement();
-                    newUserEngagement.setTarget(profile);
-                    newUserEngagement.setTopic(userPost.getProfile());
+                    newUserEngagement.setTarget(target);
+                    newUserEngagement.setTopic(topic);
                     newUserEngagement.setScore(score);
                     userEngagementRepository.save(newUserEngagement);
                 }

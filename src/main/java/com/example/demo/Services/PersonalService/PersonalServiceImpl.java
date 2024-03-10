@@ -1,4 +1,4 @@
-package com.example.demo.Services.BrandService;
+package com.example.demo.Services.PersonalService;
 
 import java.util.Optional;
 
@@ -9,42 +9,40 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Dto.ProfileVisitDto;
-import com.example.demo.Models.Brand;
-import com.example.demo.Repositories.BrandRepository;
+import com.example.demo.Models.Personal;
+import com.example.demo.Repositories.PersonalRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class BrandServiceImpl implements BrandService{
+public class PersonalServiceImpl implements PersonalService{
+    private static final Logger logger = LoggerFactory.getLogger(PersonalServiceImpl.class);
+    private final PersonalRepository personalRepository;
 
-    private static final Logger logger = LoggerFactory.getLogger(BrandServiceImpl.class);
-
-    private final BrandRepository brandRepository;
-
-    private AmqpTemplate rabbitTemplate;
+   private AmqpTemplate rabbitTemplate;
 
     private static final String EXCHANGE_NAME = "ProfileVisit";
     private static final String ROUTING_KEY = "profileVisitOperation";
 
+
     @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> getBrandById(ProfileVisitDto brandVisitDto) {
-
+    public ResponseEntity<Object> getProfileById(ProfileVisitDto profileVisitDto) {
         try {
-            Optional<Brand> owner = brandRepository.findById(brandVisitDto.getOwnerId());
+            Optional<Personal> owner = personalRepository.findById(profileVisitDto.getOwnerId());
 
-            Optional<Brand> visitor = brandRepository.findById(brandVisitDto.getVisitorId());
+            Optional<Personal> visitor = personalRepository.findById(profileVisitDto.getVisitorId());
 
             if (!owner.isPresent()) {
-                logger.error("Failed to Fetch Brand Info, Invalid brand Id");
+                logger.error("Failed to Fetch Profile Info, Invalid Profile Id");
                 return ResponseEntity.badRequest().body("Invalid profile ID");
             }else if(!visitor.isPresent()){
                 logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }
              else{
-                rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, brandVisitDto.toJson());
+                rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, profileVisitDto.toJson());
                 logger.info("\nProfile Info Fetched Successful: " + owner);
                 return ResponseEntity.status(200).body(owner.get());
             }
@@ -53,5 +51,4 @@ public class BrandServiceImpl implements BrandService{
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
-    
 }

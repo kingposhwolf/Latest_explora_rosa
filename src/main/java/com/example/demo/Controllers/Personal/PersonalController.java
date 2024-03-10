@@ -1,4 +1,4 @@
-package com.example.demo.Controllers.Profile;
+package com.example.demo.Controllers.Personal;
 
 import com.example.demo.Controllers.GlobalValidationFormatter.GlobalValidationFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,28 +9,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Dto.GetProfileDto;
-import com.example.demo.Services.ProfileService.ProfileServiceImpl;
+import com.example.demo.Dto.ProfileVisitDto;
+import com.example.demo.Services.PersonalService.PersonalServiceImpl;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/profile")
-public class ProfileController {
+@RequestMapping("/personal")
+public class PersonalController {
     @Autowired
     private GlobalValidationFormatter globalValidationFormatter;
 
-    private final ProfileServiceImpl profileServiceImpl;
+    private final PersonalServiceImpl profileServiceImpl;
 
-    public ProfileController(ProfileServiceImpl profileServiceImpl){
+    public PersonalController(PersonalServiceImpl profileServiceImpl){
         this.profileServiceImpl = profileServiceImpl;
     }
 
-    @PostMapping("/by-id")
-    public ResponseEntity<Object> profileById(@RequestBody @Valid GetProfileDto getProfileDto, BindingResult bindingResult) {
+    @PostMapping("/visit")
+    public ResponseEntity<Object> profileById(@RequestBody @Valid ProfileVisitDto profileVisitDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return profileServiceImpl.getProfileById(getProfileDto);
+        return profileServiceImpl.getProfileById(profileVisitDto);
     }
 }
