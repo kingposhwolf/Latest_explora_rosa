@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Dto.ProfileVisitDto;
+import com.example.demo.Dto.ShareDto;
+import com.example.demo.Dto.ViewDto;
 import com.example.demo.Dto.CommentDto;
 import com.example.demo.Dto.CommentReplyDto;
 import com.example.demo.Dto.FavoritesDto;
@@ -54,6 +56,7 @@ public class RabbitMqConsumers {
     private final CommentRepository commentRepository;
 
     private final FavoritesRepository favoritesRepository;
+    
 
     @SuppressWarnings("null")
     @Transactional
@@ -308,6 +311,56 @@ public class RabbitMqConsumers {
                 processUserEngagement(profile.get(), post.get().getProfile(),4);
 
                 logger.info("Favorites Operation tracked successful");
+            }
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "trackShare")
+    public void trackShares(String message) {
+        try {
+            ShareDto shareDto = ShareDto.fromJson(message);
+    
+            Optional<Profile> profile = profileRepository.findById(shareDto.getProfileId());
+            Optional<UserPost> post = userPostRespository.findById(shareDto.getPostId());
+    
+            if (!profile.isPresent()) {
+                logger.error("During Tacking Share Action, User profile not found for profile ID: ", shareDto.getProfileId());
+            } else if (!post.isPresent()) {
+                logger.error("During Tacking Share Action, User post not found for post ID: ", shareDto.getPostId());
+            } else {
+                processTopicEngagement(profile.get(), post.get().getHashTags(),3);
+                processUserEngagement(profile.get(), post.get().getProfile(),3);
+
+                logger.info("Share Operation tracked successful");
+            }
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "trackView")
+    public void trackViews(String message) {
+        try {
+            ViewDto viewDto = ViewDto.fromJson(message);
+    
+            Optional<Profile> profile = profileRepository.findById(viewDto.getProfileId());
+            Optional<UserPost> post = userPostRespository.findById(viewDto.getPostId());
+    
+            if (!profile.isPresent()) {
+                logger.error("During Tacking View Action, User profile not found for profile ID: ", viewDto.getProfileId());
+            } else if (!post.isPresent()) {
+                logger.error("During Tacking View Action, User post not found for post ID: ", viewDto.getPostId());
+            } else {
+                processTopicEngagement(profile.get(), post.get().getHashTags(),3);
+                processUserEngagement(profile.get(), post.get().getProfile(),3);
+
+                logger.info("View Operation tracked successful");
             }
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
