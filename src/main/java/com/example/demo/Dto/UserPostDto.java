@@ -3,6 +3,7 @@ package com.example.demo.Dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.example.demo.Models.HashTag;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,7 +25,7 @@ public class UserPostDto {
     private Long countryId;
 
     @NotNull
-    private List<Long> hashTagIds;
+    private List<HashTag> hashTagIds;
 
 
     private Long brandId;

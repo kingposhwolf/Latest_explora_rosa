@@ -5,6 +5,7 @@ package com.example.demo.Services.UploadService;
  */
 import com.example.demo.Models.Brand;
 import com.example.demo.Models.UploadData;
+import com.example.demo.Models.UserPost;
 import com.example.demo.Repositories.BrandRepository;
 import com.example.demo.Repositories.UploadDataRepository;
 import org.slf4j.Logger;
@@ -173,29 +174,36 @@ public class UploadDataServiceImpl implements UploadDataService {
         }
     }
 
-    @Override
-    public ResponseEntity<Object> checkPostContentType(Long postId) {
-        try {
-            // Simulated logic to determine post content type based on postId
-            String postContentType = getPostContentTypeFromRepository(postId);
-
-            // Log the post content type
-            logger.info("Post with ID {} is of type: {}", postId, postContentType);
-
-            // Return the response based on the content type
-            if ("video".equalsIgnoreCase(postContentType)) {
-                return ResponseEntity.ok("Video");
-            } else if ("image".equalsIgnoreCase(postContentType)) {
-                return ResponseEntity.ok("Image");
-            } else {
-                return ResponseEntity.ok("Unknown");
-            }
-        } catch (Exception e) {
-            logger.error("Failed to check post content type for post with ID {}: {}", postId, e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Failed to check post content type: " + e.getMessage());
-        }
-    }
-
+//    @Override
+//    public ResponseEntity<Object> checkPostContentType(Long postId) {
+//        try {
+//            // Fetch the post from the repository based on the postId
+//            Optional<UserPost> optionalUserPost = userPostRepository.findById(postId);
+//
+//            if (optionalUserPost.isPresent()) {
+//                UserPost userPost = optionalUserPost.get();
+//                String postType = userPost.getType();
+//
+//                if (postType.equalsIgnoreCase("video")) {
+//                    logger.info("Post with ID {} is a video.", postId);
+//                    return ResponseEntity.ok("Video");
+//                } else if (postType.equalsIgnoreCase("image")) {
+//                    logger.info("Post with ID {} is an image.", postId);
+//                    return ResponseEntity.ok("Image");
+//                } else {
+//                    logger.warn("Unknown post type for post with ID {}.", postId);
+//                    return ResponseEntity.ok("Unknown");
+//                }
+//            } else {
+//                logger.warn("Post with ID {} not found.", postId);
+//                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
+//            }
+//        } catch (Exception e) {
+//            logger.error("Failed to check post content type: {}", e.getMessage());
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body("Failed to check post content type: " + e.getMessage());
+//        }
+//    }
+//}
 }
 

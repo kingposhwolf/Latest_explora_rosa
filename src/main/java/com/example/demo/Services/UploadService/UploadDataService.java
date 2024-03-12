@@ -26,5 +26,5 @@ public interface UploadDataService {
 
     Iterable<UploadData> getAllUploadedData();
 
-    ResponseEntity<Object> checkPostContentType(Long postId);
+//    ResponseEntity<Object> checkPostContentType(Long postId);
 }
