@@ -4,10 +4,11 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Dto.GetBrandDto;
+import com.example.demo.Dto.ProfileVisitDto;
 import com.example.demo.Models.Brand;
 import com.example.demo.Repositories.BrandRepository;
 
@@ -21,19 +22,31 @@ public class BrandServiceImpl implements BrandService{
 
     private final BrandRepository brandRepository;
 
+    private AmqpTemplate rabbitTemplate;
+
+    private static final String EXCHANGE_NAME = "ProfileVisit";
+    private static final String ROUTING_KEY = "profileVisitOperation";
+
     @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> getBrandById(GetBrandDto getBrandDto) {
+    public ResponseEntity<Object> getBrandById(ProfileVisitDto brandVisitDto) {
 
         try {
-            Optional<Brand> brand = brandRepository.findById(getBrandDto.getId());
+            Optional<Brand> owner = brandRepository.findById(brandVisitDto.getOwnerId());
 
-            if (!brand.isPresent()) {
+            Optional<Brand> visitor = brandRepository.findById(brandVisitDto.getVisitorId());
+
+            if (!owner.isPresent()) {
                 logger.error("Failed to Fetch Brand Info, Invalid brand Id");
                 return ResponseEntity.badRequest().body("Invalid profile ID");
-            }else{
-                logger.info("\nProfile Info Fetched Successful: " + brand);
-                return ResponseEntity.status(200).body(brand);
+            }else if(!visitor.isPresent()){
+                logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
+                return ResponseEntity.badRequest().body("Your profile ID is Invalid");
+            }
+             else{
+                rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, brandVisitDto.toJson());
+                logger.info("\nProfile Info Fetched Successful: " + owner);
+                return ResponseEntity.status(200).body(owner.get());
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());

@@ -1,15 +1,12 @@
 package com.example.demo.Controllers.Comment;
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Controllers.GlobalValidationFormatter.GlobalValidationFormatter;
+import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.Dto.CommentDto;
+import com.example.demo.Dto.CommentReplyDto;
 import com.example.demo.Services.CommentService.CommentServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,23 +16,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/comments")
+@RequiredArgsConstructor
 public class CommentController {
     private final CommentServiceImpl commentService;
 
 
-    public CommentController(CommentServiceImpl commentService) {
-        this.commentService = commentService;
-    }
-
-    @Autowired
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/new")
-    public ResponseEntity<Object> writeMessage(@RequestBody @Valid CommentDto commentDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> newComment(@RequestBody @Valid CommentDto commentDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return commentService.saveComment(commentDto);
+    }
+
+    @PostMapping("/reply")
+    public ResponseEntity<Object> replyComment(@RequestBody @Valid CommentReplyDto commentReplyDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return commentService.replyComment(commentReplyDto);
     }
 
     @PostMapping("/post")

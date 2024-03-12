@@ -44,7 +44,7 @@ public class LikeServiceImpl implements LikeService{
             logger.info("Like saved successfully: ");
             return ResponseEntity.ok("Like successfully!");
         } catch (Exception e) {
-            logger.error("Failed to save comment: ", e.getMessage());
+            logger.error("Failed to like server Error : ", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
@@ -64,7 +64,7 @@ public class LikeServiceImpl implements LikeService{
                 return ResponseEntity.status(200).body(postLikes);
             }
         } catch (Exception exception) {
-            logger.error("Failed to fetch Likes: ", exception.getMessage());
+            logger.error("Failed to fetch Likes server error: ", exception.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
