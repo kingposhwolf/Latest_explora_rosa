@@ -131,7 +131,7 @@ public class FeedsAlgorithm {
     public List<UserPost> friendPost(Profile profile){
         List<Profile> following = fetchFollowings(profile);
         List<Profile> friends = userEngagementRepository.findTop3TopicsByTopicInAndTargetOrderByScoreDesc(following, profile);
-        Pageable pageable = PageRequest.of(0, 10);
+        Pageable pageable = PageRequest.of(0, 2);
 
         List<UserPost> posts = userPostRepository.findByProfilesAndLikesGreaterThanStartingFromId(searchStartPointUserEngage(profile), friends, 26000, pageable);
 
@@ -145,7 +145,7 @@ public class FeedsAlgorithm {
 
     //posts based on user interested topics.
     public List<UserPost> postBasedOnTopic(Profile profile){
-        Pageable pageable = PageRequest.of(0, 10);
+        Pageable pageable = PageRequest.of(0, 2);
         List<UserPost> posts = userPostRepository.findByHashTagsInAndLikesGreaterThanAndIdGreaterThan(fetchTopics(profile), 26000, searchStartPointTopicEngage(profile),pageable );
 
         if (!posts.isEmpty()) {
@@ -158,7 +158,7 @@ public class FeedsAlgorithm {
 
     //Posts based on engagements between users
     public List<UserPost> postBasedOnUserEngagements(Profile profile){
-        Pageable pageable = PageRequest.of(0, 10);
+        Pageable pageable = PageRequest.of(0, 2);
         List<UserPost> posts = userPostRepository.findByProfileInAndLikesGreaterThanAndIdGreaterThan(fetchUserEngage(profile), 26000, searchStartPointTopicEngage(profile), pageable);
 
         if (!posts.isEmpty()) {
@@ -171,7 +171,7 @@ public class FeedsAlgorithm {
 
     // //Post based on country trendings
     public List<UserPost> locationSpecificTrendingPost(Profile profile){
-        Pageable pageable = PageRequest.of(0, 10);
+        Pageable pageable = PageRequest.of(0, 2);
         List<UserPost> posts = userPostRepository.findByCountryAndLikesGreaterThanAndIdGreaterThan(profile.getCountry(),26000, globalDBStartPointRepository.findHotById((long) 1), pageable);
 
         return posts;
