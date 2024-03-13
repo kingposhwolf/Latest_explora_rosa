@@ -1,5 +1,6 @@
 package com.example.demo.Repositories;
 
+import com.example.demo.Models.Country;
 import com.example.demo.Models.HashTag;
 import com.example.demo.Models.Profile;
 import com.example.demo.Models.UserPost;
@@ -31,4 +32,8 @@ List<UserPost> findByProfilesAndLikesGreaterThanStartingFromId(
 );
 
 List<UserPost> findByHashTagsInAndLikesGreaterThanAndIdGreaterThan(List<HashTag> hashTags, int likesThreshold, Long startId, Pageable pageable);
+
+List<UserPost> findByProfileInAndLikesGreaterThanAndIdGreaterThan(List<Profile> profiles, int likesThreshold, Long startId, Pageable pageable);
+
+List<UserPost> findByCountryAndLikesGreaterThanAndIdGreaterThan(Country country, int likesThreshold, Long startId, Pageable pageable);
 }
