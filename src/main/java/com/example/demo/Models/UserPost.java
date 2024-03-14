@@ -19,15 +19,15 @@ public class UserPost {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "profileId", nullable = false)
+    @JoinColumn(name = "profileId")
     private Profile profile;
 
     @ManyToOne
-    @JoinColumn(name = "countryId", nullable = false)
+    @JoinColumn(name = "countryId")
     private Country country;
 
     @ManyToMany
-    @JoinTable(name = "userPostHashTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "hashTagId", nullable = false))
+    @JoinTable(name = "userPostHashTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "hashTagId"))
     private List<HashTag> hashTags;
 
     @ManyToOne(cascade = CascadeType.ALL)

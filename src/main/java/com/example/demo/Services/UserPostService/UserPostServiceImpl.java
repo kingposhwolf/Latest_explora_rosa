@@ -198,6 +198,7 @@ public ResponseEntity<Object> uploadPost(
             }
 
 
+
             // Save the user post
             UserPost userPost = new UserPost();
             userPost.setProfile(profile);
@@ -212,6 +213,8 @@ public ResponseEntity<Object> uploadPost(
             userPost.setShares(0);
             userPost.setFavorites(0);
 
+            logger.info(userPost.toString());
+
             // Save the post to the database
             UserPost savedPost = userPostRepository.save(userPost);
 
@@ -222,6 +225,7 @@ public ResponseEntity<Object> uploadPost(
             logger.info("Post uploaded successfully");
             return ResponseEntity.status(HttpStatus.CREATED).body("Post uploaded successfully");
         } catch(Exception e){
+            e.printStackTrace();
             logger.error("Failed to upload post: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload post: " + e.getMessage());
         }
