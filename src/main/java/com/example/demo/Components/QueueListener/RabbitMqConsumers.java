@@ -32,7 +32,7 @@ import com.example.demo.Repositories.LikeRepository;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.TopicEngagementRepository;
 import com.example.demo.Repositories.UserEngagementRepository;
-import com.example.demo.Repositories.UserPostRespository;
+import com.example.demo.Repositories.UserPostRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -45,7 +45,7 @@ public class RabbitMqConsumers {
 
     private SimpMessagingTemplate messagingTemplate;
 
-    private final UserPostRespository userPostRespository;
+    private final UserPostRepository userPostRespository;
 
     private final LikeRepository likeRepository;
 
