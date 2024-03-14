@@ -35,7 +35,7 @@ public class SearchAlgorithm {
         return posts;
     }
 
-    // //Search on tags
+    // //Search on tags (Here we searched for the account that is tagged on the post)
     // public List<UserPost> searchOnTags(Profile profile, String keyword){
 
     //     Pageable pageable = PageRequest.of(0, 2);
@@ -44,7 +44,16 @@ public class SearchAlgorithm {
     //     return posts;
     // }
 
-    // //Search on username
+    // //Search on username (Returns Accounts)
+    // public List<UserPost> searchOnUsername(Profile profile, String keyword){
+
+    //     Pageable pageable = PageRequest.of(0, 2);
+    //     List<UserPost> posts = userPostRepository.
+
+    //     return posts;
+    // }
+
+    // //Search on name (Returns Accounts)
     // public List<UserPost> searchOnUsername(Profile profile, String keyword){
 
     //     Pageable pageable = PageRequest.of(0, 2);
