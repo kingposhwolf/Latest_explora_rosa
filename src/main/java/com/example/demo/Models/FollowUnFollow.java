@@ -17,10 +17,10 @@ public class FollowUnFollow {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profileId", nullable = false)
+    @JoinColumn(name = "followerId", nullable = false)
     private Profile follower;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profileId", nullable = false)
+    @JoinColumn(name = "followingId", nullable = false)
     private Profile following;
 }

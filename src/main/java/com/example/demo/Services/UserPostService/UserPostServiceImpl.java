@@ -28,7 +28,7 @@ import java.util.Optional;
 public class UserPostServiceImpl implements UserPostService{
     private static final Logger logger = LoggerFactory.getLogger(UserPostServiceImpl.class);
 
-    private final String folderPath="C:\\Users\\user\\Documents\\explore\\exploredev\\Posts\\";
+    private final String postfolderPath="C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
 
     private final UserPostRepository userPostRepository;
     private final ProfileRepository profileRepository;
@@ -136,6 +136,9 @@ public ResponseEntity<Object> uploadPost(
         Long brandId,
         List<String> hashtagNames) throws IOException {
     try {
+        String folderPath= "C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
+
+        String filePath=folderPath+file.getOriginalFilename();
         // Check if the content type is allowed
         String contentType = file.getContentType();
         if (!isValidContentType(contentType)) {
@@ -145,11 +148,13 @@ public ResponseEntity<Object> uploadPost(
         userPostDto.setType(contentType);
 
         // Fetch profile and country entities
-        Profile profile = profileRepository.findById(profileId)
-                .orElseThrow(() -> new IllegalArgumentException("Profile with ID " + profileId + " not found"));
-        Country country = countryRepository.findById(userPostDto.getCountryId())
-                .orElseThrow(() -> new IllegalArgumentException("Country with ID " + userPostDto.getCountryId() + " not found"));
-        userPostDto.setProfileId(profileId);
+        Optional<Profile> profile = profileRepository.findById(profileId);
+        if(profile.isEmpty()){
+            return ResponseEntity.status(400).body("Profile does not exist");
+        }
+//        Country country = countryRepository.findById(userPostDto.getCountryId())
+//                .orElseThrow(() -> new IllegalArgumentException("Country with ID " + userPostDto.getCountryId() + " not found"));
+//        userPostDto.setProfileId(profileId);
 
         //Fetch or create new hashTag
         List<HashTag> hashTags = new ArrayList<>();
@@ -197,12 +202,10 @@ public ResponseEntity<Object> uploadPost(
                 }
             }
 
-
-
             // Save the user post
             UserPost userPost = new UserPost();
-            userPost.setProfile(profile);
-            userPost.setCountry(country);
+            userPost.setProfile(profile.get());
+            userPost.setCountry(profile.get().getCountry());
             userPost.setHashTags(userPostDto.getHashTagIds());
             userPost.setBrand(brand);
             userPost.setThumbnail(userPostDto.getThumbnail());
@@ -212,15 +215,31 @@ public ResponseEntity<Object> uploadPost(
             userPost.setPath(userPostDto.getPath());
             userPost.setShares(0);
             userPost.setFavorites(0);
+            //Print to see whats being carried
+            System.out.println(userPost);
 
             logger.info(userPost.toString());
 
             // Save the post to the database
             UserPost savedPost = userPostRepository.save(userPost);
 
-            // Save the file to the file system
-            String uploadPath = "C:\\Users\\user\\Documents\\explore\\exploredev\\Posts\\";
-            file.transferTo(new File(uploadPath));
+            //Save to a file system
+            file.transferTo(new File(filePath));
+//            String uniqueFilename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+//
+//
+//            // Ensure the directory exists, create it if necessary
+//            File directory = new File(uploadPath);
+//            if (!directory.exists()) {
+//                directory.mkdirs(); // Create directory and any necessary parent directories
+//            }
+//
+//            // Construct the full path including the unique filename
+//            String filePath = uploadPath + File.separator + uniqueFilename;
+
+            // Transfer the file to the specified path
+//            file.transferTo(new File(uploadPath));
+
 
             logger.info("Post uploaded successfully");
             return ResponseEntity.status(HttpStatus.CREATED).body("Post uploaded successfully");
@@ -241,7 +260,7 @@ public ResponseEntity<Object> uploadPost(
         String thumbnailFileName = "thumbnail_" + System.currentTimeMillis() + ".jpg";
 
         // Define the directory where thumbnails will be stored (same as posts directory)
-        String thumbnailDirectory = folderPath;
+        String thumbnailDirectory = postfolderPath;
 
         // Ensure the directory exists, create it if necessary
         File directory = new File(thumbnailDirectory);
