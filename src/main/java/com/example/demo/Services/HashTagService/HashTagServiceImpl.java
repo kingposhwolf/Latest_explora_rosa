@@ -57,7 +57,7 @@ public class HashTagServiceImpl implements HashTagService {
             }
             else{
                 HashTag hashTag = new HashTag();
-                hashTag.setName(hashTagDto.getName());
+                hashTag.setName(hashTagDto.getName().toLowerCase());
                 hashTagRepository.save(hashTag);
 
                 logger.info("HashTag saved Sucessfully\n" + hashTag);
@@ -77,11 +77,11 @@ public class HashTagServiceImpl implements HashTagService {
                 logger.info("HashTag found: {}", hashTag);
                 return ResponseEntity.status(HttpStatus.OK).body(hashTag);
             } else {
-                logger.error("HashTag not found for name: {}", name);
+                logger.error("HashTag not found for name: ", name);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("HashTag not found for name: " + name);
             }
         } catch (Exception e) {
-            logger.error("Failed to get hashTag by name: {}", e.getMessage());
+            logger.error("Failed to get hashTag by name: ", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
         }
     }
