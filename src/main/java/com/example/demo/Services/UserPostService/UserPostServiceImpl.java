@@ -7,7 +7,7 @@ import com.example.demo.Dto.UserPostDto;
 import com.example.demo.Models.*;
 import com.example.demo.Repositories.*;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserPostServiceImpl implements UserPostService{
     private static final Logger logger = LoggerFactory.getLogger(UserPostServiceImpl.class);
 

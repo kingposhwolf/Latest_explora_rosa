@@ -34,16 +34,16 @@ import com.example.demo.Repositories.TopicEngagementRepository;
 import com.example.demo.Repositories.UserEngagementRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class RabbitMqConsumers {
     private static final Logger logger = LoggerFactory.getLogger(RabbitMqConsumers.class);
 
-    private final ProfileRepository profileRepository;
-
     private SimpMessagingTemplate messagingTemplate;
+
+    private final ProfileRepository profileRepository;
 
     private final UserPostRepository userPostRespository;
 
@@ -69,27 +69,29 @@ public class RabbitMqConsumers {
         Optional<UserPost> userPost = userPostRespository.findById(likeDto.getPostId());
 
             if(!profile.isPresent()){
-                logger.error("User profile not found for profile ID: ", likeDto.getLikerId());
+                logger.error("User profile not found for profile ID: "+ likeDto.getLikerId());
             }
             else if(!userPost.isPresent()){
-                logger.error("User post not found for post ID: ", likeDto.getPostId());
+                logger.error("User post not found for post ID: "+ likeDto.getPostId());
             }
             else{
                 Optional<Like> like = likeRepository.findByLikerAndPost(profile.get(),userPost.get());
-            if (like.isPresent()) {
             
-                likeRepository.delete(like.get());
+            if (like.isPresent()) {
 
-                int newLikes = userPost.get().getLikes() - 1;
+                UserPost post = userPost.get();
 
-                userPost.get().setLikes(newLikes);
-                userPostRespository.save(userPost.get());
+                int newLikes = post.getLikes() - 1;
 
-                messagingTemplate.convertAndSend("/topic/like" + userPost.get().getId(),newLikes);
+                post.setLikes(newLikes);
+                userPostRespository.save(post);
+
+                messagingTemplate.convertAndSend("/topic/like" + post.getId(),newLikes);
 
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),-1);
                 processUserEngagement(profile.get(), userPost.get().getProfile(),-1);
 
+                likeRepository.delete(like.get());
                 logger.info("Like deleted successfully");
                 
             } else {
@@ -108,11 +110,11 @@ public class RabbitMqConsumers {
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),1);
                 processUserEngagement(profile.get(), userPost.get().getProfile(),1);
 
-                logger.info("Like Operationand Tracking Performed successful, with information : ", savedLike);
+                logger.info("Like Operationand Tracking Performed successful, with information : "+ savedLike);
             }
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
     

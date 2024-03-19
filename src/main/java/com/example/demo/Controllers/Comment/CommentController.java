@@ -5,7 +5,7 @@ import com.example.demo.Dto.CommentReplyDto;
 import com.example.demo.Services.CommentService.CommentServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/comments")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CommentController {
     private final CommentServiceImpl commentService;
 

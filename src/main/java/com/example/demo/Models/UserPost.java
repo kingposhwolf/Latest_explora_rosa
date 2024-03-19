@@ -12,8 +12,6 @@ import java.util.List;
 @Entity
 @Data
 @Table(name="userPosts")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "POST_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class UserPost {
 
     @Id

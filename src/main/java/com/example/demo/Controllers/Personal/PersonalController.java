@@ -12,11 +12,11 @@ import com.example.demo.Dto.ProfileVisitDto;
 import com.example.demo.Services.PersonalService.PersonalServiceImpl;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/personal")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class PersonalController {
 
     private GlobalValidationFormatter globalValidationFormatter;

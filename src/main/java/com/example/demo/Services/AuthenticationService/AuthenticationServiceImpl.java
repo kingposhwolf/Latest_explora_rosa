@@ -36,11 +36,11 @@ import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.JWTService.JWTService;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);

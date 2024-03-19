@@ -12,12 +12,12 @@ import com.example.demo.Models.Country;
 import com.example.demo.Repositories.CountryRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CountryServiceImpl implements CountryService {
 
     private static final Logger logger = LoggerFactory.getLogger(CityServiceImpl.class);

@@ -13,11 +13,11 @@ import com.example.demo.Services.LikeService.LikeServiceImpl;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/like")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class LikeController {
     private final LikeServiceImpl likeService;
 
