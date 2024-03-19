@@ -4,7 +4,7 @@ import com.example.demo.Dto.AccountTypeDto;
 import com.example.demo.Models.AccountType;
 import com.example.demo.Repositories.AccountTypeRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AccountTypeServiceImpl implements AccountTypeService {
 
     private static final Logger logger = LoggerFactory.getLogger(AccountTypeServiceImpl.class);

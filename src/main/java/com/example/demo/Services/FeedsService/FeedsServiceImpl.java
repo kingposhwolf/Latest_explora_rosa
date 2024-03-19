@@ -15,10 +15,10 @@ import com.example.demo.Models.UserPost;
 import com.example.demo.Repositories.ProfileRepository;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class FeedsServiceImpl implements FeedsService{
 
     private static final Logger logger = LoggerFactory.getLogger(FeedsServiceImpl.class);

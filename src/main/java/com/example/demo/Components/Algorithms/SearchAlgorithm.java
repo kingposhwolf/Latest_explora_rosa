@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import com.example.demo.Models.UserPost;
 import com.example.demo.Repositories.UserPostRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class SearchAlgorithm {
 
     private final UserPostRepository userPostRepository;

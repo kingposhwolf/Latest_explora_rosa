@@ -9,7 +9,7 @@ import com.example.demo.Models.Country;
 import com.example.demo.Repositories.CityRepository;
 import com.example.demo.Repositories.CountryRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CityServiceImpl implements CityService{
 
     private static final Logger logger = LoggerFactory.getLogger(CityServiceImpl.class);

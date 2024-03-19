@@ -17,7 +17,7 @@ public class City {
         private Long id;
 
         @ManyToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "countryId")
+        @JoinColumn(name = "countryId", foreignKey = @ForeignKey(name = "FK_country_city", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE"))
         private Country country;
 
         @NotBlank

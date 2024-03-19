@@ -27,8 +27,12 @@ public class UserPost {
     private Country country;
 
     @ManyToMany
-    @JoinTable(name = "userPostHashTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "hashTagId", nullable = false))
+    @JoinTable(name = "userPostHashTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "hashTagId"))
     private List<HashTag> hashTags;
+
+    @ManyToMany
+    @JoinTable(name = "userPostTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "tagId"))
+    private List<Tag> tags;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "brandId")

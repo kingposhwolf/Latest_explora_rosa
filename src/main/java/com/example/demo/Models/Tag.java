@@ -1,29 +1,26 @@
 package com.example.demo.Models;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
 @Entity
-public class UserEngageFeedsPreviousEnd {
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profileId", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Profile user;
 
-    @Column(nullable = false)
-    private Long previousEnd;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userPostId", nullable = false)
+    private UserPost post;
 }

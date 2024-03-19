@@ -12,11 +12,11 @@ import com.example.demo.Dto.CountryDto;
 import com.example.demo.Services.CountryService.CountryServiceImpl;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/countries")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CountryController {
 
     private GlobalValidationFormatter globalValidationFormatter;

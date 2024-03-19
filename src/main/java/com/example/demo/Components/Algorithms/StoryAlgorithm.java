@@ -2,11 +2,10 @@ package com.example.demo.Components.Algorithms;
 
 import org.springframework.stereotype.Component;
 
-
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class StoryAlgorithm {
 
     //Retrieve all Stories of the followings, then Arrange stories Descending based on User Engagement

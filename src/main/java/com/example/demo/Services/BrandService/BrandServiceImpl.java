@@ -12,10 +12,10 @@ import com.example.demo.Dto.ProfileVisitDto;
 import com.example.demo.Models.Brand;
 import com.example.demo.Repositories.BrandRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class BrandServiceImpl implements BrandService{
 
     private static final Logger logger = LoggerFactory.getLogger(BrandServiceImpl.class);

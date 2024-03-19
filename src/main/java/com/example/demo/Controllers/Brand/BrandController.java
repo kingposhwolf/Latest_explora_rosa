@@ -12,11 +12,11 @@ import com.example.demo.Dto.ProfileVisitDto;
 import com.example.demo.Services.BrandService.BrandServiceImpl;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/brand")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class BrandController {
     
     private GlobalValidationFormatter globalValidationFormatter;

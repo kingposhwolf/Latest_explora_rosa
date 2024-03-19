@@ -19,10 +19,10 @@ import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.ProfileRepository;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class FavoritesServiceImpl implements FavoritesService{
     private static final Logger logger = LoggerFactory.getLogger(FavoritesServiceImpl.class);
 

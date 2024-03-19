@@ -9,7 +9,7 @@ import com.example.demo.Models.HashTag;
 import com.example.demo.Repositories.BusinessCategoryRepository;
 import com.example.demo.Repositories.HashTagRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class BusinessCategoryServiceImp implements BusinessCategoryService {
 
     private static final Logger logger = LoggerFactory.getLogger(BusinessCategoryServiceImp.class);

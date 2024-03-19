@@ -12,11 +12,11 @@ import com.example.demo.Dto.ViewDto;
 import com.example.demo.Services.ViewService.ViewService;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/view")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ViewController {
     private final ViewService viewService;
 

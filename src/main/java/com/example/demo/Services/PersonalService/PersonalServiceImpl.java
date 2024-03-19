@@ -12,10 +12,10 @@ import com.example.demo.Dto.ProfileVisitDto;
 import com.example.demo.Models.Personal;
 import com.example.demo.Repositories.PersonalRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class PersonalServiceImpl implements PersonalService{
     private static final Logger logger = LoggerFactory.getLogger(PersonalServiceImpl.class);
     private final PersonalRepository personalRepository;

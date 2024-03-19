@@ -3,7 +3,7 @@ import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFor
 import com.example.demo.Dto.HashTagDto;
 import com.example.demo.Services.HashTagService.HashTagServiceImpl;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hashTags")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class HashTagController {
 
     private GlobalValidationFormatter globalValidationFormatter;

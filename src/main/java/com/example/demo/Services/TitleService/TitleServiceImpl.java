@@ -12,12 +12,12 @@ import com.example.demo.Dto.TitleDto;
 import com.example.demo.Models.Title;
 import com.example.demo.Repositories.TitleRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class TitleServiceImpl implements TitleService{
 
     private static final Logger logger = LoggerFactory.getLogger(TitleServiceImpl.class);

@@ -11,11 +11,11 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profileId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "profile_id", foreignKey = @ForeignKey(name = "FK_LIKE_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile liker;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "userPostId", nullable = false)
     private UserPost post;
 }

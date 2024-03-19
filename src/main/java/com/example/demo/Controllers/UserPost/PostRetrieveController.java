@@ -12,10 +12,10 @@ import com.example.demo.Services.FeedsService.FeedsServiceImpl;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
+@AllArgsConstructor
 @RequestMapping("/feeds")
 public class PostRetrieveController {
     private final FeedsServiceImpl feedsServiceImpl;

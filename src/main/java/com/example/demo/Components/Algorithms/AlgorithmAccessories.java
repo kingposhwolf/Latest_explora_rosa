@@ -17,10 +17,10 @@ import com.example.demo.Repositories.UserEngageFeedsPreviousEndRepository;
 import com.example.demo.Repositories.UserEngagementRepository;
 
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AlgorithmAccessories {
 
     private final UserEngagementRepository userEngagementRepository;
