@@ -198,8 +198,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         jwtAuthenticationResponse.setToken(jwt);
         jwtAuthenticationResponse.setRefreshToken(refreshToken);
 
+        RegistrationResponse registrationResponse = new RegistrationResponse();
+        Profile profile = profileRepository.findByUser(user);
+
+        registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
+        registrationResponse.setProfileId(profile.getId());
+
         logger.info("Login Successful for the user : " + user);
-        return ResponseEntity.ok(jwtAuthenticationResponse);
+        return ResponseEntity.ok(registrationResponse);
 
         }catch(BadCredentialsException exception){
             logger.error("\nInvalid Username or Password", exception.getMessage());

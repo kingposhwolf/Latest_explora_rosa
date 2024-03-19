@@ -129,9 +129,9 @@ public class RabbitMqConsumers {
             Optional<UserPost> userPost = userPostRespository.findById(commentDto.getPostId());
 
             if(!profile.isPresent()){
-                logger.error("User profile not found for profile ID: ", commentDto.getProfileId());
+                logger.error("User profile not found for profile ID: "+ commentDto.getProfileId());
             }else if(!userPost.isPresent()){
-                logger.error("User post not found for post ID: ", commentDto.getPostId());
+                logger.error("User post not found for post ID: "+ commentDto.getPostId());
             }else{
                 Comment comment = new Comment();
                 comment.setMessage(commentDto.getMessage());
@@ -152,7 +152,7 @@ public class RabbitMqConsumers {
                 logger.info("Comment Operation Performed successful, with information : ", savedComment);
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
@@ -167,9 +167,9 @@ public class RabbitMqConsumers {
             Optional<UserPost> userPost = userPostRespository.findById(commentDto.getPostId());
     
             if (!profile.isPresent()) {
-                logger.error("User profile not found for profile ID: ", commentDto.getProfileId());
+                logger.error("User profile not found for profile ID: "+ commentDto.getProfileId());
             } else if (!userPost.isPresent()) {
-                logger.error("User post not found for post ID: ", commentDto.getPostId());
+                logger.error("User post not found for post ID: "+ commentDto.getPostId());
             } else {
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),2);
                 processUserEngagement(profile.get(), userPost.get().getProfile(),2);
@@ -177,7 +177,7 @@ public class RabbitMqConsumers {
                 logger.info("Comment Operation tracked successful");
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
@@ -192,11 +192,11 @@ public class RabbitMqConsumers {
             Optional<Comment> parentComment = commentRepository.findById(commentReplyDto.getParentId());
 
             if(!profile.isPresent()){
-                logger.error("User profile not found for profile ID: ", commentReplyDto.getProfileId());
+                logger.error("User profile not found for profile ID: "+ commentReplyDto.getProfileId());
             }else if(!userPost.isPresent()){
-                logger.error("User post not found for post ID: ", commentReplyDto.getPostId());
+                logger.error("User post not found for post ID: "+ commentReplyDto.getPostId());
             }else if(!parentComment.isPresent()){
-                logger.error("Parent Comment not found for ID: ", commentReplyDto.getParentId());
+                logger.error("Parent Comment not found for ID: "+ commentReplyDto.getParentId());
             }else{
                 Comment comment = new Comment();
                 comment.setMessage(commentReplyDto.getMessage());
@@ -216,10 +216,10 @@ public class RabbitMqConsumers {
                 messagingTemplate.convertAndSend("/topic/commentCount" + userPost.get().getId(),newComments);
                 messagingTemplate.convertAndSend("/topic/comment" + userPost.get().getId(),savedComment);
 
-                logger.info("Comment Reply Operation Performed successful, with information : ", savedComment);
+                logger.info("Comment Reply Operation Performed successful, with information : "+ savedComment);
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
@@ -234,16 +234,16 @@ public class RabbitMqConsumers {
             Optional<UserPost> userPost = userPostRespository.findById(commentReplyDto.getPostId());
     
             if (!profile.isPresent()) {
-                logger.error("User profile not found for profile ID: ", commentReplyDto.getProfileId());
+                logger.error("User profile not found for profile ID: "+ commentReplyDto.getProfileId());
             } else if (!userPost.isPresent()) {
-                logger.error("User post not found for post ID: ", commentReplyDto.getPostId());
+                logger.error("User post not found for post ID: "+ commentReplyDto.getPostId());
             } else {
                 processTopicEngagement(profile.get(), userPost.get().getHashTags(),2);
                 processUserEngagement(profile.get(), userPost.get().getProfile(),2);
                 logger.info("Comment Reply Operation tracked successful");
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
@@ -262,7 +262,7 @@ public class RabbitMqConsumers {
             logger.info("Profile visit Operation tracked successful");
             
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
@@ -277,9 +277,9 @@ public class RabbitMqConsumers {
             Optional<UserPost> post = userPostRespository.findById(favoritesDto.getPostId());
 
             if(!profile.isEmpty()){
-                logger.error("During Saving Favorites User profile not found for profile ID: ", favoritesDto.getProfileId());
+                logger.error("During Saving Favorites User profile not found for profile ID: "+ favoritesDto.getProfileId());
             }else if(post.isEmpty()){
-                logger.error("During Saving Favorites User post not found for post ID: ", favoritesDto.getPostId());
+                logger.error("During Saving Favorites User post not found for post ID: "+ favoritesDto.getPostId());
             }else{
                 Favorites favorites = new Favorites();
                 favorites.setPost(post.get());
@@ -287,10 +287,10 @@ public class RabbitMqConsumers {
 
                 Favorites savedFavorites = favoritesRepository.save(favorites);
 
-                logger.info("Favorites Operation Performed successful, with information : ", savedFavorites);
+                logger.info("Favorites Operation Performed successful, with information : "+ savedFavorites);
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
@@ -305,9 +305,9 @@ public class RabbitMqConsumers {
             Optional<UserPost> post = userPostRespository.findById(favoritesDto.getPostId());
     
             if (!profile.isPresent()) {
-                logger.error("During Tacking Favorites Action, User profile not found for profile ID: ", favoritesDto.getProfileId());
+                logger.error("During Tacking Favorites Action, User profile not found for profile ID: "+ favoritesDto.getProfileId());
             } else if (!post.isPresent()) {
-                logger.error("During Tacking Favorites Action, User post not found for post ID: ", favoritesDto.getPostId());
+                logger.error("During Tacking Favorites Action, User post not found for post ID: "+ favoritesDto.getPostId());
             } else {
                 processTopicEngagement(profile.get(), post.get().getHashTags(),4);
                 processUserEngagement(profile.get(), post.get().getProfile(),4);
@@ -315,7 +315,7 @@ public class RabbitMqConsumers {
                 logger.info("Favorites Operation tracked successful");
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
@@ -330,9 +330,9 @@ public class RabbitMqConsumers {
             Optional<UserPost> post = userPostRespository.findById(shareDto.getPostId());
     
             if (!profile.isPresent()) {
-                logger.error("During Tacking Share Action, User profile not found for profile ID: ", shareDto.getProfileId());
+                logger.error("During Tacking Share Action, User profile not found for profile ID: "+ shareDto.getProfileId());
             } else if (!post.isPresent()) {
-                logger.error("During Tacking Share Action, User post not found for post ID: ", shareDto.getPostId());
+                logger.error("During Tacking Share Action, User post not found for post ID: "+ shareDto.getPostId());
             } else {
                 processTopicEngagement(profile.get(), post.get().getHashTags(),3);
                 processUserEngagement(profile.get(), post.get().getProfile(),3);
@@ -340,7 +340,7 @@ public class RabbitMqConsumers {
                 logger.info("Share Operation tracked successful");
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
@@ -355,9 +355,9 @@ public class RabbitMqConsumers {
             Optional<UserPost> post = userPostRespository.findById(viewDto.getPostId());
     
             if (!profile.isPresent()) {
-                logger.error("During Tacking View Action, User profile not found for profile ID: ", viewDto.getProfileId());
+                logger.error("During Tacking View Action, User profile not found for profile ID: "+ viewDto.getProfileId());
             } else if (!post.isPresent()) {
-                logger.error("During Tacking View Action, User post not found for post ID: ", viewDto.getPostId());
+                logger.error("During Tacking View Action, User post not found for post ID: "+ viewDto.getPostId());
             } else {
                 processTopicEngagement(profile.get(), post.get().getHashTags(),3);
                 processUserEngagement(profile.get(), post.get().getProfile(),3);
@@ -365,7 +365,7 @@ public class RabbitMqConsumers {
                 logger.info("View Operation tracked successful");
             }
         } catch (Exception exception) {
-            logger.error("INTERNAL SERVER ERROR : ", exception.getMessage());
+            logger.error("INTERNAL SERVER ERROR : "+ exception.getMessage());
         }
     }
 
