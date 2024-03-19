@@ -1,7 +1,7 @@
 package com.example.demo.Models;
 
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.SQLRestriction;
 
 /*
  * @author Dwight Danda
@@ -14,7 +14,7 @@ import lombok.Data;
 @Table(name="cities")
 @Data
 @SQLDelete(sql = "UPDATE cities SET deleted = true WHERE id=?")
-@Where(clause = "deleted=false")
+@SQLRestriction("deleted=false")
 public class City {
 
         @Id
