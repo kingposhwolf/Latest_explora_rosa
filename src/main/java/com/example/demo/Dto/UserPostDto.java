@@ -17,6 +17,8 @@ public class UserPostDto {
 
     private Long id;
 
+    private String name;
+
     @NotNull
     private Long profileId;
 
