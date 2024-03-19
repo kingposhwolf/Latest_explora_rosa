@@ -21,7 +21,7 @@ public class Like {
     private Profile liker;
 
     @ManyToOne
-    @JoinColumn(name = "userPostId", nullable = false)
+    @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_LIKE", foreignKeyDefinition = "FOREIGN KEY (user_post_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
     private UserPost post;
 
     private boolean deleted = Boolean.FALSE;

@@ -31,15 +31,15 @@ public class Comment {
     private LocalDateTime timestamp;
 
     @ManyToOne
-    @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_COMMENTER_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profileId) REFERENCES profiles(id) ON DELETE CASCADE"))
+    @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_COMMENTER_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile commenter;
     
     @ManyToOne
     @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_WITH_COMMENT", foreignKeyDefinition = "FOREIGN KEY (userPost_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
     private UserPost userPost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parentCommentId")
+    @ManyToOne
+    @JoinColumn(name = "parentCommentId", nullable = false, foreignKey = @ForeignKey(name = "FK_PARENT_COMMENT", foreignKeyDefinition = "FOREIGN KEY (parent_comment_id) REFERENCES comments(id) ON DELETE CASCADE"))
     private Comment parentComment;
 
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)

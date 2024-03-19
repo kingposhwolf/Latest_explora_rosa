@@ -17,12 +17,12 @@ public class TopicEngagement {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "profileId", nullable = false, columnDefinition = "BIGINT NOT NULL REFERENCES profiles(id) ON DELETE CASCADE")
+    @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_TOPIC_ENGAGE_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile profile;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hashTagId", nullable = false)
-    private HashTag hashTags;
+    private HashTag hashTags; //special case
 
     @Column(nullable = false)
     private int score;

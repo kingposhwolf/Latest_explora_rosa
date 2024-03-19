@@ -24,7 +24,7 @@ public class User implements UserDetails {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "accountTypeId", nullable = false)
+    @JoinColumn(name = "accountTypeId", nullable = false, foreignKey = @ForeignKey(name = "FK_ACCOUNT_TYPE", foreignKeyDefinition = "FOREIGN KEY (account_type_id) REFERENCES account_type(id) ON DELETE CASCADE"))
     private AccountType accountType;
 
     @Column(nullable = false, length = 100)

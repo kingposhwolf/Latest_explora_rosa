@@ -24,7 +24,7 @@ public class UserPost {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "profileId", nullable = false)
+    @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_USER_POST_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile profile;
 
     @ManyToOne
