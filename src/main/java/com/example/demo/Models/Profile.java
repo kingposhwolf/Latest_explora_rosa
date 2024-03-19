@@ -1,5 +1,8 @@
 package com.example.demo.Models;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
@@ -19,6 +22,8 @@ import lombok.Data;
 @Data
 @Table(name = "profiles")
 @Entity
+@SQLDelete(sql = "UPDATE profiles SET deleted = true WHERE id=?")
+@SQLRestriction("deleted=false")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "PROFILE_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class Profile {
@@ -60,4 +65,6 @@ public class Profile {
 
     @Column(nullable = false)
     private float powerSize;
+
+    private boolean deleted = Boolean.FALSE;
 }

@@ -33,5 +33,4 @@ public class UploadData {
 
     @Column(nullable = false)
     private String path;
-
 }

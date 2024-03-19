@@ -9,9 +9,14 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
 @Entity
 @Data
 @Table(name="userPosts")
+@SQLDelete(sql = "UPDATE user_posts SET deleted = true WHERE id=?")
+@SQLRestriction("deleted=false")
 public class UserPost {
 
     @Id
@@ -64,4 +69,5 @@ public class UserPost {
     @Column
     private int favorites;
 
+    private boolean deleted = Boolean.FALSE;
 }

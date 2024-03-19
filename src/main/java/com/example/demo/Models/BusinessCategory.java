@@ -1,5 +1,8 @@
 package com.example.demo.Models;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
 /*
  * @author Dwight Danda
  *
@@ -10,6 +13,8 @@ import lombok.Data;
 @Entity
 @Table(name = "businessCategories")
 @Data
+@SQLDelete(sql = "UPDATE business_categories SET deleted = true WHERE id=?")
+@SQLRestriction("deleted=false")
 public class BusinessCategory {
 
     @Id
@@ -18,4 +23,6 @@ public class BusinessCategory {
 
     @Column(nullable = false, length = 100, unique = true)
     private String name;
+
+    private boolean deleted = Boolean.FALSE;
 }

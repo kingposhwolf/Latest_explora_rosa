@@ -1,5 +1,8 @@
 package com.example.demo.Models;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +14,8 @@ import lombok.Data;
 
 @Data
 @Entity
+@SQLDelete(sql = "UPDATE favorites SET deleted = true WHERE id=?")
+@SQLRestriction("deleted=false")
 public class Favorites {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +28,6 @@ public class Favorites {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userPostId", nullable = false)
     private UserPost post;
+
+    private boolean deleted = Boolean.FALSE;
 }

@@ -7,12 +7,17 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "comments")
+@SQLDelete(sql = "UPDATE comments SET deleted = true WHERE id=?")
+@SQLRestriction("deleted=false")
 public class Comment {
 
     @Id
@@ -40,4 +45,5 @@ public class Comment {
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> replies = new ArrayList<>();
 
+    private boolean deleted = Boolean.FALSE;
 }
