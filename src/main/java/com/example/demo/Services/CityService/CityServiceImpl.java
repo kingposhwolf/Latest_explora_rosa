@@ -52,7 +52,6 @@ public class CityServiceImpl implements CityService{
 
             if(existingCity.isPresent()){
                 logger.error("\nFailed to save the city, City Already exists Error");
-                cityRepository.deleteById((long) 1);
                 return ResponseEntity.status(200).body("This City Already Exists!");
             }
             else{
