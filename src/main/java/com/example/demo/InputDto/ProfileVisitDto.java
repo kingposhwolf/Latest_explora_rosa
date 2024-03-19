@@ -1,4 +1,4 @@
-package com.example.demo.Dto;
+package com.example.demo.InputDto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,26 +7,20 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class CommentReplyDto {
+public class ProfileVisitDto {
     @NotNull
-    private Long profileId;
+    private Long ownerId;
 
     @NotNull
-    private Long postId;
-
-    @NotNull
-    private String message;
-
-    @NotNull
-    private Long parentId;
+    private Long visitorId;
 
     public String toJson() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(this);
     }
 
-    public static CommentReplyDto fromJson(String json) throws Exception {
+    public static ProfileVisitDto fromJson(String json) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(json, CommentReplyDto.class);
+        return objectMapper.readValue(json, ProfileVisitDto.class);
     }
 }

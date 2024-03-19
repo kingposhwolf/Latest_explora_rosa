@@ -1,3 +1,4 @@
+package com.example.demo.InputDto;
 //package com.example.demo.Dto;
 //
 //import jakarta.validation.constraints.NotBlank;

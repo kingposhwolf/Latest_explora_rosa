@@ -1,12 +1,9 @@
 package com.example.demo.Services.UserPostService;
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Dto.UserPostDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.example.demo.InputDto.UserPostDto;
 
 import java.io.IOException;
 import java.util.List;

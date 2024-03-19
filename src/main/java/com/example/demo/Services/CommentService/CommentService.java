@@ -1,11 +1,11 @@
 package com.example.demo.Services.CommentService;
 
-import com.example.demo.Dto.CommentDto;
-import com.example.demo.Dto.CommentReplyDto;
-
 import jakarta.validation.constraints.NotNull;
 
 import org.springframework.http.ResponseEntity;
+
+import com.example.demo.InputDto.CommentDto;
+import com.example.demo.InputDto.CommentReplyDto;
 
 public interface CommentService {
     ResponseEntity<Object> saveComment(CommentDto commentDto);

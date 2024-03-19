@@ -4,8 +4,9 @@ package com.example.demo.Services.BusinessCategoryService;
  *
  */
 
-import com.example.demo.Dto.BusinessCategoryDto;
 import org.springframework.http.ResponseEntity;
+
+import com.example.demo.InputDto.BusinessCategoryDto;
 
 public interface BusinessCategoryService {
 

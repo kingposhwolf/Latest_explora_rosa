@@ -2,7 +2,7 @@ package com.example.demo.Services.AccountTypeService;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.Dto.AccountTypeDto;
+import com.example.demo.InputDto.AccountTypeDto;
 
 
 public interface AccountTypeService {

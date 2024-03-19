@@ -1,5 +1,4 @@
 package com.example.demo.Models;
-import java.util.List;
 
 /*
  * @author Dwight Danda
@@ -19,9 +18,4 @@ public class BusinessCategory {
 
     @Column(nullable = false, length = 100, unique = true)
     private String name;
-
-    @ManyToMany
-    @JoinTable(name = "businessCategoryHashTag",joinColumns = @JoinColumn(name = "businessCategoryId"),inverseJoinColumns = @JoinColumn(name = "hashTagId"))
-    private List<HashTag> hashTags;
-
 }

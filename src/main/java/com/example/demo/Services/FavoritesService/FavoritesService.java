@@ -2,7 +2,7 @@ package com.example.demo.Services.FavoritesService;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.Dto.FavoritesDto;
+import com.example.demo.InputDto.FavoritesDto;
 
 import jakarta.validation.constraints.NotNull;
 

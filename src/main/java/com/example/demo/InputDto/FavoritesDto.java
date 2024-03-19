@@ -1,4 +1,4 @@
-package com.example.demo.Dto;
+package com.example.demo.InputDto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class ShareDto {
+public class FavoritesDto {
     @NotNull
     private Long profileId;
 
@@ -19,8 +19,8 @@ public class ShareDto {
         return objectMapper.writeValueAsString(this);
     }
 
-    public static ShareDto fromJson(String json) throws Exception {
+    public static FavoritesDto fromJson(String json) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(json, ShareDto.class);
+        return objectMapper.readValue(json, FavoritesDto.class);
     }
 }

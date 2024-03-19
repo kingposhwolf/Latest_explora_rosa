@@ -1,6 +1,6 @@
 package com.example.demo.Controllers.City;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.Dto.CityDto;
+import com.example.demo.InputDto.CityDto;
 import com.example.demo.Services.CityService.CityServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

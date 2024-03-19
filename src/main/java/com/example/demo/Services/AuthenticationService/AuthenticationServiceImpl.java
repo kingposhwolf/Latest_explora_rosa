@@ -14,11 +14,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Dto.JwtAuthenticationResponse;
-import com.example.demo.Dto.RefreshTokenRequest;
-import com.example.demo.Dto.RegistrationResponse;
-import com.example.demo.Dto.SignUpRequest;
-import com.example.demo.Dto.SigninRequest;
+import com.example.demo.InputDto.JwtAuthenticationResponse;
+import com.example.demo.InputDto.RefreshTokenRequest;
+import com.example.demo.InputDto.RegistrationResponse;
+import com.example.demo.InputDto.SignUpRequest;
+import com.example.demo.InputDto.SigninRequest;
 import com.example.demo.Models.AccountType;
 import com.example.demo.Models.Brand;
 import com.example.demo.Models.BusinessCategory;

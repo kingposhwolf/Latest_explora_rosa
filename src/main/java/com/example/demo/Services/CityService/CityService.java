@@ -1,11 +1,7 @@
 package com.example.demo.Services.CityService;
 import org.springframework.http.ResponseEntity;
 
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Dto.CityDto;
+import com.example.demo.InputDto.CityDto;
 
 public interface CityService {
 

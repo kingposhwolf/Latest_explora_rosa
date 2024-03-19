@@ -1,5 +1,8 @@
 package com.example.demo.Models;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 /*
  * @author Dwight Danda
  *
@@ -10,14 +13,16 @@ import lombok.Data;
 @Entity
 @Table(name="cities")
 @Data
+@SQLDelete(sql = "UPDATE cities SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 public class City {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-        @ManyToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "countryId", foreignKey = @ForeignKey(name = "FK_country_city", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE"))
+        @ManyToOne
+        @JoinColumn(name = "countryId", nullable = false, foreignKey = @ForeignKey(name = "FK_country_city", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE"))
         private Country country;
 
         @NotBlank
@@ -29,4 +34,6 @@ public class City {
 
         @Column(nullable = false, length = 150)
         private String state;
+
+        private boolean deleted = Boolean.FALSE;
 }

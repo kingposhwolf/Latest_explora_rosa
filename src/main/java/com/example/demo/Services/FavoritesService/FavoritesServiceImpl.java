@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.Dto.FavoritesDto;
+import com.example.demo.InputDto.FavoritesDto;
 import com.example.demo.Models.Favorites;
 import com.example.demo.Models.Profile;
 import com.example.demo.Models.UserPost;

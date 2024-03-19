@@ -25,12 +25,12 @@ public class Comment {
     @Column(nullable = false)
     private LocalDateTime timestamp;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profileId")
+    @ManyToOne
+    @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_COMMENTER_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profileId) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile commenter;
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userPostId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_WITH_COMMENT", foreignKeyDefinition = "FOREIGN KEY (userPost_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
     private UserPost userPost;
 
     @ManyToOne(fetch = FetchType.LAZY)

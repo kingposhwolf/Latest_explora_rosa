@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Dto.ShareDto;
+import com.example.demo.InputDto.ShareDto;
 
 import lombok.AllArgsConstructor;
 

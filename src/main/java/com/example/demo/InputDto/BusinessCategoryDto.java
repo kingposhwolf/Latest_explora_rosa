@@ -1,4 +1,6 @@
-package com.example.demo.Dto;
+package com.example.demo.InputDto;
+import java.util.List;
+
 /*
  * @author Dwight Danda
  *
@@ -8,20 +10,11 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class CityDto {
-
-    @NotNull
-    private Long countyId;
-
+public class BusinessCategoryDto {
     @NotNull
     @Size(max = 100)
     private String name;
 
     @NotNull
-    @Size(max = 150)
-    private String zipCode;
-
-    @NotNull
-    @Size(max = 150)
-    private String state;
+    private List<Long> hashTags;
 }

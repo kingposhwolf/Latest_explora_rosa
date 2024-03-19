@@ -1,7 +1,7 @@
 package com.example.demo.Controllers.Comment;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.Dto.CommentDto;
-import com.example.demo.Dto.CommentReplyDto;
+import com.example.demo.InputDto.CommentDto;
+import com.example.demo.InputDto.CommentReplyDto;
 import com.example.demo.Services.CommentService.CommentServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
