@@ -11,12 +11,12 @@ public class UserEngagement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "targetId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "targetId", nullable = false, columnDefinition = "BIGINT NOT NULL REFERENCES profiles(id) ON DELETE CASCADE")
     private Profile target;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "topicId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "topicId", nullable = false, columnDefinition = "BIGINT NOT NULL REFERENCES profiles(id) ON DELETE CASCADE")
     private Profile topic;
 
     @Column(nullable = false)

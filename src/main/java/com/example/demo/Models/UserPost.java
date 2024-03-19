@@ -41,6 +41,10 @@ public class UserPost {
     @JoinTable(name = "userPostHashTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "hashTagId"))
     private List<HashTag> hashTags;
 
+    @ManyToMany
+    @JoinTable(name = "userPostTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "tagId"))
+    private List<Tag> tags;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "brandId")
     private Brand brand;

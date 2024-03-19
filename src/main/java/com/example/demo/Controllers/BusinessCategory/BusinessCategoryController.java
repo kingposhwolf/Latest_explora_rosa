@@ -12,11 +12,11 @@ import com.example.demo.Dto.BusinessCategoryDto;
 import com.example.demo.Services.BusinessCategoryService.BusinessCategoryServiceImp;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/business-categories")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class BusinessCategoryController {
 
     private GlobalValidationFormatter globalValidationFormatter;

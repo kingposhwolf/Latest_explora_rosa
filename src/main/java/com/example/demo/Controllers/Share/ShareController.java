@@ -12,11 +12,11 @@ import com.example.demo.Dto.ShareDto;
 import com.example.demo.Services.ShareService.ShareServiceImpl;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/share")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ShareController {
     private final ShareServiceImpl shareService;
 

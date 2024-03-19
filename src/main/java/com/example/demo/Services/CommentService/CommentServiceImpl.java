@@ -8,7 +8,7 @@ import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CommentServiceImpl implements CommentService{
     private static final Logger logger = LoggerFactory.getLogger(CommentServiceImpl.class);
 

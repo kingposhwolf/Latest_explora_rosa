@@ -36,11 +36,11 @@ import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.JWTService.JWTService;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
@@ -198,8 +198,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         jwtAuthenticationResponse.setToken(jwt);
         jwtAuthenticationResponse.setRefreshToken(refreshToken);
 
+        RegistrationResponse registrationResponse = new RegistrationResponse();
+        Profile profile = profileRepository.findByUser(user);
+
+        registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
+        registrationResponse.setProfileId(profile.getId());
+
         logger.info("Login Successful for the user : " + user);
-        return ResponseEntity.ok(jwtAuthenticationResponse);
+        return ResponseEntity.ok(registrationResponse);
 
         }catch(BadCredentialsException exception){
             logger.error("\nInvalid Username or Password", exception.getMessage());

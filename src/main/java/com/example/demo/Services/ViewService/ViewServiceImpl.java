@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Dto.ViewDto;
 import com.example.demo.Services.ShareService.ShareServiceImpl;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ViewServiceImpl implements ViewService{
     private static final Logger logger = LoggerFactory.getLogger(ShareServiceImpl.class);
 

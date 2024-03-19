@@ -5,7 +5,6 @@ package com.example.demo.Services.UploadService;
  */
 import com.example.demo.Models.Brand;
 import com.example.demo.Models.UploadData;
-import com.example.demo.Models.UserPost;
 import com.example.demo.Repositories.BrandRepository;
 import com.example.demo.Repositories.UploadDataRepository;
 import org.slf4j.Logger;
@@ -85,6 +84,7 @@ public class UploadDataServiceImpl implements UploadDataService {
         return contentType != null && (contentType.startsWith("image/") || contentType.equals("application/pdf"));
     }
 
+    @SuppressWarnings("null")
     @Override
     public byte[] viewUploadDataFromFileSystem(Long uploadId, Long brandId) throws IOException {
         Optional<UploadData> uploadDataOptional = uploadDataRepository.findById(uploadId);
@@ -206,5 +206,6 @@ public class UploadDataServiceImpl implements UploadDataService {
 //        }
 //    }
 //}
+
 }
 

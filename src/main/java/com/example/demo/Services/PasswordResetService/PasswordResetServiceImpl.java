@@ -21,11 +21,11 @@ import com.example.demo.Repositories.PasswordResetRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.AuthenticationService.AuthenticationServiceImpl;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class PasswordResetServiceImpl implements PasswordResetService{
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);

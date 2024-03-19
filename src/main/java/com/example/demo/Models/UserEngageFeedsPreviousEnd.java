@@ -1,6 +1,8 @@
 package com.example.demo.Models;
 
-import jakarta.persistence.CascadeType;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,8 +19,9 @@ public class UserEngageFeedsPreviousEnd {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "profileId", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Profile user;
 
     @Column(nullable = false)

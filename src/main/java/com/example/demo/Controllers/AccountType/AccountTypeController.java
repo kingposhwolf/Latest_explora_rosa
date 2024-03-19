@@ -9,7 +9,7 @@ import com.example.demo.Dto.AccountTypeDto;
 import com.example.demo.Services.AccountTypeService.AccountTypeServiceImpl;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/accountType")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AccountTypeController {
 
     private GlobalValidationFormatter globalValidationFormatter;
@@ -29,7 +29,7 @@ public class AccountTypeController {
 
     @PostMapping("/all")
     public ResponseEntity<Object> getAllAccountTypes() {
-          return accountTypeServiceImpl.getAllAccountTypes();
+        return accountTypeServiceImpl.getAllAccountTypes();
     }
 
     @PostMapping("/register")

@@ -12,11 +12,11 @@ import com.example.demo.Dto.TitleDto;
 import com.example.demo.Services.TitleService.TitleServiceImpl;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/title")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class TitleController {
   
     private GlobalValidationFormatter globalValidationFormatter;

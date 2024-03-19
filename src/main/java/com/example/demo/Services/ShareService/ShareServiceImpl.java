@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Dto.ShareDto;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ShareServiceImpl implements ShareService{
 
     private static final Logger logger = LoggerFactory.getLogger(ShareServiceImpl.class);

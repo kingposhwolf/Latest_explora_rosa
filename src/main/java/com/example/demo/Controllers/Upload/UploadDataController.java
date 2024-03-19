@@ -6,7 +6,7 @@ package com.example.demo.Controllers.Upload;
 import com.example.demo.Models.UploadData;
 import com.example.demo.Services.UploadService.UploadDataServiceImpl;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,7 +18,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/uploads")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UploadDataController {
 
     private final UploadDataServiceImpl uploadDataServiceImpl;

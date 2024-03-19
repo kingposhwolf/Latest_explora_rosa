@@ -12,10 +12,10 @@ import com.example.demo.Repositories.GlobalDBStartPointRepository;
 import com.example.demo.Repositories.UserEngagementRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class FeedsAlgorithm {
 
     private final AlgorithmAccessories algorithmAccessories;

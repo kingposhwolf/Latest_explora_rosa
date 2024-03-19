@@ -13,11 +13,11 @@ import com.example.demo.Services.FavoritesService.FavoritesService;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/favorites")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class FavoritesController {
 
     private final FavoritesService favoritesService;

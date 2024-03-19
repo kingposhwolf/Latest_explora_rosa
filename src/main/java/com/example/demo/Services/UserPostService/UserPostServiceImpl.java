@@ -7,6 +7,9 @@ import com.example.demo.Dto.HashTagDto;
 import com.example.demo.Dto.UserPostDto;
 import com.example.demo.Models.*;
 import com.example.demo.Repositories.*;
+
+import lombok.AllArgsConstructor;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -26,6 +29,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UserPostServiceImpl implements UserPostService{
     private static final Logger logger = LoggerFactory.getLogger(UserPostServiceImpl.class);
 
@@ -36,21 +40,7 @@ public class UserPostServiceImpl implements UserPostService{
     private final CountryRepository countryRepository;
     private final HashTagRepository hashTagRepository;
     private final BrandRepository brandRepository;
-    private final LikeRepository likeRepository;
-
-    public UserPostServiceImpl(UserPostRepository userPostRepository,
-                               ProfileRepository profileRepository,
-                               CountryRepository countryRepository,
-                               HashTagRepository hashTagRepository,
-                               BrandRepository brandRepository,
-                               LikeRepository likeRepository) {
-        this.userPostRepository = userPostRepository;
-        this.profileRepository = profileRepository;
-        this.countryRepository = countryRepository;
-        this.hashTagRepository = hashTagRepository;
-        this.brandRepository = brandRepository;
-        this.likeRepository = likeRepository;
-    }
+   // private final LikeRepository likeRepository;
 
 
 

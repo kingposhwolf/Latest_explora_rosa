@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,23 +15,29 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Dto.LikeDto;
 import com.example.demo.Models.Like;
 import com.example.demo.Models.UserPost;
+// import com.example.demo.Repositories.CountryRepository;
 import com.example.demo.Repositories.LikeRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class LikeServiceImpl implements LikeService{
     private static final Logger logger = LoggerFactory.getLogger(LikeServiceImpl.class);
 
     private final UserPostRepository userPostRepository;
 
+    //private final CountryRepository countryRepository;
+
+<<<<<<< HEAD
+    @Autowired
+=======
     private final LikeRepository likeRepository;
 
-    @Autowired
+>>>>>>> 15a011481f80fe24c07671aa052c53e4544609c2
     private AmqpTemplate rabbitTemplate;
 
     private static final String EXCHANGE_NAME = "Like";
@@ -41,11 +48,15 @@ public class LikeServiceImpl implements LikeService{
     public ResponseEntity<Object> likeOperation(LikeDto likeDto) {
         try {
             rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, likeDto.toJson());
+          // countryRepository.deleteById(likeDto.getLikerId());
             
             logger.info("Like saved successfully: ");
             return ResponseEntity.ok("Like successfully!");
-        } catch (Exception e) {
-            logger.error("Failed to like server Error : ", e.getMessage());
+        } catch (AmqpException e) {
+        logger.error("Failed to send message to RabbitMQ", e);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send message to RabbitMQ");
+        }catch (Exception e) {
+            logger.error("Failed to like server Error : ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }

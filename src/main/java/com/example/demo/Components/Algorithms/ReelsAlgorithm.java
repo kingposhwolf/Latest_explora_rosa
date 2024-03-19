@@ -2,10 +2,10 @@ package com.example.demo.Components.Algorithms;
 
 import org.springframework.stereotype.Component;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ReelsAlgorithm {
     
 
