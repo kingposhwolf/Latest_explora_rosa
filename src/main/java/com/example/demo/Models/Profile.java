@@ -31,14 +31,14 @@ public class Profile {
     private String address;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "countryId", foreignKey = @ForeignKey(name = "FK_PROFILE_COUNTRY", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE"))
+    @JoinColumn(name = "countryId", foreignKey = @ForeignKey(name = "FK_PROFILE_COUNTRY", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE SET NULL"))
     private Country country;
 
     @Column(nullable = false)
     private VerificationStatus verificationStatus;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cityId", foreignKey = @ForeignKey(name = "FK_PROFILE_CITY", foreignKeyDefinition = "FOREIGN KEY (city_id) REFERENCES cities(id) ON DELETE CASCADE"))
+    @JoinColumn(name = "cityId", foreignKey = @ForeignKey(name = "FK_PROFILE_CITY", foreignKeyDefinition = "FOREIGN KEY (city_id) REFERENCES cities(id) ON DELETE SET NULL"))
     private City city;
 
     @Column(nullable = false)
