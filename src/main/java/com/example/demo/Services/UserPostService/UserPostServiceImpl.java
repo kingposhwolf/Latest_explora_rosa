@@ -30,6 +30,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class UserPostServiceImpl implements UserPostService{
     private static final Logger logger = LoggerFactory.getLogger(UserPostServiceImpl.class);
 
@@ -115,12 +116,12 @@ public ResponseEntity<Object> uploadPost(
                 MultipartFile thumbnailFile = userPostDto.getThumbnailFile();
                 if (thumbnailFile != null && !thumbnailFile.isEmpty()) {
                     String thumbnail = null;
-                    thumbnail = processThumbnail(file, thumbnailFile);
+                    thumbnail = processThumbnail(file, thumbnailFile, profileId);
                     userPostDto.setThumbnail(thumbnail);
                 } else {
                     String thumbnail = null;
                     // Use Fmpeg to extract a frame from the video and save it as a thumbnail
-                    thumbnail = processThumbnail(file, null);
+                    thumbnail = processThumbnail(file, null, profileId);
                     userPostDto.setThumbnail(thumbnail);
                 }
             }
@@ -131,8 +132,14 @@ public ResponseEntity<Object> uploadPost(
             }
             else {
                 byte[] bytes = file.getBytes();
+                String originalFileName = file.getOriginalFilename();
+                // Create a variable to store the file extension
+                String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+
                 // Directory path where you want to save ;
-                String insPath = folderPath + fileName;
+                String insPath = folderPath + fileName + fileExtension;
+
+                String recordedFileName = fileName + fileExtension;
 
                 try {
                     Files.write(Paths.get(insPath), bytes);
@@ -140,7 +147,7 @@ public ResponseEntity<Object> uploadPost(
                     // Save the user post
                     UserPost userPost = new UserPost();
                     userPost.setProfile(profile.get());
-                    userPost.setName(fileName);
+                    userPost.setName(recordedFileName);
                     userPost.setCountry(profile.get().getCountry());
                     userPost.setHashTags(userPostDto.getHashTagIds());
                     userPost.setBrand(brand);
@@ -156,6 +163,7 @@ public ResponseEntity<Object> uploadPost(
                     logger.info(userPost.toString());
 
                     // Save the post to the database
+
                     UserPost savedPost = userPostRepository.save(userPost);
 
                     // Transfer the file to the specified path
@@ -180,9 +188,12 @@ public ResponseEntity<Object> uploadPost(
         // Check if the content type is not null and matches the allowed types
         return contentType != null && (contentType.startsWith("image/") || contentType.startsWith("video/"));
     }
-    private String processThumbnail(MultipartFile file, MultipartFile thumbnailFile) throws IOException {
+    private String processThumbnail(MultipartFile file, MultipartFile thumbnailFile, Long profileId) throws IOException {
+        // Generate a variable for a current time
+        LocalDateTime currentTime = LocalDateTime.now();
+
         // Generate a unique filename for the thumbnail
-        String thumbnailFileName = "thumbnail_" + System.currentTimeMillis() + ".jpg";
+        String thumbnailFileName = "thumbnail_" +  profileId + "_" + currentTime.getYear() + "_" + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour() + "_" + currentTime.getMinute() + "_" + currentTime.getSecond();
 
         // Define the directory where thumbnails will be stored (same as posts directory)
         String thumbnailDirectory = postfolderPath;

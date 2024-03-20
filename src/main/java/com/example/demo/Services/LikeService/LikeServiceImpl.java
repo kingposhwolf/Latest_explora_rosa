@@ -32,12 +32,10 @@ public class LikeServiceImpl implements LikeService{
 
     //private final CountryRepository countryRepository;
 
-<<<<<<< HEAD
+
     @Autowired
-=======
     private final LikeRepository likeRepository;
 
->>>>>>> 15a011481f80fe24c07671aa052c53e4544609c2
     private AmqpTemplate rabbitTemplate;
 
     private static final String EXCHANGE_NAME = "Like";
