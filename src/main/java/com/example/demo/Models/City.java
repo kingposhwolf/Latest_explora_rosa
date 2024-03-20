@@ -3,6 +3,8 @@ package com.example.demo.Models;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /*
  * @author Dwight Danda
  *
@@ -23,6 +25,7 @@ public class City {
 
         @ManyToOne
         @JoinColumn(name = "countryId", nullable = false, foreignKey = @ForeignKey(name = "FK_country_city", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE"))
+        @JsonIgnore
         private Country country;
 
         @NotBlank

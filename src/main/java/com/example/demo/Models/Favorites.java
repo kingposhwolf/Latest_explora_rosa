@@ -20,7 +20,7 @@ public class Favorites {
     private Profile profile;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_FAVORITE_POST", foreignKeyDefinition = "FOREIGN KEY (userPost_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
+    @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_FAVORITE_POST", foreignKeyDefinition = "FOREIGN KEY (user_post_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
     private UserPost post;
 
     private boolean deleted = Boolean.FALSE;

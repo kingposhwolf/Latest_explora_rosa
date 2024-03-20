@@ -35,7 +35,7 @@ public class Comment {
     private Profile commenter;
     
     @ManyToOne
-    @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_WITH_COMMENT", foreignKeyDefinition = "FOREIGN KEY (userPost_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
+    @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_WITH_COMMENT", foreignKeyDefinition = "FOREIGN KEY (user_post_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
     private UserPost userPost;
 
     @ManyToOne
