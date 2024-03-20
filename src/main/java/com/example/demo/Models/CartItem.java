@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Table(name="cartItems")
 @Data
-@SQLDelete(sql = "UPDATE account_type SET deleted = true WHERE id=?")
+@SQLDelete(sql = "UPDATE cartItems SET deleted = true WHERE id=?")
 @SQLRestriction("deleted=false")
 public class CartItem {
     @Id
@@ -23,7 +23,7 @@ public class CartItem {
     private int quantity;
     
     @ManyToOne
-    @JoinColumn(name = "cartId")
+    @JoinColumn(name = "cartId", nullable = false, foreignKey = @ForeignKey(name = "FK_CART_BH55YI6H_ITEM", foreignKeyDefinition = "FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE CASCADE"))
     private Cart cart;
 
     private boolean deleted = Boolean.FALSE;

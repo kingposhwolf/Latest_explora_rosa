@@ -99,5 +99,9 @@ public class UserPost {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<CartItem> product = new ArrayList<>();
+    private List<CartItem> cartitems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<OrderItem> orderList = new ArrayList<>();
 }

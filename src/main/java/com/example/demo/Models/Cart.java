@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name="cart")
 @Data
-@SQLDelete(sql = "UPDATE account_type SET deleted = true WHERE id=?")
+@SQLDelete(sql = "UPDATE cart SET deleted = true WHERE id=?")
 @SQLRestriction("deleted=false")
 public class Cart {
     @Id
