@@ -3,7 +3,6 @@ package com.example.demo.Models;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*
  * @author Dwight Danda
@@ -12,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.ToString;
 @Entity
 @Table(name="cities")
 @Data
@@ -25,7 +25,7 @@ public class City {
 
         @ManyToOne
         @JoinColumn(name = "countryId", nullable = false, foreignKey = @ForeignKey(name = "FK_country_city", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE"))
-        @JsonIgnore
+        @ToString.Exclude
         private Country country;
 
         @NotBlank

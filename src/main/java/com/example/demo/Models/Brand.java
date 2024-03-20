@@ -24,7 +24,7 @@ public class Brand extends Profile {
     private String tinNumber;
 
     @ManyToOne
-    @JoinColumn(name = "businessId", nullable = false, foreignKey = @ForeignKey(name = "FK_BRAND_BUSINESS_CATEGORY", foreignKeyDefinition = "FOREIGN KEY (business_id) REFERENCES business_categories(id) ON UPDATE CASCADE"))
+    @JoinColumn(name = "businessId", foreignKey = @ForeignKey(name = "FK_BRAND_BUSINESS_CATEGORY", foreignKeyDefinition = "FOREIGN KEY (business_id) REFERENCES business_categories(id) ON UPDATE CASCADE"))
     private BusinessCategory businessCategories;
 
 }

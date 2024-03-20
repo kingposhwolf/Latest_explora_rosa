@@ -15,7 +15,7 @@ public class TopicEngageFeedPreviousEnd {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_ENGAGE_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile user;
 

@@ -1,6 +1,11 @@
 package com.example.demo.Models;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*
  * @author Dwight Danda
@@ -24,4 +29,9 @@ public class HashTag {
     private String name;
 
     private boolean deleted = Boolean.FALSE;
+
+    //Below is For Bidirection relationship
+    @OneToMany(mappedBy = "hashTags", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<TopicEngagement> topicEngagementList = new ArrayList<>();
 }

@@ -16,13 +16,13 @@ public class TopicEngagement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_TOPIC_ENGAGE_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile profile;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "hashTagId", nullable = false)
-    private HashTag hashTags; //special case
+    @ManyToOne
+    @JoinColumn(name = "hashTagId", nullable = false, foreignKey = @ForeignKey(name = "FK_SKHRF6482J_PROFILE", foreignKeyDefinition = "FOREIGN KEY (hash_tag_id) REFERENCES hash_tags(id) ON DELETE CASCADE"))
+    private HashTag hashTags;
 
     @Column(nullable = false)
     private int score;

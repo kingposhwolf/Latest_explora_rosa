@@ -39,7 +39,7 @@ public class Comment {
     private UserPost userPost;
 
     @ManyToOne
-    @JoinColumn(name = "parentCommentId", nullable = false, foreignKey = @ForeignKey(name = "FK_PARENT_COMMENT", foreignKeyDefinition = "FOREIGN KEY (parent_comment_id) REFERENCES comments(id) ON DELETE CASCADE"))
+    @JoinColumn(name = "parentCommentId", foreignKey = @ForeignKey(name = "FK_PARENT_COMMENT", foreignKeyDefinition = "FOREIGN KEY (parent_comment_id) REFERENCES comments(id) ON DELETE CASCADE"))
     private Comment parentComment;
 
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)

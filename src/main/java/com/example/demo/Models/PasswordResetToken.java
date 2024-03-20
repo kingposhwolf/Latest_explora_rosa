@@ -19,7 +19,7 @@ public class PasswordResetToken {
 
     private String token;
 
-    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = User.class)
     @JoinColumn(nullable = false, name = "userId", foreignKey = @ForeignKey(name = "FK_PASSWORD_cHANGE_USER", foreignKeyDefinition = "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE"))
     private User user;
 

@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 import lombok.Data;
 
 @Entity
@@ -23,7 +24,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "accountTypeId", nullable = false, foreignKey = @ForeignKey(name = "FK_ACCOUNT_TYPE", foreignKeyDefinition = "FOREIGN KEY (account_type_id) REFERENCES account_type(id) ON DELETE CASCADE"))
     private AccountType accountType;
 
