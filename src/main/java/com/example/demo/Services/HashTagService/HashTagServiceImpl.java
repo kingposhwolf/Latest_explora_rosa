@@ -25,18 +25,18 @@ public class HashTagServiceImpl implements HashTagService {
     private final HashTagRepository hashTagRepository;
 
 
-    @Transactional
     @Override
     public ResponseEntity<Object> getAllHashTags(){
         try{
             Iterable<HashTag> hashTag = hashTagRepository.findAll();
 
         if(hashTag.iterator().hasNext()){
-            logger.error("\nThere is Request for Fetching All Suggestions, But Nothing Registered to the database ");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is No  HashTag registered in the Database");
-        }else{
             logger.info("\nSuccessful fetched all Suggestions");
             return ResponseEntity.status(200).body(hashTag);
+
+        }else{
+            logger.error("\nThere is Request for Fetching All Suggestions, But Nothing Registered to the database ");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is No  HashTag registered in the Database");
         }
 
         }catch (Exception exception) {

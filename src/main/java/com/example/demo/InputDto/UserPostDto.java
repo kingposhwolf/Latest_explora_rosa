@@ -15,13 +15,13 @@ public class UserPostDto {
 
     private final String folderPath="C:\\Users\\user\\Documents\\explore\\exploredev\\Posts\\";
 
-    @NotNull
     private Long id;
+
+    private List<String> names;
 
     @NotNull
     private Long profileId;
 
-    @NotNull
     private Long countryId;
 
     @NotNull
@@ -43,7 +43,7 @@ public class UserPostDto {
     private LocalDateTime time;
 
     @NotNull
-    private String type;
+    private List<String> contentTypes;
 
     @NotNull
     private String path = folderPath;

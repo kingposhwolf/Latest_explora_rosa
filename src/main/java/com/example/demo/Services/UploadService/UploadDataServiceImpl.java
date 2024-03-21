@@ -44,6 +44,7 @@ public class UploadDataServiceImpl implements UploadDataService {
     @Transactional
     @Override
     public ResponseEntity<Object> uploadDataToFileSystem(MultipartFile upload, Long brandId) throws IOException {
+
         String uploadPath = folderPath + upload.getOriginalFilename();
 
         try {

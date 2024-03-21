@@ -1,3 +1,861 @@
+<<<<<<< HEAD
+2024-03-16 12:13:51.850 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:52.418 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:52.419 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:52.419 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:52.420 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:52.421 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:52.422 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:52.424 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:52.425 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:56.868 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@533b856d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:56.982 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.579 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@289da50b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.581 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@29a6055f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.581 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7781a8cc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.582 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5269a4e5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.582 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@188bb9bd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.584 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6ca9a45c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.585 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@667b0fbe: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.585 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7b3b286d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.586 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@264b8b34: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:13:57.673 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.686 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.689 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.715 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.716 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.718 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.719 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-9] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.720 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:13:57.722 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:14:02.155 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4012da74: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.159 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-9] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 12:14:02.727 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5ffbd0b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.735 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1383e32f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.736 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2c82d3ad: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.782 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6b3b284e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.782 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@65a28990: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.783 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@18c46c91: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.784 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@50424f33: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.784 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@441dbdd8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:02.784 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@766f4a4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 12:14:04.770 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17h30m504ms346µs500ns).
+
+2024-03-16 12:14:08.431 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-9] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#12a9889e:73/SimpleConnection@6573950 [delegate=amqp://danda@192.168.1.46:5672/, localPort=6310]
+
+2024-03-16 12:21:08.808 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+
+2024-03-16 12:51:08.811 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 4]
+
+2024-03-16 13:21:08.820 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 5]
+
+2024-03-16 13:51:08.832 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 6]
+
+2024-03-16 14:11:27.071 [http-nio-0.0.0.0-8081-exec-5] INFO  c.e.d.S.U.UserPostServiceImpl - UserPost(id=null, profile=Personal(title=null), country=Country(id=1, name=United States of America), hashTags=[HashTag(id=2, name=#graduation)], brand=null, likes=0, comments=0, caption=Hallelujah!, thumbnail=null, time=2024-03-16T14:11:27.070558400, type=image/jpeg, path=C:\Users\user\Documents\explore\exploredev\Posts\, shares=0, favorites=0)
+
+2024-03-16 14:11:27.081 [http-nio-0.0.0.0-8081-exec-5] INFO  c.e.d.S.U.UserPostServiceImpl - Post uploaded successfully
+
+2024-03-16 14:21:08.839 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 7]
+
+2024-03-16 14:51:08.853 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 8]
+
+2024-03-16 15:01:24.786 [AMQP Connection 192.168.1.46:5672] WARN  c.r.c.impl.ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Connection reset)
+
+2024-03-16 15:01:25.359 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2f22970c: tags=[[amq.ctag-FOeo85oHaZdi1TUzGgKk5g]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,8), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@6573950 [delegate=amqp://danda@192.168.1.46:5672/, localPort=6310], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.374 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4c8c2226: tags=[[amq.ctag-dWR0gtEBuw59V6tIi98HRg]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,9), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@6573950 [delegate=amqp://danda@192.168.1.46:5672/, localPort=6310], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.375 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@39ba350: tags=[[amq.ctag-knwNP1qi3mlakhnvKSJK0Q]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,4), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@6573950 [delegate=amqp://danda@192.168.1.46:5672/, localPort=6310], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.376 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6b3d40c: tags=[[amq.ctag-fy5JvlNQnNqEIOLxfydy5w]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,3), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@6573950 [delegate=amqp://danda@192.168.1.46:5672/, localPort=6310], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.487 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.500 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.509 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.527 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.689 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7dcc23f7: tags=[[amq.ctag-QMg7cqnjFhJKTjXsm_RFhw]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,7), conn: Proxy@5d4b0fac Shared Rabbit Connection: null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.689 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@10943d4: tags=[[amq.ctag-IlOm4yw6ZPIUW1j-11mu2g]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,10), conn: Proxy@5d4b0fac Shared Rabbit Connection: null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.704 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.708 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.714 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7bb34503: tags=[[amq.ctag-GXvi0xJsdRxXZzIAEjHD8Q]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,6), conn: Proxy@5d4b0fac Shared Rabbit Connection: null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.716 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5ad39198: tags=[[amq.ctag-xZ1D3_25qouvRlr1u8sAfA]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,5), conn: Proxy@5d4b0fac Shared Rabbit Connection: null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.716 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@70c6f138: tags=[[amq.ctag-HKGikTtP278bX-TbPIPWsw]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,1), conn: Proxy@5d4b0fac Shared Rabbit Connection: null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.717 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1d3a5f9c: tags=[[amq.ctag-1cCiGK604XK0EVKP2NjPLA]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,2), conn: Proxy@5d4b0fac Shared Rabbit Connection: null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:25.736 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.742 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.743 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:25.747 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.632 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@158049db: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.641 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.699 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@40d9984c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.700 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@786e3fd2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.705 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@d8fa201: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.739 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.753 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.764 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.899 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@b4d3a43: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.907 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.914 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4255d7ba: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.918 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5705b471: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.918 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@38ac571b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.918 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@660d1db4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.918 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3ffd71f6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:30.935 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.938 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.952 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.961 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:30.964 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:35.675 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@39589471: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:35.683 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:35.783 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@41feccfc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:35.789 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:35.877 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@40dda6c2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:35.877 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6fa21ef: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:35.884 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:35.887 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:35.989 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@b7b821a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:35.989 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5856cf5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:35.990 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@51f7a431: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:36.001 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:36.003 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:36.005 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:36.082 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4aa6baf3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:36.083 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4db4c594: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:36.083 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1f4c1970: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:36.095 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:36.099 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:36.101 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:40.872 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@77ea34fc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:40.879 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.011 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2cb79a6b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.011 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6755302f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.018 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.045 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.074 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@10a5b7cf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.076 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4f08a0ac: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.087 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.089 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.123 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@28fb1480: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.123 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4811a8b2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.238 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.252 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.277 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1cf43ac7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.290 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.292 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@36c91053: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.302 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@680ed39c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:41.307 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:41.308 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.043 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7a2238ad: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.052 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.198 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@423d3439: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.198 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7acbdda0: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.206 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.209 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.245 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1774d77e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.245 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@658da138: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.257 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.280 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.393 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@509673e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.403 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2f12f322: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.425 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.440 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.449 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@732aac01: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.450 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@19c00c56: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.455 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.472 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:46.537 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3cd9a31c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:46.625 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.171 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2e6d8712: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.177 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.375 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@24bffc10: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.376 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@10e04723: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.399 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.406 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.470 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7c353d77: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.471 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@749ab20d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.501 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.530 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.577 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7b58c123: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.577 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4691abd3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.577 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@324eac74: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.580 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.581 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.582 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.592 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@a20d24: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.594 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:51.781 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7930d09c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:51.788 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.255 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@156052fd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.262 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.413 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@786db8d5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.420 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.617 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1e137aa9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.624 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.665 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1885b13e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.665 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@ff74636: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.666 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@178d4a22: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.669 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@a039490: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.671 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@11112c7f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.671 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@10e63fac: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.681 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.683 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.686 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.691 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.694 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.698 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:01:56.825 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1ffb86af: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:01:56.835 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.417 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@df05f77: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.424 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.572 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@65389e7e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.580 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.776 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1e3cdf5b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.784 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.822 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@492f2943: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.822 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@39d5fcc6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.823 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3a9650f2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.823 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6e7f40c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.823 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@19257a3e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.823 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@48a5876a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.831 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.833 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.835 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.837 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.841 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.869 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:01.978 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@117bed6b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:01.984 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.529 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7a947999: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.535 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.667 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4b120a55: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.673 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.870 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@63c38b8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.876 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.933 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7867b71e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.933 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4ddf873: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.933 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@264fbe27: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.934 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2fa614d2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.942 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.944 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.949 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1caaab7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.949 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@390fa263: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:06.965 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.967 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.981 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:06.983 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:07.075 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@32901421: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:07.085 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:11.634 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@48030290: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:11.641 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:11.775 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@14019bfe: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:11.783 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:11.994 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@73c19cda: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:12.001 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:12.041 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7f92d3bf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:12.048 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:12.057 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@118f1cf9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:12.057 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@33e203e4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:12.072 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@59967e2b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:12.073 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:12.075 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:12.080 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:12.088 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1a3018ee: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:12.088 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@610ab0a2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:12.098 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:12.099 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:12.196 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7437a3fe: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:12.202 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:16.797 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1037a07f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:16.801 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:16.886 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7a77e0d3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:16.893 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:17.137 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@16235764: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:17.145 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:17.216 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2393322c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:17.216 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@346c1070: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:17.217 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4dd00bb3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:17.217 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7c123984: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:17.217 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1693a5bc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:17.217 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@34c670fd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:17.227 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:17.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:17.231 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:17.232 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:17.234 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:17.236 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:17.339 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-19] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@170500ac: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:17.345 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-20] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:21.967 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5987302f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:21.974 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.013 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@54083816: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.021 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.310 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@29641b0f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.310 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3c699726: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.322 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.324 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.371 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7e99ee3d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.371 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@62975e24: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.373 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@231f6547: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.374 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5f7a6f37: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.377 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@279d527a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.393 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.395 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.494 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.495 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.503 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:22.511 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-20] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@24bc2009: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:22.519 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-21] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.158 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4a73747e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.158 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@275af55a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.167 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.169 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.361 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@d0dccac: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.361 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3240526e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.369 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.392 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.563 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2301645f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.564 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6a6084bb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.565 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@51412cfe: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.565 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1c8d23ef: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.565 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@37cb2bd5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.565 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-21] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@22189147: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:27.575 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.577 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.579 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.581 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.596 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:27.598 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-22] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.270 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@78533b07: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.271 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@63bf8e46: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.274 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.274 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.537 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7f982615: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.537 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@59891cf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.545 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.546 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.676 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@297dc91c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.676 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6b925f3b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.676 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@d530731: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.682 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.684 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.708 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.739 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@38a82b83: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.739 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2964db7e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.739 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-22] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1d7a90f4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:32.746 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.748 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:32.749 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-23] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.375 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1af55b7e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.375 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2bdb724d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.383 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.385 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.576 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@64961447: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.576 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@752bbc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.584 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.586 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.779 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@768df385: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.779 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5472f3cb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.779 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4132a510: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.780 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@35131ca8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.780 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5a07d7ac: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.780 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-23] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4da3ca51: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:37.789 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.791 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.792 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.794 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.798 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:37.803 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-24] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.521 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@210fbc03: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.521 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7a334fb1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.530 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.532 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.723 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@447efd0d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.723 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@31e6e560: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.733 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.735 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.925 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5f701a28: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.925 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3696045d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.925 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5c34e413: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.927 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4a73b3d6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.936 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@68f1b6f2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.937 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-24] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@311b17e4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:42.962 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.971 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.973 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.980 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.983 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:42.985 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-25] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:47.623 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3d12ba3f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:47.629 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:47.639 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@57cb9def: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:47.644 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:47.854 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5bb2e3a1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:47.854 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2e36782: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:47.887 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-27] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:47.890 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:48.119 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3a7d2d39: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:48.119 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@60f82f2c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:48.120 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@738e2c55: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:48.121 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@38eaad17: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:48.122 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@6660d7bb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:48.124 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-25] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1a6aaf59: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:48.133 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:48.157 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:48.159 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:48.161 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:48.162 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:48.182 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-26] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:52.688 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@59bd0690: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:52.691 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-27] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 15:02:52.703 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3dc7762a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:52.828 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-27] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#12a9889e:244/SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005]
+
+2024-03-16 15:02:52.922 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5d8c4db6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:52.922 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@a89fc68: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:53.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5e1f4cd3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:53.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@493a46a3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:53.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@68b6893a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:53.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1e3f9fbd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:53.230 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@591f391d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:02:53.230 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-26] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3fb46e03: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 15:21:08.864 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 9]
+
+2024-03-16 15:51:08.867 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 10]
+
+2024-03-16 16:21:08.889 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 11]
+
+2024-03-16 16:51:08.891 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 12]
+
+2024-03-16 17:12:40.489 [http-nio-0.0.0.0-8081-exec-8] ERROR c.e.d.S.CityService.CityServiceImpl - 
+There is Request for Fetching All Suggestions, But Nothing Registered to the database 
+
+2024-03-16 17:21:08.897 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 13]
+
+2024-03-16 21:41:00.691 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h57m26s456ms282µs500ns).
+
+2024-03-16 21:41:02.846 [AMQP Connection 192.168.1.46:5672] WARN  c.r.c.impl.ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Connection reset)
+
+2024-03-16 21:41:03.403 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@216727ae: tags=[[amq.ctag-moV2Fj0975Hh-0tbQkSz3w]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,8), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.403 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-28] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@534d14f: tags=[[amq.ctag-MEPuByILa2roG4xXxWE_Iw]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,3), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.403 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@79ed8742: tags=[[amq.ctag-RCMi9MiyFTTbUibZZzCrCg]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,5), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.403 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-28] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7f86bd4d: tags=[[amq.ctag-R9cHuuR7UX96GwtwmP5C1A]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,4), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.404 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1e120f6f: tags=[[amq.ctag-RkwNzM65rUCYTx1_FBui6w]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,9), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.404 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@18a30b47: tags=[[amq.ctag-Q_CbimJ7GFDQd_8mF0UmPw]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,2), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.404 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@432cfebe: tags=[[amq.ctag-RsHVO4Qbg9_hh3V8wUM3WQ]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,6), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.404 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5d6005ad: tags=[[amq.ctag-JJVLmtHQ_Q8DXlDaaeg9iQ]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,10), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.404 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@18bc3f5b: tags=[[amq.ctag-_Te7lYPjQcZNiBqoZSZdUA]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,7), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.404 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-27] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@75a4a929: tags=[[amq.ctag-sxL67rnNA84C9UQd5VJzAA]], channel=Cached Rabbit Channel: AMQChannel(amqp://danda@192.168.1.46:5672/,1), conn: Proxy@5d4b0fac Shared Rabbit Connection: SimpleConnection@66805cf0 [delegate=amqp://danda@192.168.1.46:5672/, localPort=3005], acknowledgeMode=AUTO local queue size=0
+
+2024-03-16 21:41:03.494 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-28] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-16 21:41:03.712 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-28] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#12a9889e:245/SimpleConnection@6d7550b6 [delegate=amqp://danda@192.168.1.46:5672/, localPort=12522]
+
+2024-03-16 21:47:59.192 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 14]
+
+2024-03-16 22:18:00.431 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 15]
+
+2024-03-16 22:48:00.433 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 16]
+
+2024-03-16 23:18:00.440 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 17]
+
+2024-03-16 23:48:00.449 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 18]
+=======
 2024-03-16 16:18:52.075 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
 
 2024-03-16 16:18:52.161 [main] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 21.0.2 with PID 22836 (D:\TestExploraRosa\target\classes started by Julius in D:\TestExploraRosa)
@@ -1489,4 +2347,5 @@ java.lang.NullPointerException: Cannot invoke "com.example.demo.Components.Globa
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
 2024-03-16 23:57:17.603 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 15]
+>>>>>>> 15a011481f80fe24c07671aa052c53e4544609c2
 

@@ -5,6 +5,8 @@ package com.example.demo.Models;
  */
 import jakarta.persistence.*;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,16 +24,28 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @SQLRestriction("deleted=false")
 public class UserPost {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserPost.class);
+
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    @ElementCollection
+    @CollectionTable(name = "user_post_names", joinColumns = @JoinColumn(name = "user_post_id"))
+    @Column(name = "name")
+    private List<String> names;
+
+
     @ManyToOne
+    @JoinColumn(name = "profileId")
+
     @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_USER_POST_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile profile;
 
     @ManyToOne
-    @JoinColumn(name = "countryId", nullable = false)
+    @JoinColumn(name = "countryId")
     private Country country;
 
     @ManyToMany
@@ -62,8 +76,10 @@ public class UserPost {
     @Column(nullable = false)
     private LocalDateTime time;
 
-    @Column(nullable = false)
-    private String type;
+    @ElementCollection
+    @CollectionTable(name = "user_post_names", joinColumns = @JoinColumn(name = "user_post_id"))
+    @Column(name = "contentTypes")
+    private List<String> contentTypes;
 
     @Column(nullable = false)
     private String path;
@@ -73,6 +89,7 @@ public class UserPost {
 
     @Column
     private int favorites;
+
 
     private boolean deleted = Boolean.FALSE;
 
