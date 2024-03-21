@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.Dto.CountryDto;
+import com.example.demo.InputDto.CountryDto;
 import com.example.demo.Services.CountryService.CountryServiceImpl;
 
 import jakarta.validation.Valid;

@@ -1,7 +1,8 @@
 package com.example.demo.Services.HashTagService;
 
-import com.example.demo.Dto.HashTagDto;
 import org.springframework.http.ResponseEntity;
+
+import com.example.demo.InputDto.HashTagDto;
 
 public interface HashTagService {
     ResponseEntity<Object> getAllHashTags();

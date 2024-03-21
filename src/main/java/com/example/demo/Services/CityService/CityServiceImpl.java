@@ -1,9 +1,5 @@
 package com.example.demo.Services.CityService;
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Dto.CityDto;
+import com.example.demo.InputDto.CityDto;
 import com.example.demo.Models.City;
 import com.example.demo.Models.Country;
 import com.example.demo.Repositories.CityRepository;
@@ -39,7 +35,7 @@ public class CityServiceImpl implements CityService{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is No  Cities in the Database");
             }else{
                 logger.info("\nSuccessful fetched all Cities");
-                return ResponseEntity.status(200).body(cities);
+                return ResponseEntity.status(200).body(cityRepository.findCitiesWithoutCountry());
             }
         } catch (Exception exception) {
             logger.error("\nFailed to fetch all Cities, Server Error: \n" + exception.getMessage());
@@ -56,7 +52,7 @@ public class CityServiceImpl implements CityService{
 
             if(existingCity.isPresent()){
                 logger.error("\nFailed to save the city, City Already exists Error");
-                return ResponseEntity.status(400).body("This City Already Exists!");
+                return ResponseEntity.status(200).body("This City Already Exists!");
             }
             else{
                 Country country = countryRepository.findById(cityDto.getCountyId()).orElse(null);

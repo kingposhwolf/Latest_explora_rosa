@@ -1,9 +1,5 @@
 package com.example.demo.Services.UserPostService;
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Dto.UserPostDto;
+import com.example.demo.InputDto.UserPostDto;
 import com.example.demo.Models.*;
 import com.example.demo.Repositories.*;
 
@@ -44,8 +40,6 @@ public class UserPostServiceImpl implements UserPostService{
     private final HashTagRepository hashTagRepository;
     private final BrandRepository brandRepository;
    // private final LikeRepository likeRepository;
-
-
 
 @Override
 @Transactional
@@ -605,8 +599,44 @@ public ResponseEntity<Object> uploadPost(
 //            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload post: " + e.getMessage());
 //        }
 //    }
-
-
+//=======
+//        // Check if the content type is allowed
+//        String contentType = file.getContentType();
+//        if (!isValidContentType(contentType)) {
+//            logger.error("Unsupported content type: {}", contentType);
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
+//        }
+//        userPostDto.setType(contentType);
+//
+//        // Fetch profile and country entities
+//        Profile profile = profileRepository.findById(profileId)
+//                .orElseThrow(() -> new IllegalArgumentException("Profile with ID " + profileId + " not found"));
+//        Country country = countryRepository.findById(userPostDto.getCountryId())
+//                .orElseThrow(() -> new IllegalArgumentException("Country with ID " + userPostDto.getCountryId() + " not found"));
+//        userPostDto.setProfileId(profileId);
+//
+//        //Fetch or create new hashTag
+//        List<HashTag> hashTags = new ArrayList<>();
+//        for (String hashtagName : hashtagNames) {
+//            if (hashtagName != null) {
+//                Optional<HashTag> optionalHashTag = hashTagRepository.findByName(hashtagName);
+//                HashTag hashTag = null;
+//                if (optionalHashTag.isPresent()) {
+//                    hashTag = optionalHashTag.get();
+//                } else {
+//                    // Create a new hashtag if it doesn't exist
+//                    hashTag = new HashTag();
+//                    hashTag.setName(hashtagName);
+//                    hashTagRepository.save(hashTag); // Save the new hash tag to get the ID
+//                }
+//                hashTags.add(hashTag);
+//            }
+//        }
+//        // Set the list of hashtags to the userPostDto
+//        userPostDto.setHashTagIds(hashTags);
+//>>>>>>> 981a58939b6028fd40233569b1530c43dba68d89
+//
+//
 
 
 //        Country country = countryRepository.findById(userPostDto.getCountryId())

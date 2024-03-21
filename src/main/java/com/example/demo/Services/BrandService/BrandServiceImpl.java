@@ -8,7 +8,7 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Dto.ProfileVisitDto;
+import com.example.demo.InputDto.ProfileVisitDto;
 import com.example.demo.Models.Brand;
 import com.example.demo.Repositories.BrandRepository;
 

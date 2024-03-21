@@ -1,13 +1,7 @@
 package com.example.demo.Services.BusinessCategoryService;
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Dto.BusinessCategoryDto;
+import com.example.demo.InputDto.BusinessCategoryDto;
 import com.example.demo.Models.BusinessCategory;
-import com.example.demo.Models.HashTag;
 import com.example.demo.Repositories.BusinessCategoryRepository;
-import com.example.demo.Repositories.HashTagRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -18,9 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -29,8 +21,6 @@ public class BusinessCategoryServiceImp implements BusinessCategoryService {
     private static final Logger logger = LoggerFactory.getLogger(BusinessCategoryServiceImp.class);
 
     private final BusinessCategoryRepository businessCategoryRepository;
-
-    private final HashTagRepository hashTagRepository;
 
 
     @Override
@@ -56,9 +46,6 @@ public class BusinessCategoryServiceImp implements BusinessCategoryService {
         try {
             Optional<BusinessCategory> existingBusinessCategory = businessCategoryRepository.findByName(businessCategoryDto.getName());
 
-            List<HashTag> hashTags = hashTagRepository.findAllByIdIn(businessCategoryDto.getHashTags());
-
-            List<HashTag> validHashTags = hashTags.stream().filter(hashTag -> hashTag != null).collect(Collectors.toList());
 
         if(existingBusinessCategory.isPresent()){
             logger.error("\nFailed to save Business Category, Business Cattegory Already Exists Error");
@@ -67,7 +54,6 @@ public class BusinessCategoryServiceImp implements BusinessCategoryService {
         else{
             BusinessCategory businessCategory = new BusinessCategory();
             businessCategory.setName(businessCategoryDto.getName());
-            businessCategory.setHashTags(validHashTags);
             businessCategoryRepository.save(businessCategory);
             logger.info("Business Category saved Sucessfully\n" + businessCategory);
             return ResponseEntity.status(201).body("Business Category Created Successful ");

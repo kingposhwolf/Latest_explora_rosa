@@ -3,10 +3,7 @@
  *
  */
 package com.example.demo.Models;
-/*
- * @author Dwight Danda
- *
- */
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -26,8 +23,8 @@ public class Brand extends Profile {
 
     private String tinNumber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "businessId")
+    @ManyToOne
+    @JoinColumn(name = "businessId", foreignKey = @ForeignKey(name = "FK_BRAND_BUSINESS_CATEGORY", foreignKeyDefinition = "FOREIGN KEY (business_id) REFERENCES business_categories(id) ON UPDATE CASCADE"))
     private BusinessCategory businessCategories;
 
 }

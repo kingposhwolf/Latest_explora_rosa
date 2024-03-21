@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.Dto.ShareDto;
+import com.example.demo.InputDto.ShareDto;
 import com.example.demo.Services.ShareService.ShareServiceImpl;
 
 import jakarta.validation.Valid;

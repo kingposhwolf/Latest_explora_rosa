@@ -1,5 +1,7 @@
 package com.example.demo.Models;
-import java.util.List;
+
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 
 /*
  * @author Dwight Danda
@@ -11,6 +13,8 @@ import lombok.Data;
 @Entity
 @Table(name = "businessCategories")
 @Data
+@SQLDelete(sql = "UPDATE business_categories SET deleted = true WHERE id=?")
+@SQLRestriction("deleted=false")
 public class BusinessCategory {
 
     @Id
@@ -20,8 +24,5 @@ public class BusinessCategory {
     @Column(nullable = false, length = 100, unique = true)
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "businessCategoryHashTag",joinColumns = @JoinColumn(name = "businessCategoryId"),inverseJoinColumns = @JoinColumn(name = "hashTagId"))
-    private List<HashTag> hashTags;
-
+    private boolean deleted = Boolean.FALSE;
 }

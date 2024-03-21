@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Dto.LikeDto;
+import com.example.demo.InputDto.LikeDto;
 import com.example.demo.Models.Like;
 import com.example.demo.Models.UserPost;
 // import com.example.demo.Repositories.CountryRepository;

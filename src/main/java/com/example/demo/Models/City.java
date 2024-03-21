@@ -1,5 +1,9 @@
 package com.example.demo.Models;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
+
 /*
  * @author Dwight Danda
  *
@@ -7,17 +11,21 @@ package com.example.demo.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.ToString;
 @Entity
 @Table(name="cities")
 @Data
+@SQLDelete(sql = "UPDATE cities SET deleted = true WHERE id=?")
+@SQLRestriction("deleted=false")
 public class City {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-        @ManyToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "countryId", foreignKey = @ForeignKey(name = "FK_country_city", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE"))
+        @ManyToOne
+        @JoinColumn(name = "countryId", nullable = false, foreignKey = @ForeignKey(name = "FK_country_city", foreignKeyDefinition = "FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE"))
+        @ToString.Exclude
         private Country country;
 
         @NotBlank
@@ -29,4 +37,6 @@ public class City {
 
         @Column(nullable = false, length = 150)
         private String state;
+
+        private boolean deleted = Boolean.FALSE;
 }
