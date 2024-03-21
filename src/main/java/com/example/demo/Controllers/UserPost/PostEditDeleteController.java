@@ -25,7 +25,7 @@ public class PostEditDeleteController {
     @PostMapping("/upload")
     public ResponseEntity<Object> uploadPost(
             @ModelAttribute UserPostDto userPostDto,
-            @RequestParam("content") MultipartFile file,
+            @RequestParam("content") MultipartFile[] file,
             @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail,
             @RequestParam("profileId") Long profileId,
             @RequestParam("caption") String caption,
@@ -49,16 +49,16 @@ public class PostEditDeleteController {
         }
     }
 
-    @PostMapping("/checkContentType")
-    public ResponseEntity<Object> checkPostContentType(@RequestBody UserPostDto userPostDto) {
-        try {
-            ResponseEntity<Object> contentTypeResponse = userPostServiceImpl.checkPostContentType(userPostDto);
-            return contentTypeResponse;
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Failed to check post content type: " + e.getMessage());
-        }
-    }
+//    @PostMapping("/checkContentType")
+//    public ResponseEntity<Object> checkPostContentType(@RequestBody UserPostDto userPostDto) {
+//        try {
+//            ResponseEntity<Object> contentTypeResponse = userPostServiceImpl.checkPostContentType(userPostDto);
+//            return contentTypeResponse;
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body("Failed to check post content type: " + e.getMessage());
+//        }
+//    }
     @PostMapping("/{postId}/editCaption")
     public ResponseEntity<Object> editCaption(
             @PathVariable Long postId,

@@ -13,16 +13,40 @@ import java.util.List;
 
 public interface UserPostService {
 
-    ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId);
-
-    ResponseEntity<Object> checkPostContentType(UserPostDto userPostDto);
-
     @Transactional
     ResponseEntity<Object> uploadPost(
             UserPostDto userPostDto,
-            MultipartFile file,
+            MultipartFile[] files,
             Long profileId,
             String caption,
             Long brandId,
             List<String> hashtagNames) throws IOException;
+
+    @Transactional
+    ResponseEntity<Object> uploadSnippet(
+            UserPostDto userPostDto,
+            MultipartFile videoSnippet,
+            MultipartFile thumbNail,
+            Long profileId,
+            String caption,
+            Long brandId,
+            List<String> hashtagNames) throws IOException;
+
+    ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId);
+
+    @Transactional
+    ResponseEntity<Object> editCaption(UserPostDto userPostDto, Long profileId);
+
 }
+
+//    ResponseEntity<Object> checkPostContentType(UserPostDto userPostDto);
+
+//    @Transactional
+//    ResponseEntity<Object> uploadPost(
+//            UserPostDto userPostDto,
+//            MultipartFile file,
+//            Long profileId,
+//            String caption,
+//            Long brandId,
+//            List<String> hashtagNames) throws IOException;
+

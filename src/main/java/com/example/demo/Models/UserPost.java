@@ -3,13 +3,10 @@ package com.example.demo.Models;
  * @author Dwight Danda
  *
  */
-import com.example.demo.Services.CommentService.CommentServiceImpl;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,8 +23,12 @@ public class UserPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String name;
+
+    @ElementCollection
+    @CollectionTable(name = "user_post_names", joinColumns = @JoinColumn(name = "user_post_id"))
+    @Column(name = "name")
+    private List<String> names;
+
 
     @ManyToOne
     @JoinColumn(name = "profileId")
@@ -63,8 +64,10 @@ public class UserPost {
     @Column(nullable = false)
     private LocalDateTime time;
 
-    @Column(nullable = false)
-    private String type;
+    @ElementCollection
+    @CollectionTable(name = "user_post_names", joinColumns = @JoinColumn(name = "user_post_id"))
+    @Column(name = "contentTypes")
+    private List<String> contentTypes;
 
     @Column(nullable = false)
     private String path;
@@ -75,14 +78,5 @@ public class UserPost {
     @Column
     private int favorites;
 
-
-    // Method to generate the name based on profileId and postId
-    public void generateName() {
-        if (profile != null && id != null) {
-            this.name = "post_" + profile.getId() + "_" + id;
-        } else{
-            logger.error("Failed to rename file before saving it to the file system");
-        }
-    }
 
 }

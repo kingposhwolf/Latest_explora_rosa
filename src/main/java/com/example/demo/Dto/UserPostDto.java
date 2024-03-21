@@ -17,7 +17,7 @@ public class UserPostDto {
 
     private Long id;
 
-    private String name;
+    private List<String> names;
 
     @NotNull
     private Long profileId;
@@ -43,7 +43,7 @@ public class UserPostDto {
     private LocalDateTime time;
 
     @NotNull
-    private String type;
+    private List<String> contentTypes;
 
     @NotNull
     private String path = folderPath;

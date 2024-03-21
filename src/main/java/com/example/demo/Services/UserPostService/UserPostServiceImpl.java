@@ -3,13 +3,14 @@ package com.example.demo.Services.UserPostService;
  * @author Dwight Danda
  *
  */
-import com.example.demo.Dto.HashTagDto;
 import com.example.demo.Dto.UserPostDto;
 import com.example.demo.Models.*;
 import com.example.demo.Repositories.*;
 
 import lombok.AllArgsConstructor;
 
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.FrameGrabber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,31 +51,29 @@ public class UserPostServiceImpl implements UserPostService{
 @Transactional
 public ResponseEntity<Object> uploadPost(
         UserPostDto userPostDto,
-        MultipartFile file,
+        MultipartFile[] files,
         Long profileId,
         String caption,
         Long brandId,
         List<String> hashtagNames) throws IOException {
     try {
-        String folderPath= "C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
-
-        // Generate the filename using profileId, time, day, month, and year
-        LocalDateTime currentTime = LocalDateTime.now();
-        String fileName = "post_" + profileId + "_" + currentTime.getYear() + "_" + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour() + "_" + currentTime.getMinute() + "_" + currentTime.getSecond();
-
-        // Check if the content type is allowed
-        String contentType = file.getContentType();
-        if (!isValidContentType(contentType)) {
-            logger.error("Unsupported content type: {}", contentType);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
+        if (files.length > 6) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
         }
-        userPostDto.setType(contentType);
+        else{
+            String folderPath= "C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
 
-        // Fetch profile and country entities
-        Optional<Profile> profile = profileRepository.findById(profileId);
-        if(profile.isEmpty()){
-            return ResponseEntity.status(400).body("Profile does not exist");
-        }
+            // Generate the filename using profileId, time, day, month, and year
+            LocalDateTime currentTime = LocalDateTime.now();
+            String[] fileNames = new String[files.length]; // Array to store file names
+
+
+
+            // Fetch profile and country entities
+            Optional<Profile> profile = profileRepository.findById(profileId);
+            if(profile.isEmpty()){
+                return ResponseEntity.status(400).body("Profile does not exist");
+            }
 
             List<HashTag> hashTags = new ArrayList<>();
             for (String hashtagName : hashtagNames) {
@@ -97,11 +97,11 @@ public ResponseEntity<Object> uploadPost(
                     hashTags.add(hashTag);
                 }
             }
-    // Set the list of hashtags to the userPostDto
+            // Set the list of hashtags to the userPostDto
             userPostDto.setHashTagIds(hashTags);
 
 
-        // Fetch brand entity
+            // Fetch brand entity
             Brand brand = null;
             userPostDto.setBrandId(brandId);
             if (userPostDto.getBrandId() != null) {
@@ -110,51 +110,76 @@ public ResponseEntity<Object> uploadPost(
             }
 
 
-            // Validate thumbnail if the post is a video
-            if (userPostDto.getType().equalsIgnoreCase("video")) {
-                // Check if the user provided a thumbnail file
-                MultipartFile thumbnailFile = userPostDto.getThumbnailFile();
-                if (thumbnailFile != null && !thumbnailFile.isEmpty()) {
-                    String thumbnail = null;
-                    thumbnail = processThumbnail(file, thumbnailFile, profileId);
-                    userPostDto.setThumbnail(thumbnail);
-                } else {
-                    String thumbnail = null;
-                    // Use Fmpeg to extract a frame from the video and save it as a thumbnail
-                    thumbnail = processThumbnail(file, null, profileId);
-                    userPostDto.setThumbnail(thumbnail);
-                }
-            }
-
-
-            if(file.isEmpty()){
-                throw new IllegalArgumentException("File is empty");
+            if(files == null || files.length == 0){
+                throw new IllegalArgumentException("No files uploaded");
             }
             else {
-                byte[] bytes = file.getBytes();
-                String originalFileName = file.getOriginalFilename();
-                // Create a variable to store the file extension
-                String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+                // Initialize a list to hold recorded filenames
+                List<String> recordedFileNames = new ArrayList<>();
 
-                // Directory path where you want to save ;
-                String insPath = folderPath + fileName + fileExtension;
+                //Initialize a list to hold content Types
+                List<String> filesContentTypes = new ArrayList<>();
 
-                String recordedFileName = fileName + fileExtension;
+                // Iterate over each file in the array
+                for (int n = 0; n < files.length; n++) {
+                    MultipartFile file = files[n];
+                    if (file.isEmpty()) {
+                        throw new IllegalArgumentException("File at index " + n + " is empty");
+                    }
 
-                try {
+                    String fileName = "post_" + profileId + "_" + currentTime.getYear() + "_" + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour() + "_" + currentTime.getMinute() + "_" + currentTime.getSecond() + "_" + (n + 1);
+
+
+
+
+
+                    // Check if the content type is allowed
+                    String contentType = file.getContentType();
+                    if (!isValidContentType(contentType)) {
+                        logger.error("Unsupported content type: {}", contentType);
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
+                    }
+                    String fileContentType =  contentType + "content_" + (n+1);
+                    filesContentTypes.add(fileContentType);
+
+                    // Obtaining the Original file name
+                    String originalFileName = file.getOriginalFilename();
+
+                    // Create a variable to store the file extension
+                    String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+
+                    // Directory path where you want to save ;
+                    String insPath = folderPath + fileName + fileExtension;
+
+                    //Name of the single file to be stored in a file system
+                    String recordedFileName = fileName + fileExtension;
+
+                    // Re-writing the file again so that we can save it using our new name
+                    byte[] bytes = file.getBytes();
                     Files.write(Paths.get(insPath), bytes);
 
+                    fileNames[n] = recordedFileName;
+
+                    // Add recorded filename to the list
+                    recordedFileNames.add(recordedFileName);
+
+                }
+                userPostDto.setNames(recordedFileNames);
+                userPostDto.setContentTypes(filesContentTypes);
+
+
+                try {
                     // Save the user post
                     UserPost userPost = new UserPost();
                     userPost.setProfile(profile.get());
-                    userPost.setName(recordedFileName);
+                    userPost.setNames(userPostDto.getNames());
                     userPost.setCountry(profile.get().getCountry());
                     userPost.setHashTags(userPostDto.getHashTagIds());
                     userPost.setBrand(brand);
                     userPost.setThumbnail(userPostDto.getThumbnail());
                     userPost.setCaption(caption); // Use the provided caption
                     userPost.setTime(LocalDateTime.now());
-                    userPost.setType(userPostDto.getType());
+                    userPost.setContentTypes(userPostDto.getContentTypes());
                     userPost.setPath(userPostDto.getPath());
                     userPost.setShares(0);
                     userPost.setFavorites(0);
@@ -171,11 +196,15 @@ public ResponseEntity<Object> uploadPost(
 
                     logger.info("Post uploaded successfully");
                     return ResponseEntity.status(HttpStatus.CREATED).body("Post uploaded successfully");
-                } catch (IOException e){
+                } catch (Exception e){
                     throw new IOException("Failed to upload file: " + e.getMessage());
 
                 }
             }
+
+        }
+
+
         } catch(Exception e){
             e.printStackTrace();
             logger.error("Failed to upload post: {}", e.getMessage());
@@ -188,7 +217,191 @@ public ResponseEntity<Object> uploadPost(
         // Check if the content type is not null and matches the allowed types
         return contentType != null && (contentType.startsWith("image/") || contentType.startsWith("video/"));
     }
-    private String processThumbnail(MultipartFile file, MultipartFile thumbnailFile, Long profileId) throws IOException {
+
+    @Override
+    @Transactional
+    public ResponseEntity<Object> uploadSnippet(
+            UserPostDto userPostDto,
+            MultipartFile videoSnippet,
+            MultipartFile thumbNail,
+            Long profileId,
+            String caption,
+            Long brandId,
+            List<String> hashtagNames) throws IOException {
+
+
+            try{
+                // Path of Snippets
+                String videoSnippetsPath= "C:\\Users\\user\\Documents\\explore\\exploredev\\videoSnippets\\";
+
+                //Initialize a list to hold content Types
+                List<String> filesContentTypes = new ArrayList<>();
+
+                //Initialize a list to hold a name of snippet
+                List<String> snippetName = new ArrayList<>();
+
+                // Check if the content type is allowed
+                String contentType = videoSnippet.getContentType();
+                if (!isValidContentTypeForSnippet(contentType)) {
+                    logger.error("Unsupported content type: {}", contentType);
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
+                }
+                //Overwrite the content type for our personal usage on post retreiveing algorithm
+                contentType = "snippet";
+                filesContentTypes.add(contentType);
+                userPostDto.setContentTypes(filesContentTypes);
+
+                // Fetch profile and country entities
+                Optional<Profile> profile = profileRepository.findById(profileId);
+                if(profile.isEmpty()){
+                    return ResponseEntity.status(400).body("Profile does not exist");
+                }
+
+                // Fetch brand entity
+                Brand brand = null;
+                userPostDto.setBrandId(brandId);
+                if (userPostDto.getBrandId() != null) {
+                    brand = brandRepository.findById(brandId)
+                            .orElseThrow(() -> new IllegalArgumentException("Brand with ID " + userPostDto.getBrandId() + " not found"));
+                }
+
+                // Check if the video snippet duration is within the time limit
+                Duration duration = getVideoDuration(videoSnippet);
+                if (duration != null && duration.getSeconds() > 60) {
+                    logger.error("Video snippet duration exceeds the time limit.");
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Video snippet duration exceeds the time limit.");
+                }
+
+
+                // Fetch HashTags
+                List<HashTag> snippetHashTags = new ArrayList<>();
+                for (String hashtagName : hashtagNames) {
+                    if (hashtagName != null && !hashtagName.isEmpty()) { // Check for null and empty strings
+                        Optional<HashTag> optionalHashTag = hashTagRepository.findByName(hashtagName);
+                        HashTag hashTag;
+                        if (optionalHashTag.isPresent()) {
+                            hashTag = optionalHashTag.get();
+                        } else {
+                            // Create a new hashtag if it doesn't exist
+                            hashTag = new HashTag();
+                            hashTag.setName(hashtagName);
+                            try {
+                                hashTag = hashTagRepository.save(hashTag); // Save the new hashTag to get the ID
+                            } catch (Exception e) {
+                                // Handle any exceptions
+                                e.printStackTrace(); // Print stack trace for debugging
+                                logger.error("Error in creating hashTag");
+                            }
+                        }
+                        snippetHashTags.add(hashTag);
+                    }
+                }
+                // Set the list of hashtags to the userPostDto
+                userPostDto.setHashTagIds(snippetHashTags);
+
+                // Generate snippet name based on id and current time of posting;  rename the file before saving
+                LocalDateTime currentTime = LocalDateTime.now();
+
+                String videoSnippetGeneratedName = "snippet_" + profileId + "_" + currentTime.getYear() + "_" + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour() + "_" + currentTime.getMinute() + "_" + currentTime.getSecond();
+
+                // Obtain the original snippet Name
+                String videoOriginalName = videoSnippet.getOriginalFilename();
+
+                //Obtain the snippet Extension
+                String videoSnippetExtension = videoOriginalName.substring(videoOriginalName.lastIndexOf("."));
+
+                //Name a single file to be stored in file system
+                String videoSnippetName = videoSnippetGeneratedName + videoSnippetExtension;
+                //Add the name of single file to a list to be fed to the database
+                snippetName.add(videoSnippetName);
+
+                String insPath = videoSnippetsPath + videoSnippetGeneratedName + videoSnippetExtension;
+
+
+                //Generate thumbnail Name
+                String thumbNailGeneratedName = "thumbnail_" +  profileId + "_" + currentTime.getYear() + "_" + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour() + "_" + currentTime.getMinute() + "_" + currentTime.getSecond();
+
+                //Obtain original file name
+                String thumbNailOriginalName = thumbNail.getOriginalFilename();
+
+                //Obtain thumbnail extension
+                String thumbNailExtension = thumbNailOriginalName.substring(thumbNailOriginalName.lastIndexOf("."));
+
+                //Obtain thumbPath
+                String thumbPath = videoSnippetsPath + thumbNailGeneratedName + thumbNailExtension;
+                userPostDto.setThumbnail(thumbPath);
+
+                try {
+                    // Re-writing the file again so that we can save it using our new name
+                    byte[] bytes = videoSnippet.getBytes();
+                    Files.write(Paths.get(insPath), bytes);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    logger.error("Failed to write the snippet to the specified path: {}", e.getMessage());
+
+                }
+                try{
+                    //Re-writing the thumbNail with a new generated name
+                    byte[] thumbBytes = thumbNail.getBytes();
+                    Files.write(Paths.get(thumbPath), thumbBytes);
+
+                }catch (IOException e){
+                    e.printStackTrace();
+                    logger.error("Failed to write the thumbNail to the specified path: {}", e.getMessage());
+                }
+
+                // Save the snippet as a normal post
+                UserPost userPost = new UserPost();
+                userPost.setProfile(profile.get());
+                userPost.setNames(userPostDto.getNames());
+                userPost.setCountry(profile.get().getCountry());
+                userPost.setHashTags(userPostDto.getHashTagIds());
+                userPost.setBrand(brand);
+                //Save the path of thumbPath onto the thumbnail attribute
+                userPost.setThumbnail(userPostDto.getThumbnail());
+                //Continue filling other fields
+                userPost.setCaption(caption); // Use the provided caption
+                userPost.setTime(LocalDateTime.now());
+                userPost.setContentTypes(userPostDto.getContentTypes());
+                userPost.setPath(userPostDto.getPath());
+                userPost.setShares(0);
+                userPost.setFavorites(0);
+
+                //Print to see what's being carried
+                logger.info(userPost.toString());
+
+                // Save the post to the database
+
+                UserPost savedPost = userPostRepository.save(userPost);
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+                logger.error("Failed to upload the Snippet");
+
+            }
+            return null;
+
+
+    }
+    private boolean isValidContentTypeForSnippet(String contentType) {
+        // Check if the content type is not null and matches the allowed types
+        return contentType != null && (contentType.startsWith("video/"));
+    }
+
+    // Method to retrieve the duration of the video snippet
+    private Duration getVideoDuration(MultipartFile videoSnippet) throws IOException {
+        try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoSnippet.getInputStream())) {
+            grabber.start();
+            double durationInSeconds = grabber.getLengthInTime() / 1000000.0;
+            return Duration.ofSeconds((long) durationInSeconds);
+        } catch (FrameGrabber.Exception e) {
+            logger.error("Error while retrieving video duration: {}", e.getMessage());
+            throw new IOException("Error while retrieving video duration: " + e.getMessage());
+        }
+    }
+
+    private String processThumbnail(MultipartFile files, MultipartFile thumbnailFile, Long profileId) throws IOException {
         // Generate a variable for a current time
         LocalDateTime currentTime = LocalDateTime.now();
 
@@ -218,7 +431,7 @@ public ResponseEntity<Object> uploadPost(
         } else {
             try {
                 // Use FFmpeg to extract a frame from the video and save it as a thumbnail
-                ProcessBuilder processBuilder = new ProcessBuilder("ffmpeg", "-i", file.getOriginalFilename(), "-vframes", "1", "-an", "-s", "128x128", "-ss", "00:00:01", thumbnailFilePath);
+                ProcessBuilder processBuilder = new ProcessBuilder("ffmpeg", "-i", files.getOriginalFilename(), "-vframes", "1", "-an", "-s", "128x128", "-ss", "00:00:01", thumbnailFilePath);
                 Process process = processBuilder.start();
 
                 // Wait for the process to complete
@@ -260,38 +473,6 @@ public ResponseEntity<Object> uploadPost(
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to check post ownership: " + e.getMessage());
         }
     }
-    @Override
-    public ResponseEntity<Object> checkPostContentType(UserPostDto userPostDto) {
-        try {
-            Long postId = userPostDto.getId();
-
-            // Fetch the post from the repository based on the postId
-            Optional<UserPost> optionalUserPost = userPostRepository.findById(postId);
-
-            if (optionalUserPost.isPresent()) {
-                UserPost userPost = optionalUserPost.get();
-                String postType = userPost.getType();
-
-                if (postType.equalsIgnoreCase("video")) {
-                    logger.info("Post with ID {} is a video.", postId);
-                    return ResponseEntity.ok("Video");
-                } else if (postType.equalsIgnoreCase("image")) {
-                    logger.info("Post with ID {} is an image.", postId);
-                    return ResponseEntity.ok("Image");
-                } else {
-                    logger.warn("Unknown post type for post with ID {}.", postId);
-                    return ResponseEntity.ok("Unknown");
-                }
-            } else {
-                logger.warn("Post with ID {} not found.", postId);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
-            }
-        } catch (Exception e) {
-            logger.error("Failed to check post content type: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Failed to check post content type: " + e.getMessage());
-        }
-    }
 
     @Transactional
     public ResponseEntity<Object> editCaption(UserPostDto userPostDto, Long profileId) {
@@ -328,6 +509,21 @@ public ResponseEntity<Object> uploadPost(
     }
 }
 
+// Validate thumbnail if the post is a video
+//                    if (file.getContentType().equalsIgnoreCase("video")) {
+//                        // Check if the user provided a thumbnail file
+//                        MultipartFile thumbnailFile = userPostDto.getThumbnailFile();
+//                        if (thumbnailFile != null && !thumbnailFile.isEmpty()) {
+//                            String thumbnail = null;
+//                            thumbnail = processThumbnail(files, thumbnailFile, profileId);
+//                            userPostDto.setThumbnail(thumbnail);
+//                        } else {
+//                            String thumbnail = null;
+//                            // Use Fmpeg to extract a frame from the video and save it as a thumbnail
+//                            thumbnail = processThumbnail(files, null, profileId);
+//                            userPostDto.setThumbnail(thumbnail);
+//                        }
+//                    }
 
 
 
@@ -448,4 +644,45 @@ public ResponseEntity<Object> uploadPost(
 //            }
 //
 //
+//                byte[] bytes = files.getBytes();
+//                String originalFileName = files.getOriginalFilename();
+//                // Create a variable to store the file extension
+//                String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+//
+//                // Directory path where you want to save ;
+//                String insPath = folderPath + fileName + fileExtension;
+//
+//                String recordedFileName = fileName + fileExtension;
 
+//    @Override
+//    public ResponseEntity<Object> checkPostContentType(UserPostDto userPostDto) {
+//        try {
+//            Long postId = userPostDto.getId();
+//
+//            // Fetch the post from the repository based on the postId
+//            Optional<UserPost> optionalUserPost = userPostRepository.findById(postId);
+//
+//            if (optionalUserPost.isPresent()) {
+//                UserPost userPost = optionalUserPost.get();
+//                List<String> postType = userPost.getContentTypes();
+//
+//                if (postType.equalsIgnoreCase("video")) {
+//                    logger.info("Post with ID {} is a video.", postId);
+//                    return ResponseEntity.ok("Video");
+//                } else if (postType.equalsIgnoreCase("image")) {
+//                    logger.info("Post with ID {} is an image.", postId);
+//                    return ResponseEntity.ok("Image");
+//                } else {
+//                    logger.warn("Unknown post type for post with ID {}.", postId);
+//                    return ResponseEntity.ok("Unknown");
+//                }
+//            } else {
+//                logger.warn("Post with ID {} not found.", postId);
+//                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
+//            }
+//        } catch (Exception e) {
+//            logger.error("Failed to check post content type: {}", e.getMessage());
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body("Failed to check post content type: " + e.getMessage());
+//        }
+//    }

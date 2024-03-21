@@ -22932,3 +22932,77 @@
 
 2024-03-20 12:06:51.467 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-794] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
 
+2024-03-20 12:06:56.548 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-794] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection timed out: getsockopt
+
+2024-03-20 12:06:56.548 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-794] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@24d054d5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+
+2024-03-20 12:07:06.072 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+
+2024-03-20 12:07:06.074 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@72337303]]
+
+2024-03-20 12:07:06.075 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+
+2024-03-20 12:07:06.122 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-796] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.123 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-796] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.124 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.124 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.124 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.125 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.125 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-796] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.125 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-796] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.125 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.125 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.125 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.126 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.126 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.126 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.126 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.126 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-795] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.127 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-794] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.127 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-794] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:06.127 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-794] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-03-20 12:07:06.127 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-794] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-03-20 12:07:12.493 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-794] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:07:33.536 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-794] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:07:54.562 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-793] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:08:15.608 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-793] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:08:36.647 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-794] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:08:57.692 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-794] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:09:18.731 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-794] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:09:39.776 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-795] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:10:00.805 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-795] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-03-20 12:10:22.056 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+
+2024-03-20 12:10:22.210 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+
+2024-03-20 12:10:22.256 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+
