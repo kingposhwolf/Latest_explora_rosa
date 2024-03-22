@@ -124,9 +124,6 @@ public ResponseEntity<Object> uploadPost(
                     String fileName = "post_" + profileId + "_" + currentTime.getYear() + "_" + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour() + "_" + currentTime.getMinute() + "_" + currentTime.getSecond() + "_" + (n + 1);
 
 
-
-
-
                     // Check if the content type is allowed
                     String contentType = file.getContentType();
                     if (!isValidContentType(contentType)) {
@@ -134,7 +131,6 @@ public ResponseEntity<Object> uploadPost(
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
                     }
                     String fileContentType =  contentType + "content_" + (n+1);
-                    filesContentTypes.add(fileContentType);
 
                     // Obtaining the Original file name
                     String originalFileName = file.getOriginalFilename();
@@ -154,8 +150,10 @@ public ResponseEntity<Object> uploadPost(
 
                     fileNames[n] = recordedFileName;
 
-                    // Add recorded filename to the list
+                    // Add recorded filename to the recorded filename list
                     recordedFileNames.add(recordedFileName);
+                    //Add file content type to the file content types list
+                    filesContentTypes.add(fileContentType);
 
                 }
                 userPostDto.setNames(recordedFileNames);
@@ -240,9 +238,10 @@ public ResponseEntity<Object> uploadPost(
                     logger.error("Unsupported content type: {}", contentType);
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
                 }
+
                 //Overwrite the content type for our personal usage on post retreiveing algorithm
-                contentType = "snippet";
-                filesContentTypes.add(contentType);
+               String  snippetContentType = "snippet";
+                filesContentTypes.add(snippetContentType);
                 userPostDto.setContentTypes(filesContentTypes);
 
                 // Fetch profile and country entities
@@ -368,14 +367,15 @@ public ResponseEntity<Object> uploadPost(
 
                 UserPost savedPost = userPostRepository.save(userPost);
 
+                return ResponseEntity.status(HttpStatus.CREATED).body("Snippet uploaded successfully");
+
 
             }catch (Exception e){
                 e.printStackTrace();
-                logger.error("Failed to upload the Snippet");
+                logger.error("Failed to upload the Snippet:{}", e.getMessage());
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload snippet: " + e.getMessage());
 
             }
-            return null;
-
 
     }
     private boolean isValidContentTypeForSnippet(String contentType) {
