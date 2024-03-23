@@ -6,6 +6,7 @@ import com.example.demo.Models.Profile;
 import com.example.demo.Models.UserPost;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -50,5 +51,29 @@ List<UserPost> findByHashTagsContainingKeywordAndMaxLikes( @Param("keyword") Str
 @Query("SELECT DISTINCT up FROM UserPost up " + "JOIN up.hashTags ht " + "WHERE ht.name = :keyword " +
 "AND up.likes = (SELECT MAX(up2.likes) FROM UserPost up2 " + "JOIN up2.hashTags ht2 WHERE ht2.name = :keyword)")
 List<UserPost> findByHashTagsMatchKeywordAndMaxLikes(@Param("keyword") String keyword,Pageable pageable);
+
+@Query("SELECT " +
+        "new map(" +
+        "   up.id as id, " +
+        "   e as names, " +
+        "   c as country, " + // Fetching the entire Country entity
+        "   b as hashTags, " +
+        "   up.likes as likes, " +
+        "   up.shares as shares, " +
+        "   up.favorites as favorites, " +
+        "   up.comments as comments, " +
+        "   up.caption as caption, " +
+        "   up.thumbnail as thumbnail, " +
+        "   up.time as time, " +
+        "   d as contentTypes, " +
+        "   up.path as path) " +
+        "FROM UserPost up " +
+        "LEFT JOIN up.country c " +
+        "LEFT JOIN up.hashTags b " +
+        "LEFT JOIN up.contentTypes d " +
+        "LEFT JOIN up.names e " +
+        "WHERE up.id = :postId")
+Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
+
 
 }

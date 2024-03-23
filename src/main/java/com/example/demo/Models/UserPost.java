@@ -5,8 +5,6 @@ package com.example.demo.Models;
  */
 import jakarta.persistence.*;
 import lombok.Data;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @SQLRestriction("deleted=false")
 public class UserPost {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserPost.class);
-
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,8 +35,6 @@ public class UserPost {
 
 
     @ManyToOne
-    @JoinColumn(name = "profileId")
-
     @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_USER_POST_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile profile;
 
@@ -48,14 +42,14 @@ public class UserPost {
     @JoinColumn(name = "countryId")
     private Country country;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "userPostHashTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "hashTagId"))
     private List<HashTag> hashTags;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Tag> tags = new ArrayList<>();
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Mention> mentions = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -77,7 +71,7 @@ public class UserPost {
     private LocalDateTime time;
 
     @ElementCollection
-    @CollectionTable(name = "user_post_names", joinColumns = @JoinColumn(name = "user_post_id"))
+    @CollectionTable(name = "user_post_content_types", joinColumns = @JoinColumn(name = "user_post_id"))
     @Column(name = "contentTypes")
     private List<String> contentTypes;
 

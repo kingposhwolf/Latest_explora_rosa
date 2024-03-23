@@ -18,13 +18,13 @@ public class ReadyPosts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profileId", nullable = false)
-    private Profile profile;
+    // @ManyToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "profileId", nullable = false)
+    // private Profile profile;
 
-    @ManyToMany
-    @JoinTable(name = "readyUserPosts",joinColumns = @JoinColumn(name = "readyPostId"),inverseJoinColumns = @JoinColumn(name = "userPostId", nullable = false))
-    private List<UserPost> userPosts;
+    // @ManyToMany
+    // @JoinTable(name = "readyUserPosts",joinColumns = @JoinColumn(name = "readyPostId"),inverseJoinColumns = @JoinColumn(name = "userPostId", nullable = false))
+    // private List<UserPost> userPosts;
 
     private boolean deleted = Boolean.FALSE;
 }

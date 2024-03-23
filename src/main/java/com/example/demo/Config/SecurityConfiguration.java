@@ -44,7 +44,7 @@ public class SecurityConfiguration {
         corsConfiguration.setExposedHeaders(List.of("Authorization"));
 
         http.csrf(AbstractHttpConfigurer::disable).cors(Customizer.withDefaults())
-        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**","/**", "/hashTags/**", "/PostEditDelete/**")
+        .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**", "/countries/**", "/accountType/**", "/api/title/**","/business-categories/**","/cities/**","/**")
         .permitAll()
         .requestMatchers("/api/v1/admin/**").hasAnyAuthority(Role.STAFF.name())
         .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.USER.name())
