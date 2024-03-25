@@ -185,13 +185,13 @@ public ResponseEntity<Object> uploadPost(
 
                     // Save the post to the database
 
-                   UserPost savedPost = userPostRepository.save(userPost);
+                    UserPost savedPost = userPostRepository.save(userPost);
 
                    // Transfer the file to the specified path
                    // file.transferTo(new File(uploadPath));
 
                     logger.info("Post uploaded successfully");
-                    return ResponseEntity.status(HttpStatus.CREATED).body("Post uploaded successfully");
+                    return ResponseEntity.status(HttpStatus.CREATED).body(userPostRepository.findUserPostDataById(savedPost.getId()));
                 } catch (Exception e){
                     throw new IOException("Failed to upload file: " + e.getMessage());
 
