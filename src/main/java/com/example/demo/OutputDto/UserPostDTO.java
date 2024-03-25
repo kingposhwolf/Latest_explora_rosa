@@ -14,8 +14,8 @@ public class UserPostDTO {
     private Long id;
     private List<String> names;
     private Country country;
-   private List<HashTag> hashTags;
-   private List<Tag> tags;
+    private List<HashTag> hashTags;
+    private List<Tag> tags;
     private int likes;
     private int shares;
     private int favorites;

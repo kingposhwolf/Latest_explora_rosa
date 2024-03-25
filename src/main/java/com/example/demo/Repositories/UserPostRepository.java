@@ -56,7 +56,7 @@ List<UserPost> findByHashTagsMatchKeywordAndMaxLikes(@Param("keyword") String ke
         "new map(" +
         "   up.id as id, " +
         "   e as names, " +
-        "   c as country, " + // Fetching the entire Country entity
+        "   c as country, " +
         "   b as hashTags, " +
         "   up.likes as likes, " +
         "   up.shares as shares, " +
@@ -75,5 +75,26 @@ List<UserPost> findByHashTagsMatchKeywordAndMaxLikes(@Param("keyword") String ke
         "WHERE up.id = :postId")
 Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
 
+@Query("SELECT " +
+        "new map(" +
+        "   up.id as id, " +
+        "   e as names, " +
+        "   c as country, " +
+        "   b as hashTags, " +
+        "   up.likes as likes, " +
+        "   up.shares as shares, " +
+        "   up.favorites as favorites, " +
+        "   up.comments as comments, " +
+        "   up.caption as caption, " +
+        "   up.thumbnail as thumbnail, " +
+        "   up.time as time, " +
+        "   d as contentTypes, " +
+        "   up.path as path) " +
+        "FROM UserPost up " +
+        "LEFT JOIN up.country c " +
+        "LEFT JOIN up.hashTags b " +
+        "LEFT JOIN up.contentTypes d " +
+        "LEFT JOIN up.names e ")
+Map<String, Object> findUserPostData();
 
 }
