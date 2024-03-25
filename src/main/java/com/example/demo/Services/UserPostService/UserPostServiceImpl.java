@@ -37,7 +37,6 @@ public class UserPostServiceImpl implements UserPostService{
 
     private final UserPostRepository userPostRepository;
     private final ProfileRepository profileRepository;
-    private final CountryRepository countryRepository;
     private final HashTagRepository hashTagRepository;
     private final BrandRepository brandRepository;
    // private final LikeRepository likeRepository;
@@ -56,7 +55,7 @@ public ResponseEntity<Object> uploadPost(
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
         }
         else{
-            String folderPath= "C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
+            String folderPath= "D:\\Latest_explora_rosa\\userPosts";
 
             // Generate the filename using profileId, time, day, month, and year
             LocalDateTime currentTime = LocalDateTime.now();
@@ -71,27 +70,30 @@ public ResponseEntity<Object> uploadPost(
             }
 
             List<HashTag> hashTags = new ArrayList<>();
-            for (String hashtagName : hashtagNames) {
-                if (hashtagName != null && !hashtagName.isEmpty()) { // Check for null and empty strings
-                    Optional<HashTag> optionalHashTag = hashTagRepository.findByName(hashtagName);
-                    HashTag hashTag;
-                    if (optionalHashTag.isPresent()) {
-                        hashTag = optionalHashTag.get();
-                    } else {
-                        // Create a new hashtag if it doesn't exist
-                        hashTag = new HashTag();
-                        hashTag.setName(hashtagName);
-                        try {
-                            hashTag = hashTagRepository.save(hashTag); // Save the new hashTag to get the ID
-                        } catch (Exception e) {
-                            // Handle any exceptions
-                            e.printStackTrace(); // Print stack trace for debugging
-                            logger.error("Error in creating hashTag");
+            
+                for (String hashtagName : hashtagNames) {
+                    if (hashtagName != null && !hashtagName.isEmpty()) { // Check for null and empty strings
+                        Optional<HashTag> optionalHashTag = hashTagRepository.findByName(hashtagName);
+                        HashTag hashTag;
+                        if (optionalHashTag.isPresent()) {
+                            hashTag = optionalHashTag.get();
+                        } else {
+                            // Create a new hashtag if it doesn't exist
+                            hashTag = new HashTag();
+                            hashTag.setName(hashtagName);
+                            try {
+                                hashTag = hashTagRepository.save(hashTag); // Save the new hashTag to get the ID
+                            } catch (Exception e) {
+                                // Handle any exceptions
+                                e.printStackTrace(); // Print stack trace for debugging
+                                logger.error("Error in creating hashTag");
+                            }
                         }
+                        hashTags.add(hashTag);
                     }
-                    hashTags.add(hashTag);
                 }
-            }
+            
+            
             // Set the list of hashtags to the userPostDto
             userPostDto.setHashTagIds(hashTags);
 
@@ -182,10 +184,10 @@ public ResponseEntity<Object> uploadPost(
 
                     // Save the post to the database
 
-                    UserPost savedPost = userPostRepository.save(userPost);
+                   UserPost savedPost = userPostRepository.save(userPost);
 
-                    // Transfer the file to the specified path
-                    // file.transferTo(new File(uploadPath));
+                   // Transfer the file to the specified path
+                   // file.transferTo(new File(uploadPath));
 
                     logger.info("Post uploaded successfully");
                     return ResponseEntity.status(HttpStatus.CREATED).body("Post uploaded successfully");
