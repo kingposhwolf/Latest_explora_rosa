@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
@@ -443,6 +444,36 @@ public ResponseEntity<Object> uploadPost(
 
         // Return the path to the selected or generated thumbnail
         return thumbnailFilePath;
+    }
+
+    @Override
+    public ResponseEntity<Object> viewPost(Long postId) throws IOException{
+    try {
+        // Use optional
+        Optional<UserPost> userPostOptional = userPostRepository.findById(postId);
+        if (userPostOptional.isEmpty()) {
+            ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post with Id" + postId + "Not found!");
+        }
+        UserPost userPost = userPostOptional.get();
+        List<String> names = userPost.getNames();
+        if (names == null || names.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No names found for post with ID " + postId);
+        }
+        String postPath = userPost.getPath();
+        List <byte[]> postFiles = new ArrayList<>() ;
+        List <Path> dataPath = new ArrayList<>();
+        for (String name : names) {
+            Path postFilePath = Paths.get(postPath, name);
+            byte[] postData = Files.readAllBytes(postFilePath);
+
+
+        }
+
+        return null;
+    }catch (Exception e){
+        e.printStackTrace();
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to view post: " + e.getMessage());
+    }
     }
 
     @Override
