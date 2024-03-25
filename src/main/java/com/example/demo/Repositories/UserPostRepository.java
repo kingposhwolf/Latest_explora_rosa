@@ -77,9 +77,10 @@ List<UserPost> findByHashTagsMatchKeywordAndMaxLikes(@Param("keyword") String ke
         "LEFT JOIN up.hashTags b " +
         "LEFT JOIN up.contentTypes d " +
         "LEFT JOIN up.names e " +
-        "WHERE up.id = :postId" +
+        "WHERE up.id = :postId " +
         "GROUP BY up.id")
 Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
+
 
 @Query("SELECT " +
         "new map(" +
