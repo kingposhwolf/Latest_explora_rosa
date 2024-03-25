@@ -4,6 +4,7 @@ import com.example.demo.Models.Country;
 import com.example.demo.Models.HashTag;
 import com.example.demo.Models.Profile;
 import com.example.demo.Models.UserPost;
+import com.example.demo.OutputDto.UserPostDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -55,9 +56,11 @@ List<UserPost> findByHashTagsMatchKeywordAndMaxLikes(@Param("keyword") String ke
 @Query("SELECT " +
         "new map(" +
         "   up.id as id, " +
-        "   e as names, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
         "   c as country, " +
-        "   b as hashTags, " +
+        "   GROUP_CONCAT(DISTINCT f) as mentions, " +
+        "   GROUP_CONCAT(DISTINCT g) as tags, " +
+        "   GROUP_CONCAT(DISTINCT b.name) as hashTags, " +
         "   up.likes as likes, " +
         "   up.shares as shares, " +
         "   up.favorites as favorites, " +
@@ -65,22 +68,27 @@ List<UserPost> findByHashTagsMatchKeywordAndMaxLikes(@Param("keyword") String ke
         "   up.caption as caption, " +
         "   up.thumbnail as thumbnail, " +
         "   up.time as time, " +
-        "   d as contentTypes, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
         "   up.path as path) " +
         "FROM UserPost up " +
         "LEFT JOIN up.country c " +
+        "LEFT JOIN up.mentions f " +
+        "LEFT JOIN up.tags g " +
         "LEFT JOIN up.hashTags b " +
         "LEFT JOIN up.contentTypes d " +
         "LEFT JOIN up.names e " +
-        "WHERE up.id = :postId")
+        "WHERE up.id = :postId" +
+        "GROUP BY up.id")
 Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
 
 @Query("SELECT " +
         "new map(" +
         "   up.id as id, " +
-        "   e as names, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
         "   c as country, " +
-        "   b as hashTags, " +
+        "   GROUP_CONCAT(DISTINCT f) as mentions, " +
+        "   GROUP_CONCAT(DISTINCT g) as tags, " +
+        "   GROUP_CONCAT(DISTINCT b.name) as hashTags, " +
         "   up.likes as likes, " +
         "   up.shares as shares, " +
         "   up.favorites as favorites, " +
@@ -88,13 +96,16 @@ Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
         "   up.caption as caption, " +
         "   up.thumbnail as thumbnail, " +
         "   up.time as time, " +
-        "   d as contentTypes, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
         "   up.path as path) " +
         "FROM UserPost up " +
         "LEFT JOIN up.country c " +
+        "LEFT JOIN up.mentions f " +
+        "LEFT JOIN up.tags g " +
         "LEFT JOIN up.hashTags b " +
         "LEFT JOIN up.contentTypes d " +
-        "LEFT JOIN up.names e ")
-Map<String, Object> findUserPostData();
+        "LEFT JOIN up.names e " +
+        "GROUP BY up.id")
+List<Map<String, Object>> findUserPostData();
 
 }
