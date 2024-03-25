@@ -29,7 +29,6 @@ public interface UserPostService {
             Long brandId,
             List<String> hashtagNames) throws IOException;
 
-    ResponseEntity<Object> viewPost(Long postId) throws IOException;
 
     ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId);
 
@@ -48,4 +47,4 @@ public interface UserPostService {
 //            String caption,
 //            Long brandId,
 //            List<String> hashtagNames) throws IOException;
-
+//ResponseEntity<Object> viewPost(Long postId) throws IOException;

@@ -25,6 +25,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -448,35 +449,6 @@ public ResponseEntity<Object> uploadPost(
         return thumbnailFilePath;
     }
 
-    @Override
-    public ResponseEntity<Object> viewPost(Long postId) throws IOException{
-    try {
-        // Use optional
-        Optional<UserPost> userPostOptional = userPostRepository.findById(postId);
-        if (userPostOptional.isEmpty()) {
-            ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post with Id" + postId + "Not found!");
-        }
-        UserPost userPost = userPostOptional.get();
-        List<String> names = userPost.getNames();
-        if (names == null || names.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No names found for post with ID " + postId);
-        }
-        String postPath = userPost.getPath();
-        List <byte[]> postFiles = new ArrayList<>() ;
-        List <Path> dataPath = new ArrayList<>();
-        for (String name : names) {
-            Path postFilePath = Paths.get(postPath, name);
-            byte[] postData = Files.readAllBytes(postFilePath);
-
-
-        }
-
-        return null;
-    }catch (Exception e){
-        e.printStackTrace();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to view post: " + e.getMessage());
-    }
-    }
 
     @Override
     public ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId) {
@@ -749,3 +721,33 @@ public ResponseEntity<Object> uploadPost(
 //                    .body("Failed to check post content type: " + e.getMessage());
 //        }
 //    }
+//@Override
+//public ResponseEntity<Object> viewPost(Long postId) throws IOException{
+//    try {
+//        // Use optional
+//        Optional<Map<String, Object>> userPostDataOptional = Optional.ofNullable(userPostRepository.findUserPostDataById(postId));
+//        if (userPostDataOptional.isEmpty()) {
+//            ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post with Id" + postId + "Not found!");
+//        }
+////        UserPost userPost = userPostOptional.get();
+//        Map<String, Object> userPostData = userPostDataOptional.get();
+//        String postPath = (String) userPostData.get("path");
+//        List<String> names = (List<String>) userPostData.get("names");
+//        if (names == null || names.isEmpty()) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No names found for post with ID " + postId);
+//        }
+//        List <byte[]> postFiles = new ArrayList<>() ;
+//        List <Path> dataPath = new ArrayList<>();
+//        for (String name : names) {
+//            Path postFilePath = Paths.get(postPath, name);
+//            byte[] postData = Files.readAllBytes(postFilePath);
+//
+//
+//        }
+//
+//        return null;
+//    }catch (Exception e){
+//        e.printStackTrace();
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to view post: " + e.getMessage());
+//    }
+//}
