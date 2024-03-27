@@ -1,4 +1,4 @@
-package com.example.demo.user;
+package com.example.demo.userChat;
 
 public enum Status2 {
     ONLINE, OFFLINE
