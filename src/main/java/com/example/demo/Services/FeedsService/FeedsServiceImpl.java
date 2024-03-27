@@ -1,16 +1,16 @@
 package com.example.demo.Services.FeedsService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+// import java.util.ArrayList;
+// import java.util.List;
+// import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Components.Algorithms.FeedsAlgorithm;
-import com.example.demo.Repositories.ProfileRepository;
+// import com.example.demo.Components.Algorithms.FeedsAlgorithm;
+// import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
 import jakarta.validation.constraints.NotNull;
@@ -22,9 +22,9 @@ public class FeedsServiceImpl implements FeedsService{
 
     private static final Logger logger = LoggerFactory.getLogger(FeedsServiceImpl.class);
 
-    private final FeedsAlgorithm feedsAlgorithm;
+    //private final FeedsAlgorithm feedsAlgorithm;
 
-    private final ProfileRepository profileRepository;
+    //private final ProfileRepository profileRepository;
 
     private final UserPostRepository userPostRepository;
 

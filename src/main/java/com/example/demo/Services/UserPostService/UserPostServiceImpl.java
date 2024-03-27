@@ -43,6 +43,7 @@ public class UserPostServiceImpl implements UserPostService{
     private final BrandRepository brandRepository;
    // private final LikeRepository likeRepository;
 
+@SuppressWarnings("null")
 @Override
 @Transactional
 public ResponseEntity<Object> uploadPost(
@@ -217,6 +218,7 @@ public ResponseEntity<Object> uploadPost(
         return contentType != null && (contentType.startsWith("image/") || contentType.startsWith("video/"));
     }
 
+    @SuppressWarnings("null")
     @Override
     @Transactional
     public ResponseEntity<Object> uploadSnippet(
@@ -372,7 +374,7 @@ public ResponseEntity<Object> uploadPost(
                 // Save the post to the database
 
                 UserPost savedPost = userPostRepository.save(userPost);
-
+                logger.info("Successful save post : " + savedPost);
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -400,6 +402,7 @@ public ResponseEntity<Object> uploadPost(
         }
     }
 
+    @SuppressWarnings("unused")
     private String processThumbnail(MultipartFile files, MultipartFile thumbnailFile, Long profileId) throws IOException {
         // Generate a variable for a current time
         LocalDateTime currentTime = LocalDateTime.now();
@@ -450,6 +453,7 @@ public ResponseEntity<Object> uploadPost(
         return thumbnailFilePath;
     }
 
+    @SuppressWarnings("null")
     @Override
     public ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId) {
         try {
@@ -473,6 +477,7 @@ public ResponseEntity<Object> uploadPost(
         }
     }
 
+    @SuppressWarnings("null")
     @Transactional
     public ResponseEntity<Object> editCaption(UserPostDto userPostDto, Long profileId) {
         try {
