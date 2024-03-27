@@ -1,7 +1,9 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Ecommerce.Order;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
+
+import com.example.demo.Models.SocialMedia.UserPost;
 
 import jakarta.persistence.*;
 import lombok.Data;

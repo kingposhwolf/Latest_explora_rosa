@@ -5,9 +5,10 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.demo.Models.Like;
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserPost;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.SocialMedia.Interactions.Like;
+import com.example.demo.Models.UserManagement.Profile;
+
 
 public interface LikeRepository extends CrudRepository<Like, Long>{
     Optional<Like> findByLikerAndPost(Profile liker, UserPost post);

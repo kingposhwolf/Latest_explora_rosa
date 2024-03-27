@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Tracking;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;

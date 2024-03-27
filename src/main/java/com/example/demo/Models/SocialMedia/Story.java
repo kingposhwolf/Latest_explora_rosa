@@ -1,4 +1,6 @@
-package com.example.demo.Models;
+package com.example.demo.Models.SocialMedia;
+
+import com.example.demo.Models.UserManagement.Profile;
 
 import jakarta.persistence.*;
 import lombok.Data;

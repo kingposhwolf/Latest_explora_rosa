@@ -1,7 +1,9 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Tracking.UserToTopicTracking;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
+
+import com.example.demo.Models.UserManagement.Profile;
 
 import jakarta.persistence.*;
 import lombok.Data;

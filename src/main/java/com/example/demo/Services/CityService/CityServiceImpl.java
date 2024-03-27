@@ -1,7 +1,7 @@
 package com.example.demo.Services.CityService;
 import com.example.demo.InputDto.CityDto;
-import com.example.demo.Models.City;
-import com.example.demo.Models.Country;
+import com.example.demo.Models.Information.City;
+import com.example.demo.Models.Information.Country;
 import com.example.demo.Repositories.CityRepository;
 import com.example.demo.Repositories.CountryRepository;
 

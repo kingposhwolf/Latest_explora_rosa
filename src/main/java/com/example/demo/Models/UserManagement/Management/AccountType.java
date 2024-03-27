@@ -2,7 +2,7 @@
  * @author Dwight Danda
  *
  */
-package com.example.demo.Models;
+package com.example.demo.Models.UserManagement.Management;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;

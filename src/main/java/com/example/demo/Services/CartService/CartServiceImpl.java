@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.CartDto;
 import com.example.demo.InputDto.CartItemDto;
-import com.example.demo.Models.Cart;
-import com.example.demo.Models.CartItem;
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserPost;
+import com.example.demo.Models.Ecommerce.Cart.Cart;
+import com.example.demo.Models.Ecommerce.Cart.CartItem;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.CartItemRepository;
 import com.example.demo.Repositories.CartRepository;
 import com.example.demo.Repositories.ProfileRepository;

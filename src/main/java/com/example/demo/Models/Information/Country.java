@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Information;
 
 import java.util.ArrayList;
 import java.util.List;

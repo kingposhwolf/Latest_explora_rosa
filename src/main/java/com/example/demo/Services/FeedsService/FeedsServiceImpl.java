@@ -10,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Algorithms.FeedsAlgorithm;
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserPost;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserPostRepository;
 

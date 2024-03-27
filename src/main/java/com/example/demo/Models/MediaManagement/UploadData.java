@@ -1,4 +1,6 @@
-package com.example.demo.Models;
+package com.example.demo.Models.MediaManagement;
+import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
+
 /*
  * @author Dwight Danda
  *

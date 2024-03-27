@@ -1,4 +1,6 @@
-package com.example.demo.Models;
+package com.example.demo.Models.UserManagement.PersonalAccount;
+
+import com.example.demo.Models.UserManagement.Profile;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;

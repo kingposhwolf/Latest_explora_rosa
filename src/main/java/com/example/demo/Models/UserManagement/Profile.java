@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.UserManagement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,22 @@ import java.util.List;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.example.demo.Models.Ecommerce.Cart.Cart;
+import com.example.demo.Models.Ecommerce.Order.Order;
+import com.example.demo.Models.Information.City;
+import com.example.demo.Models.Information.Country;
+import com.example.demo.Models.SocialMedia.FollowUnFollow;
+import com.example.demo.Models.SocialMedia.Mention;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.SocialMedia.Interactions.Comment;
+import com.example.demo.Models.SocialMedia.Interactions.Favorites;
+import com.example.demo.Models.SocialMedia.Interactions.Like;
+import com.example.demo.Models.SocialMedia.Interactions.Tag;
+import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngageFeedPreviousEnd;
+import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngagement;
+import com.example.demo.Models.Tracking.UserToUserTracking.UserEngageFeedsPreviousEnd;
+import com.example.demo.Models.Tracking.UserToUserTracking.UserEngagement;
+import com.example.demo.Models.UserManagement.Management.VerificationStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;

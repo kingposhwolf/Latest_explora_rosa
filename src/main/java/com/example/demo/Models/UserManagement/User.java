@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.UserManagement;
 
 import jakarta.persistence.*;
 
@@ -11,6 +11,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.example.demo.Models.UserManagement.Management.AccountType;
+import com.example.demo.Models.UserManagement.Management.Role;
 
 import lombok.Data;
 

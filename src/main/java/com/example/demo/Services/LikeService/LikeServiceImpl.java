@@ -13,8 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.LikeDto;
-import com.example.demo.Models.Like;
-import com.example.demo.Models.UserPost;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.SocialMedia.Interactions.Like;
 // import com.example.demo.Repositories.CountryRepository;
 import com.example.demo.Repositories.LikeRepository;
 import com.example.demo.Repositories.UserPostRepository;

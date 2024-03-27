@@ -1,6 +1,9 @@
 package com.example.demo.Services.UserPostService;
 import com.example.demo.InputDto.UserPostDto;
-import com.example.demo.Models.*;
+import com.example.demo.Models.SocialMedia.HashTag;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.UserManagement.Profile;
+import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
 import com.example.demo.Repositories.*;
 
 import lombok.AllArgsConstructor;

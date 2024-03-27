@@ -1,13 +1,16 @@
+package com.example.demo.Models.UserManagement.BussinessAccount;
+
 /*
  * @author Dwight Danda
  *
  */
-package com.example.demo.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+
+import com.example.demo.Models.UserManagement.Profile;
 
 @Entity
 @Data

@@ -5,9 +5,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.Models.TopicEngagement;
-import com.example.demo.Models.HashTag;
-import com.example.demo.Models.Profile;
+import com.example.demo.Models.SocialMedia.HashTag;
+import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngagement;
+import com.example.demo.Models.UserManagement.Profile;
+
 
 
 public interface TopicEngagementRepository extends JpaRepository<TopicEngagement, Long>{

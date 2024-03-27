@@ -1,10 +1,9 @@
 package com.example.demo.Repositories;
 
-import com.example.demo.Models.Country;
-import com.example.demo.Models.HashTag;
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserPost;
-import com.example.demo.OutputDto.UserPostDTO;
+import com.example.demo.Models.Information.Country;
+import com.example.demo.Models.SocialMedia.HashTag;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.UserManagement.Profile;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.SocialMedia;
 /*
  * @author Dwight Danda
  *
@@ -13,6 +13,15 @@ import java.util.List;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.example.demo.Models.Ecommerce.Cart.CartItem;
+import com.example.demo.Models.Ecommerce.Order.OrderItem;
+import com.example.demo.Models.Information.Country;
+import com.example.demo.Models.SocialMedia.Interactions.Comment;
+import com.example.demo.Models.SocialMedia.Interactions.Favorites;
+import com.example.demo.Models.SocialMedia.Interactions.Like;
+import com.example.demo.Models.SocialMedia.Interactions.Tag;
+import com.example.demo.Models.UserManagement.Profile;
+import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

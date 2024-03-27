@@ -1,9 +1,11 @@
-package com.example.demo.Models;
+package com.example.demo.Models.UserManagement.Management;
 
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
+
+import com.example.demo.Models.UserManagement.User;
 
 import jakarta.persistence.*;
 import lombok.Data;

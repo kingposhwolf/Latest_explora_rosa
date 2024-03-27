@@ -4,7 +4,7 @@ import com.example.demo.InputDto.CityDto;
  * @author Dwight Danda
  *
  */
-import com.example.demo.Models.City;
+import com.example.demo.Models.Information.City;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

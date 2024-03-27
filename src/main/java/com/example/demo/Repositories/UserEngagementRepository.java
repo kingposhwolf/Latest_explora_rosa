@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserEngagement;
+import com.example.demo.Models.Tracking.UserToUserTracking.UserEngagement;
+import com.example.demo.Models.UserManagement.Profile;
+
 
 public interface UserEngagementRepository extends JpaRepository<UserEngagement, Long>{
     Optional<UserEngagement> findByTargetAndTopic(Profile target, Profile topic);

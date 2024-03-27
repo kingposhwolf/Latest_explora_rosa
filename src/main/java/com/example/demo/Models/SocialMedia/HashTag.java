@@ -1,10 +1,11 @@
-package com.example.demo.Models;
+package com.example.demo.Models.SocialMedia;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngagement;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*
