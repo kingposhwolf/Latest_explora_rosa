@@ -56,7 +56,7 @@ public ResponseEntity<Object> uploadPost(
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
         }
         else{
-            String folderPath= "D:\\Latest_explora_rosa\\userPosts";
+            String folderPath= "C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
 
             // Generate the filename using profileId, time, day, month, and year
             LocalDateTime currentTime = LocalDateTime.now();
