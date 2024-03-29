@@ -1,6 +1,9 @@
 package com.example.demo.Services.UserPostService;
 import com.example.demo.InputDto.UserPostDto;
-import com.example.demo.Models.*;
+import com.example.demo.Models.SocialMedia.HashTag;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.UserManagement.Profile;
+import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
 import com.example.demo.Repositories.*;
 
 import lombok.AllArgsConstructor;
@@ -42,6 +45,7 @@ public class UserPostServiceImpl implements UserPostService{
     private final BrandRepository brandRepository;
    // private final LikeRepository likeRepository;
 
+@SuppressWarnings("null")
 @Override
 @Transactional
 public ResponseEntity<Object> uploadPost(
@@ -214,6 +218,7 @@ public ResponseEntity<Object> uploadPost(
         return contentType != null && (contentType.startsWith("image/") || contentType.startsWith("video/"));
     }
 
+    @SuppressWarnings("null")
     @Override
     @Transactional
     public ResponseEntity<Object> uploadSnippet(
@@ -371,6 +376,8 @@ public ResponseEntity<Object> uploadPost(
 
                 UserPost savedPost = userPostRepository.save(userPost);
 
+                logger.info("Successful save post : " + savedPost);
+
                 return ResponseEntity.status(HttpStatus.CREATED).body("Snippet uploaded successfully");
 
 
@@ -399,6 +406,7 @@ public ResponseEntity<Object> uploadPost(
         }
     }
 
+    @SuppressWarnings("unused")
     private String processThumbnail(MultipartFile files, MultipartFile thumbnailFile, Long profileId) throws IOException {
         // Generate a variable for a current time
         LocalDateTime currentTime = LocalDateTime.now();
@@ -450,6 +458,8 @@ public ResponseEntity<Object> uploadPost(
     }
 
 
+    @SuppressWarnings("null")
+
     @Override
     public ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId) {
         try {
@@ -473,6 +483,7 @@ public ResponseEntity<Object> uploadPost(
         }
     }
 
+    @SuppressWarnings("null")
     @Transactional
     public ResponseEntity<Object> editCaption(UserPostDto userPostDto, Long profileId) {
         try {

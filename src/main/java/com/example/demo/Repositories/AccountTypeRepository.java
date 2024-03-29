@@ -3,8 +3,9 @@ package com.example.demo.Repositories;
  * @author Dwight Danda
  *
  */
-import com.example.demo.Models.AccountType;
 import org.springframework.data.repository.CrudRepository;
+
+import com.example.demo.Models.UserManagement.Management.AccountType;
 
 import java.util.Optional;
 

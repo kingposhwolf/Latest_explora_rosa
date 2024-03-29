@@ -2,9 +2,9 @@ package com.example.demo.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.Models.Favorites;
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserPost;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.SocialMedia.Interactions.Favorites;
+import com.example.demo.Models.UserManagement.Profile;
 
 import java.util.List;
 

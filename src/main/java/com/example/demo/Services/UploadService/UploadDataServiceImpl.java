@@ -1,10 +1,10 @@
 package com.example.demo.Services.UploadService;
+import com.example.demo.Models.MediaManagement.UploadData;
+import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
 /*
  * @author Dwight Danda
  *
  */
-import com.example.demo.Models.Brand;
-import com.example.demo.Models.UploadData;
 import com.example.demo.Repositories.BrandRepository;
 import com.example.demo.Repositories.UploadDataRepository;
 import org.slf4j.Logger;

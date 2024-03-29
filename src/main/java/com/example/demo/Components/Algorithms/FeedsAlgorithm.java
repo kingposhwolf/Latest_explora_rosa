@@ -6,8 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserPost;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.GlobalDBStartPointRepository;
 import com.example.demo.Repositories.UserEngagementRepository;
 import com.example.demo.Repositories.UserPostRepository;

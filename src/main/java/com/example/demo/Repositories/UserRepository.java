@@ -4,8 +4,9 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.Models.Role;
-import com.example.demo.Models.User;
+import com.example.demo.Models.UserManagement.User;
+import com.example.demo.Models.UserManagement.Management.Role;
+
 
 public interface UserRepository extends JpaRepository<User, Long> {
 

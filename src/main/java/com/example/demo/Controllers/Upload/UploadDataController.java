@@ -1,9 +1,9 @@
 package com.example.demo.Controllers.Upload;
+import com.example.demo.Models.MediaManagement.UploadData;
 /*
  * @author Dwight Danda
  *
  */
-import com.example.demo.Models.UploadData;
 import com.example.demo.Services.UploadService.UploadDataServiceImpl;
 
 import lombok.AllArgsConstructor;

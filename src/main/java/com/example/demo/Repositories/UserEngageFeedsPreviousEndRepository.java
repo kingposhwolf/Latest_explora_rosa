@@ -4,8 +4,9 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserEngageFeedsPreviousEnd;
+import com.example.demo.Models.Tracking.UserToUserTracking.UserEngageFeedsPreviousEnd;
+import com.example.demo.Models.UserManagement.Profile;
+
 
 
 

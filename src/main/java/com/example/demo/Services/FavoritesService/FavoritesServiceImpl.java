@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.InputDto.FavoritesDto;
-import com.example.demo.Models.Favorites;
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.UserPost;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.SocialMedia.Interactions.Favorites;
+import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.ProfileRepository;
 

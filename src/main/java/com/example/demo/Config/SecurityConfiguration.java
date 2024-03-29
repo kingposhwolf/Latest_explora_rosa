@@ -19,7 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
-import com.example.demo.Models.Role;
+import com.example.demo.Models.UserManagement.Management.Role;
 import com.example.demo.Services.UserSerives.UserService;
 
 import lombok.RequiredArgsConstructor;

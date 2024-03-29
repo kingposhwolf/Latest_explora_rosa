@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.TitleDto;
-import com.example.demo.Models.Title;
+import com.example.demo.Models.UserManagement.PersonalAccount.Title;
 import com.example.demo.Repositories.TitleRepository;
 
 import lombok.AllArgsConstructor;

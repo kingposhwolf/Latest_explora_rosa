@@ -3,10 +3,10 @@ package com.example.demo.OutputDto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.example.demo.Models.Country;
-import com.example.demo.Models.HashTag;
-import com.example.demo.Models.Tag;
-import com.example.demo.Models.Mention;
+import com.example.demo.Models.Information.Country;
+import com.example.demo.Models.SocialMedia.HashTag;
+import com.example.demo.Models.SocialMedia.Mention;
+import com.example.demo.Models.SocialMedia.Interactions.Tag;
 
 import lombok.Data;
 

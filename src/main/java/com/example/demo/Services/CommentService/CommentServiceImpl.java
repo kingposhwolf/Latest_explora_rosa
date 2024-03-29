@@ -2,8 +2,8 @@ package com.example.demo.Services.CommentService;
 
 import com.example.demo.InputDto.CommentDto;
 import com.example.demo.InputDto.CommentReplyDto;
-import com.example.demo.Models.Comment;
-import com.example.demo.Models.UserPost;
+import com.example.demo.Models.SocialMedia.UserPost;
+import com.example.demo.Models.SocialMedia.Interactions.Comment;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.UserPostRepository;
 

@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.InputDto.NewPasswordDto;
-import com.example.demo.Models.PasswordResetToken;
-import com.example.demo.Models.User;
+import com.example.demo.Models.UserManagement.User;
+import com.example.demo.Models.UserManagement.Management.PasswordResetToken;
 import com.example.demo.Repositories.PasswordResetRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.AuthenticationService.AuthenticationServiceImpl;

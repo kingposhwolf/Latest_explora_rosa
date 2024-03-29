@@ -5,10 +5,10 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
-import com.example.demo.Models.HashTag;
-import com.example.demo.Models.Profile;
-import com.example.demo.Models.TopicEngageFeedPreviousEnd;
-import com.example.demo.Models.UserEngageFeedsPreviousEnd;
+import com.example.demo.Models.SocialMedia.HashTag;
+import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngageFeedPreviousEnd;
+import com.example.demo.Models.Tracking.UserToUserTracking.UserEngageFeedsPreviousEnd;
+import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.FollowUnFollowRepository;
 import com.example.demo.Repositories.GlobalDBStartPointRepository;
 import com.example.demo.Repositories.TopicEngageFeedsPreviousEndRepository;

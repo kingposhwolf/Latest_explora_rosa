@@ -3,10 +3,11 @@ package com.example.demo.InputDto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.example.demo.Models.HashTag;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.example.demo.Models.SocialMedia.HashTag;
 
 @Data
 public class UserPostDto {

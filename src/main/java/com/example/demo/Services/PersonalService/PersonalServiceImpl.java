@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.ProfileVisitDto;
-import com.example.demo.Models.Personal;
+import com.example.demo.Models.UserManagement.PersonalAccount.Personal;
 import com.example.demo.Repositories.PersonalRepository;
 
 import lombok.AllArgsConstructor;
