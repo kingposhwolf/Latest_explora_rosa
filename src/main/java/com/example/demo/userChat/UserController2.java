@@ -7,10 +7,12 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.InputDto.ChatUser;
 import com.example.demo.Models.UserManagement.User;
+import com.example.demo.Repositories.ChatHistoryRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController2 {
     private final UserService2 userService;
+    private final ChatHistoryRepository chatHistoryRepository;
 
     @MessageMapping("/user.addUser")
     @SendTo("/user/public")
@@ -37,8 +40,9 @@ public class UserController2 {
         return user;
     }
 
-    @GetMapping("/users")
-    public ResponseEntity<List<User>> findConnectedUsers() {
-        return ResponseEntity.ok(userService.findConnectedUsers());
+    @GetMapping("/users/{senderId}")
+    public ResponseEntity<List<User>> findConnectedUsers(@PathVariable String senderId) {
+    //    return ResponseEntity.ok(userService.findConnectedUsers());
+        return ResponseEntity.ok(chatHistoryRepository.findRecepientBySenderId(senderId));
     }
 }

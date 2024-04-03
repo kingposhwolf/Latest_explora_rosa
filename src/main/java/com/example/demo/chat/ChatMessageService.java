@@ -23,6 +23,7 @@ public class ChatMessageService {
         ChatRoom chatRoom = chatRoomService.getChatRoomId(chatMessage.getSenderId(), chatMessage.getRecipientId());
 
         chatMessage.setChatRoom(chatRoom);
+        chatMessage.setStatus(MessageStatus.SENT);
         repository.save(chatMessage);
         return chatMessage;
         

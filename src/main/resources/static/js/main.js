@@ -45,7 +45,7 @@ function onConnected() {
 }
 
 async function findAndDisplayConnectedUsers() {
-    const connectedUsersResponse = await fetch('/users');
+    const connectedUsersResponse = await fetch(`/users/${username}`);
     let connectedUsers = await connectedUsersResponse.json();
     connectedUsers = connectedUsers.filter(user => user.username !== username);
     const connectedUsersList = document.getElementById('connectedUsers');
@@ -104,17 +104,51 @@ function userItemClick(event) {
 
 }
 
-function displayMessage(senderId, content) {
+// function displayMessage(senderId, content) {
+//     const messageContainer = document.createElement('div');
+//     messageContainer.classList.add('message');
+//     if (senderId === username) {
+//         messageContainer.classList.add('sender');
+//     } else {
+//         messageContainer.classList.add('receiver');
+//     }
+//     const message = document.createElement('p');
+//     message.textContent = content;
+//     messageContainer.appendChild(message);
+//     chatArea.appendChild(messageContainer);
+// }
+
+function displayMessage(senderId, content, status) {
     const messageContainer = document.createElement('div');
     messageContainer.classList.add('message');
     if (senderId === username) {
         messageContainer.classList.add('sender');
-    } else {
-        messageContainer.classList.add('receiver');
+
+        // Create message delivery indicator (gray tick)
+    const deliveryIndicator = document.createElement('span');
+    deliveryIndicator.textContent = '✓'; // Unicode check mark symbol
+    deliveryIndicator.classList.add('delivery-indicator');
+    if (status === 'delivered') {
+        deliveryIndicator.style.color = 'gray'; // Gray color for delivered but not read
+    } else if (status === 'read') {
+        deliveryIndicator.style.color = 'blue'; // Blue color for read
     }
+
     const message = document.createElement('p');
     message.textContent = content;
+    
+
     messageContainer.appendChild(message);
+    messageContainer.appendChild(deliveryIndicator);
+    } else {
+        messageContainer.classList.add('receiver');
+
+        const message = document.createElement('p');
+        message.textContent = content;
+        messageContainer.appendChild(message);
+    }
+
+    
     chatArea.appendChild(messageContainer);
 }
 

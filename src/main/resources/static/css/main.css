@@ -202,3 +202,7 @@ a.logout {
     color: #fff;
     text-decoration: none;
 }
+
+.delivery-indicator {
+    margin-left: 5px; /* Margin to separate from message text */
+}
