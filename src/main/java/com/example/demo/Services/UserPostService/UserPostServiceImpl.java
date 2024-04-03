@@ -35,7 +35,7 @@ import java.util.Optional;
 public class UserPostServiceImpl implements UserPostService{
     private static final Logger logger = LoggerFactory.getLogger(UserPostServiceImpl.class);
 
-    private final String postfolderPath="C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
+    private final String postfolderPath="Posts";
 
     private final UserPostRepository userPostRepository;
     private final ProfileRepository profileRepository;
@@ -58,7 +58,7 @@ public ResponseEntity<Object> uploadPost(
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
         }
         else{
-            String folderPath= "D:\\Latest_explora_rosa\\userPosts";
+            String folderPath= "src\\main\\resources\\static\\posts\\";
 
             // Generate the filename using profileId, time, day, month, and year
             LocalDateTime currentTime = LocalDateTime.now();
@@ -180,7 +180,7 @@ public ResponseEntity<Object> uploadPost(
                     userPost.setCaption(caption); // Use the provided caption
                     userPost.setTime(LocalDateTime.now());
                     userPost.setContentTypes(userPostDto.getContentTypes());
-                    userPost.setPath(userPostDto.getPath());
+                    userPost.setPath("/posts");
                     userPost.setShares(0);
                     userPost.setFavorites(0);
 

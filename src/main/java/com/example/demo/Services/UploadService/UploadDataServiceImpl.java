@@ -38,7 +38,7 @@ public class UploadDataServiceImpl implements UploadDataService {
     }
 
 
-    private final String folderPath="C:\\Users\\user\\Documents\\explore\\exploredev\\uploadsData\\";
+    private final String folderPath="src\\main\\resources\\static\\posts\\";
 
     @SuppressWarnings("null")
     @Transactional

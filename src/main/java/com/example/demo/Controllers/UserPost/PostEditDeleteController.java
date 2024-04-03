@@ -25,7 +25,7 @@ public class PostEditDeleteController {
     @PostMapping("/upload")
     public ResponseEntity<Object> uploadPost(
             @ModelAttribute UserPostDto userPostDto,
-            @RequestParam("content") MultipartFile[] file,
+            @RequestParam("file") MultipartFile[] file,
             @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail,
             @RequestParam("profileId") Long profileId,
             @RequestParam("caption") String caption,
