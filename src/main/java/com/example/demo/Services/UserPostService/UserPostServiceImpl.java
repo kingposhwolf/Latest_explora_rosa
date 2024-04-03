@@ -21,14 +21,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -60,7 +58,7 @@ public ResponseEntity<Object> uploadPost(
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
         }
         else{
-            String folderPath= "Posts";
+            String folderPath= "src\\main\\resources\\static\\posts\\";
 
             // Generate the filename using profileId, time, day, month, and year
             LocalDateTime currentTime = LocalDateTime.now();
@@ -180,7 +178,7 @@ public ResponseEntity<Object> uploadPost(
                     userPost.setCaption(caption); // Use the provided caption
                     userPost.setTime(LocalDateTime.now());
                     userPost.setContentTypes(userPostDto.getContentTypes());
-                    userPost.setPath(userPostDto.getPath());
+                    userPost.setPath("/posts");
                     userPost.setShares(0);
                     userPost.setFavorites(0);
 
