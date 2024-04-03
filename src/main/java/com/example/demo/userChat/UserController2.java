@@ -9,6 +9,9 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.InputDto.ChatUser;
+import com.example.demo.Models.UserManagement.User;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -18,8 +21,8 @@ public class UserController2 {
 
     @MessageMapping("/user.addUser")
     @SendTo("/user/public")
-    public User2 addUser(
-            @Payload User2 user
+    public ChatUser addUser(
+            @Payload ChatUser user
     ) {
         userService.saveUser(user);
         return user;
@@ -27,15 +30,15 @@ public class UserController2 {
 
     @MessageMapping("/user.disconnectUser")
     @SendTo("/user/public")
-    public User2 disconnectUser(
-            @Payload User2 user
+    public ChatUser disconnectUser(
+            @Payload ChatUser user
     ) {
         userService.disconnect(user);
         return user;
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<User2>> findConnectedUsers() {
+    public ResponseEntity<List<User>> findConnectedUsers() {
         return ResponseEntity.ok(userService.findConnectedUsers());
     }
 }

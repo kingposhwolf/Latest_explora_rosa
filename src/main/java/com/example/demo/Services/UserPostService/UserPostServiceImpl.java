@@ -21,12 +21,14 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -130,9 +132,6 @@ public ResponseEntity<Object> uploadPost(
                     String fileName = "post_" + profileId + "_" + currentTime.getYear() + "_" + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour() + "_" + currentTime.getMinute() + "_" + currentTime.getSecond() + "_" + (n + 1);
 
 
-
-
-
                     // Check if the content type is allowed
                     String contentType = file.getContentType();
                     if (!isValidContentType(contentType)) {
@@ -140,7 +139,6 @@ public ResponseEntity<Object> uploadPost(
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
                     }
                     String fileContentType =  contentType + "content_" + (n+1);
-                    filesContentTypes.add(fileContentType);
 
                     // Obtaining the Original file name
                     String originalFileName = file.getOriginalFilename();
@@ -160,8 +158,10 @@ public ResponseEntity<Object> uploadPost(
 
                     fileNames[n] = recordedFileName;
 
-                    // Add recorded filename to the list
+                    // Add recorded filename to the recorded filename list
                     recordedFileNames.add(recordedFileName);
+                    //Add file content type to the file content types list
+                    filesContentTypes.add(fileContentType);
 
                 }
                 userPostDto.setNames(recordedFileNames);
@@ -247,9 +247,10 @@ public ResponseEntity<Object> uploadPost(
                     logger.error("Unsupported content type: {}", contentType);
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
                 }
+
                 //Overwrite the content type for our personal usage on post retreiveing algorithm
-                contentType = "snippet";
-                filesContentTypes.add(contentType);
+               String  snippetContentType = "snippet";
+                filesContentTypes.add(snippetContentType);
                 userPostDto.setContentTypes(filesContentTypes);
 
                 // Fetch profile and country entities
@@ -374,15 +375,18 @@ public ResponseEntity<Object> uploadPost(
                 // Save the post to the database
 
                 UserPost savedPost = userPostRepository.save(userPost);
+
                 logger.info("Successful save post : " + savedPost);
+
+                return ResponseEntity.status(HttpStatus.CREATED).body("Snippet uploaded successfully");
+
 
             }catch (Exception e){
                 e.printStackTrace();
-                logger.error("Failed to upload the Snippet");
+                logger.error("Failed to upload the Snippet:{}", e.getMessage());
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload snippet: " + e.getMessage());
 
             }
-            return null;
-
 
     }
     private boolean isValidContentTypeForSnippet(String contentType) {
@@ -453,7 +457,9 @@ public ResponseEntity<Object> uploadPost(
         return thumbnailFilePath;
     }
 
+
     @SuppressWarnings("null")
+
     @Override
     public ResponseEntity<Object> checkPostOwnership(Long postId, Long profileId) {
         try {
@@ -726,3 +732,33 @@ public ResponseEntity<Object> uploadPost(
 //                    .body("Failed to check post content type: " + e.getMessage());
 //        }
 //    }
+//@Override
+//public ResponseEntity<Object> viewPost(Long postId) throws IOException{
+//    try {
+//        // Use optional
+//        Optional<Map<String, Object>> userPostDataOptional = Optional.ofNullable(userPostRepository.findUserPostDataById(postId));
+//        if (userPostDataOptional.isEmpty()) {
+//            ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post with Id" + postId + "Not found!");
+//        }
+////        UserPost userPost = userPostOptional.get();
+//        Map<String, Object> userPostData = userPostDataOptional.get();
+//        String postPath = (String) userPostData.get("path");
+//        List<String> names = (List<String>) userPostData.get("names");
+//        if (names == null || names.isEmpty()) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No names found for post with ID " + postId);
+//        }
+//        List <byte[]> postFiles = new ArrayList<>() ;
+//        List <Path> dataPath = new ArrayList<>();
+//        for (String name : names) {
+//            Path postFilePath = Paths.get(postPath, name);
+//            byte[] postData = Files.readAllBytes(postFilePath);
+//
+//
+//        }
+//
+//        return null;
+//    }catch (Exception e){
+//        e.printStackTrace();
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to view post: " + e.getMessage());
+//    }
+//}

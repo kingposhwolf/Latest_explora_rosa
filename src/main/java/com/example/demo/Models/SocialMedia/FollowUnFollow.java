@@ -13,6 +13,7 @@ import lombok.Data;
 @SQLDelete(sql = "UPDATE follow_un_follow SET deleted = true WHERE id=?")
 @SQLRestriction("deleted=false")
 public class FollowUnFollow {
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;

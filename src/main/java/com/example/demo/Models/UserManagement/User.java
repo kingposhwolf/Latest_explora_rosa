@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo.Models.UserManagement.Management.AccountType;
 import com.example.demo.Models.UserManagement.Management.Role;
+import com.example.demo.Models.UserManagement.Management.Status;
 
 import lombok.Data;
 
@@ -44,6 +45,8 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private Role role;
+
+    private Status status;
 
     private boolean deleted = Boolean.FALSE;
 
