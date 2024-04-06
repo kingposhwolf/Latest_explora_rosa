@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "`like`")
-@SQLDelete(sql = "UPDATE 'like' SET deleted = true WHERE id=?")
+@SQLDelete(sql = "UPDATE `like` SET deleted = true WHERE id=?")
 @SQLRestriction("deleted=false")
 public class Like {
     @Id

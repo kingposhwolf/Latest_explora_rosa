@@ -35,6 +35,13 @@ function onConnected() {
     stompClient.subscribe(`/user/${username}/queue/messages`, onMessageReceived);
     stompClient.subscribe(`/user/public`, onMessageReceived);
 
+    // Subscribe to the Like Channel to see if it work
+    stompClient.subscribe('/topic/like/1', function (ackMessage) {
+        // Handle ACK message received
+        const receivedAck = JSON.parse(ackMessage.body);
+        console.log('Like update received :', receivedAck);
+    });
+
     // register the connected user
     stompClient.send("/app/user.addUser",
         {},
