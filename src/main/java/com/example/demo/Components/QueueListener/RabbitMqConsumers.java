@@ -11,6 +11,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.CommentDto;
 import com.example.demo.InputDto.CommentReplyDto;
 import com.example.demo.InputDto.FavoritesDto;
@@ -26,6 +27,8 @@ import com.example.demo.Models.SocialMedia.Interactions.Like;
 import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngagement;
 import com.example.demo.Models.Tracking.UserToUserTracking.UserEngagement;
 import com.example.demo.Models.UserManagement.Profile;
+import com.example.demo.OutputDto.CommentOutputDto;
+import com.example.demo.OutputDto.CommentReplyOutputDto;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.LikeRepository;
@@ -54,6 +57,8 @@ public class RabbitMqConsumers {
     private final UserEngagementRepository userEngagementRepository;
 
     private final CommentRepository commentRepository;
+
+    private final Helper helper;
 
     private final FavoritesRepository favoritesRepository;
 
@@ -149,17 +154,28 @@ public class RabbitMqConsumers {
                 comment.setMessage(commentDto.getMessage());
                 comment.setCommenter(profile.get());
                 comment.setTimestamp(LocalDateTime.now());
+                comment.setUserPost(userPost.get());
 
                 int newComments = userPost.get().getComments() + 1;
 
                 userPost.get().setComments(newComments);
                 userPostRespository.save(userPost.get());
 
+                CommentOutputDto commentOutput = new CommentOutputDto();
+                commentOutput.setMessage(commentDto.getMessage());
+                commentOutput.setPostId(commentDto.getPostId());
+                commentOutput.setProfileId(commentDto.getProfileId());
+                commentOutput.setTime(helper.calculateTimeDifference(comment.getTimestamp()));
+
                 // Save the comment to the database
                 Comment savedComment = commentRepository.save(comment);
 
-                messagingTemplate.convertAndSend("/topic/commentCount" + userPost.get().getId(), newComments);
-                messagingTemplate.convertAndSend("/topic/comment" + userPost.get().getId(), savedComment);
+                String countEndpoint = "/topic/commentCount/" + userPost.get().getId();
+
+                String commentEndpoint = "/topic/comment/" + userPost.get().getId();
+
+                messagingTemplate.convertAndSend(countEndpoint, newComments);
+                messagingTemplate.convertAndSend(commentEndpoint, commentOutput);
 
                 logger.info("Comment Operation Performed successful, with information : ", savedComment);
             }
@@ -213,20 +229,29 @@ public class RabbitMqConsumers {
                 Comment comment = new Comment();
                 comment.setMessage(commentReplyDto.getMessage());
                 comment.setCommenter(profile.get());
+                comment.setUserPost(userPost.get());
                 comment.setTimestamp(LocalDateTime.now());
                 comment.setParentComment(parentComment.get());
                 parentComment.get().getReplies().add(comment);
 
-                int newComments = userPost.get().getComments() + 1;
+                CommentReplyOutputDto commentOutput = new CommentReplyOutputDto();
+                commentOutput.setMessage(commentReplyDto.getMessage());
+                commentOutput.setPostId(commentReplyDto.getPostId());
+                commentOutput.setProfileId(commentReplyDto.getProfileId());
+                commentOutput.setParentId(commentReplyDto.getParentId());
+                commentOutput.setTime(helper.calculateTimeDifference(comment.getTimestamp()));
 
-                userPost.get().setComments(newComments);
-                userPostRespository.save(userPost.get());
+                // int newComments = userPost.get().getComments() + 1;
+
+                // userPost.get().setComments(newComments);
+                // userPostRespository.save(userPost.get());
 
                 // Save the comment to the database
                 Comment savedComment = commentRepository.save(parentComment.get());
 
-                messagingTemplate.convertAndSend("/topic/commentCount" + userPost.get().getId(), newComments);
-                messagingTemplate.convertAndSend("/topic/comment" + userPost.get().getId(), savedComment);
+                String commentEndpoint = "/topic/comment/" + userPost.get().getId();
+
+                messagingTemplate.convertAndSend(commentEndpoint, commentOutput);
 
                 logger.info("Comment Reply Operation Performed successful, with information : " + savedComment);
             }

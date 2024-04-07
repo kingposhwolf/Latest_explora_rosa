@@ -15,6 +15,7 @@ import com.example.demo.Models.UserManagement.Profile;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -39,10 +40,12 @@ public class Comment {
     
     @ManyToOne
     @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_WITH_COMMENT", foreignKeyDefinition = "FOREIGN KEY (user_post_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
+    @ToString.Exclude
     private UserPost userPost;
 
     @ManyToOne
     @JoinColumn(name = "parentCommentId", foreignKey = @ForeignKey(name = "FK_PARENT_COMMENT", foreignKeyDefinition = "FOREIGN KEY (parent_comment_id) REFERENCES comments(id) ON DELETE CASCADE"))
+    @ToString.Exclude
     private Comment parentComment;
 
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)

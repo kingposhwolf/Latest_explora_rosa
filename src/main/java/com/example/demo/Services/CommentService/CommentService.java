@@ -15,4 +15,6 @@ public interface CommentService {
     ResponseEntity<Object> replyComment(CommentReplyDto commentReplyDto);
 
     ResponseEntity<Object> deleteComment(Long commentId);
+
+    ResponseEntity<Object> getCommentReplyForPost(@NotNull Long parentId);
 }

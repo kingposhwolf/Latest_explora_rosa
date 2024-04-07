@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -79,12 +80,29 @@ public class CommentServiceImpl implements CommentService{
                 logger.info("Failed to fetch comments, post not found with Id : ", postId);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
             } else {
-                List<Comment> comments = commentRepository.findByUserPostAndParentCommentIsNull(post.get());
-                logger.info("Comment Fetch successfully: ", comments);
-                return ResponseEntity.status(HttpStatus.OK).body(comments);
+                logger.info("Comment Fetch successfully: ");
+                return ResponseEntity.status(HttpStatus.OK).body(commentRepository.findCommentsForPost(post.get().getId()));
             }
         } catch (Exception e) {
-            logger.error("Failed to fetch comment to for post server Error : ", e.getMessage());
+            logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Override
+    public ResponseEntity<Object> getCommentReplyForPost(@NotNull Long parentId) {
+        try {
+            List<Map<String, Object>> replies = commentRepository.findCommentsReply(parentId);
+            if(replies.size() == 0){
+                logger.error("Failed to fetch comment replyt for the parent : " + parentId);
+                return ResponseEntity.status(404).body("No reply found");
+            }else{
+                logger.info("Comment Reply Fetched successfully");
+                return ResponseEntity.status(HttpStatus.OK).body(replies);
+            }
+        } catch (Exception e) {
+            logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
