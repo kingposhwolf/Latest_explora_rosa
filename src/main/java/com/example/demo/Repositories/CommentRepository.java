@@ -21,4 +21,6 @@ List<Map<String, Object>> findCommentsForPost(@Param("postId") Long postId);
 @Query("SELECT DISTINCT l.commenter.id as profileId, l.commenter.verificationStatus as verificationStatus, l.commenter.user.username as username, l.commenter.user.name as name, l.message as message, l.id as id, l.timestamp as timestamp  FROM Comment l JOIN l.commenter WHERE  l.parentComment.id = :parentId")
 List<Map<String, Object>> findCommentsReply(@Param("parentId") Long parentId);
 
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.demo.Services.CommentService;
 
+import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.CommentDto;
 import com.example.demo.InputDto.CommentReplyDto;
 import com.example.demo.Models.SocialMedia.UserPost;
@@ -32,6 +33,8 @@ public class CommentServiceImpl implements CommentService{
     private final CommentRepository commentRepository;
 
     private final UserPostRepository userPostRepository;
+
+    private final Helper helper;
 
     private SimpMessagingTemplate messagingTemplate;
 
@@ -81,7 +84,7 @@ public class CommentServiceImpl implements CommentService{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
             } else {
                 logger.info("Comment Fetch successfully: ");
-                return ResponseEntity.status(HttpStatus.OK).body(commentRepository.findCommentsForPost(post.get().getId()));
+                return ResponseEntity.status(HttpStatus.OK).body(helper.findCommentsForPost(commentRepository.findCommentsForPost(post.get().getId())));
             }
         } catch (Exception e) {
             logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());
@@ -99,7 +102,7 @@ public class CommentServiceImpl implements CommentService{
                 return ResponseEntity.status(404).body("No reply found");
             }else{
                 logger.info("Comment Reply Fetched successfully");
-                return ResponseEntity.status(HttpStatus.OK).body(replies);
+                return ResponseEntity.status(HttpStatus.OK).body(helper.findCommentsForPost(replies));
             }
         } catch (Exception e) {
             logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());
