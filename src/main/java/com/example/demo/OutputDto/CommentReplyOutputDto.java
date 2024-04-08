@@ -9,6 +9,9 @@ public class CommentReplyOutputDto {
     private Long profileId;
 
     @NotNull
+    private Long id;
+
+    @NotNull
     private Long postId;
 
     @NotNull

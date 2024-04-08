@@ -156,6 +156,9 @@ public class RabbitMqConsumers {
                 comment.setTimestamp(LocalDateTime.now());
                 comment.setUserPost(userPost.get());
 
+                // Save the comment to the database
+                Comment savedComment = commentRepository.save(comment);
+
                 int newComments = userPost.get().getComments() + 1;
 
                 userPost.get().setComments(newComments);
@@ -166,9 +169,8 @@ public class RabbitMqConsumers {
                 commentOutput.setPostId(commentDto.getPostId());
                 commentOutput.setProfileId(commentDto.getProfileId());
                 commentOutput.setTime(helper.calculateTimeDifference(comment.getTimestamp()));
+                commentOutput.setId(savedComment.getId());
 
-                // Save the comment to the database
-                Comment savedComment = commentRepository.save(comment);
 
                 String countEndpoint = "/topic/commentCount/" + userPost.get().getId();
 
@@ -232,7 +234,8 @@ public class RabbitMqConsumers {
                 comment.setUserPost(userPost.get());
                 comment.setTimestamp(LocalDateTime.now());
                 comment.setParentComment(parentComment.get());
-                parentComment.get().getReplies().add(comment);
+               // parentComment.get().getReplies().add(comment);
+                Comment savedComment = commentRepository.save(comment);
 
                 CommentReplyOutputDto commentOutput = new CommentReplyOutputDto();
                 commentOutput.setMessage(commentReplyDto.getMessage());
@@ -240,6 +243,7 @@ public class RabbitMqConsumers {
                 commentOutput.setProfileId(commentReplyDto.getProfileId());
                 commentOutput.setParentId(commentReplyDto.getParentId());
                 commentOutput.setTime(helper.calculateTimeDifference(comment.getTimestamp()));
+                commentOutput.setId(savedComment.getId());
 
                 // int newComments = userPost.get().getComments() + 1;
 
@@ -247,9 +251,9 @@ public class RabbitMqConsumers {
                 // userPostRespository.save(userPost.get());
 
                 // Save the comment to the database
-                Comment savedComment = commentRepository.save(parentComment.get());
+                
 
-                String commentEndpoint = "/topic/comment/" + userPost.get().getId();
+                String commentEndpoint = "/topic/comment/reply/" + userPost.get().getId();
 
                 messagingTemplate.convertAndSend(commentEndpoint, commentOutput);
 
