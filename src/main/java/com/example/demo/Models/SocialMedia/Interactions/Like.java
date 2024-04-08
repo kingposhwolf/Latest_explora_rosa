@@ -8,11 +8,12 @@ import com.example.demo.Models.UserManagement.Profile;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
 @Table(name = "`like`")
-@SQLDelete(sql = "UPDATE 'like' SET deleted = true WHERE id=?")
+@SQLDelete(sql = "UPDATE `like` SET deleted = true WHERE id=?")
 @SQLRestriction("deleted=false")
 public class Like {
     @Id
@@ -25,6 +26,7 @@ public class Like {
 
     @ManyToOne
     @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_LIKE", foreignKeyDefinition = "FOREIGN KEY (user_post_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
+    @ToString.Exclude
     private UserPost post;
 
     private boolean deleted = Boolean.FALSE;

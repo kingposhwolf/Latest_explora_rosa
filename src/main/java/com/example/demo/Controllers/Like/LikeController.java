@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
+import com.example.demo.InputDto.FetchLikeDto;
 import com.example.demo.InputDto.LikeDto;
 import com.example.demo.Services.LikeService.LikeServiceImpl;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -32,10 +32,10 @@ public class LikeController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<Object> fetchLikes(@RequestBody @Valid @NotNull Long postId, BindingResult bindingResult) {
+    public ResponseEntity<Object> fetchLikes(@RequestBody @Valid FetchLikeDto fetchlikes, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return likeService.fetchLikes(postId);
+        return likeService.fetchLikes(fetchlikes.getPostId());
     }
 }

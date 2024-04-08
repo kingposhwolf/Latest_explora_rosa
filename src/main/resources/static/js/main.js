@@ -36,6 +36,34 @@ function onConnected() {
     stompClient.subscribe(`/user/public`, onMessageReceived);
     
 
+    // Subscribe to the Like Channel to see if it work
+    stompClient.subscribe('/topic/like/1', function (ackMessage) {
+        // Handle ACK message received
+        const receivedAck = JSON.parse(ackMessage.body);
+        console.log('Like update received :', receivedAck);
+    });
+
+    // Subscribe to the Comment count Channel to see if it work
+    stompClient.subscribe('/topic/commentCount/1', function (ackMessage) {
+        // Handle ACK message received
+        const receivedAck = JSON.parse(ackMessage.body);
+        console.log('Comment received :', receivedAck);
+    });
+
+    // Subscribe to the Comment Reply Channel to see if it work
+    stompClient.subscribe('/topic/comment/reply/1', function (ackMessage) {
+        // Handle ACK message received
+        const receivedAck = JSON.parse(ackMessage.body);
+        console.log('Comment Reply received :', receivedAck);
+    });
+
+    // Subscribe to the Comment Reply Channel to see if it work
+    stompClient.subscribe('/topic/comment/1', function (ackMessage) {
+        // Handle ACK message received
+        const receivedAck = JSON.parse(ackMessage.body);
+        console.log('Comment received :', receivedAck);
+    });
+
     // register the connected user
     stompClient.send("/app/user.addUser",
         {},
