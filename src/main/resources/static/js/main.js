@@ -34,6 +34,7 @@ function connect(event) {
 function onConnected() {
     stompClient.subscribe(`/user/${username}/queue/messages`, onMessageReceived);
     stompClient.subscribe(`/user/public`, onMessageReceived);
+    
 
     // register the connected user
     stompClient.send("/app/user.addUser",
@@ -118,8 +119,9 @@ function userItemClick(event) {
 //     chatArea.appendChild(messageContainer);
 // }
 
-function displayMessage(senderId, content, status) {
+function displayMessage(senderId, content, status,messageId) {
     const messageContainer = document.createElement('div');
+    messageContainer.id =  messageId;
     messageContainer.classList.add('message');
     if (senderId === username) {
         messageContainer.classList.add('sender');
@@ -132,6 +134,8 @@ function displayMessage(senderId, content, status) {
         deliveryIndicator.style.color = 'gray'; // Gray color for delivered but not read
     } else if (status === 'read') {
         deliveryIndicator.style.color = 'blue'; // Blue color for read
+    }else if (status === 'pending') {
+        deliveryIndicator.style.color = 'red'; // Blue color for read
     }
 
     const message = document.createElement('p');
@@ -157,7 +161,7 @@ async function fetchAndDisplayUserChat() {
     const userChat = await userChatResponse.json();
     chatArea.innerHTML = '';
     userChat.forEach(chat => {
-        displayMessage(chat.senderId, chat.content);
+        displayMessage(chat.senderId, chat.content,"read",chat.id);
     });
     chatArea.scrollTop = chatArea.scrollHeight;
 }
@@ -171,20 +175,37 @@ function onError() {
 
 function sendMessage(event) {
     const messageContent = messageInput.value.trim();
-    if (messageContent && stompClient) {
-        const chatMessage = {
-            senderId: username,
-            recipientId: selectedUserId,
-            content: messageInput.value.trim(),
-            timestamp: new Date()
-        };
-        stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
-        displayMessage(username, messageInput.value.trim());
-        messageInput.value = '';
-    }
-    chatArea.scrollTop = chatArea.scrollHeight;
-    event.preventDefault();
+if (messageContent && stompClient) {
+    const chatMessage = {
+        senderId: username,
+        recipientId: selectedUserId,
+        content: messageInput.value.trim(),
+        timestamp: new Date()
+    };
+    
+    const messageId = Date.now().toString(); // Generate a unique message ID
+    
+    // Subscribe to the ACK destination to receive ACK messages
+    stompClient.subscribe(`/topic/ack/${username}`, function (ackMessage) {
+        // Handle ACK message received
+        const receivedAck = JSON.parse(ackMessage.body);
+        console.log('ACK received for message:', receivedAck);
+    });
+    
+    // Send the message
+    stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
+    
+    // Display the message immediately (optimistic update)
+    displayMessage(username, messageInput.value.trim(), 'pending', messageId);
+    
+    // Clear message input
+    messageInput.value = '';
 }
+chatArea.scrollTop = chatArea.scrollHeight;
+event.preventDefault();
+
+}
+
 
 
 async function onMessageReceived(payload) {
