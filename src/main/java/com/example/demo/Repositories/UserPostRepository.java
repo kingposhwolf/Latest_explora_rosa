@@ -7,6 +7,7 @@ import com.example.demo.Models.UserManagement.Profile;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -107,5 +108,8 @@ Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
         "LEFT JOIN up.names e " +
         "GROUP BY up.id")
 List<Map<String, Object>> findUserPostData();
+
+@Query("SELECT DISTINCT l.id FROM UserPost l WHERE  l.id = :postId")
+Optional<Long> findPostIdByItsId(@Param("postId") Long postId);
 
 }

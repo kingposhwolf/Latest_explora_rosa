@@ -7,4 +7,7 @@ import lombok.Data;
 public class FetchCommentReplyDto {
     @NotNull
     private Long parentId;
+
+    @NotNull
+    private Long postId;
 }

@@ -1,12 +1,12 @@
 package com.example.demo.Controllers.Comment;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
+import com.example.demo.InputDto.CommentDeleteDto;
 import com.example.demo.InputDto.CommentDto;
 import com.example.demo.InputDto.CommentPostDto;
 import com.example.demo.InputDto.CommentReplyDto;
 import com.example.demo.InputDto.FetchCommentReplyDto;
 import com.example.demo.Services.CommentService.CommentServiceImpl;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -54,14 +54,14 @@ public class CommentController {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return commentService.getCommentReplyForPost(fetchCommentReplyDto.getParentId());
+        return commentService.getCommentReplyForPost(fetchCommentReplyDto.getParentId(), fetchCommentReplyDto.getPostId());
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<Object> deleteMessage(@RequestBody @Valid @NotNull Long commentId, BindingResult bindingResult) {
+    public ResponseEntity<Object> deleteMessage(@RequestBody @Valid CommentDeleteDto commentDeleteDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return commentService.deleteComment(commentId);
+        return commentService.deleteComment(commentDeleteDto);
     }
 }
