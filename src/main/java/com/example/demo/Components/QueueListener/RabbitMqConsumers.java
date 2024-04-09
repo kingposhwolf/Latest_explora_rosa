@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
@@ -57,6 +58,8 @@ public class RabbitMqConsumers {
     private final UserEngagementRepository userEngagementRepository;
 
     private final CommentRepository commentRepository;
+
+    private AmqpTemplate rabbitTemplate;
 
     private final Helper helper;
 
@@ -317,19 +320,27 @@ public class RabbitMqConsumers {
             Optional<Profile> profile = profileRepository.findById(favoritesDto.getProfileId());
             Optional<UserPost> post = userPostRespository.findById(favoritesDto.getPostId());
 
-            if (!profile.isEmpty()) {
+            if (profile.isEmpty()) {
                 logger.error("During Saving Favorites User profile not found for profile ID: "
                         + favoritesDto.getProfileId());
             } else if (post.isEmpty()) {
                 logger.error("During Saving Favorites User post not found for post ID: " + favoritesDto.getPostId());
             } else {
-                Favorites favorites = new Favorites();
+                Long existingFavorite = favoritesRepository.findFavoriteByPostAndUser(post.get().getId(), profile.get().getId());
+                if(existingFavorite == null){
+                    Favorites favorites = new Favorites();
                 favorites.setPost(post.get());
                 favorites.setProfile(profile.get());
 
                 Favorites savedFavorites = favoritesRepository.save(favorites);
 
-                logger.info("Favorites Operation Performed successful, with information : " + savedFavorites);
+                rabbitTemplate.convertAndSend("trackFavorites", favoritesDto.toJson());
+
+                logger.info("Favorites Operation Performed successful, with information : " + savedFavorites.toString());
+                }else{
+                    logger.info("Post already exist in the favorites");
+                }
+                
             }
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());

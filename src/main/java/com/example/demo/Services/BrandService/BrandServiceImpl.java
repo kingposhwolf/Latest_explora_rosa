@@ -36,12 +36,12 @@ public class BrandServiceImpl implements BrandService{
         try {
             Map<String, Object> owner = brandRepository.findProfileInfoById(brandVisitDto.getOwnerId());
 
-            Map<String, Object> visitor = profileRepository.findProfileIdById(brandVisitDto.getVisitorId());
+            Long visitor = profileRepository.findProfileIdById(brandVisitDto.getVisitorId());
 
             if (owner.size() == 0) {
                 logger.error("Failed to Fetch Brand Info, Invalid brand Id");
                 return ResponseEntity.badRequest().body("Invalid profile ID");
-            }else if(visitor.size() == 0){
+            }else if(visitor == null){
                 logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }

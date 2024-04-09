@@ -1,7 +1,8 @@
 package com.example.demo.Services.FavoritesService;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,12 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.FavoritesDto;
-import com.example.demo.Models.SocialMedia.UserPost;
-import com.example.demo.Models.SocialMedia.Interactions.Favorites;
-import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.UserPostRepository;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -30,15 +30,18 @@ public class FavoritesServiceImpl implements FavoritesService{
 
     private final FavoritesRepository favoritesRepository;
 
+    private final UserPostRepository userPostRepository;
+
+    private final Helper helper;
+
     private AmqpTemplate rabbitTemplate;
 
-    private static final String EXCHANGE_NAME = "Favorites";
-    private static final String ROUTING_KEY = "favoritesOperation";
+    private static final String QUEUE_NAME = "saveFavorites";
 
     @Override
     public ResponseEntity<Object> addToFavorites(FavoritesDto favoritesDto) {
         try {
-            rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, favoritesDto.toJson());
+            rabbitTemplate.convertAndSend(QUEUE_NAME, favoritesDto.toJson());
             
             logger.info("Added to Queue for add to Favorites successfully: ");
             return ResponseEntity.ok("Add to favorites successfully!");
@@ -52,18 +55,25 @@ public class FavoritesServiceImpl implements FavoritesService{
     @Override
     public ResponseEntity<Object> getUserFavorites(@NotNull Long profileId) {
         try {
-            Optional<Profile> profile = profileRepository.findById(profileId);
-            if (profile.isEmpty()) {
+            Long profile = profileRepository.findProfileIdById(profileId);
+            if (profile == null ) {
                 logger.info("Failed to fetch favorites contents, profile not found with Id : ", profileId);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Profile not found");
             } else {
-                List<UserPost> posts = favoritesRepository.findUserPostsByProfile(profile.get());
+                List<Long> posts = favoritesRepository.findPostByProfile(profile);
 
-                logger.info("Favorites Fetch successfully: ", posts);
-                return ResponseEntity.status(HttpStatus.OK).body(posts);
+                List<Map<String, Object>> postLists = new ArrayList<>();
+
+                for (Long postId : posts) {
+                    Map<String, Object> userPostData = userPostRepository.findUserPostDataById(postId);
+                    postLists.add(userPostData);
+                }
+
+                logger.info("Favorites Fetch successfully for posts with Ids: ", posts);
+                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(postLists));
             }
         } catch (Exception e) {
-            logger.error("Failed to fetch Favorites Posts server Error : ", e.getMessage());
+            logger.error("Failed to fetch Favorites Posts server Error : "+ e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
@@ -73,10 +83,10 @@ public class FavoritesServiceImpl implements FavoritesService{
     @Override
     public ResponseEntity<Object> deleteFavorite(@NotNull Long favoriteId) {
         try {
-            Optional<Favorites> favorite = favoritesRepository.findById(favoriteId);
-            if (favorite.isPresent()) {
+            Long favorite = favoritesRepository.findFavoriteByItsId(favoriteId);
+            if (favorite != null) {
 
-                favoritesRepository.delete(favorite.get());
+                favoritesRepository.deleteById(favorite);
 
                 logger.info("Favorite deleted successfully");
                 return ResponseEntity.status(HttpStatus.OK).body("Favorite deleted successfully");
