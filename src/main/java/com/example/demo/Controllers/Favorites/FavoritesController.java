@@ -26,7 +26,7 @@ public class FavoritesController {
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/add")
-    public ResponseEntity<Object> newComment(@RequestBody @Valid FavoritesDto favoritesDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> newFavorite(@RequestBody @Valid FavoritesDto favoritesDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
@@ -34,15 +34,15 @@ public class FavoritesController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<Object> deleteMessage(@RequestBody @Valid DeleteFavoriteDto deleteFavoriteDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> deleteFavorite(@RequestBody @Valid DeleteFavoriteDto deleteFavoriteDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return favoritesService.deleteFavorite(deleteFavoriteDto.getFavoriteId());
+        return favoritesService.deleteFavorite(deleteFavoriteDto);
     }
 
     @PostMapping("/user")
-    public ResponseEntity<Object> getCommentsForPost(@RequestBody @Valid FetchFavoritesDto fetchFavoritesDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> getFavoritesForPost(@RequestBody @Valid FetchFavoritesDto fetchFavoritesDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }

@@ -5,6 +5,9 @@ import lombok.Data;
 
 @Data
 public class DeleteFavoriteDto {
-    @NotNull 
-    Long favoriteId;
+    @NotNull
+    private Long profileId;
+
+    @NotNull
+    private Long postId;
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Components.Helper.Helper;
+import com.example.demo.InputDto.DeleteFavoriteDto;
 import com.example.demo.InputDto.FavoritesDto;
 import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.ProfileRepository;
@@ -81,9 +82,9 @@ public class FavoritesServiceImpl implements FavoritesService{
     @SuppressWarnings("null")
     @Transactional
     @Override
-    public ResponseEntity<Object> deleteFavorite(@NotNull Long favoriteId) {
+    public ResponseEntity<Object> deleteFavorite(DeleteFavoriteDto deleteFavoriteDto) {
         try {
-            Long favorite = favoritesRepository.findFavoriteByItsId(favoriteId);
+            Long favorite = favoritesRepository.findFavoriteByPostAndUser(deleteFavoriteDto.getPostId(),deleteFavoriteDto.getProfileId());
             if (favorite != null) {
 
                 favoritesRepository.deleteById(favorite);
@@ -91,7 +92,7 @@ public class FavoritesServiceImpl implements FavoritesService{
                 logger.info("Favorite deleted successfully");
                 return ResponseEntity.status(HttpStatus.OK).body("Favorite deleted successfully");
             } else {
-                logger.error("Favorite not found with ID:", favoriteId);
+                logger.error("Favorite not found with ID : "+ deleteFavoriteDto);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Favorite not found");
             }
         } catch (Exception e) {
