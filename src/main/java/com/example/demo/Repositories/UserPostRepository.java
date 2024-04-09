@@ -67,7 +67,7 @@ List<UserPost> findByHashTagsMatchKeywordAndMaxLikes(@Param("keyword") String ke
         "   up.comments as comments, " +
         "   up.caption as caption, " +
         "   up.thumbnail as thumbnail, " +
-        "   up.time as time, " +
+        "   up.time as timestamp, " +
         "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
         "   up.path as path) " +
         "FROM UserPost up " +
@@ -96,7 +96,10 @@ Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
         "   up.comments as comments, " +
         "   up.caption as caption, " +
         "   up.thumbnail as thumbnail, " +
-        "   up.time as time, " +
+        "   up.time as timestamp, " +
+        "   up.profile.user.username as username, " +
+        "   up.profile.user.name as name, " +
+        "   up.profile.user.accountType.name as accountType, " +
         "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
         "   up.path as path) " +
         "FROM UserPost up " +

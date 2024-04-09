@@ -80,7 +80,7 @@ public class CommentServiceImpl implements CommentService{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
             } else {
                 logger.info("Comment Fetch successfully: ");
-                return ResponseEntity.status(HttpStatus.OK).body(helper.findCommentsForPost(commentRepository.findCommentsForPost(post.get())));
+                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(commentRepository.findCommentsForPost(post.get())));
             }
         } catch (Exception e) {
             logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());
@@ -98,7 +98,7 @@ public class CommentServiceImpl implements CommentService{
                 return ResponseEntity.status(404).body("No reply found");
             }else{
                 logger.info("Comment Reply Fetched successfully");
-                return ResponseEntity.status(HttpStatus.OK).body(helper.findCommentsForPost(replies));
+                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(replies));
             }
         } catch (Exception e) {
             logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());

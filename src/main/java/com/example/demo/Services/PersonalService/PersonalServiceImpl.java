@@ -1,6 +1,6 @@
 package com.example.demo.Services.PersonalService;
 
-import java.util.Optional;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,16 +9,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.ProfileVisitDto;
-import com.example.demo.Models.UserManagement.PersonalAccount.Personal;
 import com.example.demo.Repositories.PersonalRepository;
+import com.example.demo.Repositories.ProfileRepository;
 
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
 public class PersonalServiceImpl implements PersonalService{
+
     private static final Logger logger = LoggerFactory.getLogger(PersonalServiceImpl.class);
+
     private final PersonalRepository personalRepository;
+
+    private final ProfileRepository profileRepository;
 
    private AmqpTemplate rabbitTemplate;
 
@@ -30,21 +34,21 @@ public class PersonalServiceImpl implements PersonalService{
     @Override
     public ResponseEntity<Object> getProfileById(ProfileVisitDto profileVisitDto) {
         try {
-            Optional<Personal> owner = personalRepository.findById(profileVisitDto.getOwnerId());
+            Map<String, Object> owner = personalRepository.findProfileInfoById(profileVisitDto.getOwnerId());
 
-            Optional<Personal> visitor = personalRepository.findById(profileVisitDto.getVisitorId());
+            Map<String, Object> visitor = profileRepository.findProfileIdById(profileVisitDto.getVisitorId());
 
-            if (!owner.isPresent()) {
+            if (owner.size() == 0) {
                 logger.error("Failed to Fetch Profile Info, Invalid Profile Id");
                 return ResponseEntity.badRequest().body("Invalid profile ID");
-            }else if(!visitor.isPresent()){
+            }else if(visitor.size() == 0){
                 logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }
-             else{
+            else{
                 rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, profileVisitDto.toJson());
                 logger.info("\nProfile Info Fetched Successful: " + owner);
-                return ResponseEntity.status(200).body(owner.get());
+                return ResponseEntity.status(200).body(owner);
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());

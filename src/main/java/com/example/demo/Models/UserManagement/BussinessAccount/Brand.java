@@ -17,10 +17,6 @@ import com.example.demo.Models.UserManagement.Profile;
 @DiscriminatorValue("BUSINESS")
 public class Brand extends Profile {
 
-    @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(precision = 1, scale=1, nullable = false)
     private BigDecimal rates;
 
