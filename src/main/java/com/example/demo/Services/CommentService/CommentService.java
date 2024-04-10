@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.example.demo.InputDto.CommentDeleteDto;
 import com.example.demo.InputDto.CommentDto;
+import com.example.demo.InputDto.CommentLikeDto;
 import com.example.demo.InputDto.CommentReplyDto;
 
 public interface CommentService {
@@ -18,4 +19,6 @@ public interface CommentService {
     ResponseEntity<Object> deleteComment(CommentDeleteDto commentDeleteDto);
 
     ResponseEntity<Object> getCommentReplyForPost(@NotNull Long parentId, @NotNull Long postId);
+
+    ResponseEntity<Object> commentLikeOperation(CommentLikeDto commentLikeDto);
 }

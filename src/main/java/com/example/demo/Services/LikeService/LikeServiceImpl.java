@@ -41,13 +41,13 @@ public class LikeServiceImpl implements LikeService{
         try {
             rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, likeDto.toJson());
             
-            logger.info("Like saved successfully: ");
+            logger.info("Like Operation successfully: ");
             return ResponseEntity.ok("Like successfully!");
         } catch (AmqpException e) {
-        logger.error("Failed to send message to RabbitMQ", e);
+        logger.error("Failed to send message to RabbitMQ"+ e.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send message to RabbitMQ");
         }catch (Exception e) {
-            logger.error("Failed to like server Error : ", e);
+            logger.error("Failed to like, server Error : "+ e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
@@ -58,14 +58,14 @@ public class LikeServiceImpl implements LikeService{
         try {
             Optional<UserPost> post = userPostRepository.findById(postId);
             if (post.isEmpty()) {
-                logger.error("Failed to fetch Likes Post not found for postId: ", postId);
+                logger.error("Failed to fetch Likes Post not found for postId: "+ postId);
                 return ResponseEntity.status(404).body("Can't retrieve likes , Post not Find");
             }else{
         
                 return ResponseEntity.status(200).body(likeRepository.findLikersByUsernameAndName(post.get().getId()));
             }
         } catch (Exception exception) {
-            logger.error("Failed to fetch Likes server error: ", exception.getMessage());
+            logger.error("Failed to fetch Likes server error: "+ exception.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
