@@ -22,7 +22,7 @@ public class ViewController {
 
     private GlobalValidationFormatter globalValidationFormatter;
 
-    @PostMapping("/add")
+    @PostMapping("/track")
     public ResponseEntity<Object> newComment(@RequestBody @Valid ViewDto viewDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);

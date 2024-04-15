@@ -1,9 +1,8 @@
 package com.example.demo.chatroom;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.demo.Models.UserManagement.Profile;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +17,12 @@ public class ChatRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String senderId;
-    private String recipientId;
+
+    @ManyToOne
+    @JoinColumn(name = "senderId", nullable = false, foreignKey = @ForeignKey(name = "FK_PROFILE_SENDER_CHATROOM", foreignKeyDefinition = "FOREIGN KEY (sender_id) REFERENCES profiles(id) ON DELETE CASCADE"))
+    private Profile sender;
+
+    @ManyToOne
+    @JoinColumn(name = "recipientId", nullable = false, foreignKey = @ForeignKey(name = "FK_PROFILE_RECIPIENT_CHATROOM", foreignKeyDefinition = "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"))
+    private Profile recipient;
 }

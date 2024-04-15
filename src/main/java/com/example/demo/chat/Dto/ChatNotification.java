@@ -1,4 +1,6 @@
-package com.example.demo.chat;
+package com.example.demo.chat.Dto;
+
+import com.example.demo.chat.MessageStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +13,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ChatNotification {
     private Long id;
-    private String senderId;
-    private String recipientId;
+
+    private Long senderId;
+
+    private Long recipientId;
+
     private String content;
+
+    private MessageStatus status;
 }

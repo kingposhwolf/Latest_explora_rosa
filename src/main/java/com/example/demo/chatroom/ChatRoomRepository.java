@@ -2,8 +2,17 @@ package com.example.demo.chatroom;
 
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
-public interface ChatRoomRepository extends CrudRepository<ChatRoom,Long>{
-    Optional<ChatRoom> findBySenderIdAndRecipientIdOrSenderIdAndRecipientId(String senderId, String recipientId, String recipientId2, String senderId2);
+public interface ChatRoomRepository extends CrudRepository<ChatRoom, Long>{
+
+    @Query("SELECT cr FROM ChatRoom cr WHERE (cr.sender.id = :senderId AND cr.recipient.id = :recipientId) OR (cr.sender.id = :sender2Id AND cr.recipient.id = :recipient2Id)")
+Optional<ChatRoom> findBySenderIdAndRecipientIdOrSenderIdAndRecipientId(
+    @Param("senderId") Long senderId,
+    @Param("recipientId") Long recipientId,
+    @Param("sender2Id") Long sender2Id,
+    @Param("recipient2Id") Long recipient2Id);
+
 }

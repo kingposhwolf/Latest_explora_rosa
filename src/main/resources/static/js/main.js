@@ -13,6 +13,7 @@ let stompClient = null;
 let username = null;
 let fullname = null;
 let selectedUserId = null;
+let selectedUserIdOg = null;
 
 function connect(event) {
     username = document.querySelector('#nickname').value.trim();
@@ -34,35 +35,37 @@ function connect(event) {
 function onConnected() {
     stompClient.subscribe(`/user/${username}/queue/messages`, onMessageReceived);
     stompClient.subscribe(`/user/public`, onMessageReceived);
+    stompClient.subscribe(`/user/${username}/queue/ack`, sendAck);
+    stompClient.subscribe(`/user/${username}/queue/status`, updateMessageStatus);
     
 
-    // Subscribe to the Like Channel to see if it work
-    stompClient.subscribe('/topic/like/1', function (ackMessage) {
-        // Handle ACK message received
-        const receivedAck = JSON.parse(ackMessage.body);
-        console.log('Like update received :', receivedAck);
-    });
+    // // Subscribe to the Like Channel to see if it work
+    // stompClient.subscribe('/topic/like/1', function (ackMessage) {
+    //     // Handle ACK message received
+    //     const receivedAck = JSON.parse(ackMessage.body);
+    //     console.log('Like update received :', receivedAck);
+    // });
 
-    // Subscribe to the Comment count Channel to see if it work
-    stompClient.subscribe('/topic/commentCount/1', function (ackMessage) {
-        // Handle ACK message received
-        const receivedAck = JSON.parse(ackMessage.body);
-        console.log('Comment received :', receivedAck);
-    });
+    // // Subscribe to the Comment count Channel to see if it work
+    // stompClient.subscribe('/topic/commentCount/1', function (ackMessage) {
+    //     // Handle ACK message received
+    //     const receivedAck = JSON.parse(ackMessage.body);
+    //     console.log('Comment received :', receivedAck);
+    // });
 
-    // Subscribe to the Comment Reply Channel to see if it work
-    stompClient.subscribe('/topic/comment/reply/1', function (ackMessage) {
-        // Handle ACK message received
-        const receivedAck = JSON.parse(ackMessage.body);
-        console.log('Comment Reply received :', receivedAck);
-    });
+    // // Subscribe to the Comment Reply Channel to see if it work
+    // stompClient.subscribe('/topic/comment/reply/1', function (ackMessage) {
+    //     // Handle ACK message received
+    //     const receivedAck = JSON.parse(ackMessage.body);
+    //     console.log('Comment Reply received :', receivedAck);
+    // });
 
-    // Subscribe to the Comment Reply Channel to see if it work
-    stompClient.subscribe('/topic/comment/1', function (ackMessage) {
-        // Handle ACK message received
-        const receivedAck = JSON.parse(ackMessage.body);
-        console.log('Comment received :', receivedAck);
-    });
+    // // Subscribe to the Comment Reply Channel to see if it work
+    // stompClient.subscribe('/topic/comment/1', function (ackMessage) {
+    //     // Handle ACK message received
+    //     const receivedAck = JSON.parse(ackMessage.body);
+    //     console.log('Comment received :', receivedAck);
+    // });
 
     // register the connected user
     stompClient.send("/app/user.addUser",
@@ -76,7 +79,7 @@ function onConnected() {
 async function findAndDisplayConnectedUsers() {
     const connectedUsersResponse = await fetch(`/users/${username}`);
     let connectedUsers = await connectedUsersResponse.json();
-    connectedUsers = connectedUsers.filter(user => user.username !== username);
+    connectedUsers = connectedUsers.filter(user => user.id != username);
     const connectedUsersList = document.getElementById('connectedUsers');
     connectedUsersList.innerHTML = '';
 
@@ -93,14 +96,14 @@ async function findAndDisplayConnectedUsers() {
 function appendUserElement(user, connectedUsersList) {
     const listItem = document.createElement('li');
     listItem.classList.add('user-item');
-    listItem.id = user.username;
+    listItem.id = "e" + user.id;
 
     const userImage = document.createElement('img');
     userImage.src = '../img/user_icon.png';
-    userImage.alt = user.name;
+    userImage.alt = user.user.username;
 
     const usernameSpan = document.createElement('span');
-    usernameSpan.textContent = user.name;
+    usernameSpan.textContent = user.user.name;
 
     const receivedMsgs = document.createElement('span');
     receivedMsgs.textContent = '0';
@@ -124,7 +127,8 @@ function userItemClick(event) {
     const clickedUser = event.currentTarget;
     clickedUser.classList.add('active');
 
-    selectedUserId = clickedUser.getAttribute('id');
+    selectedUserIdOg = clickedUser.getAttribute('id');
+    selectedUserId = selectedUserIdOg.substring(1);
     fetchAndDisplayUserChat().then();
 
     const nbrMsg = clickedUser.querySelector('.nbr-msg');
@@ -149,21 +153,29 @@ function userItemClick(event) {
 
 function displayMessage(senderId, content, status,messageId) {
     const messageContainer = document.createElement('div');
-    messageContainer.id =  messageId;
+    messageContainer.id =  "c" + messageId;
     messageContainer.classList.add('message');
-    if (senderId === username) {
+    if (senderId == username) {
         messageContainer.classList.add('sender');
 
         // Create message delivery indicator (gray tick)
     const deliveryIndicator = document.createElement('span');
-    deliveryIndicator.textContent = '✓'; // Unicode check mark symbol
-    deliveryIndicator.classList.add('delivery-indicator');
-    if (status === 'delivered') {
-        deliveryIndicator.style.color = 'gray'; // Gray color for delivered but not read
-    } else if (status === 'read') {
-        deliveryIndicator.style.color = 'blue'; // Blue color for read
-    }else if (status === 'pending') {
-        deliveryIndicator.style.color = 'red'; // Blue color for read
+    if (status == 'DELIVERED') {
+        deliveryIndicator.textContent = '✓✓';
+        deliveryIndicator.classList.add('delivery-indicator');
+        deliveryIndicator.style.color = 'gray';
+    } else if (status == 'READ') {
+        deliveryIndicator.textContent = '✓✓';
+        deliveryIndicator.classList.add('delivery-indicator');
+        deliveryIndicator.style.color = 'blue';
+    }else if (status == 'SENT') {
+        deliveryIndicator.textContent = '✓';
+        deliveryIndicator.classList.add('delivery-indicator');
+        deliveryIndicator.style.color = 'gray';
+    }else{
+        deliveryIndicator.textContent = '✘';
+        deliveryIndicator.classList.add('delivery-indicator');
+        deliveryIndicator.style.color = 'red';
     }
 
     const message = document.createElement('p');
@@ -187,9 +199,10 @@ function displayMessage(senderId, content, status,messageId) {
 async function fetchAndDisplayUserChat() {
     const userChatResponse = await fetch(`/messages/${username}/${selectedUserId}`);
     const userChat = await userChatResponse.json();
+    userChat.sort((a, b) => a.id - b.id);
     chatArea.innerHTML = '';
     userChat.forEach(chat => {
-        displayMessage(chat.senderId, chat.content,"read",chat.id);
+        displayMessage(chat.senderId, chat.content,chat.status,chat.id);
     });
     chatArea.scrollTop = chatArea.scrollHeight;
 }
@@ -201,30 +214,24 @@ function onError() {
 }
 
 
+
 function sendMessage(event) {
     const messageContent = messageInput.value.trim();
+    const messageId = Date.now().toString(); // Generate a unique message ID
 if (messageContent && stompClient) {
     const chatMessage = {
         senderId: username,
         recipientId: selectedUserId,
         content: messageInput.value.trim(),
-        timestamp: new Date()
+        tempMessageId : messageId
     };
-    
-    const messageId = Date.now().toString(); // Generate a unique message ID
-    
-    // Subscribe to the ACK destination to receive ACK messages
-    stompClient.subscribe(`/topic/ack/${username}`, function (ackMessage) {
-        // Handle ACK message received
-        const receivedAck = JSON.parse(ackMessage.body);
-        console.log('ACK received for message:', receivedAck);
-    });
+
     
     // Send the message
     stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
     
     // Display the message immediately (optimistic update)
-    displayMessage(username, messageInput.value.trim(), 'pending', messageId);
+    displayMessage(username, messageInput.value.trim(), 'PENDING', messageId);
     
     // Clear message input
     messageInput.value = '';
@@ -234,24 +241,84 @@ event.preventDefault();
 
 }
 
+function sendAck(ackMessage){
+    
+    const acknowledgment = JSON.parse(ackMessage.body);
+        
+    
+    const messageContainer = document.getElementById("c" + acknowledgment.tempMessageId);
+    if (!messageContainer) {
+        console.log('Message container not found for acknowledgment:', acknowledgment);
+        return;
+    }
 
+// Find the delivery indicator element within the message container
+    const deliveryIndicator = messageContainer.querySelector('.delivery-indicator');
+    if (!deliveryIndicator) {
+        console.log('Delivery indicator not found in message container:', acknowledgment);
+        return;
+    }
+
+    if(acknowledgment.status === 'SENT'){
+        deliveryIndicator.textContent = '✓';
+        deliveryIndicator.style.color = 'gray';
+
+        messageContainer.setAttribute('id', 'c'+ acknowledgment.messageId);
+    }
+}
+
+function updateMessageStatus(payload){
+    const acknowledgment = JSON.parse(payload.body);
+        
+    
+    const messageContainer = document.getElementById("c" + acknowledgment.messageId);
+    if (!messageContainer) {
+        console.log('Message container not found for acknowledgment:', acknowledgment);
+        return;
+    }
+
+// Find the delivery indicator element within the message container
+    const deliveryIndicator = messageContainer.querySelector('.delivery-indicator');
+    if (!deliveryIndicator) {
+        console.log('Delivery indicator not found in message container:', acknowledgment);
+        return;
+    }
+
+    if(acknowledgment.status === 'DELIVERED'){
+
+        deliveryIndicator.textContent = '✓✓';
+        deliveryIndicator.style.color = 'gray';
+
+    }else if(acknowledgment.status === 'READ'){
+
+        deliveryIndicator.textContent = '✓✓';
+        deliveryIndicator.style.color = 'blue';
+    }
+}
 
 async function onMessageReceived(payload) {
     await findAndDisplayConnectedUsers();
     console.log('Message received', payload);
     const message = JSON.parse(payload.body);
-    if (selectedUserId && selectedUserId === message.senderId) {
-        displayMessage(message.senderId, message.content);
+
+    const statusChange = {
+        messageId: message.id,
+        status: 'DELIVERED'
+    };
+    stompClient.send("/app/status", {}, JSON.stringify(statusChange));
+    
+    if (selectedUserId && selectedUserId == message.senderId) {
+        displayMessage(message.senderId, message.content, message.status,message.id);
         chatArea.scrollTop = chatArea.scrollHeight;
     }
 
     if (selectedUserId) {
-        document.querySelector(`#${selectedUserId}`).classList.add('active');
+        document.querySelector(`#${selectedUserIdOg}`).classList.add('active');
     } else {
         messageForm.classList.add('hidden');
     }
 
-    const notifiedUser = document.querySelector(`#${message.senderId}`);
+    const notifiedUser = document.querySelector(`#${"e"+message.senderId}`);
     if (notifiedUser && !notifiedUser.classList.contains('active')) {
         const nbrMsg = notifiedUser.querySelector('.nbr-msg');
         nbrMsg.classList.remove('hidden');
@@ -267,7 +334,7 @@ function onLogout() {
     window.location.reload();
 }
 
-usernameForm.addEventListener('submit', connect, true); // step 1
+usernameForm.addEventListener('submit', connect, true);
 messageForm.addEventListener('submit', sendMessage, true);
 logout.addEventListener('click', onLogout, true);
 window.onbeforeunload = () => onLogout();
