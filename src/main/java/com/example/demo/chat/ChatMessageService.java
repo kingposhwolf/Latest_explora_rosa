@@ -12,8 +12,8 @@ import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.chat.Dto.ChatMessageDto;
 import com.example.demo.chatroom.ChatRoom;
-import com.example.demo.chatroom.ChatRoomRepository;
 import com.example.demo.chatroom.ChatRoomService;
+import com.example.demo.chatroom.Repository.ChatRoomRepository;
 
 import lombok.RequiredArgsConstructor;
 
