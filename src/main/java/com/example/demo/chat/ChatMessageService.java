@@ -56,10 +56,15 @@ public class ChatMessageService {
     }
 
     public List<Map<String, Object>> findChatMessages(Long senderId, Long recipientId) {
-        
-        Optional<ChatRoom> chatRoom = chatRoomRepository.findBySenderIdAndRecipientIdOrSenderIdAndRecipientId(
-    senderId, recipientId, recipientId, senderId
-);
-        return repository.findByChatRoomCustom(chatRoom.get()).orElse(new ArrayList<>());
+        Optional<ChatRoom> chatRoomOptional = chatRoomRepository.findBySenderIdAndRecipientIdOrSenderIdAndRecipientId(
+                senderId, recipientId, recipientId, senderId
+        );
+        if (chatRoomOptional.isPresent()) {
+            ChatRoom chatRoom = chatRoomOptional.get();
+            return repository.findByChatRoomCustom(chatRoom).orElse(new ArrayList<>());
+        } else {
+            // Handle the case where the chat room is not found
+            return new ArrayList<>();
+        }
     }
 }

@@ -17,6 +17,7 @@ import com.example.demo.chat.Dto.ChatMessageDto;
 import com.example.demo.chat.Dto.ChatNotification;
 import com.example.demo.chat.Dto.MessageStatusDto;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -51,7 +52,20 @@ public class ChatController {
     }
 
     @MessageMapping("/status")
-    public void messageStatusUpdate(@Payload MessageStatusDto messageStatusDto) {
+    public void messageStatusUpdate(@Payload @Valid MessageStatusDto messageStatusDto) {
+        try {
+            ChatMessage chat = chatMessageService.updateStatus(messageStatusDto.getMessageId(), messageStatusDto.getStatus());
+            messagingTemplate.convertAndSendToUser(
+                String.valueOf(chat.getSender().getId()), "/queue/status",messageStatusDto
+        );
+        } catch (Exception exception) {
+            
+            exception.printStackTrace();
+        }
+    }
+
+    @MessageMapping("/groupChat")
+    public void sendMessageToGroups(@Payload @Valid MessageStatusDto messageStatusDto) {
         try {
             ChatMessage chat = chatMessageService.updateStatus(messageStatusDto.getMessageId(), messageStatusDto.getStatus());
             messagingTemplate.convertAndSendToUser(

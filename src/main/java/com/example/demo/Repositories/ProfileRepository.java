@@ -24,5 +24,5 @@ public interface ProfileRepository extends CrudRepository<Profile, Long>{
     @Query("SELECT DISTINCT l FROM Profile l WHERE  l.id = :profileId")
     Optional<Profile> findProfilesById(@Param("profileId") Long profileId);
 
-    List<Profile> findByStatus(Status status);
+    Optional<List<Profile>> findByStatus(Status status);
 }

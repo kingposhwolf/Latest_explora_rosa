@@ -46,7 +46,7 @@ public class UserService2 {
     }
 
     public List<Profile> findConnectedUsers() {
-        return profileRepository.findByStatus(Status.ONLINE);
+        return profileRepository.findByStatus(Status.ONLINE).get();
     }
 
     public List<ConversationHistory> chatList(Long profileId){

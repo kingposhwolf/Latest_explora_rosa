@@ -74,6 +74,7 @@ function onConnected() {
     );
     document.querySelector('#connected-user-fullname').textContent = fullname;
     findAndDisplayConnectedUsers().then();
+    findAndDisplayConnectedGroups().then();
 }
 
 async function findAndDisplayConnectedUsers() {
@@ -94,6 +95,24 @@ async function findAndDisplayConnectedUsers() {
     });
 }
 
+async function findAndDisplayConnectedGroups() {
+    const connectedGroupsResponse = await fetch(`/groups/${username}`);
+    let connectedGroups = await connectedGroupsResponse.json();
+    console.log(connectedGroups);
+    //connectedUsers = connectedUsers.filter(user => user.id != username);
+    const connectedGroupsList = document.getElementById('connectedGroup');
+    connectedGroupsList.innerHTML = '';
+
+    connectedGroups.forEach(user => {
+        appendGroupElement(user, connectedGroupsList);
+        if (connectedGroups.indexOf(user) < connectedGroups.length - 1) {
+            const separator = document.createElement('li');
+            separator.classList.add('separator');
+            connectedGroupsList.appendChild(separator);
+        }
+    });
+}
+
 function appendUserElement(user, connectedUsersList) {
     const listItem = document.createElement('li');
     listItem.classList.add('user-item');
@@ -105,6 +124,31 @@ function appendUserElement(user, connectedUsersList) {
 
     const usernameSpan = document.createElement('span');
     usernameSpan.textContent = user.name;
+
+    const receivedMsgs = document.createElement('span');
+    receivedMsgs.textContent = '0';
+    receivedMsgs.classList.add('nbr-msg', 'hidden');
+
+    listItem.appendChild(userImage);
+    listItem.appendChild(usernameSpan);
+    listItem.appendChild(receivedMsgs);
+
+    listItem.addEventListener('click', userItemClick);
+
+    connectedUsersList.appendChild(listItem);
+}
+
+function appendGroupElement(user, connectedUsersList) {
+    const listItem = document.createElement('li');
+    listItem.classList.add('user-item');
+    listItem.id = "e" + user.groupId;
+
+    const userImage = document.createElement('img');
+    userImage.src = '../img/user_icon.png';
+    userImage.alt = user.groupId;
+
+    const usernameSpan = document.createElement('span');
+    usernameSpan.textContent = user.groupName;
 
     const receivedMsgs = document.createElement('span');
     receivedMsgs.textContent = '0';
