@@ -79,7 +79,8 @@ function onConnected() {
 async function findAndDisplayConnectedUsers() {
     const connectedUsersResponse = await fetch(`/users/${username}`);
     let connectedUsers = await connectedUsersResponse.json();
-    connectedUsers = connectedUsers.filter(user => user.id != username);
+    console.log(connectedUsers);
+    //connectedUsers = connectedUsers.filter(user => user.id != username);
     const connectedUsersList = document.getElementById('connectedUsers');
     connectedUsersList.innerHTML = '';
 
@@ -96,14 +97,14 @@ async function findAndDisplayConnectedUsers() {
 function appendUserElement(user, connectedUsersList) {
     const listItem = document.createElement('li');
     listItem.classList.add('user-item');
-    listItem.id = "e" + user.id;
+    listItem.id = "e" + user.profileId;
 
     const userImage = document.createElement('img');
     userImage.src = '../img/user_icon.png';
-    userImage.alt = user.user.username;
+    userImage.alt = user.username;
 
     const usernameSpan = document.createElement('span');
-    usernameSpan.textContent = user.user.name;
+    usernameSpan.textContent = user.name;
 
     const receivedMsgs = document.createElement('span');
     receivedMsgs.textContent = '0';
