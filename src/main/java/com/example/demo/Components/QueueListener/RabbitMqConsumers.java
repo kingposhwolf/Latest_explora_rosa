@@ -17,10 +17,12 @@ import com.example.demo.InputDto.CommentDto;
 import com.example.demo.InputDto.CommentLikeDto;
 import com.example.demo.InputDto.CommentReplyDto;
 import com.example.demo.InputDto.FavoritesDto;
+import com.example.demo.InputDto.FollowUnFollowDto;
 import com.example.demo.InputDto.LikeDto;
 import com.example.demo.InputDto.ProfileVisitDto;
 import com.example.demo.InputDto.ShareDto;
 import com.example.demo.InputDto.ViewDto;
+import com.example.demo.Models.SocialMedia.FollowUnFollow;
 import com.example.demo.Models.SocialMedia.HashTag;
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.SocialMedia.Interactions.Comment;
@@ -35,6 +37,7 @@ import com.example.demo.OutputDto.CommentReplyOutputDto;
 import com.example.demo.Repositories.CommentLikeRepository;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.FavoritesRepository;
+import com.example.demo.Repositories.FollowUnFollowRepository;
 import com.example.demo.Repositories.LikeRepository;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.TopicEngagementRepository;
@@ -57,6 +60,8 @@ public class RabbitMqConsumers {
     private final LikeRepository likeRepository;
 
     private final TopicEngagementRepository topicEngagementRepository;
+
+    private final FollowUnFollowRepository followUnFollowRepository;
 
     private final UserEngagementRepository userEngagementRepository;
 
@@ -541,5 +546,113 @@ public class RabbitMqConsumers {
                     newUserEngagement.setScore(score);
                     userEngagementRepository.save(newUserEngagement);
                 });
+    }
+
+    // @SuppressWarnings("null")
+    // @Transactional
+    // @RabbitListener(queues = "follow")
+    // public void followOperation(String message) {
+    //     try {
+    //         FollowUnFollowDto followUnFollowDto = FollowUnFollowDto.fromJson(message);
+    //         Optional<Profile> accountOpt = profileRepository.findById(followUnFollowDto.getAccountId());
+
+    //         Optional<Profile> userOpt = profileRepository.findById(followUnFollowDto.getUser());
+
+    //         if(accountOpt.isEmpty()){
+    //             logger.error("Follow Operation failed the acoount to be followed is not present, provided id: "+ followUnFollowDto.getAccountId());
+    //         }else if(userOpt.isEmpty()){
+    //             logger.error("Follow Operation failed the user to be follow is not present, provided id: "+ followUnFollowDto.getUser());
+    //         }else{
+    //             Profile account = accountOpt.get();
+    //             Profile user = userOpt.get();
+
+    //             Optional<FollowUnFollow> engagement = followUnFollowRepository.findByFollowerAndFollowing(account,user);
+                
+    //             if(engagement.isPresent()){
+    //                 logger.error("User already follow that account : "+ message);
+    //             }else{
+    //                 FollowUnFollow newFollow = new FollowUnFollow();
+    //                 newFollow.setFollowing(account);
+    //                 newFollow.setFollower(user);
+    //                 followUnFollowRepository.save(newFollow);
+
+    //                 account.setFollowers(account.getFollowers() + 1);
+    //                 profileRepository.save(account);
+
+    //                 user.setFollowing(user.getFollowing() + 1);
+    //                 profileRepository.save(user);
+    //                 logger.info("Follow Operation tracked successful");
+    //             }
+    //         }
+
+    //     } catch (Exception exception) {
+    //         logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());
+    //     }
+    // }
+
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "followOperation")
+    public void unFollowOperation(String message) {
+        try {
+            FollowUnFollowDto followUnFollowDto = FollowUnFollowDto.fromJson(message);
+            Optional<Long> engageId = followUnFollowRepository.findEngangeId(followUnFollowDto.getUser(),followUnFollowDto.getAccountId());
+
+            if(engageId.isPresent()){
+                Optional<Profile> accountOpt = profileRepository.findById(followUnFollowDto.getAccountId());
+
+                Optional<Profile> userOpt = profileRepository.findById(followUnFollowDto.getUser());
+
+                if(accountOpt.isEmpty()){
+                    logger.error("Follow Operation failed the acoount to be followed is not present, provided id: "+ followUnFollowDto.getAccountId());
+                }else if(userOpt.isEmpty()){
+                    logger.error("Follow Operation failed the user to be follow is not present, provided id: "+ followUnFollowDto.getUser());
+                }else{
+                    Profile account = accountOpt.get();
+                    Profile user = userOpt.get();
+
+                
+                    followUnFollowRepository.deleteById(engageId.get());
+
+                    account.setFollowers(account.getFollowers() - 1);
+                    profileRepository.save(account);
+
+                    user.setFollowing(user.getFollowing() - 1);
+                    profileRepository.save(user);
+                    logger.info("Unfollow Operation tracked successful");
+                
+            }
+            }else{
+                Optional<FollowUnFollow> deletedEng = followUnFollowRepository.findDeletedEngagement(followUnFollowDto.getUser(),followUnFollowDto.getAccountId());
+
+                Optional<Profile> accountOpt = profileRepository.findById(followUnFollowDto.getAccountId());
+
+                Optional<Profile> userOpt = profileRepository.findById(followUnFollowDto.getUser());
+
+                Profile account = accountOpt.get();
+                Profile user = userOpt.get();
+                
+                if(deletedEng.isPresent()){
+                    FollowUnFollow deletedEngagement = deletedEng.get();
+                    deletedEngagement.setDeleted(false);
+                    followUnFollowRepository.save(deletedEngagement);
+                }else{
+                    FollowUnFollow newFollow = new FollowUnFollow();
+                    newFollow.setFollowing(account);
+                    newFollow.setFollower(user);
+                    followUnFollowRepository.save(newFollow);
+                }
+
+                account.setFollowers(account.getFollowers() + 1);
+                    profileRepository.save(account);
+
+                    user.setFollowing(user.getFollowing() + 1);
+                    profileRepository.save(user);
+                    logger.info("Follow Operation tracked successful");
+            }
+
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());
+        }
     }
 }

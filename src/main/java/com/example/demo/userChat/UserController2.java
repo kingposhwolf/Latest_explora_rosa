@@ -64,19 +64,19 @@ public class UserController2 {
     }
 
     //Not yet modified
-    @GetMapping("/users/{senderId}")
-    public ResponseEntity<Object> findActiveUsers(@PathVariable Long senderId) {
-        try {
-            if(senderId != null){
-                List<ConversationHistory> conversations = userService.chatList(senderId);
-                return ResponseEntity.ok(conversations);
-            }else{
-                return ResponseEntity.status(400).body("The user profile id must not be null");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something Went Wrong at our End");
-        }
-    }
+    // @GetMapping("/users/{senderId}")
+    // public ResponseEntity<Object> findActiveUsers(@PathVariable Long senderId) {
+    //     try {
+    //         if(senderId != null){
+    //             List<ConversationHistory> conversations = userService.chatList(senderId);
+    //             return ResponseEntity.ok(conversations);
+    //         }else{
+    //             return ResponseEntity.status(400).body("The user profile id must not be null");
+    //         }
+    //     } catch (Exception e) {
+    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something Went Wrong at our End");
+    //     }
+    // }
 
     @GetMapping("/groups/{senderId}")
     public ResponseEntity<Object> findGroupConversations(@PathVariable @NotNull Long senderId) {

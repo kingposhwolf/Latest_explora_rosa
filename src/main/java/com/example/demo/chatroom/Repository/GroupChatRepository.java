@@ -15,13 +15,13 @@ import com.example.demo.chatroom.GroupChat;
 public interface GroupChatRepository extends JpaRepository<GroupChat, Long>{
     @Query("SELECT gc.id AS id, gc.name AS name, gc.description AS description, " +
     "('id', p.id, 'name', p.name, 'username', p.username, 'email', p.email) AS user, " +
-    "m.profilePicture AS profilePicture, " +
-    "p.status AS status " +
+    "m.profilePicture AS profilePicture " +
     "FROM GroupChat gc " +
     "JOIN gc.members m " +
     "JOIN m.user p " +
     "WHERE gc.id IN (SELECT g.id FROM GroupChat g JOIN g.members mem WHERE mem.id = :profileId)")
 Optional<List<Map<String, Object>>> findByMemberId(@Param("profileId") Long profileId);
+
 
 
 
