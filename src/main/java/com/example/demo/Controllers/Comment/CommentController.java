@@ -2,6 +2,7 @@ package com.example.demo.Controllers.Comment;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.InputDto.CommentDeleteDto;
 import com.example.demo.InputDto.CommentDto;
+import com.example.demo.InputDto.CommentLikeDto;
 import com.example.demo.InputDto.CommentPostDto;
 import com.example.demo.InputDto.CommentReplyDto;
 import com.example.demo.InputDto.FetchCommentReplyDto;
@@ -63,5 +64,13 @@ public class CommentController {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return commentService.deleteComment(commentDeleteDto);
+    }
+
+    @PostMapping("/like")
+    public ResponseEntity<Object> writeMessage(@RequestBody @Valid CommentLikeDto commentLikeDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return commentService.commentLikeOperation(commentLikeDto);
     }
 }

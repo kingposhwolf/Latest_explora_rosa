@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.CommentDto;
+import com.example.demo.InputDto.CommentLikeDto;
 import com.example.demo.InputDto.CommentReplyDto;
 import com.example.demo.InputDto.FavoritesDto;
 import com.example.demo.InputDto.LikeDto;
@@ -22,6 +24,7 @@ import com.example.demo.InputDto.ViewDto;
 import com.example.demo.Models.SocialMedia.HashTag;
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.SocialMedia.Interactions.Comment;
+import com.example.demo.Models.SocialMedia.Interactions.CommentLike;
 import com.example.demo.Models.SocialMedia.Interactions.Favorites;
 import com.example.demo.Models.SocialMedia.Interactions.Like;
 import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngagement;
@@ -29,6 +32,7 @@ import com.example.demo.Models.Tracking.UserToUserTracking.UserEngagement;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.OutputDto.CommentOutputDto;
 import com.example.demo.OutputDto.CommentReplyOutputDto;
+import com.example.demo.Repositories.CommentLikeRepository;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.LikeRepository;
@@ -57,6 +61,10 @@ public class RabbitMqConsumers {
     private final UserEngagementRepository userEngagementRepository;
 
     private final CommentRepository commentRepository;
+
+    private final CommentLikeRepository commentLikeRepository;
+
+    private AmqpTemplate rabbitTemplate;
 
     private final Helper helper;
 
@@ -155,6 +163,7 @@ public class RabbitMqConsumers {
                 comment.setCommenter(profile.get());
                 comment.setTimestamp(LocalDateTime.now());
                 comment.setUserPost(userPost.get());
+                comment.setLikes(0);
 
                 // Save the comment to the database
                 Comment savedComment = commentRepository.save(comment);
@@ -234,6 +243,7 @@ public class RabbitMqConsumers {
                 comment.setUserPost(userPost.get());
                 comment.setTimestamp(LocalDateTime.now());
                 comment.setParentComment(parentComment.get());
+                comment.setLikes(0);
                // parentComment.get().getReplies().add(comment);
                 Comment savedComment = commentRepository.save(comment);
 
@@ -317,19 +327,27 @@ public class RabbitMqConsumers {
             Optional<Profile> profile = profileRepository.findById(favoritesDto.getProfileId());
             Optional<UserPost> post = userPostRespository.findById(favoritesDto.getPostId());
 
-            if (!profile.isEmpty()) {
+            if (profile.isEmpty()) {
                 logger.error("During Saving Favorites User profile not found for profile ID: "
                         + favoritesDto.getProfileId());
             } else if (post.isEmpty()) {
                 logger.error("During Saving Favorites User post not found for post ID: " + favoritesDto.getPostId());
             } else {
-                Favorites favorites = new Favorites();
+                Long existingFavorite = favoritesRepository.findFavoriteByPostAndUser(post.get().getId(), profile.get().getId());
+                if(existingFavorite == null){
+                    Favorites favorites = new Favorites();
                 favorites.setPost(post.get());
                 favorites.setProfile(profile.get());
 
                 Favorites savedFavorites = favoritesRepository.save(favorites);
 
-                logger.info("Favorites Operation Performed successful, with information : " + savedFavorites);
+                rabbitTemplate.convertAndSend("trackFavorites", favoritesDto.toJson());
+
+                logger.info("Favorites Operation Performed successful, with information : " + savedFavorites.toString());
+                }else{
+                    logger.info("Post already exist in the favorites");
+                }
+                
             }
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());
@@ -409,6 +427,80 @@ public class RabbitMqConsumers {
                 processUserEngagement(profile.get(), post.get().getProfile(), 3);
 
                 logger.info("View Operation tracked successful");
+            }
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());
+        }
+    }
+
+    @Transactional
+    @RabbitListener(queues = "likeComment")
+    public void commentLike(String message) {
+        try {
+            CommentLikeDto commentLikeDto = CommentLikeDto.fromJson(message);
+
+            Optional<Profile> profile = profileRepository.findById(commentLikeDto.getLikerId());
+            Optional<Comment> comment = commentRepository.findById(commentLikeDto.getCommentId());
+
+            if (profile.isEmpty()) {
+                logger.error("User profile not found for profile ID: " + commentLikeDto.getLikerId());
+            } else if (comment.isEmpty()) {
+                logger.error("Comment not found for comment ID: " + commentLikeDto.getCommentId());
+            } else {
+                Optional<CommentLike> commentLike = commentLikeRepository.findByCommentAndLiker(comment.get(), profile.get());
+
+                if (commentLike.isPresent()) {
+                    CommentLike commentLike2 = commentLike.get();
+
+                    Comment comment2 = comment.get();
+
+                    int change = comment2.getLikes() - 1;
+
+                    comment2.setLikes(change);
+                    commentRepository.save(comment2);
+
+                    commentLikeRepository.delete(commentLike2);
+
+                    // String endpoint = "/topic/like/" + Long.toString(post.getId());
+
+                    // messagingTemplate.convertAndSend(endpoint, change);
+
+                    // processTopicEngagement(profile.get(), userPost.get().getHashTags(),-1);
+                    // processUserEngagement(profile.get(), userPost.get().getProfile(),-1);
+
+                    logger.info("Comment disliked successful");
+
+                } else {
+                    Optional<CommentLike> deletedCommentLikeOptional = commentLikeRepository.findDeletedLikesByPostAndLiker(comment.get().getId(), profile.get().getId());
+
+                    if(deletedCommentLikeOptional.isPresent()){
+                        CommentLike deletedCommentLike = deletedCommentLikeOptional.get();
+                        deletedCommentLike.setDeleted(false);
+                        commentLikeRepository.save(deletedCommentLike);
+                    }else{
+                        CommentLike commentLike2 = new CommentLike();
+                        commentLike2.setLiker(profile.get());
+                        commentLike2.setComment(comment.get());
+                        commentLikeRepository.save(commentLike2);
+                    }
+
+                    Comment comment2 = comment.get();
+
+                    int newLikes = comment2.getLikes() + 1;
+
+                    comment2.setLikes(newLikes);
+                    commentRepository.save(comment2);
+
+                    // String endpoint = "/topic/like/" + Long.toString(post.getId());
+
+                    // messagingTemplate.convertAndSend(endpoint, newLikes);
+
+                    // processTopicEngagement(profile.get(), userPost.get().getHashTags(),1);
+                    // processUserEngagement(profile.get(), userPost.get().getProfile(),1);
+
+                    // logger.info("Like Operationand Tracking Performed successful, with
+                    // information : "+ savedLike);
+                }
             }
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());

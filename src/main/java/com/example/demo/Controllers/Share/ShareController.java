@@ -23,7 +23,7 @@ public class ShareController {
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/add")
-    public ResponseEntity<Object> newComment(@RequestBody @Valid ShareDto shareDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> share(@RequestBody @Valid ShareDto shareDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }

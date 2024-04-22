@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Components.Helper.Helper;
 // import com.example.demo.Components.Algorithms.FeedsAlgorithm;
 // import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserPostRepository;
@@ -27,6 +28,8 @@ public class FeedsServiceImpl implements FeedsService{
     //private final ProfileRepository profileRepository;
 
     private final UserPostRepository userPostRepository;
+
+    private final Helper helper;
 
     @SuppressWarnings("null")
     @Override
@@ -49,7 +52,7 @@ public class FeedsServiceImpl implements FeedsService{
             //     logger.error(" Fails to fetch Feeds , Profile Not Found");
             //     return ResponseEntity.status(404).body("Profile Not Found");
             // }
-            return ResponseEntity.ok(userPostRepository.findUserPostData());
+            return ResponseEntity.ok(helper.mapTimer(userPostRepository.findUserPostData()));
             
         } catch (Exception exception) {
             logger.error("\nFails to fetch Feeds, Server Error: \n" + exception.getMessage());

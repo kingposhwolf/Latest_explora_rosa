@@ -3,6 +3,7 @@ package com.example.demo.Services.CommentService;
 import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.CommentDeleteDto;
 import com.example.demo.InputDto.CommentDto;
+import com.example.demo.InputDto.CommentLikeDto;
 import com.example.demo.InputDto.CommentReplyDto;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.UserPostRepository;
@@ -12,6 +13,7 @@ import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +44,6 @@ public class CommentServiceImpl implements CommentService{
     private static final String REPLY_EXCHANGE_NAME = "CommentReply";
     private static final String REPLY_ROUTING_KEY = "commentReplyOperation";
 
-    @Transactional
     @Override
     public ResponseEntity<Object> saveComment(CommentDto commentDto) {
         try {
@@ -51,12 +52,11 @@ public class CommentServiceImpl implements CommentService{
             logger.info("Comment added to queue successfully: ", commentDto);
             return ResponseEntity.status(HttpStatus.CREATED).body("Comment created successfully!");
         } catch (Exception e) {
-            logger.error("Failed to add comment to queue server Error : ", e.getMessage());
+            logger.error("Failed to add comment to queue server Error : "+ e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
 
-    @Transactional
     @Override
     public ResponseEntity<Object> replyComment(CommentReplyDto commentReplyDto) {
         try {
@@ -65,12 +65,11 @@ public class CommentServiceImpl implements CommentService{
             logger.info("Comment Reply added to queue successfully: ", commentReplyDto);
             return ResponseEntity.status(HttpStatus.CREATED).body("Comment Reply created successfully!");
         } catch (Exception e) {
-            logger.error("Failed to add comment reply to queue server Error : ", e.getMessage());
+            logger.error("Failed to add comment reply to queue server Error : "+ e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }
 
-    @SuppressWarnings("null")
     @Override
     public ResponseEntity<Object> getCommentForPost(@NotNull Long postId) {
         try {
@@ -80,7 +79,7 @@ public class CommentServiceImpl implements CommentService{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
             } else {
                 logger.info("Comment Fetch successfully: ");
-                return ResponseEntity.status(HttpStatus.OK).body(helper.findCommentsForPost(commentRepository.findCommentsForPost(post.get())));
+                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(commentRepository.findCommentsForPost(post.get())));
             }
         } catch (Exception e) {
             logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());
@@ -88,7 +87,6 @@ public class CommentServiceImpl implements CommentService{
         }
     }
 
-    @SuppressWarnings("null")
     @Override
     public ResponseEntity<Object> getCommentReplyForPost(@NotNull Long parentId, @NotNull Long postId) {
         try {
@@ -98,7 +96,7 @@ public class CommentServiceImpl implements CommentService{
                 return ResponseEntity.status(404).body("No reply found");
             }else{
                 logger.info("Comment Reply Fetched successfully");
-                return ResponseEntity.status(HttpStatus.OK).body(helper.findCommentsForPost(replies));
+                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(replies));
             }
         } catch (Exception e) {
             logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());
@@ -106,7 +104,6 @@ public class CommentServiceImpl implements CommentService{
         }
     }
 
-    @SuppressWarnings("null")
     @Transactional
     @Override
     public ResponseEntity<Object> deleteComment(CommentDeleteDto commentDeleteDto) {
@@ -130,7 +127,23 @@ public class CommentServiceImpl implements CommentService{
                 }
             }
         } catch (Exception e) {
-            logger.error("Failed to delete comment server error : ", e.getMessage());
+            logger.error("Failed to delete comment server error : "+ e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
+        }
+    }
+
+    @Override
+    public ResponseEntity<Object> commentLikeOperation(CommentLikeDto commentLikeDto) {
+        try {
+            rabbitTemplate.convertAndSend("likeComment", commentLikeDto.toJson());
+            
+            logger.info("Comment Like operation successfully: ");
+            return ResponseEntity.ok("Comment Like successfully!");
+        } catch (AmqpException e) {
+        logger.error("Failed to send message to RabbitMQ: "+ e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send message to RabbitMQ");
+        }catch (Exception e) {
+            logger.error("Failed to like comment, server Error : "+ e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
         }
     }

@@ -1,5 +1,4 @@
 package com.example.demo.InputDto;
-import java.util.List;
 
 /*
  * @author Dwight Danda
@@ -15,6 +14,6 @@ public class BusinessCategoryDto {
     @Size(max = 100)
     private String name;
 
-    @NotNull
-    private List<Long> hashTags;
+    // @NotNull
+    // private List<Long> hashTags;
 }

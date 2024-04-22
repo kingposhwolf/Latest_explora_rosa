@@ -21,7 +21,7 @@ public class Like {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "profile_id", foreignKey = @ForeignKey(name = "FK_LIKE_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
+    @JoinColumn(name = "profile_id", foreignKey = @ForeignKey(name = "FK_LIKE_8761046PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile liker;
 
     @ManyToOne
