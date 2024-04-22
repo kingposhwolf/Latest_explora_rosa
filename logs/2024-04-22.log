@@ -395,3 +395,27 @@ Invalid Username or Password
 
 2024-04-22 12:45:13.144 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
 
+2024-04-22 12:48:20.447 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.U.UserPostServiceImpl - UserPost(id=null, names=[post_1_2024_4_22_12_48_20_1.png, post_1_2024_4_22_12_48_20_2.png, post_1_2024_4_22_12_48_20_3.png], profile=Brand(rates=0.0, tinNumber=null, businessCategories=BusinessCategory(id=1, name=Restaurant, deleted=false)), country=null, hashTags=[HashTag(id=2, name=come home the kids miss you, deleted=false, topicEngagementList=[])], tags=[], mentions=[], brand=null, likes=0, comments=0, caption=something about caption, thumbnail=null, time=2024-04-22T12:48:20.440715700, contentTypes=[image/*content_1, image/*content_2, image/*content_3], path=/posts, shares=0, favorites=0, deleted=false, commentList=[], favList=[], likesList=[], mentionList=[], tagList=[], cartitems=[], orderList=[])
+
+2024-04-22 12:48:20.457 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.U.UserPostServiceImpl - Post uploaded successfully
+
+2024-04-22 12:52:07.529 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-04-22 12:52:08.772 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-04-22 12:52:08.862 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-04-22 12:52:12.273 [http-nio-192.168.1.46-8081-exec-3] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-04-22 12:52:13.479 [http-nio-192.168.1.46-8081-exec-8] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-04-22 12:52:13.555 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-04-22 13:11:47.792 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+
+2024-04-22 13:41:47.807 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+
+2024-04-22 14:11:47.809 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+
+2024-04-22 14:41:47.817 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 4]
+
