@@ -14,6 +14,7 @@ let username = null;
 let fullname = null;
 let selectedUserId = null;
 let selectedUserIdOg = null;
+let whoSelected = null;
 
 function connect(event) {
     username = document.querySelector('#nickname').value.trim();
@@ -37,6 +38,8 @@ function onConnected() {
     stompClient.subscribe(`/user/public`, onMessageReceived);
     stompClient.subscribe(`/user/${username}/queue/ack`, sendAck);
     stompClient.subscribe(`/user/${username}/queue/status`, updateMessageStatus);
+
+    stompClient.subscribe('/topic/groupchat/20', onMessageReceived);
     
 
     // // Subscribe to the Like Channel to see if it work
@@ -68,7 +71,7 @@ function onConnected() {
     // });
 
     // register the connected user
-    stompClient.send("/app/user.addUser",
+    stompClient.send("/app/user/addUser",
         {},
         JSON.stringify({username : username, fullName: fullname, status: 'ONLINE'})
     );
@@ -140,7 +143,7 @@ function appendUserElement(user, connectedUsersList) {
 
 function appendGroupElement(user, connectedUsersList) {
     const listItem = document.createElement('li');
-    listItem.classList.add('user-item');
+    listItem.classList.add('group-item');
     listItem.id = "e" + user.groupId;
 
     const userImage = document.createElement('img');
@@ -158,7 +161,7 @@ function appendGroupElement(user, connectedUsersList) {
     listItem.appendChild(usernameSpan);
     listItem.appendChild(receivedMsgs);
 
-    listItem.addEventListener('click', userItemClick);
+    listItem.addEventListener('click', groupItemClick);
 
     connectedUsersList.appendChild(listItem);
 }
@@ -171,6 +174,29 @@ function userItemClick(event) {
 
     const clickedUser = event.currentTarget;
     clickedUser.classList.add('active');
+
+    whoSelected = "user";
+
+    selectedUserIdOg = clickedUser.getAttribute('id');
+    selectedUserId = selectedUserIdOg.substring(1);
+    fetchAndDisplayUserChat().then();
+
+    const nbrMsg = clickedUser.querySelector('.nbr-msg');
+    nbrMsg.classList.add('hidden');
+    nbrMsg.textContent = '0';
+
+}
+
+function groupItemClick(event) {
+    document.querySelectorAll('.group-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    messageForm.classList.remove('hidden');
+
+    const clickedUser = event.currentTarget;
+    clickedUser.classList.add('active');
+
+    whoSelected = "group";
 
     selectedUserIdOg = clickedUser.getAttribute('id');
     selectedUserId = selectedUserIdOg.substring(1);
@@ -242,7 +268,7 @@ function displayMessage(senderId, content, status,messageId) {
 }
 
 async function fetchAndDisplayUserChat() {
-    const userChatResponse = await fetch(`/messages/${username}/${selectedUserId}`);
+    const userChatResponse = await fetch(`/group/messages/${username}/${selectedUserId}`);
     const userChat = await userChatResponse.json();
     userChat.sort((a, b) => a.id - b.id);
     chatArea.innerHTML = '';
@@ -274,6 +300,32 @@ if (messageContent && stompClient) {
     
     // Send the message
     stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
+    
+    // Display the message immediately (optimistic update)
+    displayMessage(username, messageInput.value.trim(), 'PENDING', messageId);
+    
+    // Clear message input
+    messageInput.value = '';
+}
+chatArea.scrollTop = chatArea.scrollHeight;
+event.preventDefault();
+
+}
+
+function sendGroupMessage(event) {
+    const messageContent = messageInput.value.trim();
+    const messageId = Date.now().toString(); // Generate a unique message ID
+if (messageContent && stompClient) {
+    const chatMessage = {
+        senderId: username,
+        recipientId: selectedUserId,
+        content: messageInput.value.trim(),
+        tempMessageId : messageId
+    };
+
+    
+    // Send the message
+    stompClient.send("/app/group-chat", {}, JSON.stringify(chatMessage));
     
     // Display the message immediately (optimistic update)
     displayMessage(username, messageInput.value.trim(), 'PENDING', messageId);
@@ -346,13 +398,14 @@ async function onMessageReceived(payload) {
     console.log('Message received', payload);
     const message = JSON.parse(payload.body);
 
-    const statusChange = {
-        messageId: message.id,
-        status: 'DELIVERED'
-    };
-    stompClient.send("/app/status", {}, JSON.stringify(statusChange));
+    
     
     if (selectedUserId && selectedUserId == message.senderId) {
+        const statusChange = {
+            messageId: message.id,
+            status: 'DELIVERED'
+        };
+        stompClient.send("/app/status", {}, JSON.stringify(statusChange));
         displayMessage(message.senderId, message.content, message.status,message.id);
         chatArea.scrollTop = chatArea.scrollHeight;
     }
@@ -380,6 +433,14 @@ function onLogout() {
 }
 
 usernameForm.addEventListener('submit', connect, true);
-messageForm.addEventListener('submit', sendMessage, true);
+// messageForm.addEventListener('submit', sendMessage, true);
 logout.addEventListener('click', onLogout, true);
 window.onbeforeunload = () => onLogout();
+
+messageForm.addEventListener('submit', function(event) {
+    if (whoSelected == "group") {
+        sendGroupMessage(event);
+    } else {
+        sendMessage(event);
+    }
+}, true);

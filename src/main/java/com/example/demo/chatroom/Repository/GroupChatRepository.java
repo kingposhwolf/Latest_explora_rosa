@@ -30,4 +30,7 @@ Optional<List<Map<String, Object>>> findByMemberId(@Param("profileId") Long prof
 
     @Query("SELECT m.id as id, m.user.username as username, m.user.name as name FROM GroupChat gc JOIN gc.members m WHERE m.id = :profileId")
     List<Map<String, Object>> findProfileSummaryByMemberId2(@Param("profileId") Long profileId);
+
+    @Query("SELECT DISTINCT l FROM GroupChat l WHERE  l.id = :groupChatId")
+    Optional<GroupChat> findGroupChatIdById(@Param("groupChatId") Long groupChatId);
 }

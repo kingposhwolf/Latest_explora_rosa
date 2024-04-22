@@ -64,13 +64,24 @@ public class ChatController {
         }
     }
 
-    @MessageMapping("/groupChat")
-    public void sendMessageToGroups(@Payload @Valid MessageStatusDto messageStatusDto) {
+    @MessageMapping("/group-chat")
+    public void sendMessageToGroups(@Payload ChatMessageDto chatMessage) {
         try {
-            ChatMessage chat = chatMessageService.updateStatus(messageStatusDto.getMessageId(), messageStatusDto.getStatus());
+            GroupChatMessage savedMsg = chatMessageService.groupMsgSave(chatMessage);
+
             messagingTemplate.convertAndSendToUser(
-                String.valueOf(chat.getSender().getId()), "/queue/status",messageStatusDto
+                String.valueOf(chatMessage.getSenderId()), "/queue/ack", new AckMessageDto(MessageStatus.SENT, chatMessage.getTempMessageId(), savedMsg.getId())
         );
+
+            String endpoint = "/topic/groupchat/" + Long.toString(chatMessage.getRecipientId());
+
+                    messagingTemplate.convertAndSend(endpoint, new ChatNotification(
+                        savedMsg.getId(),
+                        savedMsg.getSender().getId(),
+                        savedMsg.getRecipient().getId(),
+                        savedMsg.getContent(),
+                        savedMsg.getStatus()
+                ));
         } catch (Exception exception) {
             
             exception.printStackTrace();
@@ -83,5 +94,10 @@ public class ChatController {
                                                         return ResponseEntity
                 .ok(chatMessageService.findChatMessages(senderId, recipientId));
         
+    }
+
+    @GetMapping("/group/messages/{senderId}/{recipientId}")
+    public ResponseEntity<List<Map<String, Object>>> findGroupChatMessages(@PathVariable Long senderId, @PathVariable Long recipientId) {
+        return ResponseEntity.ok(chatMessageService.findGroupChatMessages(senderId, recipientId));
     }
 }

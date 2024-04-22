@@ -13,7 +13,9 @@ import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.chat.Dto.ChatMessageDto;
 import com.example.demo.chatroom.ChatRoom;
 import com.example.demo.chatroom.ChatRoomService;
+import com.example.demo.chatroom.GroupChat;
 import com.example.demo.chatroom.Repository.ChatRoomRepository;
+import com.example.demo.chatroom.Repository.GroupChatRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +26,8 @@ public class ChatMessageService {
     private final ChatRoomRepository chatRoomRepository;
     private final ChatRoomService chatRoomService;
     private final ProfileRepository profileRepository;
+    private final GroupChatRepository groupChatRepository;
+    private final GroupChatMessageRepository groupChatMessageRepository;
 
     public ChatMessage save(ChatMessageDto chatMessage) {
         ChatRoom chatRoom = chatRoomService.getChatRoomId(chatMessage.getSenderId(), chatMessage.getRecipientId());
@@ -39,6 +43,25 @@ public class ChatMessageService {
             chat.setChatRoom(chatRoom);
 
             repository.save(chat);
+        return chat;
+        
+    }
+
+    public GroupChatMessage groupMsgSave(ChatMessageDto chatMessage) {
+        ChatRoom chatRoom = chatRoomService.getGroupChatRoomId(chatMessage.getSenderId(), chatMessage.getRecipientId());
+
+        Optional<Profile> sender = profileRepository.findProfilesById(chatMessage.getSenderId());
+        GroupChat recipient = groupChatRepository.findGroupChatIdById(chatMessage.getRecipientId()).get();
+           // Optional<Profile> recipient = profileRepository.findProfilesById(chatMessage.getRecipientId());
+            GroupChatMessage chat = new GroupChatMessage();
+            chat.setRecipient(recipient);
+            chat.setSender(sender.get());
+            chat.setStatus(MessageStatus.SENT);
+            chat.setContent(chatMessage.getContent());
+            chat.setTimestamp(new Date());
+            chat.setChatRoom(chatRoom);
+
+            groupChatMessageRepository.save(chat);
         return chat;
         
     }
@@ -59,6 +82,17 @@ public class ChatMessageService {
         Optional<ChatRoom> chatRoomOptional = chatRoomRepository.findBySenderIdAndRecipientIdOrSenderIdAndRecipientId(
                 senderId, recipientId, recipientId, senderId
         );
+        if (chatRoomOptional.isPresent()) {
+            ChatRoom chatRoom = chatRoomOptional.get();
+            return repository.findByChatRoomCustom(chatRoom).orElse(new ArrayList<>());
+        } else {
+            // Handle the case where the chat room is not found
+            return new ArrayList<>();
+        }
+    }
+
+    public List<Map<String, Object>> findGroupChatMessages(Long senderId, Long recipientId) {
+        Optional<ChatRoom> chatRoomOptional = chatRoomRepository.findBySenderIdAndGroup(senderId, recipientId);
         if (chatRoomOptional.isPresent()) {
             ChatRoom chatRoom = chatRoomOptional.get();
             return repository.findByChatRoomCustom(chatRoom).orElse(new ArrayList<>());

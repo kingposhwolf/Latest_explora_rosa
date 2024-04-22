@@ -26,10 +26,19 @@ public class UserController2 {
     private final UserService2 userService;
     private final GroupChatRepository groupChatRepository;
 
-    @MessageMapping("/user.addUser")
-    @SendTo("/user/public")
+    @MessageMapping("/addUser")
+    @SendTo("/topic/public")
     public ChatUser addUser(@Payload ChatUser user) {
-        userService.saveUser(user);
+        // Add error handling
+        try {
+            userService.saveUser(user);
+        } catch (Exception e) {
+            // Handle exception
+            // For example, log the error
+            e.printStackTrace();
+            // Return null or throw a custom exception if necessary
+            return null;
+        }
         return user;
     }
 
@@ -42,6 +51,21 @@ public class UserController2 {
 
     @GetMapping("/users/{senderId}")
     public ResponseEntity<Object> findUserConversations(@PathVariable Long senderId) {
+        try {
+            if(senderId != null){
+                List<ConversationHistory> conversations = userService.chatList(senderId);
+                return ResponseEntity.ok(conversations);
+            }else{
+                return ResponseEntity.status(400).body("The user profile id must not be null");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something Went Wrong at our End");
+        }
+    }
+
+    //Not yet modified
+    @GetMapping("/users/{senderId}")
+    public ResponseEntity<Object> findActiveUsers(@PathVariable Long senderId) {
         try {
             if(senderId != null){
                 List<ConversationHistory> conversations = userService.chatList(senderId);
@@ -67,10 +91,5 @@ public class UserController2 {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something Went Wrong at our End");
         }
     }
-
-    // @ExceptionHandler(Exception.class)
-    // public ResponseEntity<String> handleException(Exception e) {
-    //     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
-    // }
 }
 

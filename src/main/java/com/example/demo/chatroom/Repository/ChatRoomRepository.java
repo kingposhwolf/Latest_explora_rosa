@@ -19,6 +19,6 @@ Optional<ChatRoom> findBySenderIdAndRecipientIdOrSenderIdAndRecipientId(
     @Param("sender2Id") Long sender2Id,
     @Param("recipient2Id") Long recipient2Id);
 
-    @Query("SELECT cr.sender.id as senderProfileId, cr.sender.user.name as senderName , cr.sender.user.username as senderUsername, cr.recipient.id as recipientProfileId, cr.recipient.user.name as recipientName , cr.recipient.user.username as recipientUsername  FROM ChatRoom cr WHERE cr.sender.id = :senderId OR cr.recipient.id = :senderId")
-    Optional<List<Map<String, Object>>> findBychatRoomContainsUser(@Param("senderId") Long senderId);
+    @Query("SELECT cr FROM ChatRoom cr WHERE  cr.sender.id = :senderId AND cr.groupRecipient.id = :groupId")
+    Optional<ChatRoom> findBySenderIdAndGroup(@Param("senderId") Long senderId,@Param("groupId") Long groupId);
 }

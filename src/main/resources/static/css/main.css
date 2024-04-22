@@ -79,6 +79,32 @@ body {
     font-weight: bold;
 }
 
+.group-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.group-item.active {
+    background-color: #cdebff;
+    color: #4f4f4f;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.group-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.group-item span {
+    font-weight: bold;
+}
+
+
 .separator {
     height: 1px;
     background-color: #ccc;

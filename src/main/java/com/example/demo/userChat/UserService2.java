@@ -10,21 +10,18 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.ChatUser;
 import com.example.demo.Models.UserManagement.Profile;
-// import com.example.demo.Models.UserManagement.User;
 import com.example.demo.Models.UserManagement.Management.Status;
 import com.example.demo.OutputDto.ConversationHistory;
 import com.example.demo.Repositories.ProfileRepository;
-// import com.example.demo.Repositories.UserRepository;
-import com.example.demo.chatroom.Repository.ChatRoomRepository;
+import com.example.demo.chatroom.Repository.PersonalChatRoomRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class UserService2 {
-    // private final UserRepository repository;
     private final ProfileRepository profileRepository;
-    private final ChatRoomRepository chatRoomRepository;
+    private final PersonalChatRoomRepository personalChatRoomRepository;
 
     public void saveUser(ChatUser user) {
         Optional<Profile> profileOpt = profileRepository.findProfilesById(user.getUsername());
@@ -50,7 +47,7 @@ public class UserService2 {
     }
 
     public List<ConversationHistory> chatList(Long profileId){
-        Optional<List<Map<String, Object>>> chatListOptional = chatRoomRepository.findBychatRoomContainsUser(profileId);
+        Optional<List<Map<String, Object>>> chatListOptional = personalChatRoomRepository.findBychatRoomContainsUser(profileId);
         
         if(chatListOptional.isPresent()){
             List<ConversationHistory> conversationList = new ArrayList<>();
