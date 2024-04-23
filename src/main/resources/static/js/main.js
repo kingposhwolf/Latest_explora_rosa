@@ -81,7 +81,7 @@ function onConnected() {
 }
 
 async function findAndDisplayConnectedUsers() {
-    const connectedUsersResponse = await fetch(`/users/${username}`);
+    const connectedUsersResponse = await fetch(`/users/chat-history/${username}`);
     let connectedUsers = await connectedUsersResponse.json();
     console.log(connectedUsers);
     //connectedUsers = connectedUsers.filter(user => user.id != username);
