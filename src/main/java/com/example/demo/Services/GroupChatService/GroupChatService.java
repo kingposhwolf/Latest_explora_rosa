@@ -29,6 +29,9 @@ public class GroupChatService {
     @Transactional
     public ResponseEntity<Object> createGroup(NewGroupDto newGroupDto) {
         try {
+            if(newGroupDto.getMembers().size() < 2){
+                return ResponseEntity.status(400).body("Group Must have at least 2 members");
+            }
             GroupChat group = new GroupChat();
 
         for (Long id : newGroupDto.getMembers()) {
