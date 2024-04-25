@@ -53,4 +53,23 @@ public class Helper {
                 })
                 .collect(Collectors.toList());
     }
+
+    public List<Map<String, Object>> postMapTimer(List<Map<String, Object>> data) {
+        return data.stream()
+                .map(post -> {
+                    // Create a new map with the existing entries except timestamp
+                    Map<String, Object> modifiedPost = new HashMap<>(post);
+                    modifiedPost.remove("timestamp");
+    
+                    // Calculate the time difference and add it to the map
+                    LocalDateTime timestamp = (LocalDateTime) post.get("timestamp");
+                    String timeDifference = calculateTimeDifference(timestamp);
+                    modifiedPost.put("duration", timeDifference);
+                    modifiedPost.put("showComment", false);
+                    modifiedPost.put("showShare", false);
+    
+                    return modifiedPost;
+                })
+                .collect(Collectors.toList());
+    }
 }

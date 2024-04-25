@@ -52,7 +52,7 @@ public class FeedsServiceImpl implements FeedsService{
             //     logger.error(" Fails to fetch Feeds , Profile Not Found");
             //     return ResponseEntity.status(404).body("Profile Not Found");
             // }
-            return ResponseEntity.ok(helper.mapTimer(userPostRepository.findUserPostData()));
+            return ResponseEntity.ok(helper.postMapTimer(userPostRepository.findUserPostData()));
             
         } catch (Exception exception) {
             logger.error("\nFails to fetch Feeds, Server Error: \n" + exception.getMessage());
