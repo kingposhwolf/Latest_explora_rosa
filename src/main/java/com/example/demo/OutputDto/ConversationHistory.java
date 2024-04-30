@@ -13,4 +13,13 @@ public class ConversationHistory {
 
     @NotNull
     private String name;
+
+    @NotNull
+    private Long unreadMessages;
+
+    @NotNull
+    private String profilePicture;
+
+    @NotNull
+    private String verificationStatus;
 }

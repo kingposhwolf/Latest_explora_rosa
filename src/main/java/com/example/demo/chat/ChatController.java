@@ -1,5 +1,7 @@
 package com.example.demo.chat;
 
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Map;
 
@@ -16,40 +18,43 @@ import com.example.demo.chat.Dto.AckMessageDto;
 import com.example.demo.chat.Dto.ChatMessageDto;
 import com.example.demo.chat.Dto.ChatNotification;
 import com.example.demo.chat.Dto.MessageStatusDto;
+// import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ChatController {
+    // private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
     private final SimpMessagingTemplate messagingTemplate;
     private final ChatMessageService chatMessageService;
+    // private final ObjectMapper objectMapper;
 
-    @MessageMapping("/chat")
-    public void processMessage(@Payload ChatMessageDto chatMessage) {
-        try {
-            ChatMessage savedMsg = chatMessageService.save(chatMessage);
+@MessageMapping("/chat")
+public void processMessage(@Payload ChatMessageDto chatMessage) {
+    try {
+        ChatMessage savedMsg = chatMessageService.save(chatMessage);
 
-            messagingTemplate.convertAndSendToUser(
-                String.valueOf(chatMessage.getSenderId()), "/queue/ack", new AckMessageDto(MessageStatus.SENT, chatMessage.getTempMessageId(), savedMsg.getId())
+        messagingTemplate.convertAndSendToUser(
+            String.valueOf(chatMessage.getSenderId()), "/queue/ack", new AckMessageDto(MessageStatus.SENT, chatMessage.getTempMessageId(), savedMsg.getId())
         );
-            
-            messagingTemplate.convertAndSendToUser(
-                String.valueOf(chatMessage.getRecipientId()), "/queue/messages",
-                new ChatNotification(
-                        savedMsg.getId(),
-                        savedMsg.getSender().getId(),
-                        savedMsg.getRecipient().getId(),
-                        savedMsg.getContent(),
-                        savedMsg.getStatus()
-                )
-            );
-        } catch (Exception exception) {
-            
-            exception.printStackTrace();
-        }
+
+        messagingTemplate.convertAndSendToUser(
+            String.valueOf(chatMessage.getRecipientId()), "/queue/messages",
+            new ChatNotification(
+                    savedMsg.getId(),
+                    savedMsg.getSender().getId(),
+                    savedMsg.getRecipient().getId(),
+                    savedMsg.getContent(),
+                    savedMsg.getStatus()
+            )
+        );
+    } catch (Exception exception) {
+        exception.printStackTrace();
     }
+}
+
 
     @MessageMapping("/status")
     public void messageStatusUpdate(@Payload @Valid MessageStatusDto messageStatusDto) {

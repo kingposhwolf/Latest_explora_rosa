@@ -300,6 +300,8 @@ if (messageContent && stompClient) {
     
     // Send the message
     stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
+
+    console.log(chatMessage);
     
     // Display the message immediately (optimistic update)
     displayMessage(username, messageInput.value.trim(), 'PENDING', messageId);

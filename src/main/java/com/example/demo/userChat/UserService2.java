@@ -13,8 +13,10 @@ import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Models.UserManagement.Management.Status;
 import com.example.demo.OutputDto.ConversationHistory;
 import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.chat.ChatMessageRespository;
 import com.example.demo.chatroom.Repository.PersonalChatRoomRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -22,13 +24,18 @@ import lombok.RequiredArgsConstructor;
 public class UserService2 {
     private final ProfileRepository profileRepository;
     private final PersonalChatRoomRepository personalChatRoomRepository;
+    private final ChatMessageRespository chatMessageRepository;
 
+    @Transactional
     public void saveUser(ChatUser user) {
         Optional<Profile> profileOpt = profileRepository.findProfilesById(user.getUsername());
         if(profileOpt.isPresent()){
             Profile profile = profileOpt.get();
             profile.setStatus(Status.ONLINE);
             profileRepository.save(profile);
+
+            //update personal messages that delivered to him form sent to delivered status
+            chatMessageRepository.updateMessageStatusToDelivered(profile.getId());
         }
     }
 
@@ -60,11 +67,18 @@ public class UserService2 {
                     conversation.setProfileId(Long.parseLong(Objects.toString(chat.get("recipientProfileId"), null)));
                     conversation.setName(Objects.toString(chat.get("recipientName"), null));
                     conversation.setUsername(Objects.toString(chat.get("recipientUsername"), null));
+                    conversation.setVerificationStatus(Objects.toString(chat.get("recipientVerificationStatus"), null));
+                    conversation.setProfilePicture(Objects.toString(chat.get("recipientProfilePicture"), null));
                 } else {
                     conversation.setProfileId(Long.parseLong(Objects.toString(chat.get("senderProfileId"), null)));
                     conversation.setName(Objects.toString(chat.get("senderName"), null));
                     conversation.setUsername(Objects.toString(chat.get("senderUsername"), null));
+                    conversation.setVerificationStatus(Objects.toString(chat.get("senderVerificationStatus"), null));
+                    conversation.setProfilePicture(Objects.toString(chat.get("senderProfilePicture"), null));
                 }
+
+                conversation.setUnreadMessages(chatMessageRepository.unreadMessages(profileId, Long.parseLong(Objects.toString(chat.get("chatRoomId"), null))));
+
                 conversationList.add(conversation);
             }
             return conversationList;

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.InputDto.ChatUser;
+import com.example.demo.Models.UserManagement.Management.Status;
 import com.example.demo.OutputDto.ConversationHistory;
 import com.example.demo.Repositories.FollowUnFollowRepository;
 import com.example.demo.chatroom.Repository.GroupChatRepository;
@@ -35,9 +36,12 @@ public class UserController2 {
     @MessageMapping("/addUser")
     @SendTo("/topic/public")
     public ChatUser addUser(@Payload ChatUser user) {
-        // Add error handling
         try {
-            userService.saveUser(user);
+            if(user.getStatus() == Status.ONLINE){
+                userService.saveUser(user);
+
+                //change message status from send to delivered
+            }
         } catch (Exception e) {
             // Handle exception
             // For example, log the error
