@@ -16,6 +16,7 @@ public interface UserPostService {
             MultipartFile[] files,
             Long profileId,
             String caption,
+            String location,
             Long brandId,
             List<String> hashtagNames) throws IOException;
 

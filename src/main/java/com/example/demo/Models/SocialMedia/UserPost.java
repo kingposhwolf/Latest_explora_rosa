@@ -93,6 +93,8 @@ public class UserPost {
     @Column
     private int favorites;
 
+    private String location;
+
 
     private boolean deleted = Boolean.FALSE;
 

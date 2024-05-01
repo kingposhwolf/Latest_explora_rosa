@@ -51,6 +51,7 @@ public ResponseEntity<Object> uploadPost(
         MultipartFile[] files,
         Long profileId,
         String caption,
+        String location,
         Long brandId,
         List<String> hashtagNames) throws IOException {
     try {
@@ -181,6 +182,7 @@ public ResponseEntity<Object> uploadPost(
                     userPost.setPath("/posts");
                     userPost.setShares(0);
                     userPost.setFavorites(0);
+                    userPost.setLocation(location);
 
                     //Print to see what's being carried
                     logger.info(userPost.toString());

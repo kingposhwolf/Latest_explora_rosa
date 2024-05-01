@@ -88,6 +88,7 @@ Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
 @Query("SELECT " +
         "new map(" +
         "   up.id as id, " +
+        "   up.location as location, " +
         "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
         "   c as country, " +
         "   GROUP_CONCAT(DISTINCT f) as mentions, " +
@@ -100,6 +101,7 @@ Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
         "   up.caption as caption, " +
         "   up.thumbnail as thumbnail, " +
         "   up.time as timestamp, " +
+        "   up.profile.id as profileId, " +
         "   up.profile.user.username as username, " +
         "   up.profile.user.name as name, " +
         "   up.profile.user.accountType.name as accountType, " +

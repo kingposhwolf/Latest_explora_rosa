@@ -28,11 +28,12 @@ public class PostEditDeleteController {
             @RequestParam("file") MultipartFile[] file,
             @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail,
             @RequestParam("profileId") Long profileId,
+            @RequestParam(value = "location", required = false) String location,
             @RequestParam("caption") String caption,
             @RequestParam(value = "brandName", required = false) Long brandId,
             @RequestParam(value = "hashTags", required = false) List<String> hashTags) {
         try {
-            return userPostServiceImpl.uploadPost(userPostDto, file, profileId, caption, brandId, hashTags);
+            return userPostServiceImpl.uploadPost(userPostDto, file, profileId, caption,location, brandId, hashTags);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to upload post: " + e.getMessage());
