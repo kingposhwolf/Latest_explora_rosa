@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.ChatUser;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Models.UserManagement.Management.Status;
@@ -25,6 +26,7 @@ public class UserService2 {
     private final ProfileRepository profileRepository;
     private final PersonalChatRoomRepository personalChatRoomRepository;
     private final ChatMessageRespository chatMessageRepository;
+    private final Helper helper;
 
     @Transactional
     public void saveUser(ChatUser user) {
@@ -78,7 +80,7 @@ public class UserService2 {
                 }
 
                 conversation.setUnreadMessages(chatMessageRepository.unreadMessages(profileId, Long.parseLong(Objects.toString(chat.get("chatRoomId"), null))));
-
+                conversation.setLastMessage(helper.mapSingleTimer(chatMessageRepository.lastMessage(Long.parseLong(Objects.toString(chat.get("chatRoomId"), null)))));
                 conversationList.add(conversation);
             }
             return conversationList;

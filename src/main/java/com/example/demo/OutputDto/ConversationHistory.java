@@ -1,5 +1,7 @@
 package com.example.demo.OutputDto;
 
+import java.util.Map;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -22,4 +24,6 @@ public class ConversationHistory {
 
     @NotNull
     private String verificationStatus;
+
+    Map<String, Object> lastMessage;
 }

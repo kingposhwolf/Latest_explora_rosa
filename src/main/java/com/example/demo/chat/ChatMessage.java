@@ -1,5 +1,6 @@
 package com.example.demo.chat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.example.demo.Models.UserManagement.Profile;
@@ -37,7 +38,7 @@ public class ChatMessage {
     @NotNull
     private String content;
 
-    private Date timestamp;
+    private LocalDateTime timestamp;
 
     private MessageStatus status;
 }

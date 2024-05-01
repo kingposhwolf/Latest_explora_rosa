@@ -1,5 +1,6 @@
 package com.example.demo.chat;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Components.Helper.Helper;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.chat.Dto.ChatMessageDto;
@@ -28,6 +30,7 @@ public class ChatMessageService {
     private final ProfileRepository profileRepository;
     private final GroupChatRepository groupChatRepository;
     private final GroupChatMessageRepository groupChatMessageRepository;
+    private final Helper helper;
 
     public ChatMessage save(ChatMessageDto chatMessage) {
         ChatRoom chatRoom = chatRoomService.getChatRoomId(chatMessage.getSenderId(), chatMessage.getRecipientId());
@@ -39,7 +42,7 @@ public class ChatMessageService {
             chat.setSender(sender.get());
             chat.setStatus(MessageStatus.SENT);
             chat.setContent(chatMessage.getContent());
-            chat.setTimestamp(new Date());
+            chat.setTimestamp(LocalDateTime.now());
             chat.setChatRoom(chatRoom);
 
             repository.save(chat);
@@ -84,7 +87,7 @@ public class ChatMessageService {
         );
         if (chatRoomOptional.isPresent()) {
             ChatRoom chatRoom = chatRoomOptional.get();
-            return repository.findByChatRoomCustom(chatRoom).orElse(new ArrayList<>());
+            return helper.mapTimer(repository.findByChatRoomCustom(chatRoom).get());
         } else {
             // Handle the case where the chat room is not found
             return new ArrayList<>();

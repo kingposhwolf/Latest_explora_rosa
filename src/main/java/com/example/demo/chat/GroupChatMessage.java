@@ -3,6 +3,7 @@ package com.example.demo.chat;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.example.demo.Models.UserManagement.Profile;
