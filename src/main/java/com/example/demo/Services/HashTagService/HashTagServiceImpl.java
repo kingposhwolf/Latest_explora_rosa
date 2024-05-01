@@ -1,6 +1,6 @@
 package com.example.demo.Services.HashTagService;
 
-import com.example.demo.InputDto.HashTagDto;
+import com.example.demo.InputDto.SocialMedia.HashTag.HashTagDto;
 import com.example.demo.Models.SocialMedia.HashTag;
 import com.example.demo.Repositories.HashTagRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;

@@ -29,6 +29,7 @@ public class HashTag {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     //Below is For Bidirection relationship

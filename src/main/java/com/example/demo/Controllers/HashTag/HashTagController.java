@@ -1,6 +1,6 @@
 package com.example.demo.Controllers.HashTag;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.HashTagDto;
+import com.example.demo.InputDto.SocialMedia.HashTag.HashTagDto;
 import com.example.demo.Services.HashTagService.HashTagServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.example.demo.Controllers.UserPost;
 
-import com.example.demo.InputDto.UserPostDto;
+import com.example.demo.InputDto.SocialMedia.Post.UserPostDto;
 import com.example.demo.Services.UserPostService.UserPostServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

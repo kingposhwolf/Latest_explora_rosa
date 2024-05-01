@@ -95,7 +95,7 @@ public class UserPost {
 
     private String location;
 
-
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     //Below is For Bidirection relationship

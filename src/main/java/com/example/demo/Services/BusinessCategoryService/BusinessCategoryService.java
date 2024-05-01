@@ -6,7 +6,7 @@ package com.example.demo.Services.BusinessCategoryService;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.InputDto.BusinessCategoryDto;
+import com.example.demo.InputDto.UserManagement.BusinessCategory.BusinessCategoryDto;
 
 public interface BusinessCategoryService {
 

@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.ProfileVisitDto;
+import com.example.demo.InputDto.UserManagement.Profile.GetProfileDto;
+import com.example.demo.InputDto.UserManagement.Profile.ProfileVisitDto;
 import com.example.demo.Services.PersonalService.PersonalServiceImpl;
 
 import jakarta.validation.Valid;
@@ -30,5 +31,13 @@ public class PersonalController {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return profileServiceImpl.getProfileById(profileVisitDto);
+    }
+
+    @PostMapping("/myProfile")
+    public ResponseEntity<Object> ownProfileById(@RequestBody @Valid GetProfileDto getProfileDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return profileServiceImpl.getOwnProfileById(getProfileDto);
     }
 }

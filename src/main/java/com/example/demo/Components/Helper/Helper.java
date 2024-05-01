@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class Helper {
-    public String calculateTimeDifference(LocalDateTime givenTime) {
+    public Long calculateTimeDifference(LocalDateTime givenTime) {
         // Get the current local time
         LocalDateTime currentTime = LocalDateTime.now();
     
@@ -19,21 +19,22 @@ public class Helper {
         Duration duration = Duration.between(givenTime, currentTime);
     
         // Convert the duration to minutes, hours, days, or weeks
-        long minutesDifference = duration.toMinutes();
-        long hoursDifference = duration.toHours();
-        long daysDifference = duration.toDays();
+        long secondDifference = duration.toSeconds();
+        return secondDifference;
+        // long hoursDifference = duration.toHours();
+        // long daysDifference = duration.toDays();
     
         // Determine the appropriate time unit based on the magnitude of the difference
-        if (daysDifference >= 7) {
-            long weeksDifference = daysDifference / 7;
-            return weeksDifference + (weeksDifference > 1 ? " weeks ago" : " week ago");
-        } else if (daysDifference > 0) {
-            return daysDifference + (daysDifference > 1 ? " days ago" : " day ago");
-        } else if (hoursDifference > 0) {
-            return hoursDifference + (hoursDifference > 1 ? " hours ago" : " hour ago");
-        } else {
-            return minutesDifference + (minutesDifference > 1 ? " minutes ago" : " minute ago");
-        }
+        // if (daysDifference >= 7) {
+        //     long weeksDifference = daysDifference / 7;
+        //     return weeksDifference + (weeksDifference > 1 ? " weeks ago" : " week ago");
+        // } else if (daysDifference > 0) {
+        //     return daysDifference + (daysDifference > 1 ? " days ago" : " day ago");
+        // } else if (hoursDifference > 0) {
+        //     return hoursDifference + (hoursDifference > 1 ? " hours ago" : " hour ago");
+        // } else {
+        //     return minutesDifference + (minutesDifference > 1 ? " minutes ago" : " minute ago");
+        // }
     }
     
 
@@ -46,7 +47,7 @@ public class Helper {
     
                     // Calculate the time difference and add it to the map
                     LocalDateTime timestamp = (LocalDateTime) post.get("timestamp");
-                    String timeDifference = calculateTimeDifference(timestamp);
+                    Long timeDifference = calculateTimeDifference(timestamp);
                     modifiedPost.put("duration", timeDifference);
     
                     return modifiedPost;
@@ -61,13 +62,9 @@ public class Helper {
     
         // Calculate the time difference and add it to the map
         LocalDateTime timestamp = (LocalDateTime) data.get("timestamp");
-        // Get the current local time
-        LocalDateTime currentTime = LocalDateTime.now();
-        // Calculate the difference between the given time and the current time
-        Duration duration = Duration.between(timestamp, currentTime);
-        long timeDifference = duration.toSeconds();
+        
+        long timeDifference = calculateTimeDifference(timestamp);
 
-        // String timeDifference = calculateTimeDifference(timestamp);
         modifiedData.put("duration", timeDifference);
     
         return modifiedData;
@@ -83,7 +80,7 @@ public class Helper {
     
                     // Calculate the time difference and add it to the map
                     LocalDateTime timestamp = (LocalDateTime) post.get("timestamp");
-                    String timeDifference = calculateTimeDifference(timestamp);
+                    Long timeDifference = calculateTimeDifference(timestamp);
                     modifiedPost.put("duration", timeDifference);
                     modifiedPost.put("showComment", false);
                     modifiedPost.put("showShare", false);

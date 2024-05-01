@@ -1,6 +1,6 @@
 package com.example.demo.Services.AccountTypeService;
 
-import com.example.demo.InputDto.AccountTypeDto;
+import com.example.demo.InputDto.UserManagement.AccountType.AccountTypeDto;
 import com.example.demo.Models.UserManagement.Management.AccountType;
 import com.example.demo.Repositories.AccountTypeRepository;
 

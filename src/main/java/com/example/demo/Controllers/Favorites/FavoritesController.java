@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.DeleteFavoriteDto;
-import com.example.demo.InputDto.FavoritesDto;
-import com.example.demo.InputDto.FetchFavoritesDto;
+import com.example.demo.InputDto.SocialMedia.Favorites.DeleteFavoriteDto;
+import com.example.demo.InputDto.SocialMedia.Favorites.FavoritesDto;
+import com.example.demo.InputDto.SocialMedia.Favorites.FetchFavoritesDto;
 import com.example.demo.Services.FavoritesService.FavoritesService;
 
 import jakarta.validation.Valid;

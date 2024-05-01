@@ -24,6 +24,7 @@ public class Country {
     @Column(length = 100, nullable = false, unique = true)
     private String name;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     //Below is For Bidirection relationship

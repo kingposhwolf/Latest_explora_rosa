@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.InputDto.ChatUser;
+import com.example.demo.InputDto.Message.OneToOneChat.ChatUser;
 import com.example.demo.Models.UserManagement.Management.Status;
 import com.example.demo.OutputDto.ConversationHistory;
 import com.example.demo.Repositories.FollowUnFollowRepository;

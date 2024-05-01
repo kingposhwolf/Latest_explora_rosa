@@ -1,11 +1,11 @@
 package com.example.demo.Controllers.Comment;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.CommentDeleteDto;
-import com.example.demo.InputDto.CommentDto;
-import com.example.demo.InputDto.CommentLikeDto;
-import com.example.demo.InputDto.CommentPostDto;
-import com.example.demo.InputDto.CommentReplyDto;
-import com.example.demo.InputDto.FetchCommentReplyDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentDeleteDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentLikeDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentPostDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentReplyDto;
+import com.example.demo.InputDto.SocialMedia.Comment.FetchCommentReplyDto;
 import com.example.demo.Services.CommentService.CommentServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

@@ -4,6 +4,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 import com.example.demo.Models.SocialMedia.UserPost;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class OrderItem {
     
     private int quantity;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

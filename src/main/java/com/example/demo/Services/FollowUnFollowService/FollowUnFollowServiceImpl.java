@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.InputDto.FollowUnFollowDto;
+import com.example.demo.InputDto.SocialMedia.FollowUnFollow.FollowUnFollowDto;
 import com.example.demo.Repositories.FollowUnFollowRepository;
 
 import lombok.AllArgsConstructor;

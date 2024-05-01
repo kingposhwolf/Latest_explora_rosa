@@ -1,5 +1,5 @@
 package com.example.demo.Repositories;
-import com.example.demo.InputDto.CityDto;
+import com.example.demo.InputDto.ManagementInfo.City.CityDto;
 /*
  * @author Dwight Danda
  *

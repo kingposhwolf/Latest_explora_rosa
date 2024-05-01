@@ -2,7 +2,7 @@ package com.example.demo.Services.FollowUnFollowService;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.InputDto.FollowUnFollowDto;
+import com.example.demo.InputDto.SocialMedia.FollowUnFollow.FollowUnFollowDto;
 
 public interface FollowUnFollowService {
     ResponseEntity<Object> followOperation(FollowUnFollowDto followUnFollowDto);

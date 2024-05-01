@@ -2,7 +2,7 @@ package com.example.demo.Services.HashTagService;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.InputDto.HashTagDto;
+import com.example.demo.InputDto.SocialMedia.HashTag.HashTagDto;
 
 public interface HashTagService {
     ResponseEntity<Object> getAllHashTags();

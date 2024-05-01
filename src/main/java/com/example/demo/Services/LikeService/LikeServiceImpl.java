@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.InputDto.LikeDto;
+import com.example.demo.InputDto.SocialMedia.Like.LikeDto;
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Repositories.LikeRepository;
 import com.example.demo.Repositories.UserPostRepository;

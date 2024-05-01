@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.example.demo.InputDto.AddGroupMembersDto;
-import com.example.demo.InputDto.NewGroupDto;
+
+import com.example.demo.InputDto.Message.GroupChat.AddGroupMembersDto;
+import com.example.demo.InputDto.Message.GroupChat.NewGroupDto;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.chatroom.GroupChat;

@@ -4,10 +4,10 @@ import jakarta.validation.constraints.NotNull;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.InputDto.CommentDeleteDto;
-import com.example.demo.InputDto.CommentDto;
-import com.example.demo.InputDto.CommentLikeDto;
-import com.example.demo.InputDto.CommentReplyDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentDeleteDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentLikeDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentReplyDto;
 
 public interface CommentService {
     ResponseEntity<Object> saveComment(CommentDto commentDto);

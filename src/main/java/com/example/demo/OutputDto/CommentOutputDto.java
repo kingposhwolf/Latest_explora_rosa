@@ -18,5 +18,5 @@ public class CommentOutputDto {
     private String message;
 
     @NotNull
-    private String time;
+    private Long time;
 }

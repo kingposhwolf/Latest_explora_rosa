@@ -8,7 +8,8 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.InputDto.ProfileVisitDto;
+import com.example.demo.InputDto.UserManagement.Profile.GetProfileDto;
+import com.example.demo.InputDto.UserManagement.Profile.ProfileVisitDto;
 import com.example.demo.Repositories.BrandRepository;
 import com.example.demo.Repositories.ProfileRepository;
 
@@ -49,6 +50,27 @@ public class BrandServiceImpl implements BrandService{
                 rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, brandVisitDto.toJson());
                 logger.info("\nProfile Info Fetched Successful: " + owner);
                 return ResponseEntity.status(200).body(owner);
+            }
+        } catch (Exception exception) {
+            logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Override
+    public ResponseEntity<Object> getOwnBrandById(GetProfileDto getProfileDto) {
+
+        try {
+            Map<String, Object> profile = brandRepository.findProfileInfoById(getProfileDto.getId());
+
+            if (profile.size() == 0) {
+                logger.error("Failed to Fetch Brand Info, Invalid brand Id");
+                return ResponseEntity.badRequest().body("Invalid profile ID");
+            }
+            else{
+                logger.info("\nProfile Info Fetched Successful: " + profile);
+                return ResponseEntity.status(200).body(profile);
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());

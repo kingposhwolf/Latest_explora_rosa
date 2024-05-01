@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.ProfileVisitDto;
+import com.example.demo.InputDto.UserManagement.Profile.GetProfileDto;
+import com.example.demo.InputDto.UserManagement.Profile.ProfileVisitDto;
 import com.example.demo.Services.BrandService.BrandServiceImpl;
 
 import jakarta.validation.Valid;
@@ -30,5 +31,13 @@ public class BrandController {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return brandServiceImpl.getBrandById(brandVisitDto);
+    }
+
+    @PostMapping("/myProfile")
+    public ResponseEntity<Object> ownBrandById(@RequestBody @Valid GetProfileDto getProfileDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return brandServiceImpl.getOwnBrandById(getProfileDto);
     }
 }

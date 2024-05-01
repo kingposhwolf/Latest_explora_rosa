@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.FetchFollowInfoDto;
-import com.example.demo.InputDto.FollowUnFollowDto;
+import com.example.demo.InputDto.SocialMedia.FollowUnFollow.FetchFollowInfoDto;
+import com.example.demo.InputDto.SocialMedia.FollowUnFollow.FollowUnFollowDto;
 import com.example.demo.Services.FollowUnFollowService.FollowUnFollowServiceImpl;
 
 import jakarta.validation.Valid;

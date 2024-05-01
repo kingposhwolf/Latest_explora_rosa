@@ -1,5 +1,5 @@
 package com.example.demo.Services.BusinessCategoryService;
-import com.example.demo.InputDto.BusinessCategoryDto;
+import com.example.demo.InputDto.UserManagement.BusinessCategory.BusinessCategoryDto;
 import com.example.demo.Models.UserManagement.BussinessAccount.BusinessCategory;
 import com.example.demo.Repositories.BusinessCategoryRepository;
 

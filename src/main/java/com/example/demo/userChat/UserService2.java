@@ -9,7 +9,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Helper.Helper;
-import com.example.demo.InputDto.ChatUser;
+import com.example.demo.InputDto.Message.OneToOneChat.ChatUser;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Models.UserManagement.Management.Status;
 import com.example.demo.OutputDto.ConversationHistory;

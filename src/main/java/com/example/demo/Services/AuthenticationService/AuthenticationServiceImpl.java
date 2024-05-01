@@ -14,11 +14,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.InputDto.JwtAuthenticationResponse;
-import com.example.demo.InputDto.RefreshTokenRequest;
-import com.example.demo.InputDto.RegistrationResponse;
-import com.example.demo.InputDto.SignUpRequest;
-import com.example.demo.InputDto.SigninRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.JwtAuthenticationResponse;
+import com.example.demo.InputDto.UserManagement.Authentication.RefreshTokenRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.SignUpRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.SigninRequest;
+import com.example.demo.InputDto.UserManagement.Profile.RegistrationResponse;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Models.UserManagement.User;
 import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
@@ -136,6 +136,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
         registrationResponse.setProfileId(profile2.getId());
+        registrationResponse.setAccountType(user.getAccountType());
 
         return ResponseEntity.status(201).body(registrationResponse);
 
@@ -184,6 +185,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
     registrationResponse.setProfileId(brand2.getId());
+    registrationResponse.setAccountType(user.getAccountType());
 
     return ResponseEntity.status(201).body(registrationResponse);
     }
@@ -219,6 +221,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
         registrationResponse.setProfileId(profile.getId());
+        registrationResponse.setAccountType(user.getAccountType());
 
         logger.info("Login Successful for the user : " + user);
         return ResponseEntity.ok(registrationResponse);

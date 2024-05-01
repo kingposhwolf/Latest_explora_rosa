@@ -4,6 +4,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 import com.example.demo.Models.SocialMedia.UserPost;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class CartItem {
     @JoinColumn(name = "cartId", nullable = false, foreignKey = @ForeignKey(name = "FK_CART_BH55YI6H_ITEM", foreignKeyDefinition = "FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE CASCADE"))
     private Cart cart;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

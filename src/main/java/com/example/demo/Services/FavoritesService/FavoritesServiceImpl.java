@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Components.Helper.Helper;
-import com.example.demo.InputDto.DeleteFavoriteDto;
-import com.example.demo.InputDto.FavoritesDto;
+import com.example.demo.InputDto.SocialMedia.Favorites.DeleteFavoriteDto;
+import com.example.demo.InputDto.SocialMedia.Favorites.FavoritesDto;
 import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserPostRepository;

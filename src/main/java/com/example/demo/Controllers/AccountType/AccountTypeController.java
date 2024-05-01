@@ -5,7 +5,7 @@ package com.example.demo.Controllers.AccountType;
  */
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.AccountTypeDto;
+import com.example.demo.InputDto.UserManagement.AccountType.AccountTypeDto;
 import com.example.demo.Services.AccountTypeService.AccountTypeServiceImpl;
 
 import jakarta.validation.Valid;

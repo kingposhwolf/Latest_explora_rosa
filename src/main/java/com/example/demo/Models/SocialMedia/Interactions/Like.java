@@ -5,6 +5,7 @@ import org.hibernate.annotations.SQLRestriction;
 
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.UserManagement.Profile;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -29,5 +30,6 @@ public class Like {
     @ToString.Exclude
     private UserPost post;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

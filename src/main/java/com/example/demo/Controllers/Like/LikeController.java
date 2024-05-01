@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.FetchLikeDto;
-import com.example.demo.InputDto.LikeDto;
+import com.example.demo.InputDto.SocialMedia.Like.FetchLikeDto;
+import com.example.demo.InputDto.SocialMedia.Like.LikeDto;
 import com.example.demo.Services.LikeService.LikeServiceImpl;
 
 import jakarta.validation.Valid;

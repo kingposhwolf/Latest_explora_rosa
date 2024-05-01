@@ -6,6 +6,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 import com.example.demo.Models.UserManagement.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -27,5 +28,6 @@ public class PasswordResetToken {
 
     private LocalDateTime expiryDate;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

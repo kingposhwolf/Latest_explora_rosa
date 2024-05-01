@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.AddGroupMembersDto;
-import com.example.demo.InputDto.NewGroupDto;
+import com.example.demo.InputDto.Message.GroupChat.AddGroupMembersDto;
+import com.example.demo.InputDto.Message.GroupChat.NewGroupDto;
 import com.example.demo.Services.GroupChatService.GroupChatService;
 
 import jakarta.validation.Valid;

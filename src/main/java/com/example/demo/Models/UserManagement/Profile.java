@@ -77,6 +77,7 @@ public class Profile {
 
     private Status status;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     //Below is For Bidirection relationship

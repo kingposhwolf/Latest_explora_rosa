@@ -1,10 +1,10 @@
 package com.example.demo.Services.CommentService;
 
 import com.example.demo.Components.Helper.Helper;
-import com.example.demo.InputDto.CommentDeleteDto;
-import com.example.demo.InputDto.CommentDto;
-import com.example.demo.InputDto.CommentLikeDto;
-import com.example.demo.InputDto.CommentReplyDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentDeleteDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentLikeDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentReplyDto;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
