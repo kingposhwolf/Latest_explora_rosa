@@ -61,7 +61,13 @@ public class Helper {
     
         // Calculate the time difference and add it to the map
         LocalDateTime timestamp = (LocalDateTime) data.get("timestamp");
-        String timeDifference = calculateTimeDifference(timestamp);
+        // Get the current local time
+        LocalDateTime currentTime = LocalDateTime.now();
+        // Calculate the difference between the given time and the current time
+        Duration duration = Duration.between(timestamp, currentTime);
+        long timeDifference = duration.toSeconds();
+
+        // String timeDifference = calculateTimeDifference(timestamp);
         modifiedData.put("duration", timeDifference);
     
         return modifiedData;
