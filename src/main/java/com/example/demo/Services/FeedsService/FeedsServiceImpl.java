@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Helper.Helper;
 import com.example.demo.Models.UserManagement.Profile;
+import com.example.demo.Repositories.FavoritesRepository;
 // import com.example.demo.Components.Algorithms.FeedsAlgorithm;
-// import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
 import jakarta.validation.constraints.NotNull;
@@ -28,9 +29,11 @@ public class FeedsServiceImpl implements FeedsService{
 
     //private final FeedsAlgorithm feedsAlgorithm;
 
-    //private final ProfileRepository profileRepository;
+    private final ProfileRepository profileRepository;
 
     private final UserPostRepository userPostRepository;
+
+    private final FavoritesRepository favoritesRepository;
 
     private final Helper helper;
 
@@ -63,25 +66,42 @@ public class FeedsServiceImpl implements FeedsService{
         }
     }
 
-    // @SuppressWarnings("null")
-    // @Override
-    // public ResponseEntity<Object> retrieveUserOwnFeeds(@NotNull Long profileId) {
-    //     try {
-    //         Optional<Profile> profileOptional = profileRepository.findById((long) 1);
-    //         if(profileOptional.isPresent()){
+    @SuppressWarnings("null")
+    @Override
+    public ResponseEntity<Object> retrieveUserOwnFeeds(@NotNull Long profileId) {
+        try {
+            Optional<Profile> profileOptional = profileRepository.findById((long) 1);
+            if(profileOptional.isPresent()){
 
-    //         logger.info("Feeds Fetched Successful ");
-    //         return ResponseEntity.ok(userPostRepository.findUserPostDataById((long) 1));
-    //         }else{
-    //             logger.error(" Fails to fetch Feeds , Profile Not Found");
-    //             return ResponseEntity.status(404).body("Profile Not Found");
-    //         }
-    //         return ResponseEntity.ok(helper.postMapTimer(userPostRepository.findUserPostData()));
-            
-    //     } catch (Exception exception) {
-    //         logger.error("\nFails to fetch Feeds, Server Error: \n" + exception.getMessage());
-    //         return ResponseEntity.status(500).body("Internal Server Error");
-    //     }
-    // }
+            logger.info("Specific User Feeds Fetched Successful ");
+            return ResponseEntity.ok(helper.postMapTimer(userPostRepository.findSpecificUserPostData(profileId)));
+            }else{
+                logger.error(" Fails to fetch Feeds , Profile Not Found");
+                return ResponseEntity.status(404).body("Profile Not Found");
+            }
+        } catch (Exception exception) {
+            logger.error("\nFails to fetch Feeds, Server Error: \n" + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+
+    @SuppressWarnings("null")
+    @Override
+    public ResponseEntity<Object> retrieveUserFavoriteFeeds(@NotNull Long profileId) {
+        try {
+            Optional<Profile> profileOptional = profileRepository.findById((long) 1);
+            if(profileOptional.isPresent()){
+
+            logger.info("Specific User Feeds Fetched Successful ");
+            return ResponseEntity.ok(helper.postMapTimer(favoritesRepository.findSpecificUserFavoritePost(profileId)));
+            }else{
+                logger.error(" Fails to fetch Feeds , Profile Not Found");
+                return ResponseEntity.status(404).body("Profile Not Found");
+            }
+        } catch (Exception exception) {
+            logger.error("\nFails to fetch Feeds, Server Error: \n" + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
     
 }
