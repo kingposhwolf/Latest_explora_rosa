@@ -1,14 +1,11 @@
-// package com.example.demo.Services.ProfileService;
+package com.example.demo.Services.ProfileService;
 
-// import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 
-// import com.example.demo.InputDto.UserManagement.Profile.GetProfileDto;
-// import com.example.demo.InputDto.UserManagement.Profile.ProfileVisitDto;
 
-// public interface ProfileService {
-//     ResponseEntity<Object> profileVisit(ProfileVisitDto profileVisitDto);
+public interface ProfileService {
 
-//     ResponseEntity<Object> getProfileById(GetProfileDto getProfileDto);
-
-//     //ResponseEntity<Object> updateProfile(GetProfileDto getProfileDto);
-// }
+    ResponseEntity<Object> updateProfile(MultipartFile proFilePicture, Long profileId);
+    // , MultipartFile coverPhoto, String bio, String address
+}
