@@ -38,6 +38,8 @@ public class UserService2 {
 
             //update personal messages that delivered to him form sent to delivered status
             chatMessageRepository.updateMessageStatusToDelivered(profile.getId());
+
+            // Must notify the other user that the status of their message is changed from sent to delivered
         }
     }
 

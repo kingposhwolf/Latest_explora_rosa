@@ -1,5 +1,7 @@
 package com.example.demo.Services.FeedsService;
 
+import java.util.Optional;
+
 // import java.util.ArrayList;
 // import java.util.List;
 // import java.util.Optional;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Helper.Helper;
+import com.example.demo.Models.UserManagement.Profile;
 // import com.example.demo.Components.Algorithms.FeedsAlgorithm;
 // import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserPostRepository;
@@ -59,5 +62,26 @@ public class FeedsServiceImpl implements FeedsService{
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
+
+    // @SuppressWarnings("null")
+    // @Override
+    // public ResponseEntity<Object> retrieveUserOwnFeeds(@NotNull Long profileId) {
+    //     try {
+    //         Optional<Profile> profileOptional = profileRepository.findById((long) 1);
+    //         if(profileOptional.isPresent()){
+
+    //         logger.info("Feeds Fetched Successful ");
+    //         return ResponseEntity.ok(userPostRepository.findUserPostDataById((long) 1));
+    //         }else{
+    //             logger.error(" Fails to fetch Feeds , Profile Not Found");
+    //             return ResponseEntity.status(404).body("Profile Not Found");
+    //         }
+    //         return ResponseEntity.ok(helper.postMapTimer(userPostRepository.findUserPostData()));
+            
+    //     } catch (Exception exception) {
+    //         logger.error("\nFails to fetch Feeds, Server Error: \n" + exception.getMessage());
+    //         return ResponseEntity.status(500).body("Internal Server Error");
+    //     }
+    // }
     
 }

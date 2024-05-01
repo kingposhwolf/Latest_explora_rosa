@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.AmqpTemplate;
+// import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
@@ -34,6 +34,7 @@ import com.example.demo.Models.Tracking.UserToUserTracking.UserEngagement;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.OutputDto.CommentOutputDto;
 import com.example.demo.OutputDto.CommentReplyOutputDto;
+import com.example.demo.OutputDto.SocialMediaInstantChange;
 import com.example.demo.Repositories.CommentLikeRepository;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.FavoritesRepository;
@@ -69,7 +70,7 @@ public class RabbitMqConsumers {
 
     private final CommentLikeRepository commentLikeRepository;
 
-    private AmqpTemplate rabbitTemplate;
+    // private AmqpTemplate rabbitTemplate;
 
     private final Helper helper;
 
@@ -104,9 +105,13 @@ public class RabbitMqConsumers {
 
                     likeRepository.delete(x);
 
-                    String endpoint = "/topic/like/" + Long.toString(post.getId());
+                   // String endpoint = "/topic/like/" + Long.toString(post.getId());
+                    SocialMediaInstantChange social = new SocialMediaInstantChange();
+                    social.setInteract("Likes");
+                    social.setPostId(post.getId());
+                    social.setNewNumber(change);
 
-                    messagingTemplate.convertAndSend(endpoint, change);
+                    messagingTemplate.convertAndSend("/topic/social/", social);
 
                     processTopicEngagement(profile.get(), userPost.get().getHashTags(),-1);
                     processUserEngagement(profile.get(), userPost.get().getProfile(),-1);
@@ -133,9 +138,16 @@ public class RabbitMqConsumers {
                     post.setLikes(newLikes);
                     userPostRespository.save(post);
 
-                    String endpoint = "/topic/like/" + Long.toString(post.getId());
+                    // String endpoint = "/topic/like/" + Long.toString(post.getId());
 
-                    messagingTemplate.convertAndSend(endpoint, newLikes);
+                    // messagingTemplate.convertAndSend(endpoint, newLikes);
+
+                    SocialMediaInstantChange social = new SocialMediaInstantChange();
+                    social.setInteract("Likes");
+                    social.setPostId(post.getId());
+                    social.setNewNumber(newLikes);
+
+                    messagingTemplate.convertAndSend("/topic/social/", social);
 
                     processTopicEngagement(profile.get(), userPost.get().getHashTags(),1);
                     processUserEngagement(profile.get(), userPost.get().getProfile(),1);
@@ -186,11 +198,18 @@ public class RabbitMqConsumers {
                 commentOutput.setId(savedComment.getId());
 
 
-                String countEndpoint = "/topic/commentCount/" + userPost.get().getId();
+                // String countEndpoint = "/topic/commentCount/" + userPost.get().getId();
+
+                SocialMediaInstantChange social = new SocialMediaInstantChange();
+                social.setInteract("Comment");
+                social.setPostId(userPost.get().getId());
+                social.setNewNumber(newComments);
+
+                messagingTemplate.convertAndSend("/topic/social/", social);
 
                 String commentEndpoint = "/topic/comment/" + userPost.get().getId();
 
-                messagingTemplate.convertAndSend(countEndpoint, newComments);
+                // messagingTemplate.convertAndSend(countEndpoint, newComments);
                 messagingTemplate.convertAndSend(commentEndpoint, commentOutput);
 
                 logger.info("Comment Operation Performed successful, with information : ", savedComment);
@@ -303,6 +322,7 @@ public class RabbitMqConsumers {
         }
     }
 
+
     @SuppressWarnings("null")
     @Transactional
     @RabbitListener(queues = "trackProfileVisit")
@@ -340,13 +360,28 @@ public class RabbitMqConsumers {
             } else {
                 Long existingFavorite = favoritesRepository.findFavoriteByPostAndUser(post.get().getId(), profile.get().getId());
                 if(existingFavorite == null){
+                    UserPost post1 = post.get();
                     Favorites favorites = new Favorites();
-                favorites.setPost(post.get());
+                favorites.setPost(post1);
                 favorites.setProfile(profile.get());
 
                 Favorites savedFavorites = favoritesRepository.save(favorites);
+                
+                int newFavorites = post1.getFavorites() + 1;
+                //update number of favorites in the posts
+                post1.setFavorites(newFavorites);
+                userPostRespository.save(post1);
 
-                rabbitTemplate.convertAndSend("trackFavorites", favoritesDto.toJson());
+                SocialMediaInstantChange social = new SocialMediaInstantChange();
+                social.setInteract("Favorites");
+                social.setPostId(post1.getId());
+                social.setNewNumber(newFavorites);
+
+                messagingTemplate.convertAndSend("/topic/social/", social);
+                
+                // String endpoint = "/topic/favorites/" + post1.getId();
+
+                // messagingTemplate.convertAndSend(endpoint, newFavorites );
 
                 logger.info("Favorites Operation Performed successful, with information : " + savedFavorites.toString());
                 }else{
