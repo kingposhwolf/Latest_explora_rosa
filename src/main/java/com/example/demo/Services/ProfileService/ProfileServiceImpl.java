@@ -26,8 +26,7 @@ public class ProfileServiceImpl implements ProfileService{
 
     @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> updateProfile(MultipartFile proFilePicture, Long profileId) {
-        // , MultipartFile coverPhoto, String bio, String address
+    public ResponseEntity<Object> updateProfile(MultipartFile proFilePicture, Long profileId, MultipartFile coverPhoto, String bio, String address) {
         try {
             Optional<Profile> profileOpt = profileRepository.findById(profileId);
             if(profileOpt.isPresent()){
@@ -38,6 +37,22 @@ public class ProfileServiceImpl implements ProfileService{
                         helper.deleteOldFile(profile.getProfilePicture(), "src\\main\\resources\\static\\profileImg\\");
                     }
                     profile.setProfilePicture(helper.saveImage(proFilePicture, profileId,"src\\main\\resources\\static\\profileImg\\"));
+                }
+
+                if(coverPhoto != null) {
+                    if(profile.getCoverPhoto() != null) {
+                        helper.deleteOldFile(profile.getCoverPhoto(), "src\\main\\resources\\static\\coverImg\\");
+                    }
+
+                    profile.setCoverPhoto(helper.saveImage(coverPhoto, profileId,"src\\main\\resources\\static\\coverImg\\"));
+                }
+
+                if(bio != null && !bio.isEmpty()){
+                    profile.setBio(bio);
+                }
+
+                if(address != null && !address.isEmpty()){
+                    profile.setAddress(address);
                 }
 
                 profileRepository.save(profile);
