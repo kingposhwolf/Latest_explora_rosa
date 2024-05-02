@@ -34,7 +34,10 @@ public class ProfileServiceImpl implements ProfileService{
                 Profile profile = profileOpt.get();
 
                 if(proFilePicture != null) {
-                    profile.setProfilePicture(helper.imageUlr(proFilePicture, profileId));
+                    if(profile.getProfilePicture() != null) {
+                        helper.deleteOldFile(profile.getProfilePicture(), "src\\main\\resources\\static\\profileImg\\");
+                    }
+                    profile.setProfilePicture(helper.saveImage(proFilePicture, profileId,"src\\main\\resources\\static\\profileImg\\"));
                 }
 
                 profileRepository.save(profile);

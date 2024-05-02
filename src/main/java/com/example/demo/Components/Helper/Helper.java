@@ -1,5 +1,6 @@
 package com.example.demo.Components.Helper;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
@@ -93,14 +94,10 @@ public class Helper {
     }
 
     @SuppressWarnings("null")
-    public String imageUlr(MultipartFile proFilePicture, Long profileId) {
+    public String saveImage(MultipartFile proFilePicture, Long profileId,String folderPath) {
         try {
-            LocalDateTime currentTime = LocalDateTime.now();
-            String folderPath = "src\\main\\resources\\static\\profileImg\\";
             // Generate a unique filename for the profile picture
-            String fileName = "profile_picture_" + profileId + "_" + currentTime.getYear() + "_"
-                    + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour()
-                    + "_" + currentTime.getMinute() + "_" + currentTime.getSecond();
+            String fileName = "file_" + profileId;
 
             // Obtain the original file name
             String originalFileName = proFilePicture.getOriginalFilename();
@@ -118,11 +115,22 @@ public class Helper {
             byte[] bytes = proFilePicture.getBytes();
             Files.write(Paths.get(imagePath), bytes);
 
-            // Return the recorded filename
             return recordedFileName;
         } catch (Exception e) {
-            return "";
+            return null;
         }
     }
+
+    public void deleteOldFile(String savedName,String folderPath) {
+        // Construct the file path for the old profile picture
+        String oldFilePath = folderPath + savedName;
+    
+        // Delete the old profile picture file
+        File oldProfilePictureFile = new File(oldFilePath);
+        if (oldProfilePictureFile.exists()) {
+            oldProfilePictureFile.delete();
+        }
+    }
+    
 
 }

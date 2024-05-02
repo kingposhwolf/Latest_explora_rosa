@@ -13,8 +13,11 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/posts/**")
                 .addResourceLocations("classpath:/static/posts/");
 
-        registry.addResourceHandler("/profile/**")
+        registry.addResourceHandler("/profile-picture/**")
                 .addResourceLocations("classpath:/static/profileImg/");
+
+        registry.addResourceHandler("/cover-img/**")
+                .addResourceLocations("classpath:/static/coverImg/");
     }
 }
 
