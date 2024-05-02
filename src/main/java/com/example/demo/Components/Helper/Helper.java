@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.Repositories.CommentLikeRepository;
 import com.example.demo.Repositories.FavoritesRepository;
 import com.example.demo.Repositories.LikeRepository;
 
@@ -25,6 +26,8 @@ public class Helper {
     private final LikeRepository likeRepository;
 
     private final FavoritesRepository favoritesRepository;
+
+    private final CommentLikeRepository commentLikeRepository;
 
     public Long calculateChatTimeDifference(LocalDateTime givenTime) {
         // Get the current local time
@@ -62,7 +65,7 @@ public class Helper {
         }
     }
 
-    public List<Map<String, Object>> mapTimer(List<Map<String, Object>> data) {
+    public List<Map<String, Object>> mapTimer(List<Map<String, Object>> data, Long profileId) {
         return data.stream()
                 .map(post -> {
                     // Create a new map with the existing entries except timestamp
@@ -73,6 +76,14 @@ public class Helper {
                     LocalDateTime timestamp = (LocalDateTime) post.get("timestamp");
                     String timeDifference = calculateTimeDifference(timestamp);
                     modifiedPost.put("duration", timeDifference);
+
+                    Long commentId = (Long) post.get("id");
+                    Optional<Long> liked = commentLikeRepository.findIfLikeComment(commentId, profileId);
+                    if(liked.isPresent()){
+                        modifiedPost.put("liked", true);
+                    }else{
+                        modifiedPost.put("liked", false);
+                    }
 
                     return modifiedPost;
                 })

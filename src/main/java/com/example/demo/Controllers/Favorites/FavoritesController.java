@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.InputDto.SocialMedia.Favorites.DeleteFavoriteDto;
 import com.example.demo.InputDto.SocialMedia.Favorites.FavoritesDto;
-import com.example.demo.InputDto.SocialMedia.Favorites.FetchFavoritesDto;
 import com.example.demo.Services.FavoritesService.FavoritesService;
 
 import jakarta.validation.Valid;
@@ -41,11 +40,4 @@ public class FavoritesController {
         return favoritesService.deleteFavorite(deleteFavoriteDto);
     }
 
-    @PostMapping("/user")
-    public ResponseEntity<Object> getFavoritesForPost(@RequestBody @Valid FetchFavoritesDto fetchFavoritesDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return globalValidationFormatter.validationFormatter(bindingResult);
-        }
-        return favoritesService.getUserFavorites(fetchFavoritesDto.getProfileId());
-    }
 }
