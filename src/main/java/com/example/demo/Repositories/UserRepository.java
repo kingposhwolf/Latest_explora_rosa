@@ -3,7 +3,6 @@ package com.example.demo.Repositories;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.example.demo.Models.UserManagement.User;
 import com.example.demo.Models.UserManagement.Management.Role;
 

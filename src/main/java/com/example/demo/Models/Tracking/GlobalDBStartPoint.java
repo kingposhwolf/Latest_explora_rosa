@@ -3,6 +3,8 @@ package com.example.demo.Models.Tracking;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,5 +20,6 @@ public class GlobalDBStartPoint {
     @Column(nullable = false)
     private Long hot;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

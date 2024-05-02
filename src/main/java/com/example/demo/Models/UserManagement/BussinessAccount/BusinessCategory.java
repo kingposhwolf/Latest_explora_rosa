@@ -3,6 +3,8 @@ package com.example.demo.Models.UserManagement.BussinessAccount;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /*
  * @author Dwight Danda
  *
@@ -24,5 +26,6 @@ public class BusinessCategory {
     @Column(nullable = false, length = 100, unique = true)
     private String name;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

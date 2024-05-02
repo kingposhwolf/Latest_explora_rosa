@@ -1,13 +1,13 @@
 package com.example.demo.chat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
-import org.springframework.lang.NonNull;
+import com.example.demo.Models.UserManagement.Profile;
+import com.example.demo.chatroom.ChatRoom;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,11 +21,24 @@ import lombok.NoArgsConstructor;
 public class ChatMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private String chatId;
-        private String senderId;
-        @NonNull
-        private String recipientId;
-        private String content;
-        private Date timestamp;
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name= "chatRoomId")
+    private ChatRoom chatRoom;
+
+    @ManyToOne
+    @JoinColumn(name = "senderId", nullable = false, foreignKey = @ForeignKey(name = "FK_PROFILE_SENDER_CHAT", foreignKeyDefinition = "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"))
+    private Profile sender;
+
+    @ManyToOne
+    @JoinColumn(name = "recipientId", nullable = false, foreignKey = @ForeignKey(name = "FK_PROFILE_RECIPIENT_CHAT", foreignKeyDefinition = "FOREIGN KEY (recipient_id) REFERENCES profiles(id) ON DELETE CASCADE"))
+    private Profile recipient;
+
+    @NotNull
+    private String content;
+
+    private LocalDateTime timestamp;
+
+    private MessageStatus status;
 }

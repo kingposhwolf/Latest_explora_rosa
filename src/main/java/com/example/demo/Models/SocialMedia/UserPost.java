@@ -93,7 +93,9 @@ public class UserPost {
     @Column
     private int favorites;
 
+    private String location;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     //Below is For Bidirection relationship

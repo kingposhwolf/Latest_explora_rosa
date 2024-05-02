@@ -5,14 +5,16 @@ import org.hibernate.annotations.SQLRestriction;
 
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.UserManagement.Profile;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
 @Table(name = "`like`")
-@SQLDelete(sql = "UPDATE 'like' SET deleted = true WHERE id=?")
+@SQLDelete(sql = "UPDATE `like` SET deleted = true WHERE id=?")
 @SQLRestriction("deleted=false")
 public class Like {
     @Id
@@ -20,12 +22,14 @@ public class Like {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "profile_id", foreignKey = @ForeignKey(name = "FK_LIKE_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
+    @JoinColumn(name = "profile_id", foreignKey = @ForeignKey(name = "FK_LIKE_8761046PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile liker;
 
     @ManyToOne
     @JoinColumn(name = "userPostId", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_LIKE", foreignKeyDefinition = "FOREIGN KEY (user_post_id) REFERENCES user_posts(id) ON DELETE CASCADE"))
+    @ToString.Exclude
     private UserPost post;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

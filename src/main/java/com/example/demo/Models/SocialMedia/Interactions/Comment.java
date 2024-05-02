@@ -12,6 +12,7 @@ import org.hibernate.annotations.SQLRestriction;
 
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.UserManagement.Profile;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -45,8 +46,12 @@ public class Comment {
     @JoinColumn(name = "parentCommentId", foreignKey = @ForeignKey(name = "FK_PARENT_COMMENT", foreignKeyDefinition = "FOREIGN KEY (parent_comment_id) REFERENCES comments(id) ON DELETE CASCADE"))
     private Comment parentComment;
 
+    @Column(nullable = false)
+    private int likes;
+
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> replies = new ArrayList<>();
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

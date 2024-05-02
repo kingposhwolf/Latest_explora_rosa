@@ -4,6 +4,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 import com.example.demo.Models.UserManagement.Profile;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,5 +27,6 @@ public class FollowUnFollow {
     @JoinColumn(name = "followingId", nullable = false, foreignKey = @ForeignKey(name = "FK_FOLLOWING_PROFILE", foreignKeyDefinition = "FOREIGN KEY (following_id) REFERENCES profiles(id) ON DELETE CASCADE"))
     private Profile following;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

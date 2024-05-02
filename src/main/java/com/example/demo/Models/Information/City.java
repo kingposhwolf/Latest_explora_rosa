@@ -3,6 +3,7 @@ package com.example.demo.Models.Information;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*
  * @author Dwight Danda
@@ -38,5 +39,6 @@ public class City {
         @Column(nullable = false, length = 150)
         private String state;
 
+        @JsonIgnore
         private boolean deleted = Boolean.FALSE;
 }

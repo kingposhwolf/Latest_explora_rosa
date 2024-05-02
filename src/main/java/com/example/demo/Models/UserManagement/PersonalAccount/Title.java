@@ -24,6 +24,7 @@ public class Title {
     @Column(nullable = false, length = 100, unique = true)
     private String name;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     //Below is For Bidirection relationship

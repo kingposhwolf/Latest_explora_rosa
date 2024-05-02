@@ -3,6 +3,8 @@ package com.example.demo.Models.Information;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,5 +25,6 @@ public class Location {
     private Double latitude;
     private Double longitude;// We might later use it for Location.
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

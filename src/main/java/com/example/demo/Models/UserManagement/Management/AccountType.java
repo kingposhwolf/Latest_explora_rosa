@@ -7,6 +7,8 @@ package com.example.demo.Models.UserManagement.Management;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,5 +25,6 @@ public class AccountType {
     @Column(length = 100, nullable = false, unique = true)
     private String name;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 }

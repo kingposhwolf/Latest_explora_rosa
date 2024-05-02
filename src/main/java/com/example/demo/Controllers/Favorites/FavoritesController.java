@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.FavoritesDto;
+import com.example.demo.InputDto.SocialMedia.Favorites.DeleteFavoriteDto;
+import com.example.demo.InputDto.SocialMedia.Favorites.FavoritesDto;
+import com.example.demo.InputDto.SocialMedia.Favorites.FetchFavoritesDto;
 import com.example.demo.Services.FavoritesService.FavoritesService;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -25,7 +26,7 @@ public class FavoritesController {
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/add")
-    public ResponseEntity<Object> newComment(@RequestBody @Valid FavoritesDto favoritesDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> newFavorite(@RequestBody @Valid FavoritesDto favoritesDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
@@ -33,18 +34,18 @@ public class FavoritesController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<Object> deleteMessage(@RequestBody @Valid @NotNull Long favoriteId, BindingResult bindingResult) {
+    public ResponseEntity<Object> deleteFavorite(@RequestBody @Valid DeleteFavoriteDto deleteFavoriteDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return favoritesService.deleteFavorite(favoriteId);
+        return favoritesService.deleteFavorite(deleteFavoriteDto);
     }
 
     @PostMapping("/user")
-    public ResponseEntity<Object> getCommentsForPost(@RequestBody @Valid @NotNull Long profileId, BindingResult bindingResult) {
+    public ResponseEntity<Object> getFavoritesForPost(@RequestBody @Valid FetchFavoritesDto fetchFavoritesDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return favoritesService.getUserFavorites(profileId);
+        return favoritesService.getUserFavorites(fetchFavoritesDto.getProfileId());
     }
 }

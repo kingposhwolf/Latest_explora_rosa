@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.NewPasswordDto;
-import com.example.demo.InputDto.PasswordResetDto;
-import com.example.demo.InputDto.RefreshTokenRequest;
-import com.example.demo.InputDto.SignUpRequest;
-import com.example.demo.InputDto.SigninRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.NewPasswordDto;
+import com.example.demo.InputDto.UserManagement.Authentication.PasswordResetDto;
+import com.example.demo.InputDto.UserManagement.Authentication.RefreshTokenRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.SignUpRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.SigninRequest;
 import com.example.demo.Services.AuthenticationService.AuthenticationService;
 import com.example.demo.Services.PasswordResetService.PasswordResetService;
 

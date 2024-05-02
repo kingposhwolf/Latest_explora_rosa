@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.ShareDto;
+import com.example.demo.InputDto.SocialMedia.Share.ShareDto;
 import com.example.demo.Services.ShareService.ShareServiceImpl;
 
 import jakarta.validation.Valid;
@@ -23,7 +23,7 @@ public class ShareController {
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/add")
-    public ResponseEntity<Object> newComment(@RequestBody @Valid ShareDto shareDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> share(@RequestBody @Valid ShareDto shareDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }

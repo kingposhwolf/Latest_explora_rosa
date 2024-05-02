@@ -14,12 +14,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.InputDto.JwtAuthenticationResponse;
-import com.example.demo.InputDto.RefreshTokenRequest;
-import com.example.demo.InputDto.RegistrationResponse;
-import com.example.demo.InputDto.SignUpRequest;
-import com.example.demo.InputDto.SigninRequest;
-import com.example.demo.Models.Information.City;
+import com.example.demo.InputDto.UserManagement.Authentication.JwtAuthenticationResponse;
+import com.example.demo.InputDto.UserManagement.Authentication.RefreshTokenRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.SignUpRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.SigninRequest;
+import com.example.demo.InputDto.UserManagement.Profile.RegistrationResponse;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Models.UserManagement.User;
 import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
@@ -31,7 +30,6 @@ import com.example.demo.Models.UserManagement.PersonalAccount.Personal;
 import com.example.demo.Repositories.AccountTypeRepository;
 import com.example.demo.Repositories.BrandRepository;
 import com.example.demo.Repositories.BusinessCategoryRepository;
-import com.example.demo.Repositories.CityRepository;
 import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.JWTService.JWTService;
@@ -57,8 +55,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final ProfileRepository profileRepository;
 
-    private final CityRepository cityRepository;
-
     private final BusinessCategoryRepository businessCategoryRepository;
 
     private final JWTService jwtService;
@@ -68,20 +64,23 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public ResponseEntity<Object> signup(SignUpRequest signUpRequest) {
         try{
 
-    AccountType accountType = accountTypeRepository.findById(signUpRequest.getAccountTypeId()).orElse(null);
+    Optional<AccountType> accountType = accountTypeRepository.findById(signUpRequest.getAccountTypeId());
 
-    if (accountType == null) {
+    if (accountType.isEmpty()) {
         String errorMessage = "Invalid input. ";
-        if (accountType == null) {
+        
             errorMessage += "Invalid accountTypeId: " + signUpRequest.getAccountTypeId() + ". ";
-        }
+
         logger.error("User registration failed, Validation Error" + errorMessage);
         return ResponseEntity.badRequest().body(errorMessage);
-    }else if(!accountType.getName().equalsIgnoreCase("PERSONAL") || accountType.getName().equalsIgnoreCase("BUSINESS")){
+
+    }else if(accountType.get().getId() != 1 && accountType.get().getId() != 2){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The Account Type you provide is Invalid");
     }else{
+            //Check if username and password Exist
         Optional<User> userExist1 = userRepository.findByUsername(signUpRequest.getUsername());
-    Optional<User> userExist2 = userRepository.findByEmail(signUpRequest.getEmail());
+        Optional<User> userExist2 = userRepository.findByEmail(signUpRequest.getEmail());
+
     if (userExist1.isPresent()) {
         logger.error("User Registration Failed, Username Must be unique Error");
         return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username must be unique.");
@@ -90,11 +89,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("email must be unique.");
     }
     else {
+
         //creating new user
         User user = new User();
     user.setEmail(signUpRequest.getEmail());
     user.setName(signUpRequest.getName());
-    user.setAccountType(accountType);
+    user.setAccountType(accountType.get());
     user.setUsername(signUpRequest.getUsername());
     user.setRole(Role.USER);
     user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
@@ -115,7 +115,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     //        title.setId((long) 1);
     //        title.setName("USER");
 
-    if(accountType.getName().equalsIgnoreCase("PERSONAL")){
+    if(accountType.get().getName().equalsIgnoreCase("PERSONAL")){
         Personal personal = new Personal();
         personal.setBio("");
         personal.setFollowers(0);
@@ -128,37 +128,54 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         personal.setTitle(null);
         personal.setVerificationStatus(VerificationStatus.UNVERIFIED);
 
-    Profile profile2 = profileRepository.save(personal);
-    logger.info("\nProfile saved Successful:\n" + personal);
+        Profile profile2 = profileRepository.save(personal);
+        logger.info("\nProfile saved Successful:\n" + personal);
 
-    //Return response
-    RegistrationResponse registrationResponse = new RegistrationResponse();
+        //Return response
+        RegistrationResponse registrationResponse = new RegistrationResponse();
 
-    registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
-    registrationResponse.setProfileId(profile2.getId());
+        registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
+        registrationResponse.setProfileId(profile2.getId());
+        registrationResponse.setAccountType(user.getAccountType());
 
-    return ResponseEntity.status(201).body(registrationResponse);
+        return ResponseEntity.status(201).body(registrationResponse);
+
     }else {
-        BusinessCategory businessCategory = businessCategoryRepository.findById(signUpRequest.getBusinessCategoryId()).orElse(null);
-        City city = cityRepository.findById(signUpRequest.getCityId()).orElse(null);
-    if(businessCategory == null || city == null){
-        if(businessCategory == null){
+
+        //Executed only ifthe business Account is created
+    BusinessCategory businessCategory = businessCategoryRepository.findById(signUpRequest.getBusinessCategoryId()).orElse(null);
+    // City city = cityRepository.findById((long) 1).orElse(null);
+
+    if(businessCategory == null){
+        // if(businessCategory == null){
+
             logger.error("User Registration Failed, busines category Must be not be Null");
             return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Business Category Does not exist is null");
-        }else{
-            logger.error("User Registration Failed, city Must be not be Null");
-            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("City Does not exist or is null");
-        }
+
+        // }else{
+
+        //     logger.error("User Registration Failed, city Must be not be Null");
+        //     return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("City Does not exist or is null");
+        // }
         
     }else{
         Brand brand = new Brand();
-        brand.setCity(city);
+        brand.setCity(null);
         brand.setRates(new BigDecimal(0.0));
         brand.setTinNumber(null);
         brand.setVerificationStatus(VerificationStatus.UNVERIFIED);
         brand.setUser(user);
         brand.setAddress(null);
         brand.setCoverPhoto(null);
+        brand.setBio("tell us about your business");
+        brand.setBusinessCategories(businessCategory);
+        brand.setAddress(null);
+        brand.setCoverPhoto(null);
+        brand.setFollowers(0);
+        brand.setFollowing(0);
+        brand.setPowerSize(0);
+        brand.setPosts(0);
+        brand.setCountry(null);
 
         Brand brand2 = brandRepository.save(brand);
     logger.info("\nBrand saved Successful:\n" + brand2);
@@ -168,6 +185,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
     registrationResponse.setProfileId(brand2.getId());
+    registrationResponse.setAccountType(user.getAccountType());
 
     return ResponseEntity.status(201).body(registrationResponse);
     }
@@ -203,6 +221,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         registrationResponse.setJwtAuthenticationResponse(jwtAuthenticationResponse);
         registrationResponse.setProfileId(profile.getId());
+        registrationResponse.setAccountType(user.getAccountType());
 
         logger.info("Login Successful for the user : " + user);
         return ResponseEntity.ok(registrationResponse);

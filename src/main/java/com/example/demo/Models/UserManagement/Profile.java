@@ -21,6 +21,7 @@ import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngageFeedPrevi
 import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngagement;
 import com.example.demo.Models.Tracking.UserToUserTracking.UserEngageFeedsPreviousEnd;
 import com.example.demo.Models.Tracking.UserToUserTracking.UserEngagement;
+import com.example.demo.Models.UserManagement.Management.Status;
 import com.example.demo.Models.UserManagement.Management.VerificationStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -74,6 +75,9 @@ public class Profile {
     @Column(nullable = false)
     private float powerSize;
 
+    private Status status;
+
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     //Below is For Bidirection relationship

@@ -1,5 +1,5 @@
 package com.example.demo.Services.UserPostService;
-import com.example.demo.InputDto.UserPostDto;
+import com.example.demo.InputDto.SocialMedia.Post.UserPostDto;
 import com.example.demo.Models.SocialMedia.HashTag;
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.UserManagement.Profile;
@@ -21,14 +21,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -37,7 +35,7 @@ import java.util.Optional;
 public class UserPostServiceImpl implements UserPostService{
     private static final Logger logger = LoggerFactory.getLogger(UserPostServiceImpl.class);
 
-    private final String postfolderPath="C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
+    private final String postfolderPath="Posts";
 
     private final UserPostRepository userPostRepository;
     private final ProfileRepository profileRepository;
@@ -53,6 +51,7 @@ public ResponseEntity<Object> uploadPost(
         MultipartFile[] files,
         Long profileId,
         String caption,
+        String location,
         Long brandId,
         List<String> hashtagNames) throws IOException {
     try {
@@ -60,7 +59,7 @@ public ResponseEntity<Object> uploadPost(
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
         }
         else{
-            String folderPath= "C:\\Users\\user\\Documents\\explore\\exploredev\\userPosts\\";
+            String folderPath= "src\\main\\resources\\static\\posts\\";
 
             // Generate the filename using profileId, time, day, month, and year
             LocalDateTime currentTime = LocalDateTime.now();
@@ -180,9 +179,10 @@ public ResponseEntity<Object> uploadPost(
                     userPost.setCaption(caption); // Use the provided caption
                     userPost.setTime(LocalDateTime.now());
                     userPost.setContentTypes(userPostDto.getContentTypes());
-                    userPost.setPath(userPostDto.getPath());
+                    userPost.setPath("/posts");
                     userPost.setShares(0);
                     userPost.setFavorites(0);
+                    userPost.setLocation(location);
 
                     //Print to see what's being carried
                     logger.info(userPost.toString());

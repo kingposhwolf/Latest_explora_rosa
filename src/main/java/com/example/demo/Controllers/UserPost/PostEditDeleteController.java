@@ -1,6 +1,6 @@
 package com.example.demo.Controllers.UserPost;
 
-import com.example.demo.InputDto.UserPostDto;
+import com.example.demo.InputDto.SocialMedia.Post.UserPostDto;
 import com.example.demo.Services.UserPostService.UserPostServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +25,15 @@ public class PostEditDeleteController {
     @PostMapping("/upload")
     public ResponseEntity<Object> uploadPost(
             @ModelAttribute UserPostDto userPostDto,
-            @RequestParam("content") MultipartFile[] file,
+            @RequestParam("file") MultipartFile[] file,
             @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail,
             @RequestParam("profileId") Long profileId,
+            @RequestParam(value = "location", required = false) String location,
             @RequestParam("caption") String caption,
             @RequestParam(value = "brandName", required = false) Long brandId,
             @RequestParam(value = "hashTags", required = false) List<String> hashTags) {
         try {
-            return userPostServiceImpl.uploadPost(userPostDto, file, profileId, caption, brandId, hashTags);
+            return userPostServiceImpl.uploadPost(userPostDto, file, profileId, caption,location, brandId, hashTags);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to upload post: " + e.getMessage());

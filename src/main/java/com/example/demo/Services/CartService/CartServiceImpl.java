@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.InputDto.CartDto;
-import com.example.demo.InputDto.CartItemDto;
+import com.example.demo.InputDto.Ecommerce.Cart.CartDto;
+import com.example.demo.InputDto.Ecommerce.Cart.CartItemDto;
 import com.example.demo.Models.Ecommerce.Cart.Cart;
 import com.example.demo.Models.Ecommerce.Cart.CartItem;
 import com.example.demo.Models.SocialMedia.UserPost;

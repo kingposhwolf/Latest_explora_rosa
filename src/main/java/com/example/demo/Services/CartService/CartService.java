@@ -2,7 +2,7 @@ package com.example.demo.Services.CartService;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.InputDto.CartDto;
+import com.example.demo.InputDto.Ecommerce.Cart.CartDto;
 
 public interface CartService {
     ResponseEntity<Object> addToCart(CartDto cartDto);

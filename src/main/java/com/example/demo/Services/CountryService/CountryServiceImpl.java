@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
-import com.example.demo.InputDto.CountryDto;
+import com.example.demo.InputDto.ManagementInfo.Country.CountryDto;
 import com.example.demo.Models.Information.Country;
 import com.example.demo.Repositories.CountryRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;

@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo.Models.UserManagement.Management.AccountType;
 import com.example.demo.Models.UserManagement.Management.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -45,6 +46,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private Role role;
 
+    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     @Override

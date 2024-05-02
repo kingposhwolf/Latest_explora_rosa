@@ -2,9 +2,9 @@ package com.example.demo.Services.AuthenticationService;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.InputDto.RefreshTokenRequest;
-import com.example.demo.InputDto.SignUpRequest;
-import com.example.demo.InputDto.SigninRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.RefreshTokenRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.SignUpRequest;
+import com.example.demo.InputDto.UserManagement.Authentication.SigninRequest;
 
 public interface AuthenticationService {
     
