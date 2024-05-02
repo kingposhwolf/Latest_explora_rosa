@@ -21,6 +21,9 @@ public interface LikeRepository extends CrudRepository<Like, Long>{
     @Query(value = "SELECT * FROM `like` WHERE user_post_id = :postId AND profile_id = :likerId AND deleted = true", nativeQuery = true)
     Optional<Like> findDeletedLikesByPostAndLiker(@Param("postId") Long postId, @Param("likerId") Long likerId);
 
+    @Query(value = "SELECT id FROM `like` WHERE user_post_id = :postId AND profile_id = :likerId AND deleted = false", nativeQuery = true)
+    Optional<Long> findIfLikePost(@Param("postId") Long postId, @Param("likerId") Long likerId);
+
     @Query("SELECT DISTINCT l.liker.id as profileId, l.liker.verificationStatus as verificatioStatus, l.liker.user.username as username, l.liker.user.name as name FROM Like l JOIN l.liker u WHERE l.post.id = :postId ")
     List<Map<String, Object>> findLikersByUsernameAndName(@Param("postId") Long postId);
 

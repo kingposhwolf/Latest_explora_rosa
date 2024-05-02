@@ -3,6 +3,7 @@ package com.example.demo.Services.FavoritesService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,10 +85,10 @@ public class FavoritesServiceImpl implements FavoritesService{
     @Override
     public ResponseEntity<Object> deleteFavorite(DeleteFavoriteDto deleteFavoriteDto) {
         try {
-            Long favorite = favoritesRepository.findFavoriteByPostAndUser(deleteFavoriteDto.getPostId(),deleteFavoriteDto.getProfileId());
-            if (favorite != null) {
+            Optional<Long> favorite = favoritesRepository.findFavoriteByPostAndUser(deleteFavoriteDto.getPostId(),deleteFavoriteDto.getProfileId());
+            if (favorite.isPresent()) {
 
-                favoritesRepository.deleteById(favorite);
+                favoritesRepository.deleteById(favorite.get());
 
                 logger.info("Favorite deleted successfully");
                 return ResponseEntity.status(HttpStatus.OK).body("Favorite deleted successfully");

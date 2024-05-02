@@ -23,11 +23,11 @@ public class PostRetrieveController {
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/fetch")
-    public ResponseEntity<Object> retrievePosts() {
-        // if (bindingResult.hasErrors()) {
-        //     return globalValidationFormatter.validationFormatter(bindingResult);
-        // }
-        return feedsServiceImpl.retrieveFeeds((long) 1);
+    public ResponseEntity<Object> retrievePosts(@RequestBody @Valid PostRetrieveDto postRetrieve, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return feedsServiceImpl.retrieveFeeds(postRetrieve.getProfileId());
     }
 
     @PostMapping("/fetch/specific")

@@ -82,7 +82,7 @@ public class UserService2 {
                 }
 
                 conversation.setUnreadMessages(chatMessageRepository.unreadMessages(profileId, Long.parseLong(Objects.toString(chat.get("chatRoomId"), null))));
-                conversation.setLastMessage(helper.mapSingleTimer(chatMessageRepository.lastMessage(Long.parseLong(Objects.toString(chat.get("chatRoomId"), null)))));
+                conversation.setLastMessage(helper.mapChatSingleTimer(chatMessageRepository.lastMessage(Long.parseLong(Objects.toString(chat.get("chatRoomId"), null)))));
                 conversationList.add(conversation);
             }
             return conversationList;

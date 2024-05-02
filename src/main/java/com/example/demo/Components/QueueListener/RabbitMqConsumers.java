@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-// import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
@@ -70,8 +69,6 @@ public class RabbitMqConsumers {
 
     private final CommentLikeRepository commentLikeRepository;
 
-    // private AmqpTemplate rabbitTemplate;
-
     private final Helper helper;
 
     private final FavoritesRepository favoritesRepository;
@@ -111,7 +108,7 @@ public class RabbitMqConsumers {
                     social.setPostId(post.getId());
                     social.setNewNumber(change);
 
-                    messagingTemplate.convertAndSend("/topic/social/", social);
+                    messagingTemplate.convertAndSend("/topic/social", social.toString());
 
                     processTopicEngagement(profile.get(), userPost.get().getHashTags(),-1);
                     processUserEngagement(profile.get(), userPost.get().getProfile(),-1);
@@ -147,7 +144,7 @@ public class RabbitMqConsumers {
                     social.setPostId(post.getId());
                     social.setNewNumber(newLikes);
 
-                    messagingTemplate.convertAndSend("/topic/social/", social);
+                    messagingTemplate.convertAndSend("/topic/social", social.toString());
 
                     processTopicEngagement(profile.get(), userPost.get().getHashTags(),1);
                     processUserEngagement(profile.get(), userPost.get().getProfile(),1);
@@ -205,7 +202,7 @@ public class RabbitMqConsumers {
                 social.setPostId(userPost.get().getId());
                 social.setNewNumber(newComments);
 
-                messagingTemplate.convertAndSend("/topic/social/", social);
+                messagingTemplate.convertAndSend("/topic/social", social.toString());
 
                 String commentEndpoint = "/topic/comment/" + userPost.get().getId();
 
@@ -358,8 +355,8 @@ public class RabbitMqConsumers {
             } else if (post.isEmpty()) {
                 logger.error("During Saving Favorites User post not found for post ID: " + favoritesDto.getPostId());
             } else {
-                Long existingFavorite = favoritesRepository.findFavoriteByPostAndUser(post.get().getId(), profile.get().getId());
-                if(existingFavorite == null){
+                Optional<Long> existingFavorite = favoritesRepository.findFavoriteByPostAndUser(post.get().getId(), profile.get().getId());
+                if(existingFavorite.isEmpty()){
                     UserPost post1 = post.get();
                     Favorites favorites = new Favorites();
                 favorites.setPost(post1);
@@ -377,7 +374,7 @@ public class RabbitMqConsumers {
                 social.setPostId(post1.getId());
                 social.setNewNumber(newFavorites);
 
-                messagingTemplate.convertAndSend("/topic/social/", social);
+                messagingTemplate.convertAndSend("/topic/social", social.toString());
                 
                 // String endpoint = "/topic/favorites/" + post1.getId();
 
@@ -582,48 +579,6 @@ public class RabbitMqConsumers {
                     userEngagementRepository.save(newUserEngagement);
                 });
     }
-
-    // @SuppressWarnings("null")
-    // @Transactional
-    // @RabbitListener(queues = "follow")
-    // public void followOperation(String message) {
-    //     try {
-    //         FollowUnFollowDto followUnFollowDto = FollowUnFollowDto.fromJson(message);
-    //         Optional<Profile> accountOpt = profileRepository.findById(followUnFollowDto.getAccountId());
-
-    //         Optional<Profile> userOpt = profileRepository.findById(followUnFollowDto.getUser());
-
-    //         if(accountOpt.isEmpty()){
-    //             logger.error("Follow Operation failed the acoount to be followed is not present, provided id: "+ followUnFollowDto.getAccountId());
-    //         }else if(userOpt.isEmpty()){
-    //             logger.error("Follow Operation failed the user to be follow is not present, provided id: "+ followUnFollowDto.getUser());
-    //         }else{
-    //             Profile account = accountOpt.get();
-    //             Profile user = userOpt.get();
-
-    //             Optional<FollowUnFollow> engagement = followUnFollowRepository.findByFollowerAndFollowing(account,user);
-                
-    //             if(engagement.isPresent()){
-    //                 logger.error("User already follow that account : "+ message);
-    //             }else{
-    //                 FollowUnFollow newFollow = new FollowUnFollow();
-    //                 newFollow.setFollowing(account);
-    //                 newFollow.setFollower(user);
-    //                 followUnFollowRepository.save(newFollow);
-
-    //                 account.setFollowers(account.getFollowers() + 1);
-    //                 profileRepository.save(account);
-
-    //                 user.setFollowing(user.getFollowing() + 1);
-    //                 profileRepository.save(user);
-    //                 logger.info("Follow Operation tracked successful");
-    //             }
-    //         }
-
-    //     } catch (Exception exception) {
-    //         logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());
-    //     }
-    // }
 
     @SuppressWarnings("null")
     @Transactional
