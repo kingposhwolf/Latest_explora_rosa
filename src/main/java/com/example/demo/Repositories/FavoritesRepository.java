@@ -58,4 +58,8 @@ public interface FavoritesRepository extends JpaRepository<Favorites, Long>{
          "WHERE up.profile.id = :profileId " +
          "GROUP BY up.post.id")
 List<Map<String, Object>> findSpecificUserFavoritePost(@Param("profileId") Long profileId);
+
+    @Query(value = "SELECT * FROM favorites WHERE user_post_id = :postId AND profile_id = :profileId", nativeQuery = true)
+    Optional<Favorites> favoriteExistance(@Param("postId") Long postId, @Param("profileId") Long profileId);
+
 }
