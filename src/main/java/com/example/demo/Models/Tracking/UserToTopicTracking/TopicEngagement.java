@@ -1,5 +1,7 @@
 package com.example.demo.Models.Tracking.UserToTopicTracking;
 
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
@@ -30,6 +32,8 @@ public class TopicEngagement {
 
     @Column(nullable = false)
     private int score;
+
+    private LocalDateTime time;
 
     @JsonIgnore
     private boolean deleted = Boolean.FALSE;

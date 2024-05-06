@@ -149,7 +149,6 @@ public class Helper {
                     String timeDifference = calculateTimeDifference(timestamp);
 
                     modifiedPost.put("duration", timeDifference);
-                    modifiedPost.put("showComment", false);
                     modifiedPost.put("showShare", false);
 
                     //Check if the user like that post
