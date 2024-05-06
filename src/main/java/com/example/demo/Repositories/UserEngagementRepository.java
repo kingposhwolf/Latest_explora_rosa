@@ -1,5 +1,6 @@
 package com.example.demo.Repositories;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -30,10 +31,13 @@ public interface UserEngagementRepository extends JpaRepository<UserEngagement, 
 "JOIN profiles tp ON ue.topic_id = tp.id "+
 "JOIN users us ON tp.user_id = us.id "+
 "WHERE ue.target_id = :targetId "+
-"AND (LEVENSHTEIN(us.username, :searchText) <= 2 "+
-  "OR LEVENSHTEIN(us.name, :searchText) <= 2) "+
+"AND ((LEVENSHTEIN(us.username, :searchText) <= 2 "+
+  "OR us.username LIKE CONCAT(:searchText, '%')) "+
+  "OR (LEVENSHTEIN(us.name, :searchText) <= 2 "+
+  "OR us.name LIKE CONCAT(:searchText, '%'))) "+
 "AND ue.deleted = false", nativeQuery = true)
-List<Map<String, Object>> searchByTargetAndTopic(@Param("targetId") Long targetId, @Param("searchText") String searchText);
+HashSet<Map<String, Object>> searchByTargetAndTopic(@Param("targetId") Long targetId, @Param("searchText") String searchText);
+
 
 
 }
