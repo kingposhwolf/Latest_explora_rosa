@@ -41,9 +41,10 @@ public interface FollowUnFollowRepository extends JpaRepository<FollowUnFollow, 
 "JOIN users us ON tp.user_id = us.id "+
 "WHERE ue.follower_id = :targetId "+
 "AND ((LEVENSHTEIN(us.username, :searchText) <= 2 "+
-  "OR us.username LIKE CONCAT(:searchText, '%')) "+
+  "OR us.username LIKE CONCAT('%', :searchText, '%')) "+
   "OR (LEVENSHTEIN(us.name, :searchText) <= 2 "+
-  "OR us.name LIKE CONCAT(:searchText, '%'))) "+
+  "OR us.name LIKE CONCAT('%', :searchText, '%'))) "+
 "AND ue.deleted = false", nativeQuery = true)
 HashSet<Map<String, Object>> searchOnFollowing(@Param("targetId") Long targetId, @Param("searchText") String searchText);
+
 }
