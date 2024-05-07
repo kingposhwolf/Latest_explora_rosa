@@ -139,6 +139,9 @@ public class Helper {
     }
 
     public List<Map<String, Object>> postMapTimer(List<Map<String, Object>> data, Long profileId) {
+        List<Long> postUserLike = likeRepository.postsUserLike(profileId);
+
+        List<Long> favoritePosts = favoritesRepository.findPostByProfile(profileId);
         return data.stream()
                 .map(post -> {
                     // Create a new map with the existing entries except timestamp
@@ -154,16 +157,16 @@ public class Helper {
 
                     //Check if the user like that post
                     Long postId = (Long) post.get("id");
-                    Optional<Long> liked = likeRepository.findIfLikePost(postId, profileId);
-                    if(liked.isPresent()){
+                   // Optional<Long> liked = likeRepository.findIfLikePost(postId, profileId);
+                    if(postUserLike.contains(postId)){
                         modifiedPost.put("liked", true);
                     }else{
                         modifiedPost.put("liked", false);
                     }
 
                     //check if the user add the post to the favorites
-                    Optional<Long> favorited = favoritesRepository.findFavoriteByPostAndUser(postId, profileId);
-                    if(favorited.isPresent()){
+                   // Optional<Long> favorited = favoritesRepository.findFavoriteByPostAndUser(postId, profileId);
+                    if(favoritePosts.contains(postId)){
                         modifiedPost.put("favorite", true);
                     }else{
                         modifiedPost.put("favorite", false);
