@@ -41,6 +41,7 @@ public class UserPostServiceImpl implements UserPostService{
     private final ProfileRepository profileRepository;
     private final HashTagRepository hashTagRepository;
     private final BrandRepository brandRepository;
+    private final CountryRepository countryRepository;
    // private final LikeRepository likeRepository;
 
 @SuppressWarnings("null")
@@ -53,7 +54,8 @@ public ResponseEntity<Object> uploadPost(
         String caption,
         String location,
         Long brandId,
-        List<String> hashtagNames) throws IOException {
+        List<String> hashtagNames,
+        Long countryId) throws IOException {
     try {
         if (files.length > 6) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
@@ -172,7 +174,7 @@ public ResponseEntity<Object> uploadPost(
                     UserPost userPost = new UserPost();
                     userPost.setProfile(profile.get());
                     userPost.setNames(userPostDto.getNames());
-                    userPost.setCountry(profile.get().getCountry());
+                    userPost.setCountry(countryRepository.findById(countryId).get());
                     userPost.setHashTags(userPostDto.getHashTagIds());
                     userPost.setBrand(brand);
                     userPost.setThumbnail(userPostDto.getThumbnail());

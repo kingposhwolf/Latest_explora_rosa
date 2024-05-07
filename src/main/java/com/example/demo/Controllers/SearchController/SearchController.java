@@ -23,10 +23,18 @@ public class SearchController {
     private GlobalValidationFormatter globalValidationFormatter;
 
     @PostMapping("/suggestive")
-    public ResponseEntity<Object> writeMessage(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> searchFromEngage(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return searchService.suggestiveProfiles(searchDto);
+    }
+
+    @PostMapping("/suggestiveFollowings")
+    public ResponseEntity<Object> searchFromFollowings(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return searchService.suggestiveProfilesOnFollowings(searchDto);
     }
 }

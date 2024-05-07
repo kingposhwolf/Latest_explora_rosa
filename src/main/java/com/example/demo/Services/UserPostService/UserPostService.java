@@ -18,7 +18,8 @@ public interface UserPostService {
             String caption,
             String location,
             Long brandId,
-            List<String> hashtagNames) throws IOException;
+            List<String> hashtagNames,
+            Long countryId) throws IOException;
 
     @Transactional
     ResponseEntity<Object> uploadSnippet(

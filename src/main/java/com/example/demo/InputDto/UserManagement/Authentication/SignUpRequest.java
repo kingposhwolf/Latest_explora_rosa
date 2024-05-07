@@ -31,5 +31,9 @@ public class SignUpRequest {
 
     private Long businessCategoryId;
 
+    @NotNull
     private Long cityId;
+
+    @NotNull
+    private Long countryId;
 }

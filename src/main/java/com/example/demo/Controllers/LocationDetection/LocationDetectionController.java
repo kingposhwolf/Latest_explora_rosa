@@ -13,6 +13,7 @@ import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -21,13 +22,16 @@ import lombok.AllArgsConstructor;
 public class LocationDetectionController {
 
     @PostMapping("/withIp")
-    public ResponseEntity<Object> elocationTrack() throws IOException, GeoIp2Exception {
+    public ResponseEntity<Object> elocationTrack(HttpServletRequest request) throws IOException, GeoIp2Exception {
         
         File database = new File("src\\main\\resources\\Other_Helper_Files\\GeoLite2DB\\City\\GeoLite2-City_20240503\\GeoLite2-City.mmdb");
         DatabaseReader dbReader = new DatabaseReader.Builder(database).build();
 
         InetAddress ipAddress = InetAddress.getByName("213.180.203.246");
         CityResponse response = dbReader.city(ipAddress);
+        //get ipaddress
+        request.getRemoteAddr();
+
 
         return ResponseEntity.ok(response.getCountry().getName());
     }

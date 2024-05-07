@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Repositories.FollowUnFollowRepository;
+import com.example.demo.Repositories.ProfileRepository;
 import com.example.demo.Repositories.UserEngagementRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
@@ -24,6 +25,8 @@ public class SearchAlgorithm {
     private final UserEngagementRepository userEngagementRepository;
 
     private final FollowUnFollowRepository followUnFollowRepository;
+
+    private final ProfileRepository profileRepository;
 
     //Search on keyword if contains in Topic
     public List<UserPost> topicContainKeyword(String keyword){
@@ -44,12 +47,11 @@ public class SearchAlgorithm {
     }
 
     //Search on Location
-    public HashSet<Map<String, Object>> suggestiveProfiles(Long profileId, String keyword){
+    public List<Map<String, Object>> suggestiveProfiles(Long profileId, String keyword){
 
-       // Pageable pageable = PageRequest.of(0, 10);
-        HashSet<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(profileId, keyword);
+        List<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(profileId, keyword);
 
-        HashSet<Map<String, Object>> followings = followUnFollowRepository.searchOnFollowing(profileId, keyword);
+        List<Map<String, Object>> followings = followUnFollowRepository.searchOnFollowing(profileId, keyword);
 
         interact.addAll(followings);
 
@@ -59,6 +61,11 @@ public class SearchAlgorithm {
         
 
         return interact;
+    }
+
+    //Search on Location
+    public List<Map<String, Object>> searchOnFollowings(Long profileId, String keyword){
+        return profileRepository.searchByUserFollowings(profileId, keyword);
     }
 
     // //Search on tags (Here we searched for the account that is tagged on the post)

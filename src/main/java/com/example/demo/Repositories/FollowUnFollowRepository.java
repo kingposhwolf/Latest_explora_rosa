@@ -1,6 +1,5 @@
 package com.example.demo.Repositories;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -45,6 +44,6 @@ public interface FollowUnFollowRepository extends JpaRepository<FollowUnFollow, 
   "OR (LEVENSHTEIN(us.name, :searchText) <= 2 "+
   "OR us.name LIKE CONCAT('%', :searchText, '%'))) "+
 "AND ue.deleted = false", nativeQuery = true)
-HashSet<Map<String, Object>> searchOnFollowing(@Param("targetId") Long targetId, @Param("searchText") String searchText);
+List<Map<String, Object>> searchOnFollowing(@Param("targetId") Long targetId, @Param("searchText") String searchText);
 
 }
