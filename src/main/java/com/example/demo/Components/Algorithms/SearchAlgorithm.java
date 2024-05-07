@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import com.example.demo.Components.Helper.Helper;
+import com.example.demo.InputDto.SearchDto.SearchDto;
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Repositories.FollowUnFollowRepository;
 import com.example.demo.Repositories.ProfileRepository;
@@ -28,6 +30,8 @@ public class SearchAlgorithm {
 
     private final ProfileRepository profileRepository;
 
+    private final Helper helper;
+
     //Search on keyword if contains in Topic
     public List<UserPost> topicContainKeyword(String keyword){
 
@@ -47,25 +51,34 @@ public class SearchAlgorithm {
     }
 
     //Search on Location
-    public List<Map<String, Object>> suggestiveProfiles(Long profileId, String keyword){
+    public List<Map<String, Object>> suggestiveProfiles(SearchDto searchDto){
 
-        List<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(profileId, keyword);
+        List<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(searchDto.getProfileId(), searchDto.getKeyword());
 
-        List<Map<String, Object>> followings = followUnFollowRepository.searchOnFollowing(profileId, keyword);
+        List<Map<String, Object>> followings = followUnFollowRepository.searchOnFollowing(searchDto.getProfileId(), searchDto.getKeyword());
 
-        interact.addAll(followings);
+        List<Map<String, Object>> followingfollowings = helper.mergeProfiles(profileRepository.searchByUserFollowings(searchDto.getProfileId(), searchDto.getKeyword()));
+
+        List<Map<String, Object>> fames = profileRepository.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword());
+
+        followingfollowings.addAll(interact);
+        followingfollowings.addAll(followings);
+        followingfollowings.addAll(fames);
 
         HashSet<Object> seen = new HashSet<>();
 
-        interact.removeIf(e -> !seen.add(e.get("profileId")));
+        followingfollowings.removeIf(e -> {
+            Object profileId = e.get("profileId");
+            return !seen.add(profileId) || profileId.equals(searchDto.getProfileId());
+        });
         
 
-        return interact;
+        return followingfollowings;
     }
 
     //Search on Location
-    public List<Map<String, Object>> searchOnFollowings(Long profileId, String keyword){
-        return profileRepository.searchByUserFollowings(profileId, keyword);
+    public List<Map<String, Object>> searchOnCountryFame(Long countryId, String keyword){
+        return profileRepository.searchOnCountryFame(countryId, keyword);
     }
 
     // //Search on tags (Here we searched for the account that is tagged on the post)

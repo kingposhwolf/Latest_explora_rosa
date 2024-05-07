@@ -30,7 +30,7 @@ public class SearchServiceImpl implements SearchService{
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }
             else{
-                return ResponseEntity.status(200).body(searchAlgorithm.suggestiveProfiles(searchDto.getProfileId(), searchDto.getKeyword()));
+                return ResponseEntity.status(200).body(searchAlgorithm.suggestiveProfiles(searchDto));
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
@@ -38,22 +38,22 @@ public class SearchServiceImpl implements SearchService{
         }
     }
 
-    @Override
-    public ResponseEntity<Object> suggestiveProfilesOnFollowings(SearchDto searchDto) {
-        try {
-            Long profile = profileRepository.findProfileIdById(searchDto.getProfileId());
+    // @Override
+    // public ResponseEntity<Object> suggestiveProfilesOnFollowings(SearchDto searchDto) {
+    //     try {
+    //         Long profile = profileRepository.findProfileIdById(searchDto.getProfileId());
 
-            if(profile == null){
-                logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
-                return ResponseEntity.badRequest().body("Your profile ID is Invalid");
-            }
-            else{
-                return ResponseEntity.status(200).body(searchAlgorithm.searchOnFollowings(searchDto.getProfileId(), searchDto.getKeyword()));
-            }
-        } catch (Exception exception) {
-            logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
-            return ResponseEntity.status(500).body("Internal Server Error");
-        }
-    }
+    //         if(profile == null){
+    //             logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
+    //             return ResponseEntity.badRequest().body("Your profile ID is Invalid");
+    //         }
+    //         else{
+    //             return ResponseEntity.status(200).body(searchAlgorithm.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword()));
+    //         }
+    //     } catch (Exception exception) {
+    //         logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
+    //         return ResponseEntity.status(500).body("Internal Server Error");
+    //     }
+    // }
     
 }

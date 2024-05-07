@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -210,6 +211,33 @@ public class Helper {
         if (oldProfilePictureFile.exists()) {
             oldProfilePictureFile.delete();
         }
+    }
+
+    public List<Map<String, Object>> mergeProfiles(List<Map<String, Object>> inputList) {
+        // Map to store merged profiles based on profileId
+        Map<Long, Map<String, Object>> mergedProfilesMap = new HashMap<>();
+        
+        // Iterate over the input list
+        for (Map<String, Object> profile : inputList) {
+            Long profileId = (Long) profile.get("profileId");
+            String followedBy = (String) profile.get("followedBy");
+            
+            // Check if a profile with the same profileId already exists
+            if (mergedProfilesMap.containsKey(profileId)) {
+                // Merge the followedBy values
+                Map<String, Object> existingProfile = mergedProfilesMap.get(profileId);
+                String existingFollowedBy = (String) existingProfile.get("followedBy");
+                existingProfile.put("followedBy", existingFollowedBy + " , " + followedBy);
+            } else {
+                // Add a new entry to the merged profiles map
+                mergedProfilesMap.put(profileId, new HashMap<>(profile));
+            }
+        }
+        
+        // Convert the merged profiles map to a list
+        List<Map<String, Object>> mergedList = new ArrayList<>(mergedProfilesMap.values());
+        
+        return mergedList;
     }
     
 }

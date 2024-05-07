@@ -30,11 +30,11 @@ public class SearchController {
         return searchService.suggestiveProfiles(searchDto);
     }
 
-    @PostMapping("/suggestiveFollowings")
-    public ResponseEntity<Object> searchFromFollowings(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return globalValidationFormatter.validationFormatter(bindingResult);
-        }
-        return searchService.suggestiveProfilesOnFollowings(searchDto);
-    }
+    // @PostMapping("/suggestiveFollowings")
+    // public ResponseEntity<Object> searchFromFollowings(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
+    //     if (bindingResult.hasErrors()) {
+    //         return globalValidationFormatter.validationFormatter(bindingResult);
+    //     }
+    //     return searchService.suggestiveProfilesOnFollowings(searchDto);
+    // }
 }

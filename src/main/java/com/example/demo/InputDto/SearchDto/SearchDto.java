@@ -10,4 +10,7 @@ public class SearchDto {
 
     @NotNull
     private String keyword;
+
+    @NotNull
+    private Long countryId;
 }
