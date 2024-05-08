@@ -59,11 +59,11 @@ public class SearchAlgorithm {
 
         List<Map<String, Object>> followingfollowings = helper.mergeProfiles(profileRepository.searchByUserFollowings(searchDto.getProfileId(), searchDto.getKeyword()));
 
-        List<Map<String, Object>> fames = profileRepository.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword());
+        List<Map<String, Object>> countryFames = profileRepository.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword());
 
         followingfollowings.addAll(interact);
         followingfollowings.addAll(followings);
-        followingfollowings.addAll(fames);
+        followingfollowings.addAll(countryFames);
 
         HashSet<Object> seen = new HashSet<>();
 
