@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -66,7 +65,8 @@ public class Helper {
         }
     }
 
-    public List<Map<String, Object>> mapTimer(List<Map<String, Object>> data, Long profileId) {
+    public List<Map<String, Object>> mapCommentTimer(List<Map<String, Object>> data, Long profileId) {
+        List<Long> commentsUSerLikes = commentLikeRepository.commentsUserLike(profileId);
         return data.stream()
                 .map(post -> {
                     // Create a new map with the existing entries except timestamp
@@ -79,8 +79,8 @@ public class Helper {
                     modifiedPost.put("duration", timeDifference);
 
                     Long commentId = (Long) post.get("id");
-                    Optional<Long> liked = commentLikeRepository.findIfLikeComment(commentId, profileId);
-                    if(liked.isPresent()){
+
+                    if(commentsUSerLikes.contains(commentId)){
                         modifiedPost.put("liked", true);
                     }else{
                         modifiedPost.put("liked", false);
@@ -108,20 +108,20 @@ public class Helper {
                 .collect(Collectors.toList());
     }
 
-    public Map<String, Object> mapSingleTimer(Map<String, Object> data) {
-        // Create a new map with the existing entries except timestamp
-        Map<String, Object> modifiedData = new HashMap<>(data);
-        modifiedData.remove("timestamp");
+    // public Map<String, Object> mapSingleTimer(Map<String, Object> data) {
+    //     // Create a new map with the existing entries except timestamp
+    //     Map<String, Object> modifiedData = new HashMap<>(data);
+    //     modifiedData.remove("timestamp");
 
-        // Calculate the time difference and add it to the map
-        LocalDateTime timestamp = (LocalDateTime) data.get("timestamp");
+    //     // Calculate the time difference and add it to the map
+    //     LocalDateTime timestamp = (LocalDateTime) data.get("timestamp");
 
-        String timeDifference = calculateTimeDifference(timestamp);
+    //     String timeDifference = calculateTimeDifference(timestamp);
 
-        modifiedData.put("duration", timeDifference);
+    //     modifiedData.put("duration", timeDifference);
 
-        return modifiedData;
-    }
+    //     return modifiedData;
+    // }
 
     public Map<String, Object> mapChatSingleTimer(Map<String, Object> data) {
         // Create a new map with the existing entries except timestamp
@@ -157,7 +157,7 @@ public class Helper {
 
                     //Check if the user like that post
                     Long postId = (Long) post.get("id");
-                   // Optional<Long> liked = likeRepository.findIfLikePost(postId, profileId);
+
                     if(postUserLike.contains(postId)){
                         modifiedPost.put("liked", true);
                     }else{
@@ -165,7 +165,6 @@ public class Helper {
                     }
 
                     //check if the user add the post to the favorites
-                   // Optional<Long> favorited = favoritesRepository.findFavoriteByPostAndUser(postId, profileId);
                     if(favoritePosts.contains(postId)){
                         modifiedPost.put("favorite", true);
                     }else{

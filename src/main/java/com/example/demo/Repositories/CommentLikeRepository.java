@@ -25,4 +25,7 @@ public interface CommentLikeRepository extends JpaRepository<CommentLike, Long>{
 
     @Query(value = "SELECT id FROM comment_likes WHERE comment_id = :commentId AND profile_id = :likerId AND deleted = false", nativeQuery = true)
     Optional<Long> findIfLikeComment(@Param("commentId") Long commentId, @Param("likerId") Long likerId);
+
+    @Query(value = "SELECT comment_id FROM comment_likes WHERE profile_id = :likerId AND deleted = false", nativeQuery = true)
+    List<Long> commentsUserLike(@Param("likerId") Long likerId);
 }
