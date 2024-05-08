@@ -31,9 +31,10 @@ public class PostEditDeleteController {
             @RequestParam(value = "location", required = false) String location,
             @RequestParam("caption") String caption,
             @RequestParam(value = "brandName", required = false) Long brandId,
-            @RequestParam(value = "hashTags", required = false) List<String> hashTags) {
+            @RequestParam(value = "hashTags", required = false) List<String> hashTags,
+            @RequestParam(value = "countryId", required = true) Long countryId) {
         try {
-            return userPostServiceImpl.uploadPost(userPostDto, file, profileId, caption,location, brandId, hashTags);
+            return userPostServiceImpl.uploadPost(userPostDto, file, profileId, caption,location, brandId, hashTags,countryId);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to upload post: " + e.getMessage());

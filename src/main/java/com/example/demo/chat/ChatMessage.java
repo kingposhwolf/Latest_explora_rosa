@@ -1,7 +1,6 @@
 package com.example.demo.chat;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.chatroom.ChatRoom;

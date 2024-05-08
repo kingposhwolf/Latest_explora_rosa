@@ -10,4 +10,7 @@ public class FetchCommentReplyDto {
 
     @NotNull
     private Long postId;
+
+    @NotNull
+    private Long profileId;
 }

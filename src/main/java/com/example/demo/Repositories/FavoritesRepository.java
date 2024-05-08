@@ -10,13 +10,14 @@ import com.example.demo.Models.UserManagement.Profile;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 public interface FavoritesRepository extends JpaRepository<Favorites, Long>{
     List<UserPost> findUserPostsByProfile(Profile profile);
 
     @Query("SELECT DISTINCT l.id FROM Favorites l WHERE  l.post.id = :postId AND l.profile.id = :profileId")
-    Long findFavoriteByPostAndUser(@Param("postId") Long postId, @Param("profileId") Long profileId);
+    Optional<Long> findFavoriteByPostAndUser(@Param("postId") Long postId, @Param("profileId") Long profileId);
 
     @Query("SELECT DISTINCT l.post.id FROM Favorites l WHERE l.profile.id = :profileId")
     List<Long> findPostByProfile(@Param("profileId") Long profileId);
@@ -57,4 +58,8 @@ public interface FavoritesRepository extends JpaRepository<Favorites, Long>{
          "WHERE up.profile.id = :profileId " +
          "GROUP BY up.post.id")
 List<Map<String, Object>> findSpecificUserFavoritePost(@Param("profileId") Long profileId);
+
+    @Query(value = "SELECT * FROM favorites WHERE user_post_id = :postId AND profile_id = :profileId", nativeQuery = true)
+    Optional<Favorites> favoriteExistance(@Param("postId") Long postId, @Param("profileId") Long profileId);
+
 }

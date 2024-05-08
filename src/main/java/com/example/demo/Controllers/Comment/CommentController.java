@@ -47,7 +47,7 @@ public class CommentController {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return commentService.getCommentForPost(commentPostDto.getPostId());
+        return commentService.getCommentForPost(commentPostDto);
     }
 
     @PostMapping("/post/reply")
@@ -55,7 +55,7 @@ public class CommentController {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return commentService.getCommentReplyForPost(fetchCommentReplyDto.getParentId(), fetchCommentReplyDto.getPostId());
+        return commentService.getCommentReplyForPost(fetchCommentReplyDto);
     }
 
     @PostMapping("/delete")

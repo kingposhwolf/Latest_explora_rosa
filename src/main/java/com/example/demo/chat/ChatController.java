@@ -12,13 +12,11 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-// import org.springframework.web.socket.TextMessage;
 
 import com.example.demo.chat.Dto.AckMessageDto;
 import com.example.demo.chat.Dto.ChatMessageDto;
 import com.example.demo.chat.Dto.ChatNotification;
 import com.example.demo.chat.Dto.MessageStatusDto;
-// import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

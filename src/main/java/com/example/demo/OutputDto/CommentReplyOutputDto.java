@@ -21,5 +21,5 @@ public class CommentReplyOutputDto {
     private Long parentId;
 
     @NotNull
-    private Long time;
+    private String time;
 }

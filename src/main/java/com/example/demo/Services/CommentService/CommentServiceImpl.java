@@ -4,11 +4,12 @@ import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentDeleteDto;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentDto;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentLikeDto;
+import com.example.demo.InputDto.SocialMedia.Comment.CommentPostDto;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentReplyDto;
+import com.example.demo.InputDto.SocialMedia.Comment.FetchCommentReplyDto;
 import com.example.demo.Repositories.CommentRepository;
 import com.example.demo.Repositories.UserPostRepository;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
@@ -71,15 +72,15 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public ResponseEntity<Object> getCommentForPost(@NotNull Long postId) {
+    public ResponseEntity<Object> getCommentForPost(CommentPostDto commentPostDto) {
         try {
-            Optional<Long> post = userPostRepository.findPostIdByItsId(postId);
+            Optional<Long> post = userPostRepository.findPostIdByItsId(commentPostDto.getPostId());
             if (post.isEmpty()) {
-                logger.info("Failed to fetch comments, post not found with Id : ", postId);
+                logger.info("Failed to fetch comments, post not found with Id : ", commentPostDto.getPostId());
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
             } else {
                 logger.info("Comment Fetch successfully: ");
-                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(commentRepository.findCommentsForPost(post.get())));
+                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(commentRepository.findCommentsForPost(post.get()), commentPostDto.getProfileId()));
             }
         } catch (Exception e) {
             logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());
@@ -88,15 +89,15 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public ResponseEntity<Object> getCommentReplyForPost(@NotNull Long parentId, @NotNull Long postId) {
+    public ResponseEntity<Object> getCommentReplyForPost(FetchCommentReplyDto fetchCommentReplyDto) {
         try {
-            List<Map<String, Object>> replies = commentRepository.findCommentsReply(parentId,postId);
+            List<Map<String, Object>> replies = commentRepository.findCommentsReply(fetchCommentReplyDto.getParentId(),fetchCommentReplyDto.getPostId());
             if(replies.size() == 0){
-                logger.error("Failed to fetch comment replyt for the parent : " + parentId);
+                logger.error("Failed to fetch comment replyt for the parent : " + fetchCommentReplyDto.getParentId());
                 return ResponseEntity.status(404).body("No reply found");
             }else{
                 logger.info("Comment Reply Fetched successfully");
-                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(replies));
+                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(replies, fetchCommentReplyDto.getProfileId()));
             }
         } catch (Exception e) {
             logger.error("Failed to fetch comment to for post server Error : "+ e.getMessage());

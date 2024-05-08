@@ -1,8 +1,6 @@
 package com.example.demo.Services.FavoritesService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,14 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.SocialMedia.Favorites.DeleteFavoriteDto;
 import com.example.demo.InputDto.SocialMedia.Favorites.FavoritesDto;
 import com.example.demo.Repositories.FavoritesRepository;
-import com.example.demo.Repositories.ProfileRepository;
-import com.example.demo.Repositories.UserPostRepository;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -27,13 +21,8 @@ import lombok.AllArgsConstructor;
 public class FavoritesServiceImpl implements FavoritesService{
     private static final Logger logger = LoggerFactory.getLogger(FavoritesServiceImpl.class);
 
-    private final ProfileRepository profileRepository;
 
     private final FavoritesRepository favoritesRepository;
-
-    private final UserPostRepository userPostRepository;
-
-    private final Helper helper;
 
     private AmqpTemplate rabbitTemplate;
 
@@ -53,41 +42,14 @@ public class FavoritesServiceImpl implements FavoritesService{
     }
 
     @SuppressWarnings("null")
-    @Override
-    public ResponseEntity<Object> getUserFavorites(@NotNull Long profileId) {
-        try {
-            Long profile = profileRepository.findProfileIdById(profileId);
-            if (profile == null ) {
-                logger.info("Failed to fetch favorites contents, profile not found with Id : ", profileId);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Profile not found");
-            } else {
-                List<Long> posts = favoritesRepository.findPostByProfile(profile);
-
-                List<Map<String, Object>> postLists = new ArrayList<>();
-
-                for (Long postId : posts) {
-                    Map<String, Object> userPostData = userPostRepository.findUserPostDataById(postId);
-                    postLists.add(userPostData);
-                }
-
-                logger.info("Favorites Fetch successfully for posts with Ids: ", posts);
-                return ResponseEntity.status(HttpStatus.OK).body(helper.mapTimer(postLists));
-            }
-        } catch (Exception e) {
-            logger.error("Failed to fetch Favorites Posts server Error : "+ e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
-        }
-    }
-
-    @SuppressWarnings("null")
     @Transactional
     @Override
     public ResponseEntity<Object> deleteFavorite(DeleteFavoriteDto deleteFavoriteDto) {
         try {
-            Long favorite = favoritesRepository.findFavoriteByPostAndUser(deleteFavoriteDto.getPostId(),deleteFavoriteDto.getProfileId());
-            if (favorite != null) {
+            Optional<Long> favorite = favoritesRepository.findFavoriteByPostAndUser(deleteFavoriteDto.getPostId(),deleteFavoriteDto.getProfileId());
+            if (favorite.isPresent()) {
 
-                favoritesRepository.deleteById(favorite);
+                favoritesRepository.deleteById(favorite.get());
 
                 logger.info("Favorite deleted successfully");
                 return ResponseEntity.status(HttpStatus.OK).body("Favorite deleted successfully");

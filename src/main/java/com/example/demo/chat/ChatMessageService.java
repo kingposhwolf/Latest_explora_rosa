@@ -87,7 +87,7 @@ public class ChatMessageService {
         );
         if (chatRoomOptional.isPresent()) {
             ChatRoom chatRoom = chatRoomOptional.get();
-            return helper.mapTimer(repository.findByChatRoomCustom(chatRoom).get());
+            return helper.mapChatTimer(repository.findByChatRoomCustom(chatRoom).get());
         } else {
             // Handle the case where the chat room is not found
             return new ArrayList<>();

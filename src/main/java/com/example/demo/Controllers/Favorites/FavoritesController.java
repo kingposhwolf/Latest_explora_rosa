@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
-import com.example.demo.InputDto.SocialMedia.Favorites.DeleteFavoriteDto;
 import com.example.demo.InputDto.SocialMedia.Favorites.FavoritesDto;
-import com.example.demo.InputDto.SocialMedia.Favorites.FetchFavoritesDto;
 import com.example.demo.Services.FavoritesService.FavoritesService;
 
 import jakarta.validation.Valid;
@@ -25,7 +23,7 @@ public class FavoritesController {
 
     private GlobalValidationFormatter globalValidationFormatter;
 
-    @PostMapping("/add")
+    @PostMapping("/update")
     public ResponseEntity<Object> newFavorite(@RequestBody @Valid FavoritesDto favoritesDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
@@ -33,19 +31,12 @@ public class FavoritesController {
         return favoritesService.addToFavorites(favoritesDto);
     }
 
-    @PostMapping("/delete")
-    public ResponseEntity<Object> deleteFavorite(@RequestBody @Valid DeleteFavoriteDto deleteFavoriteDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return globalValidationFormatter.validationFormatter(bindingResult);
-        }
-        return favoritesService.deleteFavorite(deleteFavoriteDto);
-    }
+    // @PostMapping("/delete")
+    // public ResponseEntity<Object> deleteFavorite(@RequestBody @Valid DeleteFavoriteDto deleteFavoriteDto, BindingResult bindingResult) {
+    //     if (bindingResult.hasErrors()) {
+    //         return globalValidationFormatter.validationFormatter(bindingResult);
+    //     }
+    //     return favoritesService.deleteFavorite(deleteFavoriteDto);
+    // }
 
-    @PostMapping("/user")
-    public ResponseEntity<Object> getFavoritesForPost(@RequestBody @Valid FetchFavoritesDto fetchFavoritesDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return globalValidationFormatter.validationFormatter(bindingResult);
-        }
-        return favoritesService.getUserFavorites(fetchFavoritesDto.getProfileId());
-    }
 }

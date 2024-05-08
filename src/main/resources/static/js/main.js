@@ -40,6 +40,11 @@ function onConnected() {
     stompClient.subscribe(`/user/${username}/queue/status`, updateMessageStatus);
 
     stompClient.subscribe('/topic/groupchat/20', onMessageReceived);
+
+    stompClient.subscribe('/topic/social', function(response){
+        console.log("Received message:", response.body);
+    });
+    
     
 
     // // Subscribe to the Like Channel to see if it work

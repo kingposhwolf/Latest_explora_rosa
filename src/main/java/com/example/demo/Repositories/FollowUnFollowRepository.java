@@ -28,4 +28,22 @@ public interface FollowUnFollowRepository extends JpaRepository<FollowUnFollow, 
 
     @Query("SELECT cr.following.id as profileId, cr.following.user.username as username, cr.following.user.name as name, cr.following.verificationStatus as verificationStatus, cr.following.profilePicture as profilePicture FROM FollowUnFollow cr WHERE  cr.follower.id = :profileId")
     Optional<List<Map<String, Object>>> findFollowings(@Param("profileId") Long profileId);
+
+
+    @Query(value ="SELECT tp.id as profileId, "+
+    "us.username as username, " +
+    "us.name as name, "+
+    "tp.profile_picture as profilePicture, "+
+    "tp.verification_status as verificationStatus "+
+"FROM follow_un_follow ue "+
+"JOIN profiles tp ON ue.following_id = tp.id "+
+"JOIN users us ON tp.user_id = us.id "+
+"WHERE ue.follower_id = :targetId "+
+"AND ((LEVENSHTEIN(us.username, :searchText) <= 2 "+
+  "OR us.username LIKE CONCAT('%', :searchText, '%')) "+
+  "OR (LEVENSHTEIN(us.name, :searchText) <= 2 "+
+  "OR us.name LIKE CONCAT('%', :searchText, '%'))) "+
+"AND ue.deleted = false", nativeQuery = true)
+List<Map<String, Object>> searchOnFollowing(@Param("targetId") Long targetId, @Param("searchText") String searchText);
+
 }
