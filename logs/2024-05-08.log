@@ -7685,3 +7685,198 @@ Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.A
 
 2024-05-08 15:05:56.628 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 
+2024-05-08 15:06:27.062 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+
+2024-05-08 15:06:27.125 [main] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 21.0.2 with PID 16128 (D:\TestExploraRosa\target\classes started by Julius in D:\TestExploraRosa)
+
+2024-05-08 15:06:27.126 [main] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+
+2024-05-08 15:06:28.554 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+
+2024-05-08 15:06:28.556 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+
+2024-05-08 15:06:28.636 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.ChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.638 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.GroupChatRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.641 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.GroupChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.643 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.PersonalChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.645 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chat.ChatMessageRespository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.647 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chat.GroupChatMessageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.650 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.AccountTypeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.653 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.BrandRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.655 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.BusinessCategoryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.657 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CartItemRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.658 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CartRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.660 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CityRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.662 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CommentLikeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.666 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.668 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CountryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.671 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.FavoritesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.673 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.FollowUnFollowRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.675 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.GlobalDBStartPointRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.677 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.HashTagRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.678 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.LikeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.680 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.OrderItemRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.683 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.685 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.PasswordResetRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.687 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.PersonalRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.688 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.ProfileRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.690 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.StoryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.692 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TagRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.694 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TitleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.695 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TopicEngageFeedsPreviousEndRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.697 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TopicEngagementRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.700 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UploadDataRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.702 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserEngageFeedsPreviousEndRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.704 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserEngagementRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.706 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserPostRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.708 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.710 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.userChat.UserRepository2; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-08 15:06:28.711 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 151 ms. Found 0 JDBC repository interfaces.
+
+2024-05-08 15:06:28.726 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+
+2024-05-08 15:06:28.727 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+
+2024-05-08 15:06:28.907 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.StoryRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+
+2024-05-08 15:06:29.011 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 281 ms. Found 35 JPA repository interfaces.
+
+2024-05-08 15:06:30.137 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+
+2024-05-08 15:06:30.149 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-192.168.1.46-8081"]
+
+2024-05-08 15:06:30.152 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+
+2024-05-08 15:06:30.152 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+
+2024-05-08 15:06:30.239 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+
+2024-05-08 15:06:30.240 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3055 ms
+
+2024-05-08 15:06:30.406 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+
+2024-05-08 15:06:30.500 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+
+2024-05-08 15:06:30.549 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+
+2024-05-08 15:06:30.809 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+
+2024-05-08 15:06:30.840 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+
+2024-05-08 15:06:31.040 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@569a26ab
+
+2024-05-08 15:06:31.042 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+
+2024-05-08 15:06:31.066 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+
+2024-05-08 15:06:31.068 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+
+2024-05-08 15:06:31.207 [main] WARN  o.h.boot.model.internal.EntityBinder - HHH000457: Joined inheritance hierarchy [com.example.demo.chatroom.ChatRoom] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+
+2024-05-08 15:06:31.475 [main] WARN  o.h.boot.model.internal.EntityBinder - HHH000457: Joined inheritance hierarchy [com.example.demo.Models.UserManagement.Profile] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+
+2024-05-08 15:06:33.239 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+
+2024-05-08 15:06:34.294 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+2024-05-08 15:06:34.972 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - JSqlParser is in classpath; If applicable, JSqlParser will be used
+
+2024-05-08 15:06:34.972 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+
+2024-05-08 15:06:37.716 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+2024-05-08 15:06:37.872 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+
+2024-05-08 15:06:38.075 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e282ec9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6050ea4e, org.springframework.security.web.context.SecurityContextHolderFilter@7589371f, org.springframework.security.web.header.HeaderWriterFilter@695aa5d0, org.springframework.web.filter.CorsFilter@5f17910c, org.springframework.security.web.authentication.logout.LogoutFilter@3709ef16, com.example.demo.Config.JwtAuthenticationFilter@29511cf9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6953f5fc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@455cd186, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@430e10a5, org.springframework.security.web.session.SessionManagementFilter@fd7893a, org.springframework.security.web.access.ExceptionTranslationFilter@6cfdb324, org.springframework.security.web.access.intercept.AuthorizationFilter@ec627d7]
+
+2024-05-08 15:06:38.638 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-192.168.1.46-8081"]
+
+2024-05-08 15:06:38.660 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+
+2024-05-08 15:06:38.663 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+
+2024-05-08 15:06:38.666 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@61a16111]]
+
+2024-05-08 15:06:38.668 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+
+2024-05-08 15:06:38.674 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-05-08 15:06:38.731 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#72c2e359:0/SimpleConnection@53bb9bd [delegate=amqp://danda@192.168.1.46:5672/, localPort=7914]
+
+2024-05-08 15:06:38.847 [main] INFO  com.example.demo.DemoApplication - Started DemoApplication in 12.216 seconds (process running for 13.125)
+
+2024-05-08 15:07:38.620 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+
+2024-05-08 15:36:27.545 [http-nio-192.168.1.46-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+
+2024-05-08 15:36:27.545 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+
+2024-05-08 15:36:27.547 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+
+2024-05-08 15:37:38.621 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 17]
+
+2024-05-08 16:07:38.626 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[3 current WS(3)-HttpStream(0)-HttpPoll(0), 32 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(27)-CONNECTED(27)-DISCONNECT(9)], stompBrokerRelay[null], inboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 276], outboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 65], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 4, completed tasks = 523]
+
+2024-05-08 16:37:38.640 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 48 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(43)-CONNECTED(43)-DISCONNECT(16)], stompBrokerRelay[null], inboundChannel[pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 450], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 107], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 1060]
+
+2024-05-08 16:41:05.296 [http-nio-192.168.1.46-8081-exec-8] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@64bfd2a8
+
+2024-05-08 17:07:38.653 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 498], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 118], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 1489]
+
+2024-05-08 17:37:38.664 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 1875]
+
+2024-05-08 18:07:38.667 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 2236]
+
+2024-05-08 18:37:38.681 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 2597]
+
+2024-05-08 19:07:38.688 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 2958]
+
+2024-05-08 19:37:38.690 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 3319]
+
+2024-05-08 20:07:38.700 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 3680]
+
+2024-05-08 20:37:38.715 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 4041]
+
+2024-05-08 21:07:41.138 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 4402]
+
+2024-05-08 21:37:41.154 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 4763]
+
+2024-05-08 22:07:41.157 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 54 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(48)-CONNECTED(48)-DISCONNECT(17)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 501], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 119], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 5124]
+

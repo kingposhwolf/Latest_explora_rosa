@@ -1,0 +1,980 @@
+2024-05-09 11:51:16.650 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+
+2024-05-09 11:51:16.744 [main] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 21.0.2 with PID 10504 (D:\TestExploraRosa\target\classes started by Julius in D:\TestExploraRosa)
+
+2024-05-09 11:51:16.744 [main] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+
+2024-05-09 11:51:18.446 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+
+2024-05-09 11:51:18.447 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+
+2024-05-09 11:51:18.529 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.ChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.532 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.GroupChatRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.536 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.GroupChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.538 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.PersonalChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.541 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chat.ChatMessageRespository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.544 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chat.GroupChatMessageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.548 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.AccountTypeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.550 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.BrandRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.552 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.BusinessCategoryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.554 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CartItemRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.556 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CartRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.558 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CityRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.561 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CommentLikeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.564 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.566 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CountryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.569 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.FavoritesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.572 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.FollowUnFollowRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.574 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.GlobalDBStartPointRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.577 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.HashTagRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.578 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.LikeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.581 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.OrderItemRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.582 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.584 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.PasswordResetRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.586 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.PersonalRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.587 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.ProfileRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.589 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.StoryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.591 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TagRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.594 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TitleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.597 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TopicEngageFeedsPreviousEndRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.599 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TopicEngagementRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.601 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UploadDataRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.603 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserEngageFeedsPreviousEndRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.605 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserEngagementRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.607 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserPostRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.611 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.613 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.userChat.UserRepository2; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 11:51:18.613 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 160 ms. Found 0 JDBC repository interfaces.
+
+2024-05-09 11:51:18.626 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+
+2024-05-09 11:51:18.627 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+
+2024-05-09 11:51:18.846 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.StoryRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+
+2024-05-09 11:51:19.048 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 416 ms. Found 35 JPA repository interfaces.
+
+2024-05-09 11:51:19.964 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+
+2024-05-09 11:51:19.977 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-192.168.1.46-8081"]
+
+2024-05-09 11:51:19.981 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+
+2024-05-09 11:51:19.981 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+
+2024-05-09 11:51:20.087 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+
+2024-05-09 11:51:20.088 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3272 ms
+
+2024-05-09 11:51:20.294 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+
+2024-05-09 11:51:20.398 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+
+2024-05-09 11:51:20.457 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+
+2024-05-09 11:51:20.787 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+
+2024-05-09 11:51:20.831 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+
+2024-05-09 11:51:21.064 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e05005
+
+2024-05-09 11:51:21.066 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+
+2024-05-09 11:51:21.105 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+
+2024-05-09 11:51:21.106 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+
+2024-05-09 11:51:21.270 [main] WARN  o.h.boot.model.internal.EntityBinder - HHH000457: Joined inheritance hierarchy [com.example.demo.chatroom.ChatRoom] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+
+2024-05-09 11:51:21.552 [main] WARN  o.h.boot.model.internal.EntityBinder - HHH000457: Joined inheritance hierarchy [com.example.demo.Models.UserManagement.Profile] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+
+2024-05-09 11:51:23.680 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+
+2024-05-09 11:51:25.019 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+2024-05-09 11:51:25.594 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - JSqlParser is in classpath; If applicable, JSqlParser will be used
+
+2024-05-09 11:51:25.594 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+
+2024-05-09 11:51:28.887 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+2024-05-09 11:51:29.154 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+
+2024-05-09 11:51:29.524 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@10359f3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@744d556f, org.springframework.security.web.context.SecurityContextHolderFilter@1bf90a59, org.springframework.security.web.header.HeaderWriterFilter@559f94b0, org.springframework.web.filter.CorsFilter@ec627d7, org.springframework.security.web.authentication.logout.LogoutFilter@56d5311e, com.example.demo.Config.JwtAuthenticationFilter@2ffc9be, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6853bae, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26714a4a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@65ff2f44, org.springframework.security.web.session.SessionManagementFilter@486b9a36, org.springframework.security.web.access.ExceptionTranslationFilter@29d2aeb7, org.springframework.security.web.access.intercept.AuthorizationFilter@1d1cfdac]
+
+2024-05-09 11:51:30.159 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-192.168.1.46-8081"]
+
+2024-05-09 11:51:30.190 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+
+2024-05-09 11:51:30.192 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+
+2024-05-09 11:51:30.197 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2454ee88]]
+
+2024-05-09 11:51:30.197 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+
+2024-05-09 11:51:30.201 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-05-09 11:51:30.288 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6915ba65:0/SimpleConnection@73551c5e [delegate=amqp://danda@192.168.1.46:5672/, localPort=13375]
+
+2024-05-09 11:51:30.412 [main] INFO  com.example.demo.DemoApplication - Started DemoApplication in 14.31 seconds (process running for 15.255)
+
+2024-05-09 11:52:16.151 [http-nio-192.168.1.46-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+
+2024-05-09 11:52:16.151 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+
+2024-05-09 11:52:16.153 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+
+2024-05-09 11:52:16.431 [http-nio-192.168.1.46-8081-exec-1] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@8389171
+
+2024-05-09 11:52:30.118 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+
+2024-05-09 12:22:30.162 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 45], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 10], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 309]
+
+2024-05-09 12:26:17.420 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 12:26:34.262 [http-nio-192.168.1.46-8081-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "null"]
+
+2024-05-09 12:26:46.820 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:26:48.703 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:26:57.006 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:26:57.365 [http-nio-192.168.1.46-8081-exec-10] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:26:57.528 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:26:57.690 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:26:57.944 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:27:17.771 [http-nio-192.168.1.46-8081-exec-10] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:27:19.030 [http-nio-192.168.1.46-8081-exec-3] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:27:19.230 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:27:20.948 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:27:32.374 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:27:32.483 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:27:47.214 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:27:56.748 [http-nio-192.168.1.46-8081-exec-8] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:27:56.831 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:28:00.120 [http-nio-192.168.1.46-8081-exec-2] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:28:01.873 [http-nio-192.168.1.46-8081-exec-3] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:29:00.957 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:29:14.558 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:29:14.634 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:29:41.178 [http-nio-192.168.1.46-8081-exec-1] INFO  c.e.d.S.C.CommentServiceImpl - Comment Fetch successfully: 
+
+2024-05-09 12:29:41.939 [http-nio-192.168.1.46-8081-exec-3] ERROR c.e.d.S.B.BrandServiceImpl - Failed to Fetch Brand Info, Invalid brand Id
+
+2024-05-09 12:29:50.018 [http-nio-192.168.1.46-8081-exec-2] ERROR c.e.d.S.B.BrandServiceImpl - Failed to Fetch Brand Info, Invalid brand Id
+
+2024-05-09 12:29:59.097 [http-nio-192.168.1.46-8081-exec-8] ERROR c.e.d.S.B.BrandServiceImpl - Failed to Fetch Brand Info, Invalid brand Id
+
+2024-05-09 12:30:04.320 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@3155aea0
+
+2024-05-09 12:31:49.630 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:31:49.649 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:31:49.760 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:34:24.609 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 12:34:35.577 [http-nio-192.168.1.46-8081-exec-1] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 12:36:09.887 [http-nio-192.168.1.46-8081-exec-5] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "null"]
+
+2024-05-09 12:38:57.178 [http-nio-192.168.1.46-8081-exec-2] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:39:07.677 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:39:28.435 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:39:33.537 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:39:33.617 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:40:30.044 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.A.AuthenticationServiceImpl - Login Successful for the user : User(id=1, accountType=AccountType(id=2, name=BUSINESS, deleted=false), name=samaki samaki, username=samakisamaki, email=samakisamaki@mail.com, password=$2a$10$lsmdJZy7z2fDbtgEIowYI.zRyZhu5GMJgsOExjH334aMCZOFnlqsq, role=USER, deleted=false)
+
+2024-05-09 12:41:22.714 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.C.CommentServiceImpl - Comment Fetch successfully: 
+
+2024-05-09 12:44:48.516 [http-nio-192.168.1.46-8081-exec-2] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:44:52.771 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:45:27.056 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:45:44.542 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:45:44.606 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:46:02.918 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:46:03.011 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:46:14.583 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:52:30.164 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 27 total, 0 closed abnormally (0 connect failure, 0 send limit, 2 transport error)], stompSubProtocol[processed CONNECT(24)-CONNECTED(24)-DISCONNECT(2)], stompBrokerRelay[null], inboundChannel[pool size = 6, active threads = 0, queued tasks = 0, completed tasks = 225], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 167], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 817]
+
+2024-05-09 12:52:52.599 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@42845090
+
+2024-05-09 12:57:47.411 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:57:47.475 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:57:58.187 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:58:07.459 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:58:07.538 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:58:19.460 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:58:59.763 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 12:58:59.873 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 12:59:09.045 [http-nio-192.168.1.46-8081-exec-1] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 12:59:43.678 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:00:33.471 [http-nio-192.168.1.46-8081-exec-3] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:02:18.501 [SpringApplicationShutdownHook] WARN  o.s.w.s.h.ExceptionWebSocketHandlerDecorator - Unhandled exception after connection closed for ExceptionWebSocketHandlerDecorator [delegate=LoggingWebSocketHandlerDecorator [delegate=SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]]]
+
+org.springframework.messaging.MessageDeliveryException: Failed to send message to ExecutorSubscribableChannel[clientInboundChannel]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:149)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:125)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:685)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78)
+	at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.close(AbstractSockJsSession.java:200)
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160)
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:344)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:483)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:313)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:214)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1136)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1090)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.core.task.TaskRejectedException: ExecutorService in shutdown state did not accept task: org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@95fbcf
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:365)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel.sendInternal(ExecutorSubscribableChannel.java:103)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:139)
+	... 24 common frames omitted
+Caused by: java.util.concurrent.RejectedExecutionException: Task org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@95fbcf rejected from org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1@11efc5da[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 297]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1376)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1.execute(ThreadPoolTaskExecutor.java:269)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:362)
+	... 26 common frames omitted
+2024-05-09 13:02:18.505 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+
+2024-05-09 13:02:18.505 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2454ee88]]
+
+2024-05-09 13:02:18.505 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+
+2024-05-09 13:02:18.508 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#10-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.510 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.510 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.511 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.512 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.512 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.513 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.513 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.514 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.516 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.517 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.518 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:02:18.553 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.553 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.641 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.642 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.642 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.642 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.643 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.751 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.751 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:18.753 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:19.345 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#10-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:19.438 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:02:19.484 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+
+2024-05-09 13:02:19.488 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+
+2024-05-09 13:02:19.492 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+
+2024-05-09 13:02:44.518 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+
+2024-05-09 13:02:44.573 [main] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 21.0.2 with PID 11440 (D:\TestExploraRosa\target\classes started by Julius in D:\TestExploraRosa)
+
+2024-05-09 13:02:44.574 [main] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+
+2024-05-09 13:02:45.933 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+
+2024-05-09 13:02:45.934 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+
+2024-05-09 13:02:46.021 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.ChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.024 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.GroupChatRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.027 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.GroupChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.030 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chatroom.Repository.PersonalChatRoomRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.031 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chat.ChatMessageRespository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.034 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.chat.GroupChatMessageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.037 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.AccountTypeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.040 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.BrandRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.043 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.BusinessCategoryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.046 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CartItemRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.048 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CartRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.050 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CityRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.054 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CommentLikeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.059 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.061 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.CountryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.066 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.FavoritesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.069 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.FollowUnFollowRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.072 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.GlobalDBStartPointRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.074 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.HashTagRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.076 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.LikeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.078 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.OrderItemRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.080 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.082 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.PasswordResetRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.084 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.PersonalRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.084 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.ProfileRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.086 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.StoryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.088 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TagRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.090 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TitleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.091 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TopicEngageFeedsPreviousEndRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.093 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.TopicEngagementRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.094 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UploadDataRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.096 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserEngageFeedsPreviousEndRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.098 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserEngagementRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.100 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserPostRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.102 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.103 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.userChat.UserRepository2; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+
+2024-05-09 13:02:46.104 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 165 ms. Found 0 JDBC repository interfaces.
+
+2024-05-09 13:02:46.115 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+
+2024-05-09 13:02:46.115 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+
+2024-05-09 13:02:46.254 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.Repositories.StoryRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+
+2024-05-09 13:02:46.359 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 241 ms. Found 35 JPA repository interfaces.
+
+2024-05-09 13:02:47.044 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+
+2024-05-09 13:02:47.055 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-192.168.1.46-8081"]
+
+2024-05-09 13:02:47.058 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+
+2024-05-09 13:02:47.058 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+
+2024-05-09 13:02:47.142 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+
+2024-05-09 13:02:47.143 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2514 ms
+
+2024-05-09 13:02:47.296 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+
+2024-05-09 13:02:47.382 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+
+2024-05-09 13:02:47.426 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+
+2024-05-09 13:02:47.659 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+
+2024-05-09 13:02:47.687 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+
+2024-05-09 13:02:47.862 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@32a4ea4e
+
+2024-05-09 13:02:47.864 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+
+2024-05-09 13:02:47.887 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+
+2024-05-09 13:02:47.889 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+
+2024-05-09 13:02:48.009 [main] WARN  o.h.boot.model.internal.EntityBinder - HHH000457: Joined inheritance hierarchy [com.example.demo.chatroom.ChatRoom] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+
+2024-05-09 13:02:48.264 [main] WARN  o.h.boot.model.internal.EntityBinder - HHH000457: Joined inheritance hierarchy [com.example.demo.Models.UserManagement.Profile] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+
+2024-05-09 13:02:49.832 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+
+2024-05-09 13:02:50.773 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+2024-05-09 13:02:51.274 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - JSqlParser is in classpath; If applicable, JSqlParser will be used
+
+2024-05-09 13:02:51.275 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+
+2024-05-09 13:02:53.656 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+2024-05-09 13:02:53.798 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+
+2024-05-09 13:02:53.957 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7876caae, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4b4e763d, org.springframework.security.web.context.SecurityContextHolderFilter@6ee88669, org.springframework.security.web.header.HeaderWriterFilter@16944bfc, org.springframework.web.filter.CorsFilter@4e27eb57, org.springframework.security.web.authentication.logout.LogoutFilter@5b2b7738, com.example.demo.Config.JwtAuthenticationFilter@4de14c58, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3d850252, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@36881f62, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5a7686, org.springframework.security.web.session.SessionManagementFilter@455cd186, org.springframework.security.web.access.ExceptionTranslationFilter@386b55ce, org.springframework.security.web.access.intercept.AuthorizationFilter@7c6f306b]
+
+2024-05-09 13:02:54.452 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-192.168.1.46-8081"]
+
+2024-05-09 13:02:54.473 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+
+2024-05-09 13:02:54.475 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+
+2024-05-09 13:02:54.475 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2d6645a4]]
+
+2024-05-09 13:02:54.475 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+
+2024-05-09 13:02:54.479 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [192.168.1.46:5672]
+
+2024-05-09 13:02:54.531 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#721b38e0:0/SimpleConnection@2937d3e [delegate=amqp://danda@192.168.1.46:5672/, localPort=14456]
+
+2024-05-09 13:02:54.631 [main] INFO  com.example.demo.DemoApplication - Started DemoApplication in 10.499 seconds (process running for 11.237)
+
+2024-05-09 13:03:24.821 [http-nio-192.168.1.46-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+
+2024-05-09 13:03:24.821 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+
+2024-05-09 13:03:24.823 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+
+2024-05-09 13:03:54.431 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+
+2024-05-09 13:04:40.474 [http-nio-192.168.1.46-8081-exec-8] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:05:43.525 [http-nio-192.168.1.46-8081-exec-3] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:05:43.629 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 13:06:32.603 [http-nio-192.168.1.46-8081-exec-8] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:06:47.146 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:07:15.784 [http-nio-192.168.1.46-8081-exec-8] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:07:15.868 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 13:07:27.318 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:07:37.183 [http-nio-192.168.1.46-8081-exec-2] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:07:37.249 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 13:07:55.150 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:08:08.884 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:08:52.884 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:09:22.712 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:09:23.761 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:09:23.810 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 13:09:44.745 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:09:44.820 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Favorites Operation Performed successful, with information : Favorites(id=14, profile=Brand(rates=0.0, tinNumber=null, businessCategories=BusinessCategory(id=1, name=Restaurant, deleted=false)), deleted=false)
+
+2024-05-09 13:09:48.428 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:09:55.170 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:09:55.240 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Favorites Operation Performed successful, with information : Favorites(id=15, profile=Personal(title=null), deleted=false)
+
+2024-05-09 13:10:05.814 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:10:11.098 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:10:17.200 [http-nio-192.168.1.46-8081-exec-10] INFO  c.e.d.S.F.FavoritesServiceImpl - Added to Queue for add to Favorites successfully: 
+
+2024-05-09 13:13:02.481 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:13:02.538 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 13:13:13.693 [http-nio-192.168.1.46-8081-exec-10] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:13:16.648 [http-nio-192.168.1.46-8081-exec-3] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:13:16.732 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 13:13:26.564 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:13:56.435 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:13:56.512 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 13:14:05.527 [http-nio-192.168.1.46-8081-exec-2] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:14:17.294 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:14:22.307 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:14:22.356 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-1] INFO  c.e.d.C.Q.RabbitMqConsumers - Like deleted successfully
+
+2024-05-09 13:14:55.407 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.LikeService.LikeServiceImpl - Like Operation successfully: 
+
+2024-05-09 13:15:43.423 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:15:44.298 [http-nio-192.168.1.46-8081-exec-2] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@cda2ba8
+
+2024-05-09 13:16:09.839 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@1382196c
+
+2024-05-09 13:16:09.922 [http-nio-192.168.1.46-8081-exec-7] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:18:00.256 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@3b4c446b
+
+2024-05-09 13:18:00.264 [http-nio-192.168.1.46-8081-exec-8] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:18:16.661 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@47a41096
+
+2024-05-09 13:18:16.882 [http-nio-192.168.1.46-8081-exec-6] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:18:54.353 [http-nio-192.168.1.46-8081-exec-10] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@69a97416
+
+2024-05-09 13:18:54.868 [http-nio-192.168.1.46-8081-exec-3] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:18:58.608 [http-nio-192.168.1.46-8081-exec-9] ERROR c.e.d.S.B.BrandServiceImpl - Failed to Fetch Brand Info, Invalid brand Id
+
+2024-05-09 13:18:58.881 [http-nio-192.168.1.46-8081-exec-1] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:20:36.499 [http-nio-192.168.1.46-8081-exec-3] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:20:36.746 [http-nio-192.168.1.46-8081-exec-9] INFO  c.e.d.S.P.PersonalServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@3fb8574d
+
+2024-05-09 13:20:37.189 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:20:37.219 [http-nio-192.168.1.46-8081-exec-4] ERROR c.e.d.S.P.PersonalServiceImpl - Failed to Fetch Profile Info, Invalid Profile Id
+
+2024-05-09 13:20:55.719 [http-nio-192.168.1.46-8081-exec-9] ERROR c.e.d.S.B.BrandServiceImpl - Failed to Fetch Brand Info, Invalid brand Id
+
+2024-05-09 13:20:55.732 [http-nio-192.168.1.46-8081-exec-1] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:20:55.732 [http-nio-192.168.1.46-8081-exec-4] INFO  c.e.d.S.F.FeedsServiceImpl - Specific User Feeds Fetched Successful 
+
+2024-05-09 13:20:55.957 [http-nio-192.168.1.46-8081-exec-5] INFO  c.e.d.S.B.BrandServiceImpl - 
+Profile Info Fetched Successful: org.springframework.data.jpa.repository.query.AbstractJpaQuery$TupleConverter$TupleBackedMap@3a76aec3
+
+2024-05-09 13:21:36.102 [SpringApplicationShutdownHook] WARN  o.s.w.s.h.ExceptionWebSocketHandlerDecorator - Unhandled exception after connection closed for ExceptionWebSocketHandlerDecorator [delegate=LoggingWebSocketHandlerDecorator [delegate=SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]]]
+
+org.springframework.messaging.MessageDeliveryException: Failed to send message to ExecutorSubscribableChannel[clientInboundChannel]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:149)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:125)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:685)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78)
+	at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.close(AbstractSockJsSession.java:200)
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160)
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:344)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:483)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:313)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:214)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1136)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1090)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.core.task.TaskRejectedException: ExecutorService in shutdown state did not accept task: org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@31fea834
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:365)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel.sendInternal(ExecutorSubscribableChannel.java:103)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:139)
+	... 24 common frames omitted
+Caused by: java.util.concurrent.RejectedExecutionException: Task org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@31fea834 rejected from org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1@7439b2aa[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 108]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1376)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1.execute(ThreadPoolTaskExecutor.java:269)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:362)
+	... 26 common frames omitted
+2024-05-09 13:21:36.106 [SpringApplicationShutdownHook] WARN  o.s.w.s.h.ExceptionWebSocketHandlerDecorator - Unhandled exception after connection closed for ExceptionWebSocketHandlerDecorator [delegate=LoggingWebSocketHandlerDecorator [delegate=SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]]]
+
+org.springframework.messaging.MessageDeliveryException: Failed to send message to ExecutorSubscribableChannel[clientInboundChannel]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:149)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:125)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:685)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78)
+	at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.close(AbstractSockJsSession.java:200)
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160)
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:344)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:483)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:313)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:214)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1136)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1090)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.core.task.TaskRejectedException: ExecutorService in shutdown state did not accept task: org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@5334b6e9
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:365)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel.sendInternal(ExecutorSubscribableChannel.java:103)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:139)
+	... 24 common frames omitted
+Caused by: java.util.concurrent.RejectedExecutionException: Task org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@5334b6e9 rejected from org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1@7439b2aa[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 108]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1376)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1.execute(ThreadPoolTaskExecutor.java:269)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:362)
+	... 26 common frames omitted
+2024-05-09 13:21:36.107 [SpringApplicationShutdownHook] WARN  o.s.w.s.h.ExceptionWebSocketHandlerDecorator - Unhandled exception after connection closed for ExceptionWebSocketHandlerDecorator [delegate=LoggingWebSocketHandlerDecorator [delegate=SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]]]
+
+org.springframework.messaging.MessageDeliveryException: Failed to send message to ExecutorSubscribableChannel[clientInboundChannel]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:149)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:125)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:685)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78)
+	at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.close(AbstractSockJsSession.java:200)
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160)
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:344)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:483)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:313)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:214)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1136)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1090)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.core.task.TaskRejectedException: ExecutorService in shutdown state did not accept task: org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@7f295f25
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:365)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel.sendInternal(ExecutorSubscribableChannel.java:103)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:139)
+	... 24 common frames omitted
+Caused by: java.util.concurrent.RejectedExecutionException: Task org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@7f295f25 rejected from org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1@7439b2aa[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 108]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1376)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1.execute(ThreadPoolTaskExecutor.java:269)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:362)
+	... 26 common frames omitted
+2024-05-09 13:21:36.109 [SpringApplicationShutdownHook] WARN  o.s.w.s.h.ExceptionWebSocketHandlerDecorator - Unhandled exception after connection closed for ExceptionWebSocketHandlerDecorator [delegate=LoggingWebSocketHandlerDecorator [delegate=SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]]]
+
+org.springframework.messaging.MessageDeliveryException: Failed to send message to ExecutorSubscribableChannel[clientInboundChannel]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:149)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:125)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:685)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78)
+	at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.close(AbstractSockJsSession.java:200)
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160)
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:344)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:483)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:313)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:214)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1136)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1090)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.core.task.TaskRejectedException: ExecutorService in shutdown state did not accept task: org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@c270794
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:365)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel.sendInternal(ExecutorSubscribableChannel.java:103)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:139)
+	... 24 common frames omitted
+Caused by: java.util.concurrent.RejectedExecutionException: Task org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@c270794 rejected from org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1@7439b2aa[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 108]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1376)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1.execute(ThreadPoolTaskExecutor.java:269)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:362)
+	... 26 common frames omitted
+2024-05-09 13:21:36.110 [SpringApplicationShutdownHook] WARN  o.s.w.s.h.ExceptionWebSocketHandlerDecorator - Unhandled exception after connection closed for ExceptionWebSocketHandlerDecorator [delegate=LoggingWebSocketHandlerDecorator [delegate=SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]]]
+
+org.springframework.messaging.MessageDeliveryException: Failed to send message to ExecutorSubscribableChannel[clientInboundChannel]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:149)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:125)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:685)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78)
+	at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.close(AbstractSockJsSession.java:200)
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160)
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:344)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:483)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:313)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:214)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1136)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1090)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.core.task.TaskRejectedException: ExecutorService in shutdown state did not accept task: org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@4aa274ad
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:365)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel.sendInternal(ExecutorSubscribableChannel.java:103)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:139)
+	... 24 common frames omitted
+Caused by: java.util.concurrent.RejectedExecutionException: Task org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@4aa274ad rejected from org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1@7439b2aa[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 108]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1376)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1.execute(ThreadPoolTaskExecutor.java:269)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:362)
+	... 26 common frames omitted
+2024-05-09 13:21:36.112 [SpringApplicationShutdownHook] WARN  o.s.w.s.h.ExceptionWebSocketHandlerDecorator - Unhandled exception after connection closed for ExceptionWebSocketHandlerDecorator [delegate=LoggingWebSocketHandlerDecorator [delegate=SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]]]
+
+org.springframework.messaging.MessageDeliveryException: Failed to send message to ExecutorSubscribableChannel[clientInboundChannel]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:149)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:125)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:685)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78)
+	at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.close(AbstractSockJsSession.java:200)
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160)
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:344)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:483)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:313)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:214)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1136)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1090)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.core.task.TaskRejectedException: ExecutorService in shutdown state did not accept task: org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@510d5e60
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:365)
+	at org.springframework.messaging.support.ExecutorSubscribableChannel.sendInternal(ExecutorSubscribableChannel.java:103)
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:139)
+	... 24 common frames omitted
+Caused by: java.util.concurrent.RejectedExecutionException: Task org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@510d5e60 rejected from org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1@7439b2aa[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 108]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1376)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1.execute(ThreadPoolTaskExecutor.java:269)
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:362)
+	... 26 common frames omitted
+2024-05-09 13:21:36.113 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+
+2024-05-09 13:21:36.113 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2d6645a4]]
+
+2024-05-09 13:21:36.113 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+
+2024-05-09 13:21:36.118 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#10-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.119 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.120 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.121 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.122 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.123 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.124 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.125 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.126 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.127 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.128 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.129 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+
+2024-05-09 13:21:36.153 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.305 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#10-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.322 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#7-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.384 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#9-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.755 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#8-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.911 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.912 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.912 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#11-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.912 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.912 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.915 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.915 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+
+2024-05-09 13:21:36.957 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+
+2024-05-09 13:21:36.961 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+
+2024-05-09 13:21:36.971 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+

@@ -27,7 +27,7 @@ public interface LikeRepository extends CrudRepository<Like, Long>{
     @Query("SELECT DISTINCT l.liker.id as profileId, l.liker.verificationStatus as verificatioStatus, l.liker.user.username as username, l.liker.user.name as name FROM Like l JOIN l.liker u WHERE l.post.id = :postId ")
     List<Map<String, Object>> findLikersByUsernameAndName(@Param("postId") Long postId);
 
-    @Query("SELECT DISTINCT l.post.id  FROM Like l JOIN l.liker u WHERE l.post.id = :postId ")
-    List<Long> postsUserLike(@Param("postId") Long postId);
+    @Query("SELECT l.post.id  FROM Like l  WHERE l.liker.id = :profileId ")
+    List<Long> postsUserLike(@Param("profileId") Long profileId);
 
 }
