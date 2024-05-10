@@ -13,10 +13,10 @@ import com.example.demo.Models.Ecommerce.Cart.Cart;
 import com.example.demo.Models.Ecommerce.Cart.CartItem;
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.UserManagement.Profile;
-import com.example.demo.Repositories.CartItemRepository;
-import com.example.demo.Repositories.CartRepository;
-import com.example.demo.Repositories.ProfileRepository;
-import com.example.demo.Repositories.UserPostRepository;
+import com.example.demo.Repositories.Business.Order.CartItemRepository;
+import com.example.demo.Repositories.Business.Order.CartRepository;
+import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Models.UserManagement.Profile;
-import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 import com.example.demo.chatroom.Repository.ChatRoomRepository;
 import com.example.demo.chatroom.Repository.GroupChatRepository;
 import com.example.demo.chatroom.Repository.GroupChatRoomRepository;

@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.Components.Helper.Helper;
 import com.example.demo.Models.UserManagement.Profile;
-import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 import com.example.demo.Services.PersonalService.PersonalServiceImpl;
 
 import lombok.AllArgsConstructor;

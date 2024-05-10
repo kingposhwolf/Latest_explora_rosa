@@ -13,7 +13,7 @@ import com.example.demo.InputDto.Message.OneToOneChat.ChatUser;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Models.UserManagement.Management.Status;
 import com.example.demo.OutputDto.ConversationHistory;
-import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 import com.example.demo.chat.ChatMessageRespository;
 import com.example.demo.chatroom.Repository.PersonalChatRoomRepository;
 

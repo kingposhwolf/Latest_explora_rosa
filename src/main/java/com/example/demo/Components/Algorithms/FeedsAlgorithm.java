@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.GlobalDBStartPointRepository;
-import com.example.demo.Repositories.UserEngagementRepository;
-import com.example.demo.Repositories.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
+import com.example.demo.Repositories.Tracking.UserEngagementRepository;
 
 import lombok.AllArgsConstructor;
 

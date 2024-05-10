@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.Repositories.CommentLikeRepository;
-import com.example.demo.Repositories.FavoritesRepository;
-import com.example.demo.Repositories.LikeRepository;
+import com.example.demo.Repositories.SocialMedia.Comment.CommentLikeRepository;
+import com.example.demo.Repositories.SocialMedia.Favorite.FavoritesRepository;
+import com.example.demo.Repositories.SocialMedia.Like.LikeRepository;
 
 import lombok.AllArgsConstructor;
 

@@ -13,10 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Helper.Helper;
 import com.example.demo.Models.UserManagement.Profile;
-import com.example.demo.Repositories.FavoritesRepository;
-// import com.example.demo.Components.Algorithms.FeedsAlgorithm;
-import com.example.demo.Repositories.ProfileRepository;
-import com.example.demo.Repositories.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.Favorite.FavoritesRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

@@ -7,8 +7,8 @@ import com.example.demo.InputDto.SocialMedia.Comment.CommentLikeDto;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentPostDto;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentReplyDto;
 import com.example.demo.InputDto.SocialMedia.Comment.FetchCommentReplyDto;
-import com.example.demo.Repositories.CommentRepository;
-import com.example.demo.Repositories.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.Comment.CommentRepository;
+import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 
 import lombok.AllArgsConstructor;
 

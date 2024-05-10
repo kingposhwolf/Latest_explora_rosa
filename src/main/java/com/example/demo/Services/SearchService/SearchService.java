@@ -7,5 +7,7 @@ import com.example.demo.InputDto.SearchDto.SearchDto;
 public interface SearchService {
     ResponseEntity<Object> suggestiveProfiles(SearchDto searchDto);
 
+    ResponseEntity<Object> fetchSearchHistory(Long profileId);
+
     // ResponseEntity<Object> suggestiveProfilesOnFollowings(SearchDto searchDto);
 }

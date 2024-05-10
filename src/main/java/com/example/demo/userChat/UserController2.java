@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.InputDto.Message.OneToOneChat.ChatUser;
 import com.example.demo.Models.UserManagement.Management.Status;
 import com.example.demo.OutputDto.ConversationHistory;
-import com.example.demo.Repositories.FollowUnFollowRepository;
+import com.example.demo.Repositories.SocialMedia.FollowUnFollow.FollowUnFollowRepository;
 import com.example.demo.chatroom.Repository.GroupChatRepository;
 
 import jakarta.validation.constraints.NotNull;

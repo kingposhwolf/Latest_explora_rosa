@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Helper.Helper;
 import com.example.demo.Models.UserManagement.Profile;
-import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 import com.example.demo.chat.Dto.ChatMessageDto;
 import com.example.demo.chatroom.ChatRoom;
 import com.example.demo.chatroom.ChatRoomService;

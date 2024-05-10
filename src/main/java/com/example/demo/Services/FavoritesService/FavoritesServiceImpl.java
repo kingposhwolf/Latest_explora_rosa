@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.InputDto.SocialMedia.Favorites.DeleteFavoriteDto;
 import com.example.demo.InputDto.SocialMedia.Favorites.FavoritesDto;
-import com.example.demo.Repositories.FavoritesRepository;
+import com.example.demo.Repositories.SocialMedia.Favorite.FavoritesRepository;
 
 import lombok.AllArgsConstructor;
 

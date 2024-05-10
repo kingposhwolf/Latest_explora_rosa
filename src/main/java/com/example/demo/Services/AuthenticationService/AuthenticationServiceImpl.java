@@ -27,11 +27,11 @@ import com.example.demo.Models.UserManagement.Management.AccountType;
 import com.example.demo.Models.UserManagement.Management.Role;
 import com.example.demo.Models.UserManagement.Management.VerificationStatus;
 import com.example.demo.Models.UserManagement.PersonalAccount.Personal;
-import com.example.demo.Repositories.AccountTypeRepository;
-import com.example.demo.Repositories.BrandRepository;
-import com.example.demo.Repositories.BusinessCategoryRepository;
-import com.example.demo.Repositories.ProfileRepository;
-import com.example.demo.Repositories.UserRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.AccountTypeRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.UserRepository;
+import com.example.demo.Repositories.UserManagement.BusinessAccount.BrandRepository;
+import com.example.demo.Repositories.UserManagement.BusinessAccount.BusinessCategoryRepository;
 import com.example.demo.Services.JWTService.JWTService;
 
 import lombok.AllArgsConstructor;

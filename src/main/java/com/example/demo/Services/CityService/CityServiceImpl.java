@@ -2,8 +2,8 @@ package com.example.demo.Services.CityService;
 import com.example.demo.InputDto.ManagementInfo.City.CityDto;
 import com.example.demo.Models.Information.City;
 import com.example.demo.Models.Information.Country;
-import com.example.demo.Repositories.CityRepository;
-import com.example.demo.Repositories.CountryRepository;
+import com.example.demo.Repositories.Information.City.CityRepository;
+import com.example.demo.Repositories.Information.Country.CountryRepository;
 
 import lombok.AllArgsConstructor;
 

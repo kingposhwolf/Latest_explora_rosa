@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.UserManagement.Profile.GetProfileDto;
 import com.example.demo.InputDto.UserManagement.Profile.ProfileVisitDto;
-import com.example.demo.Repositories.FollowUnFollowRepository;
-import com.example.demo.Repositories.PersonalRepository;
-import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.SocialMedia.FollowUnFollow.FollowUnFollowRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
+import com.example.demo.Repositories.UserManagement.PersonalAccount.PersonalRepository;
 
 import lombok.AllArgsConstructor;
 
