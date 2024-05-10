@@ -38,9 +38,9 @@ public interface UserSearchHistoryRepository extends JpaRepository<UserSearchHis
 
     @Modifying
 @Query(value = "INSERT INTO search_names (user_search_history_id, keywords) " +
-               "SELECT c.id, :keyword " +
-               "FROM user_search_history c " +
-               "WHERE c.profile_id = :profileId", nativeQuery = true)
+            "SELECT c.id, :keyword " +
+            "FROM user_search_history c " +
+            "WHERE c.profile_id = :profileId", nativeQuery = true)
 void newKeyword(@Param("keyword") String keyword, @Param("profileId") Long profileId);
 
 

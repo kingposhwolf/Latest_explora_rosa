@@ -1,5 +1,8 @@
 package com.example.demo.Services.SearchService;
 
+import java.util.Map;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -8,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Algorithms.SearchAlgorithm;
 import com.example.demo.InputDto.SearchDto.SearchDto;
+import com.example.demo.Repositories.SearchOperation.UserSearchHistoryRepository;
+import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +27,10 @@ public class SearchServiceImpl implements SearchService{
     private AmqpTemplate rabbitTemplate;
 
     private final SearchAlgorithm searchAlgorithm;
+
+    private final UserSearchHistoryRepository searchHistoryRepository;
+
+    private final UserPostRepository userPostRepository;
     
 
     @Override
@@ -55,11 +64,38 @@ public class SearchServiceImpl implements SearchService{
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }
             else{
-
-                return ResponseEntity.status(200).body("search history");
+                Optional<Map<String, Object>> historyOpt = searchHistoryRepository.findHistoryByProfileId(profileId);
+                Map<String, Object> history = historyOpt.get();
+            if (history.get("id") != null) {
+                String[] words = ((String) history.get("keyword")).split("\\s*,\\s*");
+                
+                return ResponseEntity.status(200).body(words);
+            } else {
+                return ResponseEntity.status(200).body(history);
+            }
             }
         } catch (Exception exception) {
             logger.error("\nSearch history fetching failed , Server Error : " + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+
+    @Override
+    public ResponseEntity<Object> searchResults(SearchDto searchDto) {
+        try {
+            Long profile = profileRepository.findProfileIdById(searchDto.getProfileId());
+
+            if(profile == null){
+                logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
+                return ResponseEntity.badRequest().body("Your profile ID is Invalid");
+            }
+            else{
+                // rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
+
+                return ResponseEntity.status(200).body(userPostRepository.searchOnHashTag(searchDto.getKeyword()));
+            }
+        } catch (Exception exception) {
+            logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }

@@ -158,4 +158,13 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
          "GROUP BY up.id")
 List<Map<String, Object>> findSpecificUserPostData(@Param("profileId") Long profileId);
 
+@Query(value =
+        "SELECT DISTINCT p.id as postId " +
+        "FROM user_posts p " +
+        "JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+        "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+        "WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%')",
+        nativeQuery = true
+        )
+        List<Map<String, Object>> searchOnHashTag(@Param("keyword") String keyword);
 }
