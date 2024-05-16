@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Algorithms.SearchAlgorithm;
+import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.SearchDto.SearchDto;
 import com.example.demo.Repositories.SearchOperation.UserSearchHistoryRepository;
 import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
@@ -31,6 +32,8 @@ public class SearchServiceImpl implements SearchService{
     private final UserSearchHistoryRepository searchHistoryRepository;
 
     private final UserPostRepository userPostRepository;
+
+    private final Helper helper;
     
 
     @Override
@@ -46,7 +49,7 @@ public class SearchServiceImpl implements SearchService{
             else{
                 rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
 
-                return ResponseEntity.status(200).body(searchAlgorithm.suggestiveProfiles(searchDto));
+                return ResponseEntity.status(200).body(helper.postMapTimer(searchAlgorithm.suggestiveProfiles(searchDto),searchDto.getProfileId()));
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
@@ -92,7 +95,7 @@ public class SearchServiceImpl implements SearchService{
             else{
                 // rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
 
-                return ResponseEntity.status(200).body(userPostRepository.searchOnHashTag(searchDto.getKeyword()));
+                return ResponseEntity.status(200).body(helper.postMapTimer(userPostRepository.searchOnHashTag(searchDto.getKeyword()),searchDto.getProfileId()));
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());

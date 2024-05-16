@@ -3,6 +3,7 @@ package com.example.demo.Components.Helper;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -140,41 +141,45 @@ public class Helper {
 
     public List<Map<String, Object>> postMapTimer(List<Map<String, Object>> data, Long profileId) {
         List<Long> postUserLike = likeRepository.postsUserLike(profileId);
-
         List<Long> favoritePosts = favoritesRepository.findPostByProfile(profileId);
+    
         return data.stream()
                 .map(post -> {
                     // Create a new map with the existing entries except timestamp
                     Map<String, Object> modifiedPost = new HashMap<>(post);
                     modifiedPost.remove("timestamp");
-
+    
+                    // Get the timestamp from the post map
+                    Timestamp timestamp = (Timestamp) post.get("timestamp");
+    
+                    // Convert the Timestamp to LocalDateTime
+                    LocalDateTime localDateTime = timestamp.toLocalDateTime();
+    
                     // Calculate the time difference and add it to the map
-                    LocalDateTime timestamp = (LocalDateTime) post.get("timestamp");
-                    String timeDifference = calculateTimeDifference(timestamp);
-
+                    String timeDifference = calculateTimeDifference(localDateTime);
                     modifiedPost.put("duration", timeDifference);
                     modifiedPost.put("showShare", false);
-
-                    //Check if the user like that post
+    
+                    // Check if the user likes that post
                     Long postId = (Long) post.get("id");
-
-                    if(postUserLike.contains(postId)){
+                    if (postUserLike.contains(postId)) {
                         modifiedPost.put("liked", true);
-                    }else{
+                    } else {
                         modifiedPost.put("liked", false);
                     }
-
-                    //check if the user add the post to the favorites
-                    if(favoritePosts.contains(postId)){
+    
+                    // Check if the user added the post to the favorites
+                    if (favoritePosts.contains(postId)) {
                         modifiedPost.put("favorite", true);
-                    }else{
+                    } else {
                         modifiedPost.put("favorite", false);
                     }
-
+    
                     return modifiedPost;
                 })
                 .collect(Collectors.toList());
     }
+    
 
     @SuppressWarnings("null")
     public String saveImage(MultipartFile proFilePicture, Long profileId,String folderPath) {

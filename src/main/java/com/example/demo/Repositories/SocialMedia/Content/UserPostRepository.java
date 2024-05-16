@@ -56,68 +56,141 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
                         + "JOIN up2.hashTags ht2 WHERE ht2.name = :keyword)")
         List<UserPost> findByHashTagsMatchKeywordAndMaxLikes(@Param("keyword") String keyword, Pageable pageable);
 
-        @Query("SELECT " +
-                        "new map(" +
-                        "   up.id as id, " +
-                        "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
-                        "   c as country, " +
-                        "   GROUP_CONCAT(DISTINCT f) as mentions, " +
-                        "   GROUP_CONCAT(DISTINCT g) as tags, " +
-                        "   GROUP_CONCAT(DISTINCT b.name) as hashTags, " +
-                        "   up.likes as likes, " +
-                        "   up.shares as shares, " +
-                        "   up.favorites as favorites, " +
-                        "   up.comments as comments, " +
-                        "   up.caption as caption, " +
-                        "   up.thumbnail as thumbnail, " +
-                        "   up.time as timestamp, " +
-                        "   up.profile.user.username as username, " +
-                        "   up.profile.user.name as name, " +
-                        "   up.profile.user.accountType.name as accountType, " +
-                        "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
-                        "   up.path as path) " +
-                        "FROM UserPost up " +
-                        "LEFT JOIN up.country c " +
-                        "LEFT JOIN up.mentions f " +
-                        "LEFT JOIN up.tags g " +
-                        "LEFT JOIN up.hashTags b " +
-                        "LEFT JOIN up.contentTypes d " +
-                        "LEFT JOIN up.names e " +
-                        "WHERE up.id = :postId " +
-                        "GROUP BY up.id")
+        // @Query("SELECT " +
+        //                 "new map(" +
+        //                 "   up.id as id, " +
+        //                 "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
+        //                 "   c as country, " +
+        //                 "   GROUP_CONCAT(DISTINCT f) as mentions, " +
+        //                 "   GROUP_CONCAT(DISTINCT g) as tags, " +
+        //                 "   GROUP_CONCAT(DISTINCT b.name) as hashTags, " +
+        //                 "   up.likes as likes, " +
+        //                 "   up.shares as shares, " +
+        //                 "   up.favorites as favorites, " +
+        //                 "   up.comments as comments, " +
+        //                 "   up.caption as caption, " +
+        //                 "   up.thumbnail as thumbnail, " +
+        //                 "   up.time as timestamp, " +
+        //                 "   up.profile.user.username as username, " +
+        //                 "   up.profile.user.name as name, " +
+        //                 "   up.profile.user.accountType.name as accountType, " +
+        //                 "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
+        //                 "   up.path as path) " +
+        //                 "FROM UserPost up " +
+        //                 "LEFT JOIN up.country c " +
+        //                 "LEFT JOIN up.mentions f " +
+        //                 "LEFT JOIN up.tags g " +
+        //                 "LEFT JOIN up.hashTags b " +
+        //                 "LEFT JOIN up.contentTypes d " +
+        //                 "LEFT JOIN up.names e " +
+        //                 "WHERE up.id = :postId " +
+        //                 "GROUP BY up.id")
+        // Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
+
+        @Query(value =
+        "SELECT p.id as id, " +
+        "p.location as location, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+        "   c.name as country, " +
+        "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+        "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+        "   GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+        "   p.likes as likes, " +
+        "   p.shares as shares, " +
+        "   p.favorites as favorites, " +
+        "   p.comments as comments, " +
+        "   p.caption as caption, " +
+        "   p.thumbnail as thumbnail, " +
+        "   p.time as timestamp, " +
+        "   p.profile_id as profileId, " +
+        "   us.username as username, " +
+        "   us.name as name, " +
+        "   acc.name as accountType, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+        "   p.path as path " +
+        "FROM user_posts p " +
+        "JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+        "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+        "LEFT JOIN countries c ON p.country_id = c.id " +
+        "LEFT JOIN mention f ON p.id = f.user_post_id " +
+        "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+        "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+        "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+        "LEFT JOIN users us ON pr.user_id = us.id " +
+        "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+        "WHERE p.id = :postId " +
+        "GROUP BY p.id",
+        nativeQuery = true)
         Map<String, Object> findUserPostDataById(@Param("postId") Long postId);
 
         // List all posts.
-        @Query("SELECT " +
-                        "new map(" +
-                        "   up.id as id, " +
-                        "   up.location as location, " +
-                        "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
-                        "   c as country, " +
-                        "   GROUP_CONCAT(DISTINCT f) as mentions, " +
-                        "   GROUP_CONCAT(DISTINCT g) as tags, " +
-                        "   GROUP_CONCAT(DISTINCT b.name) as hashTags, " +
-                        "   up.likes as likes, " +
-                        "   up.shares as shares, " +
-                        "   up.favorites as favorites, " +
-                        "   up.comments as comments, " +
-                        "   up.caption as caption, " +
-                        "   up.thumbnail as thumbnail, " +
-                        "   up.time as timestamp, " +
-                        "   up.profile.id as profileId, " +
-                        "   up.profile.user.username as username, " +
-                        "   up.profile.user.name as name, " +
-                        "   up.profile.user.accountType.name as accountType, " +
-                        "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
-                        "   up.path as path) " +
-                        "FROM UserPost up " +
-                        "LEFT JOIN up.country c " +
-                        "LEFT JOIN up.mentions f " +
-                        "LEFT JOIN up.tags g " +
-                        "LEFT JOIN up.hashTags b " +
-                        "LEFT JOIN up.contentTypes d " +
-                        "LEFT JOIN up.names e " +
-                        "GROUP BY up.id")
+        // @Query("SELECT " +
+        //                 "new map(" +
+        //                 "   up.id as id, " +
+        //                 "   up.location as location, " +
+        //                 "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
+        //                 "   c as country, " +
+        //                 "   GROUP_CONCAT(DISTINCT f) as mentions, " +
+        //                 "   GROUP_CONCAT(DISTINCT g) as tags, " +
+        //                 "   GROUP_CONCAT(DISTINCT b.name) as hashTags, " +
+        //                 "   up.likes as likes, " +
+        //                 "   up.shares as shares, " +
+        //                 "   up.favorites as favorites, " +
+        //                 "   up.comments as comments, " +
+        //                 "   up.caption as caption, " +
+        //                 "   up.thumbnail as thumbnail, " +
+        //                 "   up.time as timestamp, " +
+        //                 "   up.profile.id as profileId, " +
+        //                 "   up.profile.user.username as username, " +
+        //                 "   up.profile.user.name as name, " +
+        //                 "   up.profile.user.accountType.name as accountType, " +
+        //                 "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
+        //                 "   up.path as path) " +
+        //                 "FROM UserPost up " +
+        //                 "LEFT JOIN up.country c " +
+        //                 "LEFT JOIN up.mentions f " +
+        //                 "LEFT JOIN up.tags g " +
+        //                 "LEFT JOIN up.hashTags b " +
+        //                 "LEFT JOIN up.contentTypes d " +
+        //                 "LEFT JOIN up.names e " +
+        //                 "GROUP BY up.id")
+        // List<Map<String, Object>> findUserPostData();
+
+        @Query(value =
+        "SELECT p.id as id, " +
+        "p.location as location, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+        "   c.name as country, " +
+        "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+        "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+        "   GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+        "   p.likes as likes, " +
+        "   p.shares as shares, " +
+        "   p.favorites as favorites, " +
+        "   p.comments as comments, " +
+        "   p.caption as caption, " +
+        "   p.thumbnail as thumbnail, " +
+        "   p.time as timestamp, " +
+        "   p.profile_id as profileId, " +
+        "   us.username as username, " +
+        "   us.name as name, " +
+        "   acc.name as accountType, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+        "   p.path as path " +
+        "FROM user_posts p " +
+        "JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+        "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+        "LEFT JOIN countries c ON p.country_id = c.id " +
+        "LEFT JOIN mention f ON p.id = f.user_post_id " +
+        "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+        "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+        "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+        "LEFT JOIN users us ON pr.user_id = us.id " +
+        "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+        "GROUP BY p.id",
+        nativeQuery = true)
         List<Map<String, Object>> findUserPostData();
 
         //Return the id of the post id only
@@ -125,46 +198,119 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         Optional<Long> findPostIdByItsId(@Param("postId") Long postId);
 
          // List all posts.
-         @Query("SELECT " +
-         "new map(" +
-         "   up.id as id, " +
-         "   up.location as location, " +
-         "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
-         "   c as country, " +
-         "   GROUP_CONCAT(DISTINCT f) as mentions, " +
-         "   GROUP_CONCAT(DISTINCT g) as tags, " +
-         "   GROUP_CONCAT(DISTINCT b.name) as hashTags, " +
-         "   up.likes as likes, " +
-         "   up.shares as shares, " +
-         "   up.favorites as favorites, " +
-         "   up.comments as comments, " +
-         "   up.caption as caption, " +
-         "   up.thumbnail as thumbnail, " +
-         "   up.time as timestamp, " +
-         "   up.profile.id as profileId, " +
-         "   up.profile.user.username as username, " +
-         "   up.profile.user.name as name, " +
-         "   up.profile.user.accountType.name as accountType, " +
-         "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
-         "   up.path as path) " +
-         "FROM UserPost up " +
-         "LEFT JOIN up.country c " +
-         "LEFT JOIN up.mentions f " +
-         "LEFT JOIN up.tags g " +
-         "LEFT JOIN up.hashTags b " +
-         "LEFT JOIN up.contentTypes d " +
-         "LEFT JOIN up.names e " +
-         "WHERE up.profile.id = :profileId " +
-         "GROUP BY up.id")
-List<Map<String, Object>> findSpecificUserPostData(@Param("profileId") Long profileId);
+        // @Query("SELECT " +
+        // "new map(" +
+        // "   up.id as id, " +
+        // "   up.location as location, " +
+        // "   GROUP_CONCAT(DISTINCT CONCAT(e)) as names, " +
+        // "   c as country, " +
+        // "   GROUP_CONCAT(DISTINCT f) as mentions, " +
+        // "   GROUP_CONCAT(DISTINCT g) as tags, " +
+        // "   GROUP_CONCAT(DISTINCT b.name) as hashTags, " +
+        // "   up.likes as likes, " +
+        // "   up.shares as shares, " +
+        // "   up.favorites as favorites, " +
+        // "   up.comments as comments, " +
+        // "   up.caption as caption, " +
+        // "   up.thumbnail as thumbnail, " +
+        // "   up.time as timestamp, " +
+        // "   up.profile.id as profileId, " +
+        // "   up.profile.user.username as username, " +
+        // "   up.profile.user.name as name, " +
+        // "   up.profile.user.accountType.name as accountType, " +
+        // "   GROUP_CONCAT(DISTINCT CONCAT(d)) as contentTypes, " +
+        // "   up.path as path) " +
+        // "FROM UserPost up " +
+        // "LEFT JOIN up.country c " +
+        // "LEFT JOIN up.mentions f " +
+        // "LEFT JOIN up.tags g " +
+        // "LEFT JOIN up.hashTags b " +
+        // "LEFT JOIN up.contentTypes d " +
+        // "LEFT JOIN up.names e " +
+        // "WHERE up.profile.id = :profileId " +
+        // "GROUP BY up.id")
+        // List<Map<String, Object>> findSpecificUserPostData(@Param("profileId") Long profileId);
 
-@Query(value =
-        "SELECT DISTINCT p.id as postId " +
+        @Query(value =
+        "SELECT p.id as id, " +
+        "p.location as location, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+        "   c.name as country, " +
+        "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+        "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+        "   GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+        "   p.likes as likes, " +
+        "   p.shares as shares, " +
+        "   p.favorites as favorites, " +
+        "   p.comments as comments, " +
+        "   p.caption as caption, " +
+        "   p.thumbnail as thumbnail, " +
+        "   p.time as timestamp, " +
+        "   p.profile_id as profileId, " +
+        "   us.username as username, " +
+        "   us.name as name, " +
+        "   acc.name as accountType, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+        "   p.path as path " +
         "FROM user_posts p " +
         "JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
         "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
-        "WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%')",
-        nativeQuery = true
-        )
+        "LEFT JOIN countries c ON p.country_id = c.id " +
+        "LEFT JOIN mention f ON p.id = f.user_post_id " +
+        "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+        "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+        "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+        "LEFT JOIN users us ON pr.user_id = us.id " +
+        "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+        "WHERE p.profile_id = :profileId " +
+        "GROUP BY p.id",
+        nativeQuery = true)
+        List<Map<String, Object>> findSpecificUserPostData(@Param("profileId") Long profileId);
+
+
+        @Query(value =
+        "SELECT p.id as id, " +
+        "p.location as location, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+        "   c.name as country, " +
+        "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+        "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+        "   GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+        "   p.likes as likes, " +
+        "   p.shares as shares, " +
+        "   p.favorites as favorites, " +
+        "   p.comments as comments, " +
+        "   p.caption as caption, " +
+        "   p.thumbnail as thumbnail, " +
+        "   p.time as timestamp, " +
+        "   p.profile_id as profileId, " +
+        "   us.username as username, " +
+        "   us.name as name, " +
+        "   acc.name as accountType, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+        "   p.path as path " +
+        "FROM user_posts p " +
+        "JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+        "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+        "LEFT JOIN countries c ON p.country_id = c.id " +
+        "LEFT JOIN mention f ON p.id = f.user_post_id " +
+        "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+        "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+        "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+        "LEFT JOIN users us ON pr.user_id = us.id " +
+        "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+        "WHERE p.id IN (" +
+        "   SELECT DISTINCT p.id " +
+        "   FROM user_posts p " +
+        "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+        "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+        "WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
+        ") " +
+        "GROUP BY p.id",
+        nativeQuery = true)
         List<Map<String, Object>> searchOnHashTag(@Param("keyword") String keyword);
+
+
 }
