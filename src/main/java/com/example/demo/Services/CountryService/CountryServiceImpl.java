@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import com.example.demo.InputDto.ManagementInfo.Country.CountryDto;
 import com.example.demo.Models.Information.Country;
-import com.example.demo.Repositories.CountryRepository;
+import com.example.demo.Repositories.Information.Country.CountryRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;
 
 import lombok.AllArgsConstructor;

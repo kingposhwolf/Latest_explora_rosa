@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.UserManagement.PersonalProfile.TitleDto;
 import com.example.demo.Models.UserManagement.PersonalAccount.Title;
-import com.example.demo.Repositories.TitleRepository;
+import com.example.demo.Repositories.UserManagement.PersonalAccount.TitleRepository;
 
 import lombok.AllArgsConstructor;
 

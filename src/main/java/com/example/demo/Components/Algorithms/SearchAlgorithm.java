@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.SearchDto.SearchDto;
 import com.example.demo.Models.SocialMedia.UserPost;
-import com.example.demo.Repositories.FollowUnFollowRepository;
-import com.example.demo.Repositories.ProfileRepository;
-import com.example.demo.Repositories.UserEngagementRepository;
-import com.example.demo.Repositories.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.FollowUnFollow.FollowUnFollowRepository;
+import com.example.demo.Repositories.Tracking.UserEngagementRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -53,17 +53,20 @@ public class SearchAlgorithm {
     //Search on Location
     public List<Map<String, Object>> suggestiveProfiles(SearchDto searchDto){
 
+
+        //Must add search for the world wide star match
+
         List<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(searchDto.getProfileId(), searchDto.getKeyword());
 
         List<Map<String, Object>> followings = followUnFollowRepository.searchOnFollowing(searchDto.getProfileId(), searchDto.getKeyword());
 
         List<Map<String, Object>> followingfollowings = helper.mergeProfiles(profileRepository.searchByUserFollowings(searchDto.getProfileId(), searchDto.getKeyword()));
 
-        List<Map<String, Object>> fames = profileRepository.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword());
+        List<Map<String, Object>> countryFames = profileRepository.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword());
 
         followingfollowings.addAll(interact);
         followingfollowings.addAll(followings);
-        followingfollowings.addAll(fames);
+        followingfollowings.addAll(countryFames);
 
         HashSet<Object> seen = new HashSet<>();
 

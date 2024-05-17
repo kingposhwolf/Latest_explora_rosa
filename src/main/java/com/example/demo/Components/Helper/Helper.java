@@ -3,21 +3,22 @@ package com.example.demo.Components.Helper;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.Repositories.CommentLikeRepository;
-import com.example.demo.Repositories.FavoritesRepository;
-import com.example.demo.Repositories.LikeRepository;
+import com.example.demo.Repositories.SocialMedia.Comment.CommentLikeRepository;
+import com.example.demo.Repositories.SocialMedia.Favorite.FavoritesRepository;
+import com.example.demo.Repositories.SocialMedia.Like.LikeRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -29,6 +30,8 @@ public class Helper {
     private final FavoritesRepository favoritesRepository;
 
     private final CommentLikeRepository commentLikeRepository;
+
+    private static final int SEED_BOUND = 10000;
 
     public Long calculateChatTimeDifference(LocalDateTime givenTime) {
         // Get the current local time
@@ -66,7 +69,8 @@ public class Helper {
         }
     }
 
-    public List<Map<String, Object>> mapTimer(List<Map<String, Object>> data, Long profileId) {
+    public List<Map<String, Object>> mapCommentTimer(List<Map<String, Object>> data, Long profileId) {
+        List<Long> commentsUSerLikes = commentLikeRepository.commentsUserLike(profileId);
         return data.stream()
                 .map(post -> {
                     // Create a new map with the existing entries except timestamp
@@ -79,8 +83,8 @@ public class Helper {
                     modifiedPost.put("duration", timeDifference);
 
                     Long commentId = (Long) post.get("id");
-                    Optional<Long> liked = commentLikeRepository.findIfLikeComment(commentId, profileId);
-                    if(liked.isPresent()){
+
+                    if(commentsUSerLikes.contains(commentId)){
                         modifiedPost.put("liked", true);
                     }else{
                         modifiedPost.put("liked", false);
@@ -108,20 +112,20 @@ public class Helper {
                 .collect(Collectors.toList());
     }
 
-    public Map<String, Object> mapSingleTimer(Map<String, Object> data) {
-        // Create a new map with the existing entries except timestamp
-        Map<String, Object> modifiedData = new HashMap<>(data);
-        modifiedData.remove("timestamp");
+    // public Map<String, Object> mapSingleTimer(Map<String, Object> data) {
+    //     // Create a new map with the existing entries except timestamp
+    //     Map<String, Object> modifiedData = new HashMap<>(data);
+    //     modifiedData.remove("timestamp");
 
-        // Calculate the time difference and add it to the map
-        LocalDateTime timestamp = (LocalDateTime) data.get("timestamp");
+    //     // Calculate the time difference and add it to the map
+    //     LocalDateTime timestamp = (LocalDateTime) data.get("timestamp");
 
-        String timeDifference = calculateTimeDifference(timestamp);
+    //     String timeDifference = calculateTimeDifference(timestamp);
 
-        modifiedData.put("duration", timeDifference);
+    //     modifiedData.put("duration", timeDifference);
 
-        return modifiedData;
-    }
+    //     return modifiedData;
+    // }
 
     public Map<String, Object> mapChatSingleTimer(Map<String, Object> data) {
         // Create a new map with the existing entries except timestamp
@@ -140,42 +144,45 @@ public class Helper {
 
     public List<Map<String, Object>> postMapTimer(List<Map<String, Object>> data, Long profileId) {
         List<Long> postUserLike = likeRepository.postsUserLike(profileId);
-
         List<Long> favoritePosts = favoritesRepository.findPostByProfile(profileId);
+    
         return data.stream()
                 .map(post -> {
                     // Create a new map with the existing entries except timestamp
                     Map<String, Object> modifiedPost = new HashMap<>(post);
                     modifiedPost.remove("timestamp");
-
+    
+                    // Get the timestamp from the post map
+                    Timestamp timestamp = (Timestamp) post.get("timestamp");
+    
+                    // Convert the Timestamp to LocalDateTime
+                    LocalDateTime localDateTime = timestamp.toLocalDateTime();
+    
                     // Calculate the time difference and add it to the map
-                    LocalDateTime timestamp = (LocalDateTime) post.get("timestamp");
-                    String timeDifference = calculateTimeDifference(timestamp);
-
+                    String timeDifference = calculateTimeDifference(localDateTime);
                     modifiedPost.put("duration", timeDifference);
                     modifiedPost.put("showShare", false);
-
-                    //Check if the user like that post
+    
+                    // Check if the user likes that post
                     Long postId = (Long) post.get("id");
-                   // Optional<Long> liked = likeRepository.findIfLikePost(postId, profileId);
-                    if(postUserLike.contains(postId)){
+                    if (postUserLike.contains(postId)) {
                         modifiedPost.put("liked", true);
-                    }else{
+                    } else {
                         modifiedPost.put("liked", false);
                     }
-
-                    //check if the user add the post to the favorites
-                   // Optional<Long> favorited = favoritesRepository.findFavoriteByPostAndUser(postId, profileId);
-                    if(favoritePosts.contains(postId)){
+    
+                    // Check if the user added the post to the favorites
+                    if (favoritePosts.contains(postId)) {
                         modifiedPost.put("favorite", true);
-                    }else{
+                    } else {
                         modifiedPost.put("favorite", false);
                     }
-
+    
                     return modifiedPost;
                 })
                 .collect(Collectors.toList());
     }
+    
 
     @SuppressWarnings("null")
     public String saveImage(MultipartFile proFilePicture, Long profileId,String folderPath) {
@@ -216,6 +223,7 @@ public class Helper {
         }
     }
 
+
     public List<Map<String, Object>> mergeProfiles(List<Map<String, Object>> inputList) {
         // Map to store merged profiles based on profileId
         Map<Long, Map<String, Object>> mergedProfilesMap = new HashMap<>();
@@ -242,5 +250,14 @@ public class Helper {
         
         return mergedList;
     }
+
+
+    public static long generateSeed(int pageNumber) {
+        // Use a page number to generate a unique seed for each page
+        // You can use any method to generate the seed, this is just an example
+        Random random = new Random(pageNumber * SEED_BOUND);
+        return random.nextLong();
+    }
+
     
 }

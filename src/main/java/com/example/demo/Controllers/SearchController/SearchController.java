@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
+import com.example.demo.InputDto.SearchDto.FetchSearchHistoryDto;
 import com.example.demo.InputDto.SearchDto.SearchDto;
 import com.example.demo.Services.SearchService.SearchServiceImpl;
 
@@ -28,6 +29,22 @@ public class SearchController {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return searchService.suggestiveProfiles(searchDto);
+    }
+
+    @PostMapping("/history")
+    public ResponseEntity<Object> searchHistory(@RequestBody @Valid FetchSearchHistoryDto historyDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return searchService.fetchSearchHistory(historyDto.getProfileId());
+    }
+
+    @PostMapping("/results")
+    public ResponseEntity<Object> searchResults(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return searchService.searchResults(searchDto);
     }
 
     // @PostMapping("/suggestiveFollowings")

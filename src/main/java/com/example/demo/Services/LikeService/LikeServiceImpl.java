@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.SocialMedia.Like.LikeDto;
 import com.example.demo.Models.SocialMedia.UserPost;
-import com.example.demo.Repositories.LikeRepository;
-import com.example.demo.Repositories.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.Like.LikeRepository;
 
 import lombok.AllArgsConstructor;
 

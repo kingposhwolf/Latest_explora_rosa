@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import com.example.demo.InputDto.Message.GroupChat.AddGroupMembersDto;
 import com.example.demo.InputDto.Message.GroupChat.NewGroupDto;
 import com.example.demo.Models.UserManagement.Profile;
-import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 import com.example.demo.chatroom.GroupChat;
 import com.example.demo.chatroom.Repository.GroupChatRepository;
 

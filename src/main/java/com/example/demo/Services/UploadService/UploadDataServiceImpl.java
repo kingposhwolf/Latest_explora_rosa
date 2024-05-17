@@ -1,12 +1,9 @@
 package com.example.demo.Services.UploadService;
 import com.example.demo.Models.MediaManagement.UploadData;
 import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
-/*
- * @author Dwight Danda
- *
- */
-import com.example.demo.Repositories.BrandRepository;
-import com.example.demo.Repositories.UploadDataRepository;
+import com.example.demo.Repositories.MediaOperation.UploadDataRepository;
+import com.example.demo.Repositories.UserManagement.BusinessAccount.BrandRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

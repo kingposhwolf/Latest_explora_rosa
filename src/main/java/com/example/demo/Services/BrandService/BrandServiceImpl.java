@@ -1,6 +1,8 @@
 package com.example.demo.Services.BrandService;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,8 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.UserManagement.Profile.GetProfileDto;
 import com.example.demo.InputDto.UserManagement.Profile.ProfileVisitDto;
-import com.example.demo.Repositories.BrandRepository;
-import com.example.demo.Repositories.ProfileRepository;
+import com.example.demo.Repositories.SocialMedia.FollowUnFollow.FollowUnFollowRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
+import com.example.demo.Repositories.UserManagement.BusinessAccount.BrandRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -24,6 +27,8 @@ public class BrandServiceImpl implements BrandService{
     private final BrandRepository brandRepository;
 
     private final ProfileRepository profileRepository;
+
+    private final FollowUnFollowRepository followUnFollowRepository;
 
     private AmqpTemplate rabbitTemplate;
 
@@ -47,9 +52,18 @@ public class BrandServiceImpl implements BrandService{
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }
             else{
+                Optional<Long> followProfile = followUnFollowRepository.findEngangeId(brandVisitDto.getVisitorId(), brandVisitDto.getOwnerId());
+
+                Map<String, Object> modifiedProfile = new HashMap<>(owner);
+            
+                if (followProfile.isPresent()) {
+                    modifiedProfile.put("followProfile", true);
+                }else{
+                    modifiedProfile.put("followProfile", false);
+                }
                 rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, brandVisitDto.toJson());
-                logger.info("\nProfile Info Fetched Successful: " + owner);
-                return ResponseEntity.status(200).body(owner);
+                logger.info("\nProfile Info Fetched Successful: " + modifiedProfile);
+                return ResponseEntity.status(200).body(modifiedProfile);
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());

@@ -1,7 +1,9 @@
 package com.example.demo.Components.QueueListener;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Components.Helper.Helper;
+import com.example.demo.InputDto.SearchDto.SearchDto;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentDto;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentLikeDto;
 import com.example.demo.InputDto.SocialMedia.Comment.CommentReplyDto;
@@ -28,21 +31,23 @@ import com.example.demo.Models.SocialMedia.Interactions.Comment;
 import com.example.demo.Models.SocialMedia.Interactions.CommentLike;
 import com.example.demo.Models.SocialMedia.Interactions.Favorites;
 import com.example.demo.Models.SocialMedia.Interactions.Like;
+// import com.example.demo.Models.SocialMedia.SearchOperation.UserSearchHistory;
 import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngagement;
 import com.example.demo.Models.Tracking.UserToUserTracking.UserEngagement;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.OutputDto.CommentOutputDto;
 import com.example.demo.OutputDto.CommentReplyOutputDto;
 import com.example.demo.OutputDto.SocialMediaInstantChange;
-import com.example.demo.Repositories.CommentLikeRepository;
-import com.example.demo.Repositories.CommentRepository;
-import com.example.demo.Repositories.FavoritesRepository;
-import com.example.demo.Repositories.FollowUnFollowRepository;
-import com.example.demo.Repositories.LikeRepository;
-import com.example.demo.Repositories.ProfileRepository;
-import com.example.demo.Repositories.TopicEngagementRepository;
-import com.example.demo.Repositories.UserEngagementRepository;
-import com.example.demo.Repositories.UserPostRepository;
+import com.example.demo.Repositories.SearchOperation.UserSearchHistoryRepository;
+import com.example.demo.Repositories.SocialMedia.Comment.CommentLikeRepository;
+import com.example.demo.Repositories.SocialMedia.Comment.CommentRepository;
+import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.Favorite.FavoritesRepository;
+import com.example.demo.Repositories.SocialMedia.FollowUnFollow.FollowUnFollowRepository;
+import com.example.demo.Repositories.SocialMedia.Like.LikeRepository;
+import com.example.demo.Repositories.Tracking.TopicEngagementRepository;
+import com.example.demo.Repositories.Tracking.UserEngagementRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -72,6 +77,8 @@ public class RabbitMqConsumers {
     private final Helper helper;
 
     private final FavoritesRepository favoritesRepository;
+
+    private final UserSearchHistoryRepository searchHistoryRepository;
 
     @SuppressWarnings("null")
     @Transactional
@@ -672,6 +679,37 @@ public class RabbitMqConsumers {
                     logger.info("Follow Operation tracked successful");
             }
 
+        } catch (Exception exception) {
+            logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());
+        }
+    }
+
+    //For saving search history
+    @SuppressWarnings("null")
+    @Transactional
+    @RabbitListener(queues = "searchSaveOperation")
+    public void saveSearchHistory(String message) {
+        try {
+            SearchDto searchDto = SearchDto.fromJson(message);
+
+            // Optional<Profile> profileOpt = profileRepository.findById(searchDto.getProfileId());
+            // Profile profile = profileOpt.get();
+
+            Optional<Map<String, Object>> historyOpt = searchHistoryRepository.findHistoryByProfileId(searchDto.getProfileId());
+            Map<String, Object> history = historyOpt.get();
+            if (history.get("id") != null) {
+                String[] words = ((String) history.get("keyword")).split("\\s*,\\s*");
+                List<String> keywords = Arrays.asList(words);
+                if (!keywords.contains(searchDto.getKeyword())) {
+                    searchHistoryRepository.addKeyword((Long) history.get("id"), searchDto.getKeyword());
+                }
+            } else {
+                searchHistoryRepository.newHistory(searchDto.getProfileId());
+                searchHistoryRepository.newKeyword(searchDto.getKeyword(), searchDto.getProfileId());
+            }
+
+
+            
         } catch (Exception exception) {
             logger.error("INTERNAL SERVER ERROR : " + exception.getMessage());
         }

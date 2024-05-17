@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.InputDto.UserManagement.Authentication.NewPasswordDto;
 import com.example.demo.Models.UserManagement.User;
 import com.example.demo.Models.UserManagement.Management.PasswordResetToken;
-import com.example.demo.Repositories.PasswordResetRepository;
-import com.example.demo.Repositories.UserRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.PasswordResetRepository;
+import com.example.demo.Repositories.UserManagement.AccountManagement.UserRepository;
 import com.example.demo.Services.AuthenticationService.AuthenticationServiceImpl;
 
 import lombok.AllArgsConstructor;

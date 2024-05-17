@@ -27,7 +27,7 @@ public class PostRetrieveController {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return feedsServiceImpl.retrieveFeeds(postRetrieve.getProfileId());
+        return feedsServiceImpl.retrieveFeeds(postRetrieve);
     }
 
     @PostMapping("/fetch/specific")

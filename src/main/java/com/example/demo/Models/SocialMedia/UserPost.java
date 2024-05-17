@@ -74,7 +74,6 @@ public class UserPost {
 
     private String caption;
 
-    @Column
     private String thumbnail;
 
     @Column(nullable = false)
@@ -88,13 +87,13 @@ public class UserPost {
     @Column(nullable = false)
     private String path;
 
-    @Column
     private int shares;
 
-    @Column
     private int favorites;
 
     private String location;
+
+    private Long views;
 
     @JsonIgnore
     private boolean deleted = Boolean.FALSE;

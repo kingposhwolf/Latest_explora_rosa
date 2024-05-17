@@ -9,12 +9,12 @@ import com.example.demo.Models.SocialMedia.HashTag;
 import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngageFeedPreviousEnd;
 import com.example.demo.Models.Tracking.UserToUserTracking.UserEngageFeedsPreviousEnd;
 import com.example.demo.Models.UserManagement.Profile;
-import com.example.demo.Repositories.FollowUnFollowRepository;
 import com.example.demo.Repositories.GlobalDBStartPointRepository;
-import com.example.demo.Repositories.TopicEngageFeedsPreviousEndRepository;
-import com.example.demo.Repositories.TopicEngagementRepository;
-import com.example.demo.Repositories.UserEngageFeedsPreviousEndRepository;
-import com.example.demo.Repositories.UserEngagementRepository;
+import com.example.demo.Repositories.SocialMedia.FollowUnFollow.FollowUnFollowRepository;
+import com.example.demo.Repositories.Tracking.TopicEngageFeedsPreviousEndRepository;
+import com.example.demo.Repositories.Tracking.TopicEngagementRepository;
+import com.example.demo.Repositories.Tracking.UserEngageFeedsPreviousEndRepository;
+import com.example.demo.Repositories.Tracking.UserEngagementRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

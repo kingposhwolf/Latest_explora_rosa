@@ -7,4 +7,6 @@ import lombok.Data;
 public class PostRetrieveDto {
     @NotNull
     private Long profileId;
+
+    private int pageNumber;
 }
