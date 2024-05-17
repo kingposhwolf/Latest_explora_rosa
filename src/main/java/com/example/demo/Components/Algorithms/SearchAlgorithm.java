@@ -53,7 +53,6 @@ public class SearchAlgorithm {
     //Search on Location
     public List<Map<String, Object>> suggestiveProfiles(SearchDto searchDto){
 
-
         //Must add search for the world wide star match
 
         List<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(searchDto.getProfileId(), searchDto.getKeyword());
@@ -84,13 +83,9 @@ public class SearchAlgorithm {
         return profileRepository.searchOnCountryFame(countryId, keyword);
     }
 
-    // //Search on tags (Here we searched for the account that is tagged on the post)
-    // public List<UserPost> searchOnTags(Profile profile, String keyword){
-
-    //     Pageable pageable = PageRequest.of(0, 2);
-    //     List<UserPost> posts = userPostRepository.
-
-    //     return posts;
+    //Search on tags (Here we searched for the account that is tagged on the post)
+    // public List<Map<String, Object>> searchForAnyAccountMatch(SearchDto searchDto){
+    //     List<Map<String, Object>> anyMatch = profileRepository.searchForAnyMatch(searchDto.getKeyword());
     // }
 
     // //Search on username (Returns Accounts)

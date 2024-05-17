@@ -67,4 +67,21 @@ List<Map<String, Object>> searchByUserFollowings(@Param("targetId") Long targetI
   "OR us.name LIKE CONCAT('%', :searchText, '%'))) "+
 "AND tp.deleted = false", nativeQuery = true)
 List<Map<String, Object>> searchOnCountryFame(@Param("countryId") Long countryId, @Param("searchText") String searchText);
+
+
+//Search for any match
+@Query(value ="SELECT tp.id as profileId, "+
+    "us.username as username, " +
+    "us.name as name, "+
+    "tp.profile_picture as profilePicture, "+
+    "tp.verification_status as verificationStatus "+
+"FROM profiles tp "+
+"JOIN users us ON tp.user_id = us.id "+
+"WHERE "+
+" ((LEVENSHTEIN(us.username, :searchText) <= 2 "+
+  "OR us.username LIKE CONCAT('%', :searchText, '%')) "+
+  "OR (LEVENSHTEIN(us.name, :searchText) <= 2 "+
+  "OR us.name LIKE CONCAT('%', :searchText, '%'))) "+
+"AND tp.deleted = false", nativeQuery = true)
+List<Map<String, Object>> searchForAnyMatch(@Param("searchText") String searchText);
 }

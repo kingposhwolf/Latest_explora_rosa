@@ -49,7 +49,7 @@ public class SearchServiceImpl implements SearchService{
             else{
                 rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
 
-                return ResponseEntity.status(200).body(helper.postMapTimer(searchAlgorithm.suggestiveProfiles(searchDto),searchDto.getProfileId()));
+                return ResponseEntity.status(200).body(searchAlgorithm.suggestiveProfiles(searchDto));
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
