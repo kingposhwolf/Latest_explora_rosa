@@ -9,10 +9,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
-
 import com.example.demo.Models.Ecommerce.Cart.CartItem;
 import com.example.demo.Models.Ecommerce.Order.OrderItem;
 import com.example.demo.Models.Information.Country;
@@ -35,6 +33,9 @@ public class UserPost {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "spotify_song_id", nullable = true)
+    private String spotifySongId;
 
 
     @ElementCollection

@@ -28,7 +28,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PasswordResetServiceImpl implements PasswordResetService{
 
-    private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(PasswordResetServiceImpl.class);
     
 
     private PasswordEncoder passwordEncoder;

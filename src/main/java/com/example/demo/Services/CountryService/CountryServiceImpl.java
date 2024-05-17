@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 public class CountryServiceImpl implements CountryService {
 
-    private static final Logger logger = LoggerFactory.getLogger(CityServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CountryServiceImpl.class);
 
     private final CountryRepository countryRepository;
 
