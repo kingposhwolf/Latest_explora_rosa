@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Components.Helper.Helper;
+import com.example.demo.InputDto.SocialMedia.Post.PostRetrieveDto;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 import com.example.demo.Repositories.SocialMedia.Favorite.FavoritesRepository;
@@ -38,7 +39,7 @@ public class FeedsServiceImpl implements FeedsService{
 
     @SuppressWarnings("null")
     @Override
-    public ResponseEntity<Object> retrieveFeeds(@NotNull Long profileId) {
+    public ResponseEntity<Object> retrieveFeeds(PostRetrieveDto postRetrieve) {
         try {
             // Optional<Profile> profileOptional = profileRepository.findById((long) 1);
             // if(profileOptional.isPresent()){
@@ -57,7 +58,10 @@ public class FeedsServiceImpl implements FeedsService{
             //     logger.error(" Fails to fetch Feeds , Profile Not Found");
             //     return ResponseEntity.status(404).body("Profile Not Found");
             // }
-            return ResponseEntity.ok(helper.postMapTimer(userPostRepository.findUserPostData(), profileId));
+            int pageSize = 2;
+            //Long seed = Helper.generateSeed(postRetrieve.getPageNumber());
+            int offset = (postRetrieve.getPageNumber()-1)*pageSize;
+            return ResponseEntity.ok(helper.postMapTimer(userPostRepository.findUserPostData(postRetrieve.getPageNumber(),pageSize,offset), postRetrieve.getProfileId()));
             
         } catch (Exception exception) {
             logger.error("\nFails to fetch Feeds, Server Error: \n" + exception.getMessage());

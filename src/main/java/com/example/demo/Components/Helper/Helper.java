@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -29,6 +30,8 @@ public class Helper {
     private final FavoritesRepository favoritesRepository;
 
     private final CommentLikeRepository commentLikeRepository;
+
+    private static final int SEED_BOUND = 10000;
 
     public Long calculateChatTimeDifference(LocalDateTime givenTime) {
         // Get the current local time
@@ -220,6 +223,7 @@ public class Helper {
         }
     }
 
+
     public List<Map<String, Object>> mergeProfiles(List<Map<String, Object>> inputList) {
         // Map to store merged profiles based on profileId
         Map<Long, Map<String, Object>> mergedProfilesMap = new HashMap<>();
@@ -246,5 +250,14 @@ public class Helper {
         
         return mergedList;
     }
+
+
+    public static long generateSeed(int pageNumber) {
+        // Use a page number to generate a unique seed for each page
+        // You can use any method to generate the seed, this is just an example
+        Random random = new Random(pageNumber * SEED_BOUND);
+        return random.nextLong();
+    }
+
     
 }
