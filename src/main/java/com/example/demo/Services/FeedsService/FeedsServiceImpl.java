@@ -58,10 +58,10 @@ public class FeedsServiceImpl implements FeedsService{
             //     logger.error(" Fails to fetch Feeds , Profile Not Found");
             //     return ResponseEntity.status(404).body("Profile Not Found");
             // }
-            int pageSize = 5;
-            Long seed = Helper.generateSeed(postRetrieve.getPageNumber());
-            int offset = (postRetrieve.getPageNumber()-1)*pageSize;
-            return ResponseEntity.ok(helper.postMapTimer(userPostRepository.findUserPostData(seed,pageSize,offset), postRetrieve.getProfileId()));
+            // int pageSize = 5;
+            // Long seed = Helper.generateSeed(postRetrieve.getPageNumber());
+            // int offset = (postRetrieve.getPageNumber()-1)*pageSize;
+            return ResponseEntity.ok(helper.postMapTimer(userPostRepository.findUserPostData(), postRetrieve.getProfileId()));
             
         } catch (Exception exception) {
             logger.error("\nFails to fetch Feeds, Server Error: \n" + exception.getMessage());

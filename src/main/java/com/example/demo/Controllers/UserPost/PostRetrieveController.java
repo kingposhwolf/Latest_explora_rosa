@@ -1,6 +1,11 @@
 package com.example.demo.Controllers.UserPost;
 
+import java.util.concurrent.CompletableFuture;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,15 +24,20 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/feeds")
 public class PostRetrieveController {
     private final FeedsServiceImpl feedsServiceImpl;
+    private final GlobalValidationFormatter globalValidationFormatter;
+    
+    private static final Logger logger = LoggerFactory.getLogger(PostRetrieveController.class);
 
-    private GlobalValidationFormatter globalValidationFormatter;
-
+    @Async("taskExecutor") // Execute asynchronously using the taskExecutor bean defined in AsyncConfig
     @PostMapping("/fetch")
-    public ResponseEntity<Object> retrievePosts(@RequestBody @Valid PostRetrieveDto postRetrieve, BindingResult bindingResult) {
+    public CompletableFuture<ResponseEntity<Object>> retrievePostsAsync(@RequestBody @Valid PostRetrieveDto postRetrieve, BindingResult bindingResult) {
+        logger.info("Handling request asynchronously on thread: " + Thread.currentThread().getName());
+        
         if (bindingResult.hasErrors()) {
-            return globalValidationFormatter.validationFormatter(bindingResult);
+            return CompletableFuture.completedFuture(globalValidationFormatter.validationFormatter(bindingResult));
         }
-        return feedsServiceImpl.retrieveFeeds(postRetrieve);
+        
+        return CompletableFuture.completedFuture(feedsServiceImpl.retrieveFeeds(postRetrieve));
     }
 
     @PostMapping("/fetch/specific")

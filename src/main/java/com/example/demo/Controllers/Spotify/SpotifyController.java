@@ -1,9 +1,7 @@
 package com.example.demo.Controllers.Spotify;
-import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.Models.Spotify.SpotifySong;
 import com.example.demo.Services.SpotifyService.SpotifyService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
