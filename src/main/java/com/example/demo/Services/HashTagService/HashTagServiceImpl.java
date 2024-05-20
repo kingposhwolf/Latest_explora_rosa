@@ -1,6 +1,8 @@
 package com.example.demo.Services.HashTagService;
 
+import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.SocialMedia.HashTag.HashTagDto;
+import com.example.demo.InputDto.SocialMedia.HashTag.PostsHashTag;
 import com.example.demo.Models.SocialMedia.HashTag;
 import com.example.demo.Repositories.SocialMedia.HashTag.HashTagRepository;
 import com.example.demo.Services.CityService.CityServiceImpl;
@@ -23,6 +25,8 @@ public class HashTagServiceImpl implements HashTagService {
     private static final Logger logger = LoggerFactory.getLogger(CityServiceImpl.class);
 
     private final HashTagRepository hashTagRepository;
+
+    private final Helper helper;
 
 
     @Override
@@ -83,6 +87,21 @@ public class HashTagServiceImpl implements HashTagService {
         } catch (Exception e) {
             logger.error("Failed to get hashTag by name: ", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
+        }
+    }
+
+
+    @Override
+    public ResponseEntity<Object> getPostsHashTags(PostsHashTag postsHashTag) {
+        try {
+            
+                // rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
+
+                return ResponseEntity.status(200).body(helper.postMapTimer(hashTagRepository.taggedPost(postsHashTag.getHashTagId()),postsHashTag.getProfileId()));
+
+        } catch (Exception exception) {
+            logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
 }

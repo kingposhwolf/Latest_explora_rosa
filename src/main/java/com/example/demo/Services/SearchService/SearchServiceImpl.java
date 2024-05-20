@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Components.Algorithms.SearchAlgorithm;
 import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.SearchDto.SearchDto;
+import com.example.demo.InputDto.SearchDto.SearchHashTagDto;
 import com.example.demo.Repositories.SearchOperation.UserSearchHistoryRepository;
 import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
+import com.example.demo.Repositories.SocialMedia.HashTag.HashTagRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 
 import lombok.AllArgsConstructor;
@@ -32,6 +34,8 @@ public class SearchServiceImpl implements SearchService{
     private final UserSearchHistoryRepository searchHistoryRepository;
 
     private final UserPostRepository userPostRepository;
+
+    private final HashTagRepository hashTagRepository;
 
     private final Helper helper;
     
@@ -140,6 +144,21 @@ public class SearchServiceImpl implements SearchService{
 
                 return ResponseEntity.status(200).body(searchAlgorithm.resultsProfiles(searchDto));
             }
+        } catch (Exception exception) {
+            logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+
+    @Override
+    public ResponseEntity<Object> fetchHashTags(SearchHashTagDto hashTagDto) {
+        try {
+
+            
+                // rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
+
+                return ResponseEntity.status(200).body(hashTagRepository.findActiveHashTagsWithPosts(hashTagDto.getKeyword()));
+
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
             return ResponseEntity.status(500).body("Internal Server Error");

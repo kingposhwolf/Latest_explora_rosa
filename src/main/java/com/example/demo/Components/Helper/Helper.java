@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -143,7 +144,7 @@ public class Helper {
     }
 
     public List<Map<String, Object>> postMapTimer(List<Map<String, Object>> data, Long profileId) {
-        List<Long> postUserLike = likeRepository.postsUserLike(profileId);
+        List<Long> postUserLikes = likeRepository.postsUserLike(profileId);
         List<Long> favoritePosts = favoritesRepository.findPostByProfile(profileId);
     
         return data.stream()
@@ -152,10 +153,8 @@ public class Helper {
                     Map<String, Object> modifiedPost = new HashMap<>(post);
                     modifiedPost.remove("timestamp");
     
-                    // Get the timestamp from the post map
+                    // Get the timestamp from the post map and convert it to LocalDateTime
                     Timestamp timestamp = (Timestamp) post.get("timestamp");
-    
-                    // Convert the Timestamp to LocalDateTime
                     LocalDateTime localDateTime = timestamp.toLocalDateTime();
     
                     // Calculate the time difference and add it to the map
@@ -165,23 +164,31 @@ public class Helper {
     
                     // Check if the user likes that post
                     Long postId = (Long) post.get("id");
-                    if (postUserLike.contains(postId)) {
-                        modifiedPost.put("liked", true);
-                    } else {
-                        modifiedPost.put("liked", false);
-                    }
+                    modifiedPost.put("liked", postUserLikes.contains(postId));
     
                     // Check if the user added the post to the favorites
-                    if (favoritePosts.contains(postId)) {
-                        modifiedPost.put("favorite", true);
-                    } else {
-                        modifiedPost.put("favorite", false);
-                    }
+                    modifiedPost.put("favorite", favoritePosts.contains(postId));
+    
+                    // Parse hashtags
+                    String hashTagsConcat = (String) post.get("hashTags");
+                    List<Map<String, String>> hashTags = Arrays.stream(hashTagsConcat.split(","))
+                            .map(pair -> {
+                                String[] parts = pair.split(":");
+                                Map<String, String> hashTag = new HashMap<>();
+                                if (parts.length == 2) {
+                                    hashTag.put("id", parts[0]);
+                                    hashTag.put("name", parts[1]);
+                                }
+                                return hashTag;
+                            })
+                            .collect(Collectors.toList());
+                    modifiedPost.put("hashTags", hashTags);
     
                     return modifiedPost;
                 })
                 .collect(Collectors.toList());
     }
+    
     
 
     @SuppressWarnings("null")

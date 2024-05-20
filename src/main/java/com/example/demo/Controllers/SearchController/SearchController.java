@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.InputDto.SearchDto.FetchSearchHistoryDto;
 import com.example.demo.InputDto.SearchDto.SearchDto;
+import com.example.demo.InputDto.SearchDto.SearchHashTagDto;
 import com.example.demo.Services.SearchService.SearchServiceImpl;
 
 import jakarta.validation.Valid;
@@ -69,5 +70,13 @@ public class SearchController {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return searchService.fetchProfiles(searchDto);
+    }
+
+    @PostMapping("/hashTagResults")
+    public ResponseEntity<Object> fetchHashTag(@RequestBody @Valid SearchHashTagDto searchDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return searchService.fetchHashTags(searchDto);
     }
 }

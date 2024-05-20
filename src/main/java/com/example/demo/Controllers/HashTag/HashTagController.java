@@ -1,6 +1,7 @@
 package com.example.demo.Controllers.HashTag;
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.InputDto.SocialMedia.HashTag.HashTagDto;
+import com.example.demo.InputDto.SocialMedia.HashTag.PostsHashTag;
 import com.example.demo.Services.HashTagService.HashTagServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -35,5 +36,13 @@ public class HashTagController {
     @PostMapping("/{name}")
     public ResponseEntity<Object> getHashTagByName(@PathVariable String name) {
         return hashTagServiceImpl.getHashTagByName(name);
+    }
+
+    @PostMapping("/posts")
+    public ResponseEntity<Object> getPostsHashTag(@RequestBody @Valid PostsHashTag hashTagDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return hashTagServiceImpl.getPostsHashTags(hashTagDto);
     }
 }

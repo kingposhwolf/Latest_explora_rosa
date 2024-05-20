@@ -103,6 +103,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
         "   p.caption as caption, " +
+        "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
         "   p.time as timestamp, " +
         "   p.profile_id as profileId, " +
@@ -209,6 +210,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
         "   p.caption as caption, " +
+        "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
         "   p.time as timestamp, " +
         "   p.profile_id as profileId, " +
@@ -325,6 +327,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
         "   p.caption as caption, " +
+        "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
         "   p.time as timestamp, " +
         "   p.profile_id as profileId, " +
@@ -363,6 +366,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
         "   p.caption as caption, " +
+        "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
         "   p.time as timestamp, " +
         "   p.profile_id as profileId, " +
@@ -410,6 +414,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "          p.favorites as favorites, " +
             "          p.comments as comments, " +
             "          p.caption as caption, " +
+            "          pr.verification_status as verification_status, " +
             "          p.thumbnail as thumbnail, " +
             "          p.time as timestamp, " +
             "          p.profile_id as profileId, " +
@@ -451,6 +456,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "          p.comments as comments, " +
             "          p.caption as caption, " +
             "          p.thumbnail as thumbnail, " +
+            "          pr.verification_status as verification_status, " +
             "          p.time as timestamp, " +
             "          p.profile_id as profileId, " +
             "          us.username as username, " +
@@ -491,6 +497,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "          p.comments as comments, " +
             "          p.caption as caption, " +
             "          p.thumbnail as thumbnail, " +
+            "          pr.verification_status as verification_status, " +
             "          p.time as timestamp, " +
             "          p.profile_id as profileId, " +
             "          us.username as username, " +
