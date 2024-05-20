@@ -96,6 +96,8 @@ public class SearchAlgorithm {
         List<Map<String, Object>> anyone = profileRepository.searchForAnyMatch(searchDto.getKeyword());
 
 
+        
+        
         followings.addAll(followingfollowings);
         followings.addAll(fames);
         followings.addAll(interact);
