@@ -97,7 +97,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   c.name as country, " +
         "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
         "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-        "   GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
         "   p.likes as likes, " +
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
@@ -204,7 +204,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   c.name as country, " +
         "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
         "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-        "   GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
         "   p.likes as likes, " +
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
@@ -321,7 +321,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   c.name as country, " +
         "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
         "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-        "   GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
         "   p.likes as likes, " +
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
@@ -360,7 +360,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   c.name as country, " +
         "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
         "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-        "   GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
         "   p.likes as likes, " +
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
@@ -408,7 +408,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "          c.name as country, " +
             "          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
             "          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-            "          GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+            "          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
             "          p.likes as likes, " +
             "          p.shares as shares, " +
             "          p.favorites as favorites, " +
@@ -437,7 +437,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "   WHERE p.time BETWEEN NOW() - INTERVAL 6 MONTH AND NOW() - INTERVAL 3 DAY " +
             "   GROUP BY p.id " +
             "   ORDER BY RAND(:seed) " +
-            "   LIMIT 11 " +
+            "   LIMIT 10 " +
             ") AS first_time_range " +
 
             "UNION ALL " +
@@ -449,7 +449,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "          c.name as country, " +
             "          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
             "          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-            "          GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+            "          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
             "          p.likes as likes, " +
             "          p.shares as shares, " +
             "          p.favorites as favorites, " +
@@ -478,7 +478,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "   WHERE p.time BETWEEN NOW() - INTERVAL 2 DAY AND NOW() " +
             "   GROUP BY p.id " +
             "   ORDER BY RAND(:seed) " +
-            "   LIMIT 5 " +
+            "   LIMIT 6 " +
             ") AS second_time_range " +
 
             "UNION ALL " +
@@ -490,7 +490,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "          c.name as country, " +
             "          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
             "          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-            "          GROUP_CONCAT(DISTINCT h.name) as hashTags, " +
+            "          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
             "          p.likes as likes, " +
             "          p.shares as shares, " +
             "          p.favorites as favorites, " +
