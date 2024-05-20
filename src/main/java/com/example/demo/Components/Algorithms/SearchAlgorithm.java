@@ -54,33 +54,62 @@ public class SearchAlgorithm {
     public List<Map<String, Object>> suggestiveProfiles(SearchDto searchDto){
 
         //Must add search for the world wide star match
-
-        List<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(searchDto.getProfileId(), searchDto.getKeyword());
-
         List<Map<String, Object>> followings = followUnFollowRepository.searchOnFollowing(searchDto.getProfileId(), searchDto.getKeyword());
 
         List<Map<String, Object>> followingfollowings = helper.mergeProfiles(profileRepository.searchByUserFollowings(searchDto.getProfileId(), searchDto.getKeyword()));
+        List<Map<String, Object>> fames = profileRepository.searchOnFame(searchDto.getKeyword());
 
-        List<Map<String, Object>> countryFames = profileRepository.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword());
+        List<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(searchDto.getProfileId(), searchDto.getKeyword());
 
-        followingfollowings.addAll(interact);
-        followingfollowings.addAll(followings);
-        followingfollowings.addAll(countryFames);
+        // List<Map<String, Object>> countryFames = profileRepository.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword());
+
+
+        followings.addAll(followingfollowings);
+        followings.addAll(fames);
+        followings.addAll(interact);
+        // followingfollowings.addAll(anyone);
 
         HashSet<Object> seen = new HashSet<>();
 
-        followingfollowings.removeIf(e -> {
+        followings.removeIf(e -> {
             Object profileId = e.get("profileId");
             return !seen.add(profileId) || profileId.equals(searchDto.getProfileId());
         });
         
 
-        return followingfollowings;
+        return followings;
     }
 
-    //Search on Location
-    public List<Map<String, Object>> searchOnCountryFame(Long countryId, String keyword){
-        return profileRepository.searchOnCountryFame(countryId, keyword);
+    //Search results profile
+    public List<Map<String, Object>> resultsProfiles(SearchDto searchDto){
+
+        //Must add search for the world wide star match
+        List<Map<String, Object>> followings = followUnFollowRepository.searchOnFollowing(searchDto.getProfileId(), searchDto.getKeyword());
+
+        List<Map<String, Object>> followingfollowings = helper.mergeProfiles(profileRepository.searchByUserFollowings(searchDto.getProfileId(), searchDto.getKeyword()));
+        List<Map<String, Object>> fames = profileRepository.searchOnFame(searchDto.getKeyword());
+
+        List<Map<String, Object>> interact = userEngagementRepository.searchByTargetAndTopic(searchDto.getProfileId(), searchDto.getKeyword());
+
+        // List<Map<String, Object>> countryFames = profileRepository.searchOnCountryFame(searchDto.getCountryId(), searchDto.getKeyword());
+
+        List<Map<String, Object>> anyone = profileRepository.searchForAnyMatch(searchDto.getKeyword());
+
+
+        followings.addAll(followingfollowings);
+        followings.addAll(fames);
+        followings.addAll(interact);
+        followings.addAll(anyone);
+
+        HashSet<Object> seen = new HashSet<>();
+
+        followings.removeIf(e -> {
+            Object profileId = e.get("profileId");
+            return !seen.add(profileId) || profileId.equals(searchDto.getProfileId());
+        });
+        
+
+        return followings;
     }
 
     //Search on tags (Here we searched for the account that is tagged on the post)

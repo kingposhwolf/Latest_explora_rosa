@@ -50,23 +50,42 @@ public interface ProfileRepository extends CrudRepository<Profile, Long>{
     "AND ue.deleted = false", nativeQuery = true)
 List<Map<String, Object>> searchByUserFollowings(@Param("targetId") Long targetId, @Param("searchText") String searchText);
 
+// //Search for the in country fameous people
+// @Query(value ="SELECT tp.id as profileId, "+
+//     "us.username as username, " +
+//     "us.name as name, "+
+//     "tp.profile_picture as profilePicture, "+
+//     "tp.followers as followers, "+
+//     "tp.verification_status as verificationStatus "+
+// "FROM profiles tp "+
+// "JOIN users us ON tp.user_id = us.id "+
+// "JOIN countries c ON tp.country_id = c.id "+
+// "WHERE c.id = :countryId "+
+// "AND tp.verification_status = 0 "+
+// "AND ((LEVENSHTEIN(us.username, :searchText) <= 2 "+
+//   "OR us.username LIKE CONCAT('%', :searchText, '%')) "+
+//   "OR (LEVENSHTEIN(us.name, :searchText) <= 2 "+
+//   "OR us.name LIKE CONCAT('%', :searchText, '%'))) "+
+// "AND tp.deleted = false", nativeQuery = true)
+// List<Map<String, Object>> searchOnCountryFame(@Param("countryId") Long countryId, @Param("searchText") String searchText);
+
+
 //Search for the fameous people
 @Query(value ="SELECT tp.id as profileId, "+
     "us.username as username, " +
     "us.name as name, "+
     "tp.profile_picture as profilePicture, "+
+    "tp.followers as followers, "+
     "tp.verification_status as verificationStatus "+
 "FROM profiles tp "+
 "JOIN users us ON tp.user_id = us.id "+
-"JOIN countries c ON tp.country_id = c.id "+
-"WHERE c.id = :countryId "+
-"AND tp.verification_status = 0 "+
+"WHERE tp.verification_status = 0 "+
 "AND ((LEVENSHTEIN(us.username, :searchText) <= 2 "+
   "OR us.username LIKE CONCAT('%', :searchText, '%')) "+
   "OR (LEVENSHTEIN(us.name, :searchText) <= 2 "+
   "OR us.name LIKE CONCAT('%', :searchText, '%'))) "+
 "AND tp.deleted = false", nativeQuery = true)
-List<Map<String, Object>> searchOnCountryFame(@Param("countryId") Long countryId, @Param("searchText") String searchText);
+List<Map<String, Object>> searchOnFame(@Param("searchText") String searchText);
 
 
 //Search for any match

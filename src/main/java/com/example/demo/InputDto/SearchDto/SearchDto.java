@@ -17,6 +17,8 @@ public class SearchDto {
     @NotNull
     private Long countryId;
 
+    private int pageNumber;
+
     public String toJson() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(this);

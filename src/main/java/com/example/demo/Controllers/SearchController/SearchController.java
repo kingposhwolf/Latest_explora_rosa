@@ -54,4 +54,20 @@ public class SearchController {
     //     }
     //     return searchService.suggestiveProfilesOnFollowings(searchDto);
     // }
+
+    @PostMapping("/test")
+    public ResponseEntity<Object> testResults(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return searchService.testPostResults(searchDto);
+    }
+
+    @PostMapping("/profilesResults")
+    public ResponseEntity<Object> fetchProfiles(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return searchService.fetchProfiles(searchDto);
+    }
 }
