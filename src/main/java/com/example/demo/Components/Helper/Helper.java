@@ -259,7 +259,7 @@ public class Helper {
     }
 
 
-    public static long generateSeed(int pageNumber) {
+    public long generateSeed(int pageNumber) {
         // Use a page number to generate a unique seed for each page
         // You can use any method to generate the seed, this is just an example
         Random random = new Random(pageNumber * SEED_BOUND);
