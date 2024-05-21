@@ -1,0 +1,9 @@
+2024-05-22 00:01:21.892 [http-nio-192.168.1.46-8081-exec-1] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+
+2024-05-22 00:01:21.911 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+
+2024-05-22 00:01:21.918 [http-nio-192.168.1.46-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+
+2024-05-22 00:01:22.901 [http-nio-192.168.1.46-8081-exec-1] ERROR c.e.d.S.S.SearchServiceImpl - 
+Brand fetching failed , Server Error : Unable to connect to Redis
+

@@ -22,5 +22,13 @@ public class RedisService {
         ValueOperations<String, Object> valueOps = redisTemplate.opsForValue();
         return valueOps.get(key);
     }
+
+    public void deleteDataByKey(String key) {
+        redisTemplate.delete(key);
+    }
+
+    public void updateExpiration(String key, Duration newExpiration) {
+        redisTemplate.expire(key, newExpiration);
+    }
     
 }

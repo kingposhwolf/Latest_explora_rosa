@@ -1,6 +1,7 @@
 package com.example.demo.Services.SearchService;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -130,17 +131,41 @@ public class SearchServiceImpl implements SearchService{
                 Long seed = helper.generateSeed(searchDto.getPageNumber());
                 List<Map<String, Object>> data = userPostRepository.findUserPostData(seed,searchDto.getKeyword());
 
-                // Using Java Streams to retrieve all values associated with the key "id" and store them in a List<Long>
-        List<Long> ids = data.stream()
-                            .map(map -> (Long) map.get("id"))
-                            .collect(Collectors.toList());
-                PageDto page = new PageDto();
-                page.setContents(ids);
-                page.setPagenumber(searchDto.getPageNumber());
-                redisService.saveDataWithDynamicExpiration(searchDto.getProfileId().toString(),page,Duration.ofMinutes(5));
+                Object fromRedis = redisService.getDataByKey(searchDto.getProfileId().toString()+searchDto.getKeyword());
 
-                // redisService.getDataByKey()
+                if(fromRedis == null){
+                    // Using Java Streams to retrieve all values associated with the key "id" and store them in a List<Long>
+                    List<Long> ids = data.stream().map(map -> (Long) map.get("id")).collect(Collectors.toList());
 
+                    PageDto page = new PageDto();
+                    page.setContents(ids);
+                    page.setPagenumber(searchDto.getPageNumber());
+                    List<PageDto> list1 = new ArrayList<>();
+                    list1.add(page);
+                    redisService.saveDataWithDynamicExpiration(searchDto.getProfileId().toString()+searchDto.getKeyword(),list1,Duration.ofMinutes(5));
+                }else{
+                    List<PageDto> list1 = (List<PageDto>) fromRedis;
+
+                    int track = 0 ;
+
+                    for (PageDto p : list1) {
+                        if (p.getPagenumber() == searchDto.getPageNumber()) {
+                            redisService.updateExpiration(searchDto.getProfileId().toString()+searchDto.getKeyword(),Duration.ofMinutes(5));
+                            track = 1;
+                            break;
+                        }
+                    }
+
+                    if(track == 0){
+                        List<Long> ids = data.stream().map(map -> (Long) map.get("id")).collect(Collectors.toList());
+
+                        PageDto page = new PageDto();
+                        page.setContents(ids);
+                        page.setPagenumber(searchDto.getPageNumber());
+                        list1.add(page);
+                        redisService.saveDataWithDynamicExpiration(searchDto.getProfileId().toString()+searchDto.getKeyword(),list1,Duration.ofMinutes(5));
+                    }
+                }
                 return ResponseEntity.status(200).body(helper.postMapTimer(data,searchDto.getProfileId()));
             }
         } catch (Exception exception) {
