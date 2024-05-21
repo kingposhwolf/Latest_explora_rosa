@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "spotify.api.redirect-uri",
+  "type": "java.lang.String",
+  "description": "A description for 'spotify.api.redirect-uri'"
+}]}

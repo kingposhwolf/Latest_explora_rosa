@@ -1,7 +1,10 @@
 package com.example.demo.Services.SearchService;
 
+import java.time.Duration;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,8 @@ import com.example.demo.Repositories.SearchOperation.UserSearchHistoryRepository
 import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 import com.example.demo.Repositories.SocialMedia.HashTag.HashTagRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
+import com.example.demo.Services.RedisService.RedisService;
+import com.example.demo.TempDto.PageDto;
 
 import lombok.AllArgsConstructor;
 
@@ -36,6 +41,8 @@ public class SearchServiceImpl implements SearchService{
     private final UserPostRepository userPostRepository;
 
     private final HashTagRepository hashTagRepository;
+
+    private final RedisService redisService;
 
     private final Helper helper;
     
@@ -119,8 +126,22 @@ public class SearchServiceImpl implements SearchService{
             else{
                 // rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
                 // int offset = searchDto.getPageNumber() * 20;
+                @SuppressWarnings("static-access")
                 Long seed = helper.generateSeed(searchDto.getPageNumber());
-                return ResponseEntity.status(200).body(helper.postMapTimer(userPostRepository.findUserPostData(seed),searchDto.getProfileId()));
+                List<Map<String, Object>> data = userPostRepository.findUserPostData(seed,searchDto.getKeyword());
+
+                // Using Java Streams to retrieve all values associated with the key "id" and store them in a List<Long>
+        List<Long> ids = data.stream()
+                            .map(map -> (Long) map.get("id"))
+                            .collect(Collectors.toList());
+                PageDto page = new PageDto();
+                page.setContents(ids);
+                page.setPagenumber(searchDto.getPageNumber());
+                redisService.saveDataWithDynamicExpiration(searchDto.getProfileId().toString(),page,Duration.ofMinutes(5));
+
+                // redisService.getDataByKey()
+
+                return ResponseEntity.status(200).body(helper.postMapTimer(data,searchDto.getProfileId()));
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());

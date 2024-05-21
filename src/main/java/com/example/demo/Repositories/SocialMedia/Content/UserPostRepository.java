@@ -435,6 +435,13 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "   LEFT JOIN users us ON pr.user_id = us.id " +
             "   LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
             "   WHERE p.time BETWEEN NOW() - INTERVAL 6 MONTH AND NOW() - INTERVAL 3 DAY " +
+            "   AND p.id IN (" +
+            "   SELECT DISTINCT p.id " +
+            "   FROM user_posts p " +
+            "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+            "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+            "   WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
+            "   ) " +
             "   GROUP BY p.id " +
             "   ORDER BY RAND(:seed) " +
             "   LIMIT 10 " +
@@ -476,6 +483,13 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "   LEFT JOIN users us ON pr.user_id = us.id " +
             "   LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
             "   WHERE p.time BETWEEN NOW() - INTERVAL 2 DAY AND NOW() " +
+            "   AND p.id IN (" +
+            "   SELECT DISTINCT p.id " +
+            "   FROM user_posts p " +
+            "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+            "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+            "   WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
+            "   ) " +
             "   GROUP BY p.id " +
             "   ORDER BY RAND(:seed) " +
             "   LIMIT 6 " +
@@ -517,6 +531,13 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "   LEFT JOIN users us ON pr.user_id = us.id " +
             "   LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
             "   WHERE p.time < NOW() - INTERVAL 6 MONTH " +
+            "   AND p.id IN (" +
+            "   SELECT DISTINCT p.id " +
+            "   FROM user_posts p " +
+            "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+            "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+            "   WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
+            "   ) " +
             " GROUP BY p.id " +
             " ORDER BY RAND(:seed) " +
             " LIMIT 4 " +
@@ -524,6 +545,6 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
             "ORDER BY RAND(:seed) " +
         "LIMIT 20",
         nativeQuery = true)
-List<Map<String, Object>> findUserPostData(@Param("seed") long seed);
+List<Map<String, Object>> findUserPostData(@Param("seed") long seed,@Param("keyword") String keyword);
 
 }

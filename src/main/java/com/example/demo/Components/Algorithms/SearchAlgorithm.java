@@ -1,5 +1,7 @@
 package com.example.demo.Components.Algorithms;
 
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,7 @@ import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 import com.example.demo.Repositories.SocialMedia.FollowUnFollow.FollowUnFollowRepository;
 import com.example.demo.Repositories.Tracking.UserEngagementRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
+import com.example.demo.Services.RedisService.RedisService;
 
 import lombok.AllArgsConstructor;
 
@@ -29,6 +32,8 @@ public class SearchAlgorithm {
     private final FollowUnFollowRepository followUnFollowRepository;
 
     private final ProfileRepository profileRepository;
+
+    private final RedisService redisService;
 
     private final Helper helper;
 
@@ -50,7 +55,7 @@ public class SearchAlgorithm {
         return posts;
     }
 
-    //Search on Location
+    //Search for suggestive profiles
     public List<Map<String, Object>> suggestiveProfiles(SearchDto searchDto){
 
         //Must add search for the world wide star match
@@ -69,16 +74,26 @@ public class SearchAlgorithm {
         followings.addAll(interact);
         // followingfollowings.addAll(anyone);
 
-        HashSet<Object> seen = new HashSet<>();
+        HashSet<Long> seen = new HashSet<>();
+        List<Long> uniqueProfileIds = new ArrayList<>();
 
         followings.removeIf(e -> {
-            Object profileId = e.get("profileId");
-            return !seen.add(profileId) || profileId.equals(searchDto.getProfileId());
-        });
-        
+            Long profileId = (Long) e.get("profileId");
+            if (!seen.contains(profileId) && !profileId.equals(searchDto.getProfileId())) {
+                seen.add(profileId);
+                uniqueProfileIds.add(profileId);
+                return false; // Keep the entry
+            } else {
+                return true; // Remove the entry
+            }
+            });
+
+            // Using Java Streams to retrieve all values associated with the key "id" and store them in a List<Long>
+            redisService.saveDataWithDynamicExpiration(searchDto.getProfileId().toString(),uniqueProfileIds,Duration.ofMinutes(5));
 
         return followings;
     }
+
 
     //Search results profile
     public List<Map<String, Object>> resultsProfiles(SearchDto searchDto){

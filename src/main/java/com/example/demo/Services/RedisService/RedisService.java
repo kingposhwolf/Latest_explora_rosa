@@ -17,4 +17,10 @@ public class RedisService {
         ValueOperations<String, Object> valueOps = redisTemplate.opsForValue();
         valueOps.set(key, value, expiration);
     }
+
+    public Object getDataByKey(String key) {
+        ValueOperations<String, Object> valueOps = redisTemplate.opsForValue();
+        return valueOps.get(key);
+    }
+    
 }
