@@ -9,4 +9,6 @@ public class PageDto {
     private int pagenumber;
 
     private List<Long> contents;
+
+    private int offset;
 }

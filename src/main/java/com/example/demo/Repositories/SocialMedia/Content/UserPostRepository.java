@@ -401,154 +401,150 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
 
 
         @Query(value =
-        "SELECT * FROM (" +
-        "   SELECT p.id as id, " +
-        "          p.location as location, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
-        "          c.name as country, " +
-        "          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
-        "          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
-        "          p.likes as likes, " +
-        "          p.shares as shares, " +
-        "          p.favorites as favorites, " +
-        "          p.comments as comments, " +
-        "          p.caption as caption, " +
-        "          pr.verification_status as verification_status, " +
-        "          p.thumbnail as thumbnail, " +
-        "          p.time as timestamp, " +
-        "          p.profile_id as profileId, " +
-        "          us.username as username, " +
-        "          us.name as name, " +
-        "          acc.name as accountType, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
-        "          p.path as path " +
-        "   FROM user_posts p " +
-        "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
-        "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
-        "   LEFT JOIN countries c ON p.country_id = c.id " +
-        "   LEFT JOIN mention f ON p.id = f.user_post_id " +
-        "   LEFT JOIN tag g ON p.id = g.user_post_id " +
-        "   LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
-        "   LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
-        "   LEFT JOIN profiles pr ON p.profile_id = pr.id " +
-        "   LEFT JOIN users us ON pr.user_id = us.id " +
-        "   LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
-        "   WHERE p.time BETWEEN NOW() - INTERVAL 6 MONTH AND NOW() - INTERVAL 3 DAY " +
-        "   AND p.id IN (" +
-        "   SELECT DISTINCT p.id " +
-        "   FROM user_posts p " +
-        "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
-        "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
-        "   WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
-        "   ) " +
-        "   AND p.id NOT IN (:excludedIds) " +
-        "   GROUP BY p.id " +
-        "   ORDER BY RAND(:seed) " +
-        "   LIMIT 10 " +
-        ") AS first_time_range " +
+    "SELECT * FROM (" +
+    "   SELECT p.id as id, " +
+    "          p.location as location, " +
+    "          GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+    "          c.name as country, " +
+    "          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+    "          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+    "          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
+    "          p.likes as likes, " +
+    "          p.shares as shares, " +
+    "          p.favorites as favorites, " +
+    "          p.comments as comments, " +
+    "          p.caption as caption, " +
+    "          pr.verification_status as verification_status, " +
+    "          p.thumbnail as thumbnail, " +
+    "          p.time as timestamp, " +
+    "          p.profile_id as profileId, " +
+    "          us.username as username, " +
+    "          us.name as name, " +
+    "          acc.name as accountType, " +
+    "          GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+    "          p.path as path " +
+    "   FROM user_posts p " +
+    "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+    "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+    "   LEFT JOIN countries c ON p.country_id = c.id " +
+    "   LEFT JOIN mention f ON p.id = f.user_post_id " +
+    "   LEFT JOIN tag g ON p.id = g.user_post_id " +
+    "   LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+    "   LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+    "   LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+    "   LEFT JOIN users us ON pr.user_id = us.id " +
+    "   LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+    "   WHERE p.time BETWEEN NOW() - INTERVAL 6 MONTH AND NOW() - INTERVAL 3 DAY " +
+    "   AND p.id IN (" +
+    "   SELECT DISTINCT p.id " +
+    "   FROM user_posts p " +
+    "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+    "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+    "   WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
+    "   ) " +
+    "   AND p.id NOT IN (:excludedIds) " +
+    "   GROUP BY p.id " +
+    "   LIMIT 10 OFFSET :offset " +
+    ") AS first_time_range " +
 
-        "UNION ALL " +
+    "UNION ALL " +
 
-        "SELECT * FROM (" +
-        "   SELECT p.id as id, " +
-        "          p.location as location, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
-        "          c.name as country, " +
-        "          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
-        "          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
-        "          p.likes as likes, " +
-        "          p.shares as shares, " +
-        "          p.favorites as favorites, " +
-        "          p.comments as comments, " +
-        "          p.caption as caption, " +
-        "          p.thumbnail as thumbnail, " +
-        "          pr.verification_status as verification_status, " +
-        "          p.time as timestamp, " +
-        "          p.profile_id as profileId, " +
-        "          us.username as username, " +
-        "          us.name as name, " +
-        "          acc.name as accountType, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
-        "          p.path as path " +
-        "   FROM user_posts p " +
-        "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
-        "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
-        "   LEFT JOIN countries c ON p.country_id = c.id " +
-        "   LEFT JOIN mention f ON p.id = f.user_post_id " +
-        "   LEFT JOIN tag g ON p.id = g.user_post_id " +
-        "   LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
-        "   LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
-        "   LEFT JOIN profiles pr ON p.profile_id = pr.id " +
-        "   LEFT JOIN users us ON pr.user_id = us.id " +
-        "   LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
-        "   WHERE p.time BETWEEN NOW() - INTERVAL 2 DAY AND NOW() " +
-        "   AND p.id IN (" +
-        "   SELECT DISTINCT p.id " +
-        "   FROM user_posts p " +
-        "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
-        "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
-        "   WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
-        "   ) " +
-        "   AND p.id NOT IN (:excludedIds) " +
-        "   GROUP BY p.id " +
-        "   ORDER BY RAND(:seed) " +
-        "   LIMIT 6 " +
-        ") AS second_time_range " +
+    "SELECT * FROM (" +
+    "   SELECT p.id as id, " +
+    "          p.location as location, " +
+    "          GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+    "          c.name as country, " +
+    "          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+    "          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+    "          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
+    "          p.likes as likes, " +
+    "          p.shares as shares, " +
+    "          p.favorites as favorites, " +
+    "          p.comments as comments, " +
+    "          p.caption as caption, " +
+    "          p.thumbnail as thumbnail, " +
+    "          pr.verification_status as verification_status, " +
+    "          p.time as timestamp, " +
+    "          p.profile_id as profileId, " +
+    "          us.username as username, " +
+    "          us.name as name, " +
+    "          acc.name as accountType, " +
+    "          GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+    "          p.path as path " +
+    "   FROM user_posts p " +
+    "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+    "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+    "   LEFT JOIN countries c ON p.country_id = c.id " +
+    "   LEFT JOIN mention f ON p.id = f.user_post_id " +
+    " LEFT JOIN tag g ON p.id = g.user_post_id " +
+    " LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+    " LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+    " LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+    " LEFT JOIN users us ON pr.user_id = us.id " +
+    " LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+    " WHERE p.time BETWEEN NOW() - INTERVAL 2 DAY AND NOW() " +
+    " AND p.id IN (" +
+    " SELECT DISTINCT p.id " +
+    " FROM user_posts p " +
+    " JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+    " JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+    " WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
+    " ) " +
+    " AND p.id NOT IN (:excludedIds) " +
+    " GROUP BY p.id " +
+    " LIMIT 6 OFFSET :offset " +
+    ") AS second_time_range " +
+    "UNION ALL " +
 
-        "UNION ALL " +
+"SELECT * FROM (" +
+"   SELECT p.id as id, " +
+"          p.location as location, " +
+"          GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+"          c.name as country, " +
+"          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+"          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+"          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
+"          p.likes as likes, " +
+"          p.shares as shares, " +
+"          p.favorites as favorites, " +
+"          p.comments as comments, " +
+"          p.caption as caption, " +
+"          p.thumbnail as thumbnail, " +
+"          pr.verification_status as verification_status, " +
+"          p.time as timestamp, " +
+"          p.profile_id as profileId, " +
+"          us.username as username, " +
+"          us.name as name, " +
+"          acc.name as accountType, " +
+"          GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+"          p.path as path " +
+"   FROM user_posts p " +
+"   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+"   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+"   LEFT JOIN countries c ON p.country_id = c.id " +
+"   LEFT JOIN mention f ON p.id = f.user_post_id " +
+"   LEFT JOIN tag g ON p.id = g.user_post_id " +
+"   LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+"   LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+"   LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+"   LEFT JOIN users us ON pr.user_id = us.id " +
+"   LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+"   WHERE p.time < NOW() - INTERVAL 6 MONTH " +
+"   AND p.id IN (" +
+"   SELECT DISTINCT p.id " +
+"   FROM user_posts p " +
+"   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+"   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+"   WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
+"   ) " +
+"   AND p.id NOT IN (:excludedIds) " +
+" GROUP BY p.id " +
+" LIMIT 4 OFFSET :offset " +
+") AS third_time_range " +
+"LIMIT 20",
+nativeQuery = true)
+List<Map<String, Object>> findUserPostData(@Param("offset") int offset, @Param("keyword") String keyword, @Param("excludedIds") List<Long> excludedIds);
 
-        "SELECT * FROM (" +
-        "   SELECT p.id as id, " +
-        "          p.location as location, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
-        "          c.name as country, " +
-        "          GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
-        "          GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
-        "          p.likes as likes, " +
-        "          p.shares as shares, " +
-        "          p.favorites as favorites, " +
-        "          p.comments as comments, " +
-        "          p.caption as caption, " +
-        "          p.thumbnail as thumbnail, " +
-        "          pr.verification_status as verification_status, " +
-        "          p.time as timestamp, " +
-        "          p.profile_id as profileId, " +
-        "          us.username as username, " +
-        "          us.name as name, " +
-        "          acc.name as accountType, " +
-        "          GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
-        "          p.path as path " +
-        "   FROM user_posts p " +
-        "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
-        "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
-        "   LEFT JOIN countries c ON p.country_id = c.id " +
-        "   LEFT JOIN mention f ON p.id = f.user_post_id " +
-        "   LEFT JOIN tag g ON p.id = g.user_post_id " +
-        "   LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
-        "   LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
-        "   LEFT JOIN profiles pr ON p.profile_id = pr.id " +
-        "   LEFT JOIN users us ON pr.user_id = us.id " +
-        "   LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
-        "   WHERE p.time < NOW() - INTERVAL 6 MONTH " +
-        "   AND p.id IN (" +
-        "   SELECT DISTINCT p.id " +
-        "   FROM user_posts p " +
-        "   JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
-        "   JOIN hash_tags h ON ph.hash_tag_id = h.id " +
-        "   WHERE LEVENSHTEIN(h.name, :keyword) <= 2 OR h.name LIKE CONCAT('%', :keyword, '%') " +
-        "   ) " +
-        "   AND p.id NOT IN (:excludedIds) " +
-        " GROUP BY p.id " +
-        " ORDER BY RAND(:seed) " +
-        " LIMIT 4 " +
-        ") AS third_time_range " +
-        "ORDER BY RAND(:seed) " +
-        "LIMIT 20",
-        nativeQuery = true)
-List<Map<String, Object>> findUserPostData(@Param("seed") Long seed, @Param("keyword") String keyword, @Param("excludedIds") List<Long> excludedIds);
 
 
 @Query(value =
@@ -588,5 +584,47 @@ List<Map<String, Object>> findUserPostData(@Param("seed") Long seed, @Param("key
 "GROUP BY p.id",
 nativeQuery = true)
 List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> postIds);
+
+
+@Query(value =
+        "SELECT p.id as id, " +
+        "p.location as location, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+        "   c.name as country, " +
+        "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+        "   GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
+        "   p.likes as likes, " +
+        "   p.shares as shares, " +
+        "   p.favorites as favorites, " +
+        "   p.comments as comments, " +
+        "   p.caption as caption, " +
+        "   pr.verification_status as verification_status, " +
+        "   p.thumbnail as thumbnail, " +
+        "   p.time as timestamp, " +
+        "   p.profile_id as profileId, " +
+        "   us.username as username, " +
+        "   us.name as name, " +
+        "   acc.name as accountType, " +
+        "   GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+        "   p.path as path " +
+        "FROM user_posts p " +
+        "JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+        "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+        "LEFT JOIN countries c ON p.country_id = c.id " +
+        "LEFT JOIN mention f ON p.id = f.user_post_id " +
+        "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+        "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+        "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+        "LEFT JOIN users us ON pr.user_id = us.id " +
+        "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+        "WHERE p.profile_id IN (:profileIds) " +
+        "AND p.id NOT IN (:excludedIds) " +
+        "GROUP BY p.id " +
+        "LIMIT 5 OFFSET :offset", // Limit to only 5 results
+        nativeQuery = true)
+        List<Map<String, Object>> findSpecificUsersPostsData(@Param("offset") int offset, @Param("profileIds") List<Long> profileIds,@Param("excludedIds") List<Long> excludedIds);
+
 
 }

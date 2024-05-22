@@ -40,12 +40,12 @@ public class SearchController {
         return searchService.fetchSearchHistory(historyDto.getProfileId());
     }
 
-    @PostMapping("/results")
+    @PostMapping("/results/profiles")
     public ResponseEntity<Object> searchResults(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return searchService.searchResults(searchDto);
+        return searchService.profileResults(searchDto);
     }
 
     // @PostMapping("/suggestiveFollowings")

@@ -14,7 +14,7 @@ public interface SearchService {
 
     ResponseEntity<Object> fetchSearchHistory(Long profileId);
 
-    ResponseEntity<Object> searchResults(SearchDto searchDto);
+    ResponseEntity<Object> profileResults(SearchDto searchDto);
 
     ResponseEntity<Object> testPostResults(SearchDto searchDto);
 

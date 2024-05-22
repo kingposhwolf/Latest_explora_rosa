@@ -1,6 +1,7 @@
 package com.example.demo.Services.SearchService;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -62,7 +63,13 @@ public class SearchServiceImpl implements SearchService{
             else{
                 rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
 
-                return ResponseEntity.status(200).body(searchAlgorithm.suggestiveProfiles(searchDto));
+                List<Map<String, Object>> data = searchAlgorithm.suggestiveProfiles(searchDto);
+
+                List<Long> profileIds = data.stream().map(map -> (Long) map.get("profileId")).collect(Collectors.toList());
+
+                redisService.saveDataWithDynamicExpiration("suggestive"+searchDto.getProfileId().toString()+searchDto.getKeyword(),profileIds,Duration.ofMinutes(5));
+
+                return ResponseEntity.status(200).body(data);
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
@@ -97,7 +104,7 @@ public class SearchServiceImpl implements SearchService{
     }
 
     @Override
-    public ResponseEntity<Object> searchResults(SearchDto searchDto) {
+    public ResponseEntity<Object> profileResults(SearchDto searchDto) {
         try {
             Long profile = profileRepository.findProfileIdById(searchDto.getProfileId());
 
@@ -106,9 +113,8 @@ public class SearchServiceImpl implements SearchService{
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }
             else{
-                // rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
 
-                return ResponseEntity.status(200).body(helper.postMapTimer(userPostRepository.searchOnHashTag(searchDto.getKeyword()),searchDto.getProfileId()));
+                return ResponseEntity.status(200).body(searchAlgorithm.resultsProfiles(searchDto));
             }
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
@@ -127,23 +133,28 @@ public class SearchServiceImpl implements SearchService{
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }
             else{
-                // rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
-                // int offset = searchDto.getPageNumber() * 20;
-
                 Object fromRedis = redisService.getDataByKey(searchDto.getProfileId().toString()+searchDto.getKeyword());
 
-                Long seed = helper.generateSeed(searchDto.getPageNumber());
+                Object profileIds = redisService.getDataByKey("suggestive"+searchDto.getProfileId().toString()+searchDto.getKeyword());
+                if(profileIds == null){
+                    profileIds = Arrays.asList(0L);
+                }
 
                 if(fromRedis == null){
                 List<Long> excludedIds = Arrays.asList(0L);
-                data = userPostRepository.findUserPostData(seed,searchDto.getKeyword(),excludedIds);
+                data = userPostRepository.findUserPostData(0,searchDto.getKeyword(),excludedIds);
+                List<Map<String, Object>> fromUsers = userPostRepository.findSpecificUsersPostsData(0,(List<Long>)profileIds,excludedIds);
+                data.addAll(fromUsers);
 
                     // Using Java Streams to retrieve all values associated with the key "id" and store them in a List<Long>
                     List<Long> ids = data.stream().map(map -> (Long) map.get("id")).collect(Collectors.toList());
 
+                    Long maxId = ids.stream().max(Long::compareTo).orElse(0L);
+
                     PageDto page = new PageDto();
                     page.setContents(ids);
                     page.setPagenumber(searchDto.getPageNumber());
+                    page.setOffset(maxId.intValue());
                     List<PageDto> list2 = new ArrayList<>();
                     list2.add(page);
                     redisService.saveDataWithDynamicExpiration(searchDto.getProfileId().toString()+searchDto.getKeyword(),list2,Duration.ofMinutes(5));
@@ -152,18 +163,25 @@ public class SearchServiceImpl implements SearchService{
                 List<Long> excludedIds = list1.stream().flatMap(page -> page.getContents().stream()).collect(Collectors.toList());
 
                     int track = 0 ;
+                    int maxOffset = 0;
 
                     for (PageDto p : list1) {
                         if (p.getPagenumber() == searchDto.getPageNumber()) {
                             redisService.updateExpiration(searchDto.getProfileId().toString()+searchDto.getKeyword(),Duration.ofMinutes(5));
                             data = userPostRepository.findUserPostsDataByIds(p.getContents());
                             track = 1;
-                            
+                            break;
+                        }
+                        Integer offset = p.getOffset();
+                        if (offset > maxOffset) {
+                            maxOffset = offset;
                         }
                     }
 
                     if(track == 0){
-                        data = userPostRepository.findUserPostData(seed,searchDto.getKeyword(),excludedIds);
+                        data = userPostRepository.findUserPostData(maxOffset,searchDto.getKeyword(),excludedIds);
+                        List<Map<String, Object>> fromUsers = userPostRepository.findSpecificUsersPostsData(maxOffset,(List<Long>)profileIds,excludedIds);
+                data.addAll(fromUsers);
 
                         List<Long> ids = data.stream().map(map -> (Long) map.get("id")).collect(Collectors.toList());
 
@@ -174,6 +192,8 @@ public class SearchServiceImpl implements SearchService{
                         redisService.saveDataWithDynamicExpiration(searchDto.getProfileId().toString()+searchDto.getKeyword(),list1,Duration.ofMinutes(5));
                     }
                 }
+                // Shuffle the list
+                Collections.shuffle(data);
                 return ResponseEntity.status(200).body(helper.postMapTimer(data,searchDto.getProfileId()));
             }
         } catch (Exception exception) {
