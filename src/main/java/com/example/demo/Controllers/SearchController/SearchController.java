@@ -56,20 +56,12 @@ public class SearchController {
     //     return searchService.suggestiveProfilesOnFollowings(searchDto);
     // }
 
-    @PostMapping("/test")
+    @PostMapping("/results/posts")
     public ResponseEntity<Object> testResults(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
-        return searchService.testPostResults(searchDto);
-    }
-
-    @PostMapping("/profilesResults")
-    public ResponseEntity<Object> fetchProfiles(@RequestBody @Valid SearchDto searchDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return globalValidationFormatter.validationFormatter(bindingResult);
-        }
-        return searchService.fetchProfiles(searchDto);
+        return searchService.searchPostResults(searchDto);
     }
 
     @PostMapping("/hashTagResults")
@@ -78,5 +70,13 @@ public class SearchController {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return searchService.fetchHashTags(searchDto);
+    }
+
+    @PostMapping("/discover")
+    public ResponseEntity<Object> searchDiscover(@RequestBody @Valid FetchSearchHistoryDto discoverDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return searchService.discover(discoverDto.getProfileId());
     }
 }

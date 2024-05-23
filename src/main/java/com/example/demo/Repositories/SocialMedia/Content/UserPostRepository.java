@@ -626,5 +626,54 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         nativeQuery = true)
         List<Map<String, Object>> findSpecificUsersPostsData(@Param("offset") int offset, @Param("profileIds") List<Long> profileIds,@Param("excludedIds") List<Long> excludedIds);
 
+        @Query(value =
+        "SELECT p.id as id, " +
+        "p.location as location, " +
+        "GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
+        "c.name as country, " +
+        "GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +
+        "GROUP_CONCAT(DISTINCT g.profile_id) as tags, " +
+        "GROUP_CONCAT(DISTINCT CONCAT(h.id, ':', h.name)) as hashTags, " +
+        "p.likes as likes, " +
+        "p.shares as shares, " +
+        "p.favorites as favorites, " +
+        "p.comments as comments, " +
+        "p.caption as caption, " +
+        "pr.verification_status as verification_status, " +
+        "p.thumbnail as thumbnail, " +
+        "p.time as timestamp, " +
+        "p.profile_id as profileId, " +
+        "us.username as username, " +
+        "us.name as name, " +
+        "acc.name as accountType, " +
+        "GROUP_CONCAT(DISTINCT CONCAT(d.content_types)) as contentTypes, " +
+        "p.path as path " +
+        "FROM user_posts p " +
+        "JOIN user_post_hash_tag ph ON p.id = ph.user_post_id " +
+        "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
+        "LEFT JOIN countries c ON p.country_id = c.id " +
+        "LEFT JOIN mention f ON p.id = f.user_post_id " +
+        "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+        "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+        "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+        "LEFT JOIN users us ON pr.user_id = us.id " +
+        "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
+        "WHERE p.profile_id IN (:profileIds) " +
+        "AND p.time BETWEEN NOW() - INTERVAL 6 MONTH AND NOW() - INTERVAL 3 DAY " +
+        "AND p.id NOT IN (:excludedIds) " +
+        "AND p.time = (" +
+        "  SELECT MAX(p2.time) " +
+        "  FROM user_posts p2 " +
+        "  WHERE p2.profile_id = p.profile_id " +
+        "  AND p2.id NOT IN (:excludedIds)" +
+        ") " +
+        "GROUP BY p.id " +
+        "ORDER BY p.time DESC " +
+        "LIMIT 5 OFFSET :offset",
+        nativeQuery = true)
+List<Map<String, Object>> findUsersPostsData(@Param("offset") int offset, @Param("profileIds") List<Long> profileIds, @Param("excludedIds") List<Long> excludedIds);
+
+
 
 }

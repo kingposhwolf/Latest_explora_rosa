@@ -123,7 +123,7 @@ public class SearchServiceImpl implements SearchService{
     }
 
     @Override
-    public ResponseEntity<Object> testPostResults(SearchDto searchDto) {
+    public ResponseEntity<Object> searchPostResults(SearchDto searchDto) {
         try {
             List<Map<String, Object>> data = null;
             Long profile = profileRepository.findProfileIdById(searchDto.getProfileId());
@@ -204,27 +204,6 @@ public class SearchServiceImpl implements SearchService{
 
 
     @Override
-    public ResponseEntity<Object> fetchProfiles(SearchDto searchDto) {
-        try {
-
-            Long profile = profileRepository.findProfileIdById(searchDto.getProfileId());
-
-            if(profile == null){
-                logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
-                return ResponseEntity.badRequest().body("Your profile ID is Invalid");
-            }
-            else{
-                rabbitTemplate.convertAndSend("searchSaveOperation", searchDto.toJson());
-
-                return ResponseEntity.status(200).body(searchAlgorithm.resultsProfiles(searchDto));
-            }
-        } catch (Exception exception) {
-            logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
-            return ResponseEntity.status(500).body("Internal Server Error");
-        }
-    }
-
-    @Override
     public ResponseEntity<Object> fetchHashTags(SearchHashTagDto hashTagDto) {
         try {
 
@@ -235,6 +214,27 @@ public class SearchServiceImpl implements SearchService{
 
         } catch (Exception exception) {
             logger.error("\nBrand fetching failed , Server Error : " + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+
+    @Override
+    public ResponseEntity<Object> discover(Long profileId) {
+        try {
+            Long profile = profileRepository.findProfileIdById(profileId);
+
+            if(profile == null){
+                logger.error("Failed it seems like your profile does not exist, or you try to Hack us");
+                return ResponseEntity.badRequest().body("Your profile ID is Invalid");
+            }
+            else{
+                List<Long> profileIds = Arrays.asList(1L,2L);
+                List<Long> excludedIds = Arrays.asList(16L,2L,13L,15L);
+                List<Map<String, Object>> data = userPostRepository.findUsersPostsData(0,profileIds,excludedIds);
+                return ResponseEntity.status(200).body(helper.postMapTimer(data,profileId));
+            }
+        } catch (Exception exception) {
+            logger.error("\nSearch history fetching failed , Server Error : " + exception.getMessage());
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }

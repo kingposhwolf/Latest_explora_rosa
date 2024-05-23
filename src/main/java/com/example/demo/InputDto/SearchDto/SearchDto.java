@@ -17,6 +17,7 @@ public class SearchDto {
     @NotNull
     private Long countryId;
 
+    @NotNull
     private int pageNumber;
 
     public String toJson() throws JsonProcessingException {
