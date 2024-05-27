@@ -1,4 +1,5 @@
 package com.example.demo.Services.UserPostService;
+import com.example.demo.Components.Helper.FFmpegUtils;
 import com.example.demo.InputDto.SocialMedia.Post.UserPostDto;
 import com.example.demo.Models.SocialMedia.HashTag;
 import com.example.demo.Models.SocialMedia.UserPost;
@@ -61,6 +62,7 @@ public ResponseEntity<Object> uploadPost(
         List<String> hashtagNames,
         Long countryId) throws IOException {
     try {
+        Long duration = null;
         if (files.length > 6) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
         }
@@ -168,6 +170,11 @@ public ResponseEntity<Object> uploadPost(
                     //Add file content type to the file content types list
                     filesContentTypes.add(fileContentType);
 
+                    // Check if the file is a video and get its duration
+                    if (contentType.startsWith("video/")) {
+                        duration = FFmpegUtils.getVideoDuration(insPath);
+                    }
+
                 }
                 userPostDto.setNames(recordedFileNames);
                 userPostDto.setContentTypes(filesContentTypes);
@@ -189,6 +196,7 @@ public ResponseEntity<Object> uploadPost(
                     userPost.setShares(0);
                     userPost.setFavorites(0);
                     userPost.setLocation(location);
+                    userPost.setDuration(duration);
 
                     //Print to see what's being carried
                     logger.info(userPost.toString());

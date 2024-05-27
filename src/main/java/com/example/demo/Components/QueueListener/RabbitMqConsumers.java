@@ -498,6 +498,7 @@ public class RabbitMqConsumers {
             } else if (!post.isPresent()) {
                 logger.error("During Tacking View Action, User post not found for post ID: " + viewDto.getPostId());
             } else {
+                
                 processTopicEngagement(profile.get(), post.get().getHashTags(), 3);
                 processUserEngagement(profile.get(), post.get().getProfile(), 3);
 

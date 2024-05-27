@@ -14,6 +14,7 @@ public class ViewDto {
     @NotNull
     private Long postId;
 
+    @NotNull
     private Long time;
 
     public String toJson() throws JsonProcessingException {

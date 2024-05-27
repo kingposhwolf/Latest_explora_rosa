@@ -95,6 +95,8 @@ public class UserPost {
 
     private Long views;
 
+    private Long duration;
+
     @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
