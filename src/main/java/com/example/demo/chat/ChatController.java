@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.chat.Dto.AckMessageDto;
@@ -29,8 +30,8 @@ public class ChatController {
     private final ChatMessageService chatMessageService;
     // private final ObjectMapper objectMapper;
 
-@MessageMapping("/chat")
-public void processMessage(@Payload ChatMessageDto chatMessage) {
+@PostMapping("/message/send")
+public void processMessage(@RequestBody @Valid ChatMessageDto chatMessage) {
     try {
         ChatMessage savedMsg = chatMessageService.save(chatMessage);
 
@@ -54,7 +55,7 @@ public void processMessage(@Payload ChatMessageDto chatMessage) {
 }
 
 
-    @MessageMapping("/status")
+    @PostMapping("/message/status")
     public void messageStatusUpdate(@Payload @Valid MessageStatusDto messageStatusDto) {
         try {
             ChatMessage chat = chatMessageService.updateStatus(messageStatusDto.getMessageId(), messageStatusDto.getStatus());
@@ -67,8 +68,8 @@ public void processMessage(@Payload ChatMessageDto chatMessage) {
         }
     }
 
-    @MessageMapping("/group-chat")
-    public void sendMessageToGroups(@Payload ChatMessageDto chatMessage) {
+    @PostMapping("/message/group-chat")
+    public void sendMessageToGroups(@RequestBody @Valid ChatMessageDto chatMessage) {
         try {
             GroupChatMessage savedMsg = chatMessageService.groupMsgSave(chatMessage);
 

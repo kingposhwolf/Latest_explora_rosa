@@ -6,13 +6,13 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.InputDto.Message.OneToOneChat.ChatUser;
@@ -33,7 +33,7 @@ public class UserController2 {
 
     private final FollowUnFollowRepository followUnFollowRepository;
 
-    @MessageMapping("/addUser")
+    @PostMapping("/user/connect")
     @SendTo("/topic/public")
     public ChatUser addUser(@Payload ChatUser user) {
         try {
@@ -52,7 +52,7 @@ public class UserController2 {
         return user;
     }
 
-    @MessageMapping("/user.disconnectUser")
+    @PostMapping("/user/disconnect")
     @SendTo("/user/public")
     public ChatUser disconnectUser(@Payload ChatUser user) {
         userService.disconnect(user);

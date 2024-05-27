@@ -14,6 +14,8 @@ public class ViewDto {
     @NotNull
     private Long postId;
 
+    private Long time;
+
     public String toJson() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(this);

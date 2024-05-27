@@ -672,8 +672,6 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "ORDER BY p.time DESC " +
         "LIMIT 5 OFFSET :offset",
         nativeQuery = true)
-List<Map<String, Object>> findUsersPostsData(@Param("offset") int offset, @Param("profileIds") List<Long> profileIds, @Param("excludedIds") List<Long> excludedIds);
-
-
+        List<Map<String, Object>> findUsersPostsData(@Param("offset") int offset, @Param("profileIds") List<Long> profileIds, @Param("excludedIds") List<Long> excludedIds);
 
 }
