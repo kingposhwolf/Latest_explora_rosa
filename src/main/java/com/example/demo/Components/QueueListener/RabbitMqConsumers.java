@@ -489,18 +489,52 @@ public class RabbitMqConsumers {
         try {
             ViewDto viewDto = ViewDto.fromJson(message);
 
-            Optional<Profile> profile = profileRepository.findById(viewDto.getProfileId());
-            Optional<UserPost> post = userPostRespository.findById(viewDto.getPostId());
+            Optional<Profile> profileOptional = profileRepository.findById(viewDto.getProfileId());
+            Optional<UserPost> postOptional = userPostRespository.findById(viewDto.getPostId());
 
-            if (!profile.isPresent()) {
+            if (profileOptional.isEmpty()) {
                 logger.error(
                         "During Tacking View Action, User profile not found for profile ID: " + viewDto.getProfileId());
-            } else if (!post.isPresent()) {
+            } else if (postOptional.isEmpty()) {
                 logger.error("During Tacking View Action, User post not found for post ID: " + viewDto.getPostId());
             } else {
+
+                UserPost post = postOptional.get();
+                Profile profile = profileOptional.get();
+
+                if(post.getDuration() == null){
+                    processTopicEngagement(profile, post.getHashTags(), 3);
+                    processUserEngagement(profile, post.getProfile(), 3);
                 
-                processTopicEngagement(profile.get(), post.get().getHashTags(), 3);
-                processUserEngagement(profile.get(), post.get().getProfile(), 3);
+                    post.setViews(post.getViews()+1);
+                    userPostRespository.save(post);
+
+                }else{
+                    if(viewDto.getTime() < (post.getDuration()/2)){
+
+                    }else if( viewDto.getTime() > (post.getDuration()/2) && viewDto.getTime() < post.getDuration() ){
+                        processTopicEngagement(profile, post.getHashTags(), 3);
+                        processUserEngagement(profile, post.getProfile(), 3);
+
+                        post.setViews(post.getViews()+1);
+                        userPostRespository.save(post);
+                    }else{
+                        Long viewCount = viewDto.getTime()/post.getDuration();
+                        if(viewCount == 0){
+                            processTopicEngagement(profile, post.getHashTags(), 3);
+                            processUserEngagement(profile, post.getProfile(), 3);
+
+                            post.setViews(post.getViews()+1);
+                            userPostRespository.save(post);
+                        }else{
+                            processTopicEngagement(profile, post.getHashTags(), viewCount.intValue()*3);
+                            processUserEngagement(profile, post.getProfile(), viewCount.intValue()*3);
+
+                            post.setViews(post.getViews()+viewCount);
+                            userPostRespository.save(post);
+                        }
+                    }
+                }
 
                 logger.info("View Operation tracked successful");
             }
