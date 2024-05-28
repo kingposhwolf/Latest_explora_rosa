@@ -17,6 +17,7 @@ import com.example.demo.Models.SocialMedia.Interactions.Comment;
 import com.example.demo.Models.SocialMedia.Interactions.Favorites;
 import com.example.demo.Models.SocialMedia.Interactions.Like;
 import com.example.demo.Models.SocialMedia.Interactions.Tag;
+import com.example.demo.Models.Tracking.ViewedPosts;
 import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngageFeedPreviousEnd;
 import com.example.demo.Models.Tracking.UserToTopicTracking.TopicEngagement;
 import com.example.demo.Models.Tracking.UserToUserTracking.UserEngageFeedsPreviousEnd;
@@ -140,4 +141,8 @@ public class Profile {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Order> orderList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<ViewedPosts> viewedPosts = new ArrayList<>();
 }

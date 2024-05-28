@@ -47,6 +47,7 @@ import com.example.demo.Repositories.SocialMedia.FollowUnFollow.FollowUnFollowRe
 import com.example.demo.Repositories.SocialMedia.Like.LikeRepository;
 import com.example.demo.Repositories.Tracking.TopicEngagementRepository;
 import com.example.demo.Repositories.Tracking.UserEngagementRepository;
+import com.example.demo.Repositories.Tracking.ViewedPostsRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 
 import lombok.AllArgsConstructor;
@@ -79,6 +80,8 @@ public class RabbitMqConsumers {
     private final FavoritesRepository favoritesRepository;
 
     private final UserSearchHistoryRepository searchHistoryRepository;
+
+    private final ViewedPostsRepository viewedPostsRepository;
 
     @SuppressWarnings("null")
     @Transactional
@@ -509,30 +512,19 @@ public class RabbitMqConsumers {
                     post.setViews(post.getViews()+1);
                     userPostRespository.save(post);
 
+                    viewedPostsRepository.insertViwedPost(viewDto.getProfileId(),viewDto.getPostId());
+
                 }else{
                     if(viewDto.getTime() < (post.getDuration()/2)){
-
-                    }else if( viewDto.getTime() > (post.getDuration()/2) && viewDto.getTime() < post.getDuration() ){
+                        logger.info("Nothing is viewed");
+                    }else{
                         processTopicEngagement(profile, post.getHashTags(), 3);
                         processUserEngagement(profile, post.getProfile(), 3);
 
                         post.setViews(post.getViews()+1);
                         userPostRespository.save(post);
-                    }else{
-                        Long viewCount = viewDto.getTime()/post.getDuration();
-                        if(viewCount == 0){
-                            processTopicEngagement(profile, post.getHashTags(), 3);
-                            processUserEngagement(profile, post.getProfile(), 3);
 
-                            post.setViews(post.getViews()+1);
-                            userPostRespository.save(post);
-                        }else{
-                            processTopicEngagement(profile, post.getHashTags(), viewCount.intValue()*3);
-                            processUserEngagement(profile, post.getProfile(), viewCount.intValue()*3);
-
-                            post.setViews(post.getViews()+viewCount);
-                            userPostRespository.save(post);
-                        }
+                        viewedPostsRepository.insertViwedPost(viewDto.getProfileId(),viewDto.getPostId());
                     }
                 }
 

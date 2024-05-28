@@ -22,6 +22,7 @@ import com.example.demo.InputDto.SearchDto.SearchHashTagDto;
 import com.example.demo.Repositories.SearchOperation.UserSearchHistoryRepository;
 import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 import com.example.demo.Repositories.SocialMedia.HashTag.HashTagRepository;
+import com.example.demo.Repositories.Tracking.ViewedPostsRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 import com.example.demo.Services.RedisService.RedisService;
 import com.example.demo.TempDto.PageDto;
@@ -44,6 +45,8 @@ public class SearchServiceImpl implements SearchService{
     private final UserPostRepository userPostRepository;
 
     private final HashTagRepository hashTagRepository;
+
+    private final ViewedPostsRepository viewedPostsRepository;
 
     private final RedisService redisService;
 
@@ -229,7 +232,10 @@ public class SearchServiceImpl implements SearchService{
             }
             else{
                 List<Long> profileIds = Arrays.asList(1L,2L);
-                List<Long> excludedIds = Arrays.asList(16L,2L,13L,15L);
+                List<Long> excludedIds = viewedPostsRepository.findViewedPostsByProfileId(profileId);
+                if(excludedIds.isEmpty()){
+                    excludedIds = Arrays.asList(0L);
+                }
                 List<Map<String, Object>> data = userPostRepository.findUsersPostsData(0,profileIds,excludedIds);
                 return ResponseEntity.status(200).body(helper.postMapTimer(data,profileId));
             }

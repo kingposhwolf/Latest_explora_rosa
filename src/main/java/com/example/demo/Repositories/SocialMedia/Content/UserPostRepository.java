@@ -105,6 +105,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
+        "   p.views as views, " +
         "   p.time as timestamp, " +
         "   p.profile_id as profileId, " +
         "   us.username as username, " +
@@ -209,6 +210,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
+        "   p.views as views, " +
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
@@ -326,6 +328,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
+        "   p.views as views, " +
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
@@ -365,6 +368,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
+        "   p.views as views, " +
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
@@ -414,6 +418,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
     "          p.favorites as favorites, " +
     "          p.comments as comments, " +
     "          p.caption as caption, " +
+    "          p.views as views, " +
     "          pr.verification_status as verification_status, " +
     "          p.thumbnail as thumbnail, " +
     "          p.time as timestamp, " +
@@ -461,6 +466,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
     "          p.shares as shares, " +
     "          p.favorites as favorites, " +
     "          p.comments as comments, " +
+    "          p.views as views, " +
     "          p.caption as caption, " +
     "          p.thumbnail as thumbnail, " +
     "          pr.verification_status as verification_status, " +
@@ -508,6 +514,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
 "          p.shares as shares, " +
 "          p.favorites as favorites, " +
 "          p.comments as comments, " +
+"          p.views as views, " +
 "          p.caption as caption, " +
 "          p.thumbnail as thumbnail, " +
 "          pr.verification_status as verification_status, " +
@@ -559,6 +566,7 @@ List<Map<String, Object>> findUserPostData(@Param("offset") int offset, @Param("
 "   p.shares as shares, " +
 "   p.favorites as favorites, " +
 "   p.comments as comments, " +
+"   p.views as views, " +
 "   p.caption as caption, " +
 "   pr.verification_status as verification_status, " +
 "   p.thumbnail as thumbnail, " +
@@ -598,6 +606,7 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
+        "   p.views as views, " +
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
@@ -638,6 +647,7 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "p.shares as shares, " +
         "p.favorites as favorites, " +
         "p.comments as comments, " +
+        "p.views as views, " +
         "p.caption as caption, " +
         "pr.verification_status as verification_status, " +
         "p.thumbnail as thumbnail, " +
@@ -660,7 +670,7 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "LEFT JOIN users us ON pr.user_id = us.id " +
         "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
         "WHERE p.profile_id IN (:profileIds) " +
-        "AND p.time BETWEEN NOW() - INTERVAL 6 MONTH AND NOW() - INTERVAL 3 DAY " +
+        "AND p.time BETWEEN NOW() - INTERVAL 2 DAY AND NOW() " +
         "AND p.id NOT IN (:excludedIds) " +
         "AND p.time = (" +
         "  SELECT MAX(p2.time) " +

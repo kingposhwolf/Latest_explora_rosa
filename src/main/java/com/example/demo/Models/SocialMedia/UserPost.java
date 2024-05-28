@@ -18,6 +18,7 @@ import com.example.demo.Models.SocialMedia.Interactions.Comment;
 import com.example.demo.Models.SocialMedia.Interactions.Favorites;
 import com.example.demo.Models.SocialMedia.Interactions.Like;
 import com.example.demo.Models.SocialMedia.Interactions.Tag;
+import com.example.demo.Models.Tracking.ViewedPosts;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -128,4 +129,8 @@ public class UserPost {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<OrderItem> orderList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<ViewedPosts> viewedPosts = new ArrayList<>();
 }
