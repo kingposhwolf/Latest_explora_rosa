@@ -105,6 +105,8 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
+        "   k.rate as rate, " +
+        "   k.price as price, " +
         "   p.views as views, " +
         "   p.time as timestamp, " +
         "   p.profile_id as profileId, " +
@@ -118,6 +120,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
         "LEFT JOIN countries c ON p.country_id = c.id " +
         "LEFT JOIN mention f ON p.id = f.user_post_id " +
+        "LEFT JOIN business_post k ON p.id = k.id " +
         "LEFT JOIN tag g ON p.id = g.user_post_id " +
         "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
         "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
@@ -214,6 +217,8 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
+        "   k.rate as rate, " +
+        "   k.price as price, " +
         "   p.time as timestamp, " +
         "   p.profile_id as profileId, " +
         "   us.username as username, " +
@@ -227,6 +232,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "LEFT JOIN countries c ON p.country_id = c.id " +
         "LEFT JOIN mention f ON p.id = f.user_post_id " +
         "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN business_post k ON p.id = k.id " +
         "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
         "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
         "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
@@ -328,6 +334,8 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
+        "   k.rate as rate, " +
+        "   k.price as price, " +
         "   p.views as views, " +
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
@@ -345,6 +353,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "LEFT JOIN countries c ON p.country_id = c.id " +
         "LEFT JOIN mention f ON p.id = f.user_post_id " +
         "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN business_post k ON p.id = k.id " +
         "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
         "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
         "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
@@ -368,6 +377,8 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "   p.shares as shares, " +
         "   p.favorites as favorites, " +
         "   p.comments as comments, " +
+        "   k.rate as rate, " +
+        "   k.price as price, " +
         "   p.views as views, " +
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
@@ -385,6 +396,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
         "LEFT JOIN countries c ON p.country_id = c.id " +
         "LEFT JOIN mention f ON p.id = f.user_post_id " +
         "LEFT JOIN tag g ON p.id = g.user_post_id " +
+        "LEFT JOIN business_post k ON p.id = k.id " +
         "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
         "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
         "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
@@ -418,6 +430,8 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
     "          p.favorites as favorites, " +
     "          p.comments as comments, " +
     "          p.caption as caption, " +
+    "          k.rate as rate, " +
+    "          k.price as price, " +
     "          p.views as views, " +
     "          pr.verification_status as verification_status, " +
     "          p.thumbnail as thumbnail, " +
@@ -434,6 +448,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
     "   LEFT JOIN countries c ON p.country_id = c.id " +
     "   LEFT JOIN mention f ON p.id = f.user_post_id " +
     "   LEFT JOIN tag g ON p.id = g.user_post_id " +
+    "   LEFT JOIN business_post k ON p.id = k.id " +
     "   LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
     "   LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
     "   LEFT JOIN profiles pr ON p.profile_id = pr.id " +
@@ -467,6 +482,8 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
     "          p.favorites as favorites, " +
     "          p.comments as comments, " +
     "          p.views as views, " +
+    "          k.rate as rate, " +
+"   k.price as price, " +
     "          p.caption as caption, " +
     "          p.thumbnail as thumbnail, " +
     "          pr.verification_status as verification_status, " +
@@ -486,6 +503,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
     " LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
     " LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
     " LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+    " LEFT JOIN business_post k ON p.id = k.id " +
     " LEFT JOIN users us ON pr.user_id = us.id " +
     " LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
     " WHERE p.time BETWEEN NOW() - INTERVAL 2 DAY AND NOW() " +
@@ -515,6 +533,8 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
 "          p.favorites as favorites, " +
 "          p.comments as comments, " +
 "          p.views as views, " +
+"          k.rate as rate, " +
+"          k.price as price, " +
 "          p.caption as caption, " +
 "          p.thumbnail as thumbnail, " +
 "          pr.verification_status as verification_status, " +
@@ -532,6 +552,7 @@ public interface UserPostRepository extends JpaRepository<UserPost, Long> {
 "   LEFT JOIN mention f ON p.id = f.user_post_id " +
 "   LEFT JOIN tag g ON p.id = g.user_post_id " +
 "   LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
+"   LEFT JOIN business_post k ON p.id = k.id " +
 "   LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
 "   LEFT JOIN profiles pr ON p.profile_id = pr.id " +
 "   LEFT JOIN users us ON pr.user_id = us.id " +
@@ -571,6 +592,8 @@ List<Map<String, Object>> findUserPostData(@Param("offset") int offset, @Param("
 "   pr.verification_status as verification_status, " +
 "   p.thumbnail as thumbnail, " +
 "   p.time as timestamp, " +
+"   k.rate as rate, " +
+"   k.price as price, " +
 "   p.profile_id as profileId, " +
 "   us.username as username, " +
 "   us.name as name, " +
@@ -582,6 +605,7 @@ List<Map<String, Object>> findUserPostData(@Param("offset") int offset, @Param("
 "JOIN hash_tags h ON ph.hash_tag_id = h.id " +
 "LEFT JOIN countries c ON p.country_id = c.id " +
 "LEFT JOIN mention f ON p.id = f.user_post_id " +
+"LEFT JOIN business_post k ON p.id = k.id " +
 "LEFT JOIN tag g ON p.id = g.user_post_id " +
 "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
 "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
@@ -610,6 +634,8 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "   p.caption as caption, " +
         "   pr.verification_status as verification_status, " +
         "   p.thumbnail as thumbnail, " +
+        "   k.rate as rate, " +
+        "   k.price as price, " +
         "   p.time as timestamp, " +
         "   p.profile_id as profileId, " +
         "   us.username as username, " +
@@ -625,6 +651,7 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "LEFT JOIN tag g ON p.id = g.user_post_id " +
         "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
         "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
+        "LEFT JOIN business_post k ON p.id = k.id " +
         "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
         "LEFT JOIN users us ON pr.user_id = us.id " +
         "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
@@ -652,6 +679,8 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "pr.verification_status as verification_status, " +
         "p.thumbnail as thumbnail, " +
         "p.time as timestamp, " +
+        "   k.rate as rate, " +
+        "   k.price as price, " +
         "p.profile_id as profileId, " +
         "us.username as username, " +
         "us.name as name, " +
@@ -667,6 +696,7 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "LEFT JOIN user_post_content_types d ON p.id = d.user_post_id " +
         "LEFT JOIN user_post_names e ON p.id = e.user_post_id " +
         "LEFT JOIN profiles pr ON p.profile_id = pr.id " +
+        "LEFT JOIN business_post k ON p.id = k.id " +
         "LEFT JOIN users us ON pr.user_id = us.id " +
         "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
         "WHERE p.profile_id IN (:profileIds) " +

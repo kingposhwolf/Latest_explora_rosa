@@ -37,14 +37,13 @@ public class UploadDataServiceImpl implements UploadDataService {
 
     private final String folderPath="src\\main\\resources\\static\\posts\\";
 
-    @SuppressWarnings("null")
+    @SuppressWarnings({ "null", "unused" })
     @Transactional
     @Override
     public ResponseEntity<Object> uploadDataToFileSystem(MultipartFile upload, Long brandId) throws IOException {
 
-        String uploadPath = folderPath + upload.getOriginalFilename();
-
         try {
+            String uploadPath = folderPath + upload.getOriginalFilename();
             // Fetch the Brand entity using the provided brandId
             Brand brand = brandRepository.findById(brandId)
                     .orElseThrow(() -> new IllegalArgumentException("Brand with ID " + brandId + " not found"));
@@ -54,9 +53,8 @@ public class UploadDataServiceImpl implements UploadDataService {
             if (!isValidContentType(contentType)) {
                 logger.error("Unsupported content type: {}", contentType);
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
-            }
-
-            UploadData uploadData = uploadDataRepository.save(UploadData.builder()
+            }else{
+                UploadData uploadData = uploadDataRepository.save(UploadData.builder()
                     .name(upload.getOriginalFilename())
                     .type(contentType)
                     .path(uploadPath)
@@ -68,13 +66,16 @@ public class UploadDataServiceImpl implements UploadDataService {
             if (uploadData != null) {
                 logger.info("File uploaded successfully: {}", uploadPath);
                 return ResponseEntity.status(201).body("File Uploaded Successfully! ");
+            }else{
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save data: Unknown error");
+            }
             }
         } catch (Exception e) {
             logger.error("Failed to save data: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save data: " + e.getMessage());
         }
-        logger.error("Failed to save data: Unknown error");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save data: Unknown error");
+        // logger.error("Failed to save data: Unknown error");
+        // return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save data: Unknown error");
     }
 
     private boolean isValidContentType(String contentType) {

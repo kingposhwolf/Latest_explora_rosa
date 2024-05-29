@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.InputDto.Ecommerce.Cart.CartDto;
 import com.example.demo.InputDto.Ecommerce.Cart.CartItemDto;
+import com.example.demo.InputDto.Ecommerce.Cart.ViewCartDto;
 import com.example.demo.Models.Ecommerce.Cart.Cart;
 import com.example.demo.Models.Ecommerce.Cart.CartItem;
 import com.example.demo.Models.SocialMedia.UserPost;
@@ -148,6 +149,23 @@ public class CartServiceImpl implements CartService{
             }
         } catch (Exception exception) {
             logger.error("\nFailed to remove item to cart, Server Error: \n" + exception.getMessage());
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+
+    @Override
+    public ResponseEntity<Object> viewCart(ViewCartDto ViewCartDto){
+        try {
+            // Iterable<City> cities = cityRepository.findAll();
+            // if(!cities.iterator().hasNext()){
+            //     logger.error("\nThere is Request for Fetching All Cities, But Nothing Registered to the database ");
+            //     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is No  Cities in the Database");
+            // }else{
+            //     logger.info("\nSuccessful fetched all Cities");
+                return ResponseEntity.status(200).body("cityRepository.findCitiesWithoutCountry()");
+            // }
+        } catch (Exception exception) {
+            logger.error("\nFailed to fetch all Cities, Server Error: \n" + exception.getMessage());
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }

@@ -113,20 +113,48 @@ public class Helper {
                 .collect(Collectors.toList());
     }
 
-    // public Map<String, Object> mapSingleTimer(Map<String, Object> data) {
-    //     // Create a new map with the existing entries except timestamp
-    //     Map<String, Object> modifiedData = new HashMap<>(data);
-    //     modifiedData.remove("timestamp");
-
-    //     // Calculate the time difference and add it to the map
-    //     LocalDateTime timestamp = (LocalDateTime) data.get("timestamp");
-
-    //     String timeDifference = calculateTimeDifference(timestamp);
-
-    //     modifiedData.put("duration", timeDifference);
-
-    //     return modifiedData;
-    // }
+    public Map<String, Object> singlePostMap(Map<String, Object> post, Long profileId) {
+        List<Long> postUserLikes = likeRepository.postsUserLike(profileId);
+        List<Long> favoritePosts = favoritesRepository.findPostByProfile(profileId);
+    
+        
+                    // Create a new map with the existing entries except timestamp
+                    Map<String, Object> modifiedPost = new HashMap<>(post);
+                    modifiedPost.remove("timestamp");
+    
+                    // Get the timestamp from the post map and convert it to LocalDateTime
+                    Timestamp timestamp = (Timestamp) post.get("timestamp");
+                    LocalDateTime localDateTime = timestamp.toLocalDateTime();
+    
+                    // Calculate the time difference and add it to the map
+                    String timeDifference = calculateTimeDifference(localDateTime);
+                    modifiedPost.put("duration", timeDifference);
+                    modifiedPost.put("showShare", false);
+    
+                    // Check if the user likes that post
+                    Long postId = (Long) post.get("id");
+                    modifiedPost.put("liked", postUserLikes.contains(postId));
+    
+                    // Check if the user added the post to the favorites
+                    modifiedPost.put("favorite", favoritePosts.contains(postId));
+    
+                    // Parse hashtags
+                    String hashTagsConcat = (String) post.get("hashTags");
+                    List<Map<String, String>> hashTags = Arrays.stream(hashTagsConcat.split(","))
+                            .map(pair -> {
+                                String[] parts = pair.split(":");
+                                Map<String, String> hashTag = new HashMap<>();
+                                if (parts.length == 2) {
+                                    hashTag.put("id", parts[0]);
+                                    hashTag.put("name", parts[1]);
+                                }
+                                return hashTag;
+                            })
+                            .collect(Collectors.toList());
+                    modifiedPost.put("hashTags", hashTags);
+    
+                    return modifiedPost;
+    }
 
     public Map<String, Object> mapChatSingleTimer(Map<String, Object> data) {
         // Create a new map with the existing entries except timestamp

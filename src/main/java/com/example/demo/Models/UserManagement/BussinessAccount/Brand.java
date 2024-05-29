@@ -7,6 +7,7 @@ package com.example.demo.Models.UserManagement.BussinessAccount;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 
@@ -14,6 +15,7 @@ import com.example.demo.Models.UserManagement.Profile;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
 @DiscriminatorValue("BUSINESS")
 public class Brand extends Profile {
 

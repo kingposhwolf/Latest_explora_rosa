@@ -1,11 +1,14 @@
 package com.example.demo.Services.UserPostService;
 import com.example.demo.Components.Helper.FFmpegUtils;
+import com.example.demo.Components.Helper.Helper;
 import com.example.demo.InputDto.SocialMedia.Post.UserPostDto;
+import com.example.demo.Models.SocialMedia.BusinessPost;
 import com.example.demo.Models.SocialMedia.HashTag;
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.example.demo.Models.UserManagement.Profile;
 import com.example.demo.Models.UserManagement.BussinessAccount.Brand;
 import com.example.demo.Repositories.Information.Country.CountryRepository;
+import com.example.demo.Repositories.SocialMedia.Content.BusinessPostRepository;
 import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 import com.example.demo.Repositories.SocialMedia.HashTag.HashTagRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
@@ -25,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -43,17 +47,18 @@ public class UserPostServiceImpl implements UserPostService{
     private final String postfolderPath="Posts";
 
     private final UserPostRepository userPostRepository;
+    private final BusinessPostRepository businessPostRepository;
     private final ProfileRepository profileRepository;
     private final HashTagRepository hashTagRepository;
     private final BrandRepository brandRepository;
     private final CountryRepository countryRepository;
+    private final Helper helper;
    // private final LikeRepository likeRepository;
 
 @SuppressWarnings("null")
 @Override
 @Transactional
 public ResponseEntity<Object> uploadPost(
-        UserPostDto userPostDto,
         MultipartFile[] files,
         Long profileId,
         String caption,
@@ -61,169 +66,88 @@ public ResponseEntity<Object> uploadPost(
         Long brandId,
         List<String> hashtagNames,
         Long countryId) throws IOException {
-    try {
-        Long duration = null;
-        if (files.length > 6) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
-        }
-        else{
-            String folderPath= "src\\main\\resources\\static\\posts\\";
-
-            // Generate the filename using profileId, time, day, month, and year
-            LocalDateTime currentTime = LocalDateTime.now();
-            String[] fileNames = new String[files.length]; // Array to store file names
-
-
-
-            // Fetch profile and country entities
-            Optional<Profile> profile = profileRepository.findById(profileId);
-            if(profile.isEmpty()){
-                return ResponseEntity.status(400).body("Profile does not exist");
-            }
-
-            List<HashTag> hashTags = new ArrayList<>();
-            
-                for (String hashtagName : hashtagNames) {
-                    if (hashtagName != null && !hashtagName.isEmpty()) { // Check for null and empty strings
-                        Optional<HashTag> optionalHashTag = hashTagRepository.findByName(hashtagName);
-                        HashTag hashTag;
-                        if (optionalHashTag.isPresent()) {
-                            hashTag = optionalHashTag.get();
-                        } else {
-                            // Create a new hashtag if it doesn't exist
-                            hashTag = new HashTag();
-                            hashTag.setName(hashtagName);
-                            try {
-                                hashTag = hashTagRepository.save(hashTag); // Save the new hashTag to get the ID
-                            } catch (Exception e) {
-                                // Handle any exceptions
-                                e.printStackTrace(); // Print stack trace for debugging
-                                logger.error("Error in creating hashTag");
-                            }
-                        }
-                        hashTags.add(hashTag);
-                    }
+            try {
+                if (files.length > 6) {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exceeded maximum file limit (6)");
                 }
             
+                UserPostDto userPostDto = new UserPostDto();
+                LocalDateTime currentTime = LocalDateTime.now();
+                String folderPath = "src\\main\\resources\\static\\posts\\";
             
-            // Set the list of hashtags to the userPostDto
-            userPostDto.setHashTagIds(hashTags);
-
-
-            // Fetch brand entity
-            Brand brand = null;
-            userPostDto.setBrandId(brandId);
-            if (userPostDto.getBrandId() != null) {
-                brand = brandRepository.findById(brandId)
-                        .orElseThrow(() -> new IllegalArgumentException("Brand with ID " + userPostDto.getBrandId() + " not found"));
-            }
-
-
-            if(files == null || files.length == 0){
-                throw new IllegalArgumentException("No files uploaded");
-            }
-            else {
-                // Initialize a list to hold recorded filenames
+                Optional<Profile> profileOpt = profileRepository.findById(profileId);
+                if (profileOpt.isEmpty()) {
+                    return ResponseEntity.status(400).body("Profile does not exist");
+                }
+                Profile profile = profileOpt.get();
+            
+                List<HashTag> hashTags = getOrCreateHashTags(hashtagNames);
+                userPostDto.setHashTagIds(hashTags);
+            
+                Brand brand = null;
+                if (brandId != null) {
+                    brand = brandRepository.findById(brandId)
+                            .orElseThrow(() -> new IllegalArgumentException("Brand with ID " + brandId + " not found"));
+                }
+                userPostDto.setBrandId(brandId);
+            
+                if (files == null || files.length == 0) {
+                    throw new IllegalArgumentException("No files uploaded");
+                }
+            
                 List<String> recordedFileNames = new ArrayList<>();
-
-                //Initialize a list to hold content Types
                 List<String> filesContentTypes = new ArrayList<>();
-
-                // Iterate over each file in the array
-                for (int n = 0; n < files.length; n++) {
-                    MultipartFile file = files[n];
+                Long duration = null;
+            
+                for (int i = 0; i < files.length; i++) {
+                    MultipartFile file = files[i];
                     if (file.isEmpty()) {
-                        throw new IllegalArgumentException("File at index " + n + " is empty");
+                        throw new IllegalArgumentException("File at index " + i + " is empty");
                     }
-
-                    String fileName = "post_" + profileId + "_" + currentTime.getYear() + "_" + currentTime.getMonthValue() + "_" + currentTime.getDayOfMonth() + "_" + currentTime.getHour() + "_" + currentTime.getMinute() + "_" + currentTime.getSecond() + "_" + (n + 1);
-
-
-                    // Check if the content type is allowed
+            
+                    String fileName = generateFileName(profileId, currentTime, i);
                     String contentType = file.getContentType();
                     if (!isValidContentType(contentType)) {
                         logger.error("Unsupported content type: {}", contentType);
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
                     }
-                    String fileContentType =  contentType + "content_" + (n+1);
-
-                    // Obtaining the Original file name
-                    String originalFileName = file.getOriginalFilename();
-
-                    // Create a variable to store the file extension
-                    String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-
-                    // Directory path where you want to save ;
+            
+                    String fileExtension = getFileExtension(file.getOriginalFilename());
                     String insPath = folderPath + fileName + fileExtension;
-
-                    //Name of the single file to be stored in a file system
-                    String recordedFileName = fileName + fileExtension;
-
-                    // Re-writing the file again so that we can save it using our new name
                     byte[] bytes = file.getBytes();
                     Files.write(Paths.get(insPath), bytes);
-
-                    fileNames[n] = recordedFileName;
-
-                    // Add recorded filename to the recorded filename list
-                    recordedFileNames.add(recordedFileName);
-                    //Add file content type to the file content types list
-                    filesContentTypes.add(fileContentType);
-
-                    // Check if the file is a video and get its duration
+            
+                    recordedFileNames.add(fileName + fileExtension);
+                    filesContentTypes.add(contentType + "content_" + (i + 1));
+            
                     if (contentType.startsWith("video/")) {
                         duration = FFmpegUtils.getVideoDuration(insPath);
                     }
-
                 }
+            
                 userPostDto.setNames(recordedFileNames);
                 userPostDto.setContentTypes(filesContentTypes);
+            
+                if(profile.getUser().getAccountType().getId() == 2){
 
-
-                try {
-                    // Save the user post
-                    UserPost userPost = new UserPost();
-                    userPost.setProfile(profile.get());
-                    userPost.setNames(userPostDto.getNames());
-                    userPost.setCountry(countryRepository.findById(countryId).get());
-                    userPost.setHashTags(userPostDto.getHashTagIds());
-                    userPost.setBrand(brand);
-                    userPost.setThumbnail(userPostDto.getThumbnail());
-                    userPost.setCaption(caption); // Use the provided caption
-                    userPost.setTime(LocalDateTime.now());
-                    userPost.setContentTypes(userPostDto.getContentTypes());
-                    userPost.setPath("/posts");
-                    userPost.setShares(0);
-                    userPost.setFavorites(0);
-                    userPost.setLocation(location);
-                    userPost.setDuration(duration);
-
-                    //Print to see what's being carried
-                    logger.info(userPost.toString());
-
-                    // Save the post to the database
-
-                    UserPost savedPost = userPostRepository.save(userPost);
-
-                   // Transfer the file to the specified path
-                   // file.transferTo(new File(uploadPath));
+                    BusinessPost businessPost = createBusinessPost(profile, countryId, hashTags, brand, caption, location, duration, userPostDto);
+                    BusinessPost savedPost = userPostRepository.save(businessPost);
 
                     logger.info("Post uploaded successfully");
-                    return ResponseEntity.status(HttpStatus.CREATED).body(userPostRepository.findUserPostDataById(savedPost.getId()));
-                } catch (Exception e){
-                    throw new IOException("Failed to upload file: " + e.getMessage());
+                return ResponseEntity.status(HttpStatus.CREATED).body(helper.singlePostMap(businessPostRepository.findBusinessPostDataById(savedPost.getId()), profileId));
 
+                }else{
+                    UserPost userPost = createUserPost(profile, countryId, hashTags, brand, caption, location, duration, userPostDto);
+                    UserPost savedPost = userPostRepository.save(userPost);
+                    logger.info("Post uploaded successfully");
+                return ResponseEntity.status(HttpStatus.CREATED).body(helper.singlePostMap(userPostRepository.findUserPostDataById(savedPost.getId()), profileId));
                 }
+            
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error("Failed to upload post: {}", e.getMessage());
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload post: " + e.getMessage());
             }
-
-        }
-
-
-        } catch(Exception e){
-            e.printStackTrace();
-            logger.error("Failed to upload post: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload post: " + e.getMessage());
-        }
     }
 
 
@@ -531,248 +455,82 @@ public ResponseEntity<Object> uploadPost(
                     .body("Failed to edit post caption: " + e.getMessage());
         }
     }
+
+    // Helper methods
+private List<HashTag> getOrCreateHashTags(List<String> hashtagNames) {
+    List<HashTag> hashTags = new ArrayList<>();
+    for (String hashtagName : hashtagNames) {
+        if (hashtagName != null && !hashtagName.isEmpty()) {
+            hashTags.add(hashTagRepository.findByName(hashtagName)
+                    .orElseGet(() -> createNewHashTag(hashtagName)));
+        }
+    }
+    return hashTags;
 }
 
-// Validate thumbnail if the post is a video
-//                    if (file.getContentType().equalsIgnoreCase("video")) {
-//                        // Check if the user provided a thumbnail file
-//                        MultipartFile thumbnailFile = userPostDto.getThumbnailFile();
-//                        if (thumbnailFile != null && !thumbnailFile.isEmpty()) {
-//                            String thumbnail = null;
-//                            thumbnail = processThumbnail(files, thumbnailFile, profileId);
-//                            userPostDto.setThumbnail(thumbnail);
-//                        } else {
-//                            String thumbnail = null;
-//                            // Use Fmpeg to extract a frame from the video and save it as a thumbnail
-//                            thumbnail = processThumbnail(files, null, profileId);
-//                            userPostDto.setThumbnail(thumbnail);
-//                        }
-//                    }
+private HashTag createNewHashTag(String hashtagName) {
+    HashTag hashTag = new HashTag();
+    hashTag.setName(hashtagName);
+    try {
+        return hashTagRepository.save(hashTag);
+    } catch (Exception e) {
+        e.printStackTrace();
+        logger.error("Error in creating hashTag");
+        return hashTag;
+    }
+}
 
+private String generateFileName(Long profileId, LocalDateTime currentTime, int index) {
+    return String.format("post_%d_%d_%d_%d_%d_%d_%d_%d", profileId, currentTime.getYear(), currentTime.getMonthValue(),
+            currentTime.getDayOfMonth(), currentTime.getHour(), currentTime.getMinute(), currentTime.getSecond(), (index + 1));
+}
 
+private String getFileExtension(String originalFileName) {
+    return originalFileName.substring(originalFileName.lastIndexOf("."));
+}
 
+private UserPost createUserPost(Profile profile, Long countryId, List<HashTag> hashTags, Brand brand, String caption,
+                                String location, Long duration, UserPostDto userPostDto) throws IllegalArgumentException {
+    UserPost userPost = new UserPost();
+    userPost.setProfile(profile);
+    userPost.setNames(userPostDto.getNames());
+    userPost.setCountry(countryRepository.findById(countryId).orElseThrow(() -> new IllegalArgumentException("Country not found")));
+    userPost.setHashTags(userPostDto.getHashTagIds());
+    userPost.setBrand(brand);
+    userPost.setThumbnail(userPostDto.getThumbnail());
+    userPost.setCaption(caption);
+    userPost.setTime(LocalDateTime.now());
+    userPost.setContentTypes(userPostDto.getContentTypes());
+    userPost.setPath("/posts");
+    userPost.setShares(0);
+    userPost.setFavorites(0);
+    userPost.setLocation(location);
+    userPost.setDuration(duration);
+    logger.info(userPost.toString());
+    return userPost;
+}
 
+private BusinessPost createBusinessPost(Profile profile, Long countryId, List<HashTag> hashTags, Brand brand, String caption,
+                                String location, Long duration, UserPostDto userPostDto) throws IllegalArgumentException {
+    BusinessPost userPost = new BusinessPost();
+    userPost.setProfile(profile);
+    userPost.setNames(userPostDto.getNames());
+    userPost.setCountry(countryRepository.findById(countryId).orElseThrow(() -> new IllegalArgumentException("Country not found")));
+    userPost.setHashTags(userPostDto.getHashTagIds());
+    userPost.setBrand(brand);
+    userPost.setThumbnail(userPostDto.getThumbnail());
+    userPost.setCaption(caption);
+    userPost.setTime(LocalDateTime.now());
+    userPost.setContentTypes(userPostDto.getContentTypes());
+    userPost.setPath("/posts");
+    userPost.setShares(0);
+    userPost.setFavorites(0);
+    userPost.setLocation(location);
+    userPost.setDuration(duration);
+    userPost.setRate(BigDecimal.ZERO);
+    userPost.setPrice(BigDecimal.ZERO);
 
-
-
-//    @Override
-//    @Transactional
-//    public ResponseEntity<Object> uploadPost(UserPostDto userPostDto, MultipartFile file, Long profileId) throws IOException {
-//        try {
-//            // Check if the content type is allowed
-//            String contentType = file.getContentType();
-//            if (!isValidContentType(contentType)) {
-//                logger.error("Unsupported content type: {}", contentType);
-//                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
-//            }
-//
-//            // Fetch profile and country entities
-//            Profile profile = profileRepository.findById(profileId)
-//                    .orElseThrow(() -> new IllegalArgumentException("Profile with ID " + profileId + " not found"));
-//            Country country = countryRepository.findById(userPostDto.getCountryId())
-//                    .orElseThrow(() -> new IllegalArgumentException("Country with ID " + userPostDto.getCountryId() + " not found"));
-//
-//            // Fetch hash tag entities
-//            List<HashTag> hashTags = new ArrayList<>();
-//            for (Long hashTagId : userPostDto.getHashTagIds()) {
-//                HashTag hashTag = hashTagRepository.findById(hashTagId)
-//                        .orElseThrow(() -> new IllegalArgumentException("HashTag with ID " + hashTagId + " not found"));
-//                hashTags.add(hashTag);
-//            }
-//
-//            // Fetch brand entity
-//            Brand brand = null;
-//            if (userPostDto.getBrandId() != null) {
-//                brand = brandRepository.findById(userPostDto.getBrandId())
-//                        .orElseThrow(() -> new IllegalArgumentException("Brand with ID " + userPostDto.getBrandId() + " not found"));
-//            }
-//
-//            // Validate thumbnail if the post is a video
-//            String thumbnail = null;
-//            if (userPostDto.getType().equalsIgnoreCase("video")) {
-//                // Check if the user provided a thumbnail file
-//                MultipartFile thumbnailFile = userPostDto.getThumbnailFile();
-//                if (thumbnailFile != null && !thumbnailFile.isEmpty()) {
-//                    thumbnail = processThumbnail(file, thumbnailFile);
-//                } else {
-//                    // Use FFmpeg to extract a frame from the video and save it as a thumbnail
-//                    thumbnail = processThumbnail(file, null);
-//                }
-//            }
-//            // Save the file to the file system
-//            String uploadPath = "C:\\Users\\user\\Documents\\explore\\exploredev\\Posts\\";
-//            userPostDto.setPath(uploadPath);
-//
-//            // Save the user post
-//            UserPost userPost = new UserPost();
-//            userPost.setProfile(profile);
-//            userPost.setCountry(country);
-//            userPost.setHashTags(hashTags);
-//            userPost.setBrand(brand);
-//            userPost.setThumbnail(thumbnail);
-//            userPost.setCaption(userPostDto.getCaption());
-//            userPost.setTime(LocalDateTime.now());
-//            userPost.setType(userPostDto.getType());
-//            userPost.setPath(userPostDto.getPath());
-//            userPost.setShares(0);
-//            userPost.setFavorites(0);
-//
-//            // Save the post to the database
-//            UserPost savedPost = userPostRepository.save(userPost);
-//
-//            file.transferTo(new File(uploadPath));
-//
-//            logger.info("Post uploaded successfully");
-//            return ResponseEntity.status(HttpStatus.CREATED).body("Post uploaded successfully");
-//        } catch (Exception e) {
-//            logger.error("Failed to upload post: {}", e.getMessage());
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload post: " + e.getMessage());
-//        }
-//    }
-//=======
-//        // Check if the content type is allowed
-//        String contentType = file.getContentType();
-//        if (!isValidContentType(contentType)) {
-//            logger.error("Unsupported content type: {}", contentType);
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported content type: " + contentType);
-//        }
-//        userPostDto.setType(contentType);
-//
-//        // Fetch profile and country entities
-//        Profile profile = profileRepository.findById(profileId)
-//                .orElseThrow(() -> new IllegalArgumentException("Profile with ID " + profileId + " not found"));
-//        Country country = countryRepository.findById(userPostDto.getCountryId())
-//                .orElseThrow(() -> new IllegalArgumentException("Country with ID " + userPostDto.getCountryId() + " not found"));
-//        userPostDto.setProfileId(profileId);
-//
-//        //Fetch or create new hashTag
-//        List<HashTag> hashTags = new ArrayList<>();
-//        for (String hashtagName : hashtagNames) {
-//            if (hashtagName != null) {
-//                Optional<HashTag> optionalHashTag = hashTagRepository.findByName(hashtagName);
-//                HashTag hashTag = null;
-//                if (optionalHashTag.isPresent()) {
-//                    hashTag = optionalHashTag.get();
-//                } else {
-//                    // Create a new hashtag if it doesn't exist
-//                    hashTag = new HashTag();
-//                    hashTag.setName(hashtagName);
-//                    hashTagRepository.save(hashTag); // Save the new hash tag to get the ID
-//                }
-//                hashTags.add(hashTag);
-//            }
-//        }
-//        // Set the list of hashtags to the userPostDto
-//        userPostDto.setHashTagIds(hashTags);
-//>>>>>>> 981a58939b6028fd40233569b1530c43dba68d89
-//
-//
-
-
-//        Country country = countryRepository.findById(userPostDto.getCountryId())
-//                .orElseThrow(() -> new IllegalArgumentException("Country with ID " + userPostDto.getCountryId() + " not found"));
-//        userPostDto.setProfileId(profileId);
-
-//        //Fetch or create new hashTag
-//        List<HashTag> hashTags = new ArrayList<>();
-//        for (String hashtagName : hashtagNames) {
-//            if (hashtagName != null) {
-//                Optional<HashTag> optionalHashTag = hashTagRepository.findByName(hashtagName);
-//                HashTag hashTag = null;
-//                if (optionalHashTag.isPresent()) {
-//                    hashTag = optionalHashTag.get();
-//                } else {
-//                    // Create a new hashtag if it doesn't exist
-//                    hashTag = new HashTag();
-//                    hashTag.setName(hashtagName);
-////                    HashTagDto hashTagDto = new HashTagDto();
-////                    hashTagDto.getName();
-//                    hashTagRepository.save(hashTag); // Save the new hashTag to get the ID
-//                }
-//                hashTags.add(hashTag);
-//            }
-//        }
-//        // Set the list of hashtags to the userPostDto
-//        userPostDto.setHashTagIds(hashTags);
-//            String uniqueFilename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-//
-//
-//            // Ensure the directory exists, create it if necessary
-//            File directory = new File(uploadPath);
-//            if (!directory.exists()) {
-//                directory.mkdirs(); // Create directory and any necessary parent directories
-//            }
-//
-//
-//                byte[] bytes = files.getBytes();
-//                String originalFileName = files.getOriginalFilename();
-//                // Create a variable to store the file extension
-//                String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-//
-//                // Directory path where you want to save ;
-//                String insPath = folderPath + fileName + fileExtension;
-//
-//                String recordedFileName = fileName + fileExtension;
-
-//    @Override
-//    public ResponseEntity<Object> checkPostContentType(UserPostDto userPostDto) {
-//        try {
-//            Long postId = userPostDto.getId();
-//
-//            // Fetch the post from the repository based on the postId
-//            Optional<UserPost> optionalUserPost = userPostRepository.findById(postId);
-//
-//            if (optionalUserPost.isPresent()) {
-//                UserPost userPost = optionalUserPost.get();
-//                List<String> postType = userPost.getContentTypes();
-//
-//                if (postType.equalsIgnoreCase("video")) {
-//                    logger.info("Post with ID {} is a video.", postId);
-//                    return ResponseEntity.ok("Video");
-//                } else if (postType.equalsIgnoreCase("image")) {
-//                    logger.info("Post with ID {} is an image.", postId);
-//                    return ResponseEntity.ok("Image");
-//                } else {
-//                    logger.warn("Unknown post type for post with ID {}.", postId);
-//                    return ResponseEntity.ok("Unknown");
-//                }
-//            } else {
-//                logger.warn("Post with ID {} not found.", postId);
-//                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
-//            }
-//        } catch (Exception e) {
-//            logger.error("Failed to check post content type: {}", e.getMessage());
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                    .body("Failed to check post content type: " + e.getMessage());
-//        }
-//    }
-//@Override
-//public ResponseEntity<Object> viewPost(Long postId) throws IOException{
-//    try {
-//        // Use optional
-//        Optional<Map<String, Object>> userPostDataOptional = Optional.ofNullable(userPostRepository.findUserPostDataById(postId));
-//        if (userPostDataOptional.isEmpty()) {
-//            ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post with Id" + postId + "Not found!");
-//        }
-////        UserPost userPost = userPostOptional.get();
-//        Map<String, Object> userPostData = userPostDataOptional.get();
-//        String postPath = (String) userPostData.get("path");
-//        List<String> names = (List<String>) userPostData.get("names");
-//        if (names == null || names.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No names found for post with ID " + postId);
-//        }
-//        List <byte[]> postFiles = new ArrayList<>() ;
-//        List <Path> dataPath = new ArrayList<>();
-//        for (String name : names) {
-//            Path postFilePath = Paths.get(postPath, name);
-//            byte[] postData = Files.readAllBytes(postFilePath);
-//
-//
-//        }
-//
-//        return null;
-//    }catch (Exception e){
-//        e.printStackTrace();
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to view post: " + e.getMessage());
-//    }
-//}
+    logger.info(userPost.toString());
+    return userPost;
+}
+}

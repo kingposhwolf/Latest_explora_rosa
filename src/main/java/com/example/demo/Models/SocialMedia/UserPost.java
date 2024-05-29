@@ -1,8 +1,5 @@
 package com.example.demo.Models.SocialMedia;
-/*
- * @author Dwight Danda
- *
- */
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
@@ -26,9 +23,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
-@Table(name="userPosts")
+@Table(name = "userPosts")
 @SQLDelete(sql = "UPDATE user_posts SET deleted = true WHERE id=?")
 @SQLRestriction("deleted=false")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "POST_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class UserPost {
 
     @Id
@@ -90,7 +89,7 @@ public class UserPost {
     private String path;
 
     private int shares;
-    
+
     private int favorites;
 
     private String location;

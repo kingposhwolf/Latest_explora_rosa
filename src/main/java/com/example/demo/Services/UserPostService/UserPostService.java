@@ -12,7 +12,6 @@ public interface UserPostService {
 
     @Transactional
     ResponseEntity<Object> uploadPost(
-            UserPostDto userPostDto,
             MultipartFile[] files,
             Long profileId,
             String caption,

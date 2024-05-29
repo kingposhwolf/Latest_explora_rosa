@@ -24,7 +24,6 @@ public class PostEditDeleteController {
     }
     @PostMapping("/upload")
     public ResponseEntity<Object> uploadPost(
-            @ModelAttribute UserPostDto userPostDto,
             @RequestParam("file") MultipartFile[] file,
             @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail,
             @RequestParam("profileId") Long profileId,
@@ -34,7 +33,7 @@ public class PostEditDeleteController {
             @RequestParam(value = "hashTags", required = false) List<String> hashTags,
             @RequestParam(value = "countryId", required = true) Long countryId) {
         try {
-            return userPostServiceImpl.uploadPost(userPostDto, file, profileId, caption,location, brandId, hashTags,countryId);
+            return userPostServiceImpl.uploadPost(file, profileId, caption,location, brandId, hashTags,countryId);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to upload post: " + e.getMessage());

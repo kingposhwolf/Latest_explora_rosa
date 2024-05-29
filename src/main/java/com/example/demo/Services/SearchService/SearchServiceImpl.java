@@ -128,6 +128,7 @@ public class SearchServiceImpl implements SearchService{
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public ResponseEntity<Object> searchPostResults(SearchDto searchDto) {
         try {

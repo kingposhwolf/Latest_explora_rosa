@@ -4,9 +4,11 @@ import com.example.demo.Models.UserManagement.Profile;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
 @DiscriminatorValue("ONE_TO_ONE")
 public class PersonalChatRoom extends ChatRoom{
     @ManyToOne
