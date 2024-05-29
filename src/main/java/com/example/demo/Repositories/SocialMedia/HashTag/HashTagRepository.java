@@ -28,7 +28,7 @@ public interface HashTagRepository extends CrudRepository<HashTag, Long> {
 
     @Query(value =
         "SELECT p.id as id, " +
-        "p.location as location, " +
+        "   p.location as location, " +
         "   GROUP_CONCAT(DISTINCT CONCAT(e.name)) as names, " +
         "   c.name as country, " +
         "   GROUP_CONCAT(DISTINCT f.profile_id) as mentions, " +

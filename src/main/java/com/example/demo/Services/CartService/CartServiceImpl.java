@@ -49,11 +49,17 @@ public class CartServiceImpl implements CartService{
                     for (CartItemDto item : cartDto.getItems()) {
                         Optional<UserPost> userPost = userPostRepository.findById(item.getPostId());
                         if(userPost.isPresent()){
-                            Optional<CartItem> cartItemOptional = cartItemRepository.findByCartAndProduct(cart2, userPost.get());
+                            Optional<CartItem> cartItemOptional = cartItemRepository.findCartItemByProductIdAndCartId(item.getPostId(), cart2.getId());
                             if(cartItemOptional.isPresent()){
                                 CartItem cartItem = cartItemOptional.get();
-                                cartItem.setQuantity(item.getQuantity());
-                                cartItemRepository.save(cartItem);
+                                if(cartItem.isDeleted()){
+                                    cartItem.setQuantity(item.getQuantity());
+                                    cartItem.setDeleted(false);
+                                    cartItemRepository.save(cartItem);
+                                }else{
+                                    cartItem.setQuantity(item.getQuantity());
+                                    cartItemRepository.save(cartItem);
+                                }
 
                                 logger.info("Cart item updated Successful : "+ cartItem);
                             }else{
@@ -70,7 +76,7 @@ public class CartServiceImpl implements CartService{
                             return ResponseEntity.status(404).body("Profile not found");
                         }
                     }
-                return ResponseEntity.status(200).body("Cart Updated Successful");
+                    return ResponseEntity.status(200).body("Cart Updated Successful 1");
                 } else {
                     Cart newCart = new Cart();
                     newCart.setCustomer(profile.get());

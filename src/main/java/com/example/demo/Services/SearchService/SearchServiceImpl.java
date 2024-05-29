@@ -22,6 +22,7 @@ import com.example.demo.InputDto.SearchDto.SearchHashTagDto;
 import com.example.demo.Repositories.SearchOperation.UserSearchHistoryRepository;
 import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 import com.example.demo.Repositories.SocialMedia.HashTag.HashTagRepository;
+import com.example.demo.Repositories.Tracking.UserEngagementRepository;
 import com.example.demo.Repositories.Tracking.ViewedPostsRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 import com.example.demo.Services.RedisService.RedisService;
@@ -49,6 +50,8 @@ public class SearchServiceImpl implements SearchService{
     private final ViewedPostsRepository viewedPostsRepository;
 
     private final RedisService redisService;
+
+    private final UserEngagementRepository userEngagementRepository;
 
     private final Helper helper;
     
@@ -231,12 +234,15 @@ public class SearchServiceImpl implements SearchService{
                 return ResponseEntity.badRequest().body("Your profile ID is Invalid");
             }
             else{
-                List<Long> profileIds = Arrays.asList(1L,2L);
+                List<Long> profileIds = userEngagementRepository.findEngagedProfile(profile);
+                if(profileIds.isEmpty()){
+                    profileIds = Arrays.asList(0L);
+                }
                 List<Long> excludedIds = viewedPostsRepository.findViewedPostsByProfileId(profileId);
                 if(excludedIds.isEmpty()){
                     excludedIds = Arrays.asList(0L);
                 }
-                List<Map<String, Object>> data = userPostRepository.findUsersPostsData(0,profileIds,excludedIds);
+                List<Map<String, Object>> data = userPostRepository.findUsersPostsData(0,profileIds,excludedIds,profile);
                 return ResponseEntity.status(200).body(helper.postMapTimer(data,profileId));
             }
         } catch (Exception exception) {

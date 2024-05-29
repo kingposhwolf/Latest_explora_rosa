@@ -37,13 +37,18 @@ public interface UserEngagementRepository extends JpaRepository<UserEngagement, 
     "AND ue.deleted = false", nativeQuery = true)
     List<Map<String, Object>> searchByTargetAndTopic(@Param("targetId") Long targetId, @Param("searchText") String searchText);
 
-    @Query(value = "SELECT te.topic_id " +
-                  "FROM topic_engagement te " +
-                  "WHERE te.target_id = :targetProfileId " +
-                  "AND e.topic_id NOT IN (:excludedTopicIds) " +
-                  "ORDER BY te.score DESC " +
-                  "LIMIT 10", 
-          nativeQuery = true)
-    List<Long> findEngagedUsers(@Param("targetProfileId") Long targetProfileId, @Param("excludedTopicIds") List<Long> excludedTopicIds);
+    @Query(value =
+            "SELECT ue.topic_id " +
+            "FROM user_engagement ue " +
+            "WHERE ue.target_id = :profileId " +
+            "AND ue.topic_id NOT IN (" +
+            "   SELECT fu.following_id " +
+            "   FROM follow_un_follow fu " +
+            "   WHERE fu.follower_id = :profileId " +
+            ") " +
+            "ORDER BY ue.score DESC " +
+            "LIMIT 10",
+            nativeQuery = true)
+    List<Long> findEngagedProfile(@Param("profileId") Long profileId);
 
 }

@@ -8,11 +8,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Table(name="cartItems")
 @Data
-@SQLDelete(sql = "UPDATE cartItems SET deleted = true WHERE id=?")
+@SQLDelete(sql = "UPDATE cart_items SET deleted = true WHERE id=?")
 @SQLRestriction("deleted=false")
 public class CartItem {
     @Id
@@ -27,6 +28,7 @@ public class CartItem {
     
     @ManyToOne
     @JoinColumn(name = "cartId", nullable = false, foreignKey = @ForeignKey(name = "FK_CART_BH55YI6H_ITEM", foreignKeyDefinition = "FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE CASCADE"))
+    @ToString.Exclude
     private Cart cart;
 
     @JsonIgnore

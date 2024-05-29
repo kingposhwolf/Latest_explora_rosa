@@ -5,6 +5,7 @@ package com.example.demo.Models.SocialMedia;
  */
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -38,12 +39,10 @@ public class UserPost {
     @Column(name = "spotify_song_id", nullable = true)
     private String spotifySongId;
 
-
     @ElementCollection
     @CollectionTable(name = "user_post_names", joinColumns = @JoinColumn(name = "user_post_id"))
     @Column(name = "name")
     private List<String> names;
-
 
     @ManyToOne
     @JoinColumn(name = "profileId", nullable = false, foreignKey = @ForeignKey(name = "FK_USER_POST_PROFILE", foreignKeyDefinition = "FOREIGN KEY (profile_id) REFERENCES profiles(id) ON DELETE CASCADE"))
@@ -54,13 +53,16 @@ public class UserPost {
     private Country country;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "userPostHashTag",joinColumns = @JoinColumn(name = "userPostId"),inverseJoinColumns = @JoinColumn(name = "hashTagId"))
+    @JoinTable(name = "userPostHashTag", joinColumns = @JoinColumn(name = "userPostId"), inverseJoinColumns = @JoinColumn(name = "hashTagId"))
+    @ToString.Exclude
     private List<HashTag> hashTags;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @ToString.Exclude
     private List<Tag> tags = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @ToString.Exclude
     private List<Mention> mentions = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -74,7 +76,6 @@ public class UserPost {
     private int comments;
 
     private String caption;
-
     private String thumbnail;
 
     @Column(nullable = false)
@@ -89,7 +90,7 @@ public class UserPost {
     private String path;
 
     private int shares;
-
+    
     private int favorites;
 
     private String location;
@@ -101,36 +102,44 @@ public class UserPost {
     @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
-    //Below is For Bidirection relationship
+    // Bidirectional relationships
     @OneToMany(mappedBy = "userPost", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     @JsonIgnore
     private List<Comment> commentList = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     @JsonIgnore
     private List<Favorites> favList = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     @JsonIgnore
     private List<Like> likesList = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     @JsonIgnore
     private List<Mention> mentionList = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     @JsonIgnore
     private List<Tag> tagList = new ArrayList<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     @JsonIgnore
     private List<CartItem> cartitems = new ArrayList<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     @JsonIgnore
     private List<OrderItem> orderList = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     @JsonIgnore
     private List<ViewedPosts> viewedPosts = new ArrayList<>();
 }

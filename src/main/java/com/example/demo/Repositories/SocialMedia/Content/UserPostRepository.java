@@ -670,7 +670,8 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "LEFT JOIN users us ON pr.user_id = us.id " +
         "LEFT JOIN account_type acc ON us.account_type_id = acc.id " +
         "WHERE p.profile_id IN (:profileIds) " +
-        "AND p.time BETWEEN NOW() - INTERVAL 2 DAY AND NOW() " +
+        "AND p.profile_id != :myProfileId "+
+        // "AND p.time BETWEEN NOW() - INTERVAL 2 DAY AND NOW() " +
         "AND p.id NOT IN (:excludedIds) " +
         "AND p.time = (" +
         "  SELECT MAX(p2.time) " +
@@ -682,6 +683,6 @@ List<Map<String, Object>> findUserPostsDataByIds(@Param("postIds") List<Long> po
         "ORDER BY p.time DESC " +
         "LIMIT 5 OFFSET :offset",
         nativeQuery = true)
-        List<Map<String, Object>> findUsersPostsData(@Param("offset") int offset, @Param("profileIds") List<Long> profileIds, @Param("excludedIds") List<Long> excludedIds);
+        List<Map<String, Object>> findUsersPostsData(@Param("offset") int offset, @Param("profileIds") List<Long> profileIds, @Param("excludedIds") List<Long> excludedIds, @Param("myProfileId") Long profileId);
 
 }

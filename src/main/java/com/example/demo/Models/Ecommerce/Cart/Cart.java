@@ -26,6 +26,7 @@ public class Cart {
     private Profile customer;
     
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<CartItem> items;
 
     @JsonIgnore
