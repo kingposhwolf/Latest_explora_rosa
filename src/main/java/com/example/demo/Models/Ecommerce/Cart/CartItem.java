@@ -1,7 +1,7 @@
 package com.example.demo.Models.Ecommerce.Cart;
 
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.SQLRestriction;
+// import org.hibernate.annotations.SQLRestriction;
 
 import com.example.demo.Models.SocialMedia.UserPost;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,7 +14,7 @@ import lombok.ToString;
 @Table(name="cartItems")
 @Data
 @SQLDelete(sql = "UPDATE cart_items SET deleted = true WHERE id=?")
-@SQLRestriction("deleted=false")
+// @SQLRestriction("deleted=false")
 public class CartItem {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)

@@ -10,13 +10,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.InputDto.Ecommerce.Cart.CartDto;
 import com.example.demo.InputDto.Ecommerce.Cart.CartItemDto;
 import com.example.demo.InputDto.Ecommerce.Cart.ViewCartDto;
-import com.example.demo.Models.Ecommerce.Cart.Cart;
 import com.example.demo.Models.Ecommerce.Cart.CartItem;
-import com.example.demo.Models.SocialMedia.UserPost;
-import com.example.demo.Models.UserManagement.Profile;
+import com.example.demo.Repositories.SocialMedia.Content.BusinessPostRepository;
 import com.example.demo.Repositories.Business.Order.CartItemRepository;
 import com.example.demo.Repositories.Business.Order.CartRepository;
-import com.example.demo.Repositories.SocialMedia.Content.UserPostRepository;
 import com.example.demo.Repositories.UserManagement.AccountManagement.ProfileRepository;
 
 import jakarta.transaction.Transactional;
@@ -33,69 +30,57 @@ public class CartServiceImpl implements CartService{
 
     private final ProfileRepository profileRepository;
 
-    private final UserPostRepository userPostRepository;
+    private final BusinessPostRepository businessPostRepository;
 
     @SuppressWarnings("null")
     @Override
     @Transactional
     public ResponseEntity<Object> addToCart(CartDto cartDto) {
         try {
-            Optional<Profile> profile = profileRepository.findById(cartDto.getProfileId());
-            if(profile.isPresent()){
-                Optional<Cart> cart = cartRepository.findByCustomer(profile.get());
+            Long profile = profileRepository.findProfileIdById(cartDto.getProfileId());
+            if(profile != null){
+                Optional<Long> cart = cartRepository.findCartIdByCustomerId(profile);
 
                 if (cart.isPresent()) {
-                    Cart cart2 = cart.get();
+                    Long cart2 = cart.get();
 
                     for (CartItemDto item : cartDto.getItems()) {
-                        Optional<UserPost> userPost = userPostRepository.findById(item.getPostId());
-                        if(userPost.isPresent()){
-                            Optional<CartItem> cartItemOptional = cartItemRepository.findCartItemByProductIdAndCartId(item.getPostId(), cart2.getId());
+                        Optional<Long> userPostId = businessPostRepository.getBusinessPostIdByItsId(item.getPostId());
+                        if(userPostId.isPresent()){
+                            Optional<CartItem> cartItemOptional = cartItemRepository.findCartItemByProductIdAndCartId(userPostId.get(), cart2);
                             if(cartItemOptional.isPresent()){
                                 CartItem cartItem = cartItemOptional.get();
                                 if(cartItem.isDeleted()){
-                                    cartItem.setQuantity(item.getQuantity());
-                                    cartItem.setDeleted(false);
-                                    cartItemRepository.save(cartItem);
+                                    cartItemRepository.updateDeletedCartItem(item.getQuantity(),cart2);
                                 }else{
-                                    cartItem.setQuantity(item.getQuantity());
-                                    cartItemRepository.save(cartItem);
+                                    cartItemRepository.updateExistingCartItem(item.getQuantity(),cart2);
                                 }
 
                                 logger.info("Cart item updated Successful : "+ cartItem);
                             }else{
-                                CartItem cartItem = new CartItem();
-                                cartItem.setCart(cart2);
-                                cartItem.setQuantity(item.getQuantity());
-                                cartItem.setProduct(userPost.get());
-                                cartItemRepository.save(cartItem);
+                                cartItemRepository.saveCartItem(userPostId.get(),item.getQuantity(), cart2);
 
-                                logger.info("Cart item added Successful : "+ cartItem);
+                                logger.info("Cart item added Successful");
                             }
                         }else{
                             logger.error("Failed to add product in the cart, Product not found with id: "+ item.getPostId());
-                            return ResponseEntity.status(404).body("Profile not found");
+                            return ResponseEntity.status(404).body("Post not found");
                         }
                     }
-                    return ResponseEntity.status(200).body("Cart Updated Successful 1");
+                    return ResponseEntity.status(200).body("Cart Updated Successful");
                 } else {
-                    Cart newCart = new Cart();
-                    newCart.setCustomer(profile.get());
-                    Cart savedCart = cartRepository.save(newCart);
+                    cartRepository.saveCart(profile);
+                    Optional<Long> cart2 = cartRepository.findCartIdByCustomerId(profile);
 
                     for (CartItemDto item : cartDto.getItems()) {
-                        Optional<UserPost> userPost = userPostRepository.findById(item.getPostId());
-                        if(userPost.isPresent()){
-                                CartItem cartItem = new CartItem();
-                                cartItem.setCart(savedCart);
-                                cartItem.setQuantity(item.getQuantity());
-                                cartItem.setProduct(userPost.get());
-                                cartItemRepository.save(cartItem);
+                        Optional<Long> userPostId = businessPostRepository.getBusinessPostIdByItsId(item.getPostId());
+                        if(userPostId.isPresent()){
+                                cartItemRepository.saveCartItem(userPostId.get(),item.getQuantity(), cart2.get());
 
-                                logger.info("Cart item added Successful : "+ cartItem);
+                                logger.info("Cart item added Successful : ");
                         }else{
                             logger.error("Failed to add product in the cart, Product not found with id: "+ item.getPostId());
-                            return ResponseEntity.status(404).body("Profile not found");
+                            return ResponseEntity.status(404).body("Product Not found");
                         }
                     }
                     return ResponseEntity.status(200).body("Cart Updated Successful");
@@ -110,21 +95,22 @@ public class CartServiceImpl implements CartService{
         }
     }
 
+
     @SuppressWarnings("null")
     @Override
     public ResponseEntity<Object> removeToCart(CartDto cartDto) {
         try {
-            Optional<Profile> profile = profileRepository.findById(cartDto.getProfileId());
-            if(profile.isPresent()){
-                Optional<Cart> cart = cartRepository.findByCustomer(profile.get());
+            Long profile = profileRepository.findProfileIdById(cartDto.getProfileId());
+            if(profile != null){
+                Optional<Long> cart = cartRepository.findCartIdByCustomerId(profile);
 
                 if (cart.isPresent()) {
-                    Cart cart2 = cart.get();
+                    Long cart2 = cart.get();
 
                     for (CartItemDto item : cartDto.getItems()) {
-                        Optional<UserPost> userPost = userPostRepository.findById(item.getPostId());
-                        if(userPost.isPresent()){
-                            Optional<CartItem> cartItemOptional = cartItemRepository.findByCartAndProduct(cart2, userPost.get());
+                        Optional<Long> userPostId = businessPostRepository.getBusinessPostIdByItsId(item.getPostId());
+                        if(userPostId.isPresent()){
+                            Optional<CartItem> cartItemOptional = cartItemRepository.findCartItemByProductIdAndCartId(userPostId.get(), cart2);
                             if(cartItemOptional.isPresent()){
                                 cartItemRepository.delete(cartItemOptional.get());
                                 logger.info("Cart item removed sucessful from the cart");

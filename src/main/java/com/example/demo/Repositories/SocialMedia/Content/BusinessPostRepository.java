@@ -1,6 +1,7 @@
 package com.example.demo.Repositories.SocialMedia.Content;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -50,4 +51,7 @@ public interface BusinessPostRepository extends JpaRepository<BusinessPost, Long
         "GROUP BY p.id",
         nativeQuery = true)
         Map<String, Object> findBusinessPostDataById(@Param("postId") Long postId);
+
+        @Query("SELECT l.id  FROM BusinessPost l  WHERE l.id = :postId ")
+        Optional<Long> getBusinessPostIdByItsId(@Param("postId") Long postId);
 }
