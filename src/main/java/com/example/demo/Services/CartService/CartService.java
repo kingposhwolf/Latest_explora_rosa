@@ -10,5 +10,5 @@ public interface CartService {
 
     ResponseEntity<Object> removeToCart(CartDto cartDto);
 
-    ResponseEntity<Object> viewCart(ViewCartDto ViewCartDto);
+    ResponseEntity<Object> viewCart(ViewCartDto viewCartDto);
 }

@@ -140,18 +140,26 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public ResponseEntity<Object> viewCart(ViewCartDto ViewCartDto){
+    public ResponseEntity<Object> viewCart(ViewCartDto viewCartDto){
         try {
-            // Iterable<City> cities = cityRepository.findAll();
-            // if(!cities.iterator().hasNext()){
-            //     logger.error("\nThere is Request for Fetching All Cities, But Nothing Registered to the database ");
-            //     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is No  Cities in the Database");
-            // }else{
-            //     logger.info("\nSuccessful fetched all Cities");
-                return ResponseEntity.status(200).body("cityRepository.findCitiesWithoutCountry()");
-            // }
+            Long profile = profileRepository.findProfileIdById(viewCartDto.getProfileId());
+            if(profile != null){
+                Optional<Long> cart = cartRepository.findCartIdByCustomerId(profile);
+
+                if (cart.isPresent()) {
+                    Long cart2 = cart.get();
+
+                    return ResponseEntity.status(200).body(cartItemRepository.findCartItemsByCartId(cart2));
+                } else {
+
+                    return ResponseEntity.status(200).body("Cart is Empty");
+                }
+            }else{
+                logger.error("Profile Not Found Error During Cart Operation");
+                return ResponseEntity.status(404).body("Profile not found");
+            }
         } catch (Exception exception) {
-            logger.error("\nFailed to fetch all Cities, Server Error: \n" + exception.getMessage());
+            logger.error("\nFailed to fetch Cart, Server Error: \n" + exception.getMessage());
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }

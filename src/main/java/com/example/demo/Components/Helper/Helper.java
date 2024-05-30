@@ -120,7 +120,7 @@ public class Helper {
         
                     // Create a new map with the existing entries except timestamp
                     Map<String, Object> modifiedPost = new HashMap<>(post);
-                    modifiedPost.remove("timestamp");
+                    // modifiedPost.remove("timestamp");
     
                     // Get the timestamp from the post map and convert it to LocalDateTime
                     Timestamp timestamp = (Timestamp) post.get("timestamp");
@@ -128,8 +128,11 @@ public class Helper {
     
                     // Calculate the time difference and add it to the map
                     String timeDifference = calculateTimeDifference(localDateTime);
+                    Long timeDifferenceSec = calculateChatTimeDifference(localDateTime);
+
                     modifiedPost.put("duration", timeDifference);
                     modifiedPost.put("showShare", false);
+                    modifiedPost.put("time", timeDifferenceSec);
     
                     // Check if the user likes that post
                     Long postId = (Long) post.get("id");
@@ -167,7 +170,6 @@ public class Helper {
         Long timeDifference = calculateChatTimeDifference(timestamp);
 
         modifiedData.put("duration", timeDifference);
-
         return modifiedData;
     }
 
@@ -187,8 +189,11 @@ public class Helper {
     
                     // Calculate the time difference and add it to the map
                     String timeDifference = calculateTimeDifference(localDateTime);
+                    Long timeDifferenceSec = calculateChatTimeDifference(localDateTime);
                     modifiedPost.put("duration", timeDifference);
                     modifiedPost.put("showShare", false);
+                    modifiedPost.put("time", timeDifferenceSec);
+
     
                     // Check if the user likes that post
                     Long postId = (Long) post.get("id");

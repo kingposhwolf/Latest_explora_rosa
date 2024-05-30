@@ -12,6 +12,7 @@ import jakarta.validation.Valid;
 
 import com.example.demo.Components.GlobalValidationFormatter.GlobalValidationFormatter;
 import com.example.demo.InputDto.Ecommerce.Cart.CartDto;
+import com.example.demo.InputDto.Ecommerce.Cart.ViewCartDto;
 
 import lombok.AllArgsConstructor;
 
@@ -37,5 +38,13 @@ public class CartController {
             return globalValidationFormatter.validationFormatter(bindingResult);
         }
         return CartService.removeToCart(cartDto);
+    }
+
+    @PostMapping("/list")
+    public ResponseEntity<Object> getItems(@RequestBody @Valid ViewCartDto viewCartDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return globalValidationFormatter.validationFormatter(bindingResult);
+        }
+        return CartService.viewCart(viewCartDto);
     }
 }
