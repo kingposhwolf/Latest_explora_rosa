@@ -61,6 +61,7 @@ public class UserPostServiceImpl implements UserPostService{
 public ResponseEntity<Object> uploadPost(
         MultipartFile[] files,
         Long profileId,
+        BigDecimal price,
         String caption,
         String location,
         Long brandId,
@@ -129,8 +130,11 @@ public ResponseEntity<Object> uploadPost(
                 userPostDto.setContentTypes(filesContentTypes);
             
                 if(profile.getUser().getAccountType().getId() == 2){
+                    if(price == null){
+                        return ResponseEntity.status(400).body("Price is required for the business post");
+                    }
 
-                    BusinessPost businessPost = createBusinessPost(profile, countryId, hashTags, brand, caption, location, duration, userPostDto);
+                    BusinessPost businessPost = createBusinessPost(profile, countryId, hashTags, brand, caption, location, duration, userPostDto,price);
                     BusinessPost savedPost = userPostRepository.save(businessPost);
 
                     logger.info("Post uploaded successfully");
@@ -511,7 +515,7 @@ private UserPost createUserPost(Profile profile, Long countryId, List<HashTag> h
 }
 
 private BusinessPost createBusinessPost(Profile profile, Long countryId, List<HashTag> hashTags, Brand brand, String caption,
-                                String location, Long duration, UserPostDto userPostDto) throws IllegalArgumentException {
+                                String location, Long duration, UserPostDto userPostDto, BigDecimal price) throws IllegalArgumentException {
     BusinessPost userPost = new BusinessPost();
     userPost.setProfile(profile);
     userPost.setNames(userPostDto.getNames());
@@ -528,7 +532,7 @@ private BusinessPost createBusinessPost(Profile profile, Long countryId, List<Ha
     userPost.setLocation(location);
     userPost.setDuration(duration);
     userPost.setRate(BigDecimal.ZERO);
-    userPost.setPrice(BigDecimal.ZERO);
+    userPost.setPrice(price);
 
     logger.info(userPost.toString());
     return userPost;

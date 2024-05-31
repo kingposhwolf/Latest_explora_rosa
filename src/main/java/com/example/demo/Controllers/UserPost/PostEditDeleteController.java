@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 /*
@@ -30,10 +31,11 @@ public class PostEditDeleteController {
             @RequestParam(value = "location", required = false) String location,
             @RequestParam("caption") String caption,
             @RequestParam(value = "brandName", required = false) Long brandId,
+            @RequestParam(value = "price", required = false) BigDecimal price,
             @RequestParam(value = "hashTags", required = false) List<String> hashTags,
             @RequestParam(value = "countryId", required = true) Long countryId) {
         try {
-            return userPostServiceImpl.uploadPost(file, profileId, caption,location, brandId, hashTags,countryId);
+            return userPostServiceImpl.uploadPost(file, profileId, price, caption,location, brandId, hashTags,countryId);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to upload post: " + e.getMessage());

@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.InputDto.SocialMedia.Post.UserPostDto;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface UserPostService {
@@ -14,6 +15,7 @@ public interface UserPostService {
     ResponseEntity<Object> uploadPost(
             MultipartFile[] files,
             Long profileId,
+            BigDecimal price,
             String caption,
             String location,
             Long brandId,
